@@ -1,0 +1,25 @@
+{
+  "name": "data-analytics-consultant",
+  "description": "Professional data analytics toolkit for consultants: requirements gathering, dashboard design, data storytelling, and client education",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "data analytics",
+    "dashboard design",
+    "data storytelling",
+    "KPI reporting",
+    "requirements gathering"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

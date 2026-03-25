@@ -1,0 +1,25 @@
+{
+  "name": "fleet-management-assistant",
+  "description": "Comprehensive fleet management toolkit: maintenance scheduling, cost analysis, driver management, compliance tracking, and vehicle lifecycle planning for fleet managers and transportation companies",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "fleet management",
+    "preventive maintenance",
+    "driver compliance",
+    "vehicle lifecycle",
+    "DOT"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

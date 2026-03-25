@@ -1,0 +1,26 @@
+{
+  "name": "engineering",
+  "description": "Streamline engineering workflows \u2014 standups, code review, architecture decisions, incident response, and technical documentation. Works with your existing tools or standalone.",
+  "version": "1.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "code review",
+    "system design",
+    "incident response",
+    "tech debt",
+    "testing strategy",
+    "architecture"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

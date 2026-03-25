@@ -1,0 +1,25 @@
+{
+  "name": "auto-repair-shop-manager",
+  "description": "Complete management toolkit for independent auto repair shops: estimates, customer communication, review management, marketing, and technician productivity tracking",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "auto repair",
+    "repair estimate",
+    "technician productivity",
+    "customer update",
+    "review management"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

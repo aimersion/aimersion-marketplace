@@ -1,0 +1,26 @@
+{
+  "name": "legal",
+  "description": "Speed up contract review, NDA triage, and compliance workflows for in-house legal teams. Draft legal briefs, organize precedent research, and manage institutional knowledge.",
+  "version": "1.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "contract review",
+    "NDA triage",
+    "compliance",
+    "legal risk",
+    "GDPR",
+    "CCPA"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "hr-hiring-assistant",
+  "description": "The HR hiring assistant built for growing teams (20-200 employees) who hire without a dedicated recruiter. Write job descriptions that actually attract candidates, run structured interviews with real scorecards, manage offers and counteroffers, onboard by department, and stay compliant with DEI and remote hiring best practices. Works standalone or supercharged with your ATS, HRIS, and calendar.",
+  "version": "2.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "hiring",
+    "job description",
+    "interview kit",
+    "offer letter",
+    "onboarding",
+    "DEI",
+    "compensation benchmarking"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

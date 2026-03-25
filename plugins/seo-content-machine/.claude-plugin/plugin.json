@@ -1,0 +1,25 @@
+{
+  "name": "seo-content-machine",
+  "description": "Professional SEO content toolkit \u2014 keyword research with SERP-validated methodology, content briefs writers actually use, on-page audits with schema markup and Core Web Vitals, competitive gap analysis, content decay detection, featured snippet optimization, and editorial calendar planning. Covers informational, e-commerce, local, and programmatic SEO.",
+  "version": "2.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "SEO",
+    "content marketing",
+    "keyword research",
+    "blog writing",
+    "on-page optimization"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

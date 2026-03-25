@@ -1,0 +1,25 @@
+{
+  "name": "competitive-intel-monitor",
+  "description": "Enterprise-grade competitive intelligence platform \u2014 battlecard creation, win/loss analysis, pricing intelligence, market trend monitoring, and strategic competitor research. Built for product marketers, CI professionals, and sales leaders who need actionable intel, not noise.",
+  "version": "2.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "competitive intelligence",
+    "battlecard",
+    "market trends",
+    "pricing intelligence",
+    "win-loss analysis"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "cybersecurity-consultant",
+  "description": "Complete toolkit for cybersecurity professionals and consultants \u2014 NIST CSF risk assessments, incident response playbooks, compliance mapping (SOC 2, ISO 27001, CMMC), security awareness training, and professional security report writing",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "cybersecurity",
+    "NIST CSF",
+    "SOC 2",
+    "incident response",
+    "risk assessment",
+    "security awareness"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

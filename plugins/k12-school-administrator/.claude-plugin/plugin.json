@@ -1,0 +1,25 @@
+{
+  "name": "k12-school-administrator",
+  "description": "Complete toolkit for K-12 principals and administrators \u2014 parent communications, staff evaluations, enrollment management, grant writing, and discipline tracking",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "school administrator",
+    "parent newsletter",
+    "grant writing",
+    "staff evaluation",
+    "enrollment"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "immigration-law-helper",
+  "description": "Immigration law practice toolkit \u2014 case tracking, document checklists, client communications, form preparation, and country conditions research for asylum cases",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "immigration",
+    "visa",
+    "USCIS",
+    "asylum",
+    "RFE response",
+    "green card"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "warehouse-manager",
+  "description": "Complete warehouse and distribution center management toolkit \u2014 layout optimization, labor planning, receiving, shipping coordination, and KPI tracking",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "warehouse",
+    "labor planning",
+    "slotting",
+    "receiving",
+    "shipping",
+    "KPI dashboard"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

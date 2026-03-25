@@ -1,0 +1,25 @@
+{
+  "name": "online-course-creator",
+  "description": "End-to-end toolkit for course creators and EdTech entrepreneurs \u2014 curriculum design, lesson writing, launch marketing, student engagement, and platform optimization",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "online course",
+    "curriculum design",
+    "course launch",
+    "video script",
+    "student engagement"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

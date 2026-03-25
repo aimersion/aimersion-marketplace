@@ -1,0 +1,26 @@
+{
+  "name": "franchise-operator",
+  "description": "Comprehensive plugin for multi-unit franchise owners and operators. Manage unit performance benchmarking, brand compliance audits, staff training and development, local marketing execution, and financial analysis across your franchise portfolio.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "franchise",
+    "brand standards",
+    "unit economics",
+    "compliance audit",
+    "staff training",
+    "benchmarking"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

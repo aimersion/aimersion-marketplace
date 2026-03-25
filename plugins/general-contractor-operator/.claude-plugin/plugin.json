@@ -1,0 +1,25 @@
+{
+  "name": "general-contractor-operator",
+  "description": "Run residential and commercial construction projects end-to-end \u2014 estimates, scheduling, change orders, safety compliance, and client communication",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "general contractor",
+    "construction estimate",
+    "project schedule",
+    "change order",
+    "OSHA safety"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

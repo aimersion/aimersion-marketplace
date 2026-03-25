@@ -1,0 +1,26 @@
+{
+  "name": "saas-growth-operator",
+  "description": "Complete growth operations toolkit for SaaS founders and growth teams \u2014 churn analysis, onboarding optimization, pricing strategy, metrics tracking, and account expansion planning",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "SaaS metrics",
+    "churn reduction",
+    "MRR",
+    "ARR",
+    "onboarding optimization",
+    "pricing strategy"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

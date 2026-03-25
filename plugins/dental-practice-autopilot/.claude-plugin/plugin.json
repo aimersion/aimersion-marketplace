@@ -1,0 +1,25 @@
+{
+  "name": "dental-practice-autopilot",
+  "description": "Growth engine for dental practices \u2014 patient reactivation, treatment plan presentation, insurance navigation, review management, and marketing campaigns",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "dental practice",
+    "patient recall",
+    "treatment plan",
+    "dental insurance",
+    "HIPAA"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

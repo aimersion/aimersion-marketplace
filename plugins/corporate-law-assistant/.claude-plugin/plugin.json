@@ -1,0 +1,25 @@
+{
+  "name": "corporate-law-assistant",
+  "description": "Corporate law practice toolkit \u2014 M&A deal tracking, contract review, entity formation, board meeting preparation, and compliance monitoring",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "corporate law",
+    "entity formation",
+    "board meeting",
+    "contract review",
+    "M&A"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

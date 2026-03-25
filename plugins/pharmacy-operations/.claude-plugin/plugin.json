@@ -1,0 +1,25 @@
+{
+  "name": "pharmacy-operations",
+  "description": "Operations toolkit for independent pharmacy owners \u2014 inventory optimization, patient adherence programs, marketing campaigns, compliance tracking, and clinical services development",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "pharmacy",
+    "MTM",
+    "medication adherence",
+    "inventory",
+    "DEA compliance"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

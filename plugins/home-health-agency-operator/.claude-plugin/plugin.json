@@ -1,0 +1,25 @@
+{
+  "name": "home-health-agency-operator",
+  "description": "Operations toolkit for home health agency owners \u2014 schedule caregivers, manage Medicare compliance, recruit staff, communicate with families, and track quality outcomes",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "home health",
+    "Medicare",
+    "OASIS",
+    "caregiver scheduling",
+    "compliance"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

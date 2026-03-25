@@ -1,0 +1,25 @@
+{
+  "name": "shopify-store-optimizer",
+  "description": "Complete Shopify store optimization suite \u2014 product page copywriting, conversion rate optimization, email flow automation, collection merchandising, seasonal promotions, and speed optimization. Built from real merchant pain points and proven CRO frameworks.",
+  "version": "2.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "Shopify",
+    "product descriptions",
+    "store speed",
+    "email flows",
+    "conversion rate optimization"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

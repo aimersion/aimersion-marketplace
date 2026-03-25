@@ -1,0 +1,25 @@
+{
+  "name": "electrician-business-manager",
+  "description": "Run an electrical contracting business \u2014 job estimating, permit tracking, customer follow-up, marketing, and apprentice training",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "electrician",
+    "electrical estimate",
+    "permit",
+    "NEC code",
+    "apprentice training"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

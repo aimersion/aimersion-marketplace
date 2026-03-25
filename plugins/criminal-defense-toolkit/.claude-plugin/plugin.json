@@ -1,0 +1,25 @@
+{
+  "name": "criminal-defense-toolkit",
+  "description": "Criminal defense practice toolkit \u2014 case element analysis, discovery management, motion drafting, client communications, and sentencing mitigation",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "criminal defense",
+    "suppression motion",
+    "discovery",
+    "sentencing mitigation",
+    "plea deal"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

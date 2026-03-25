@@ -1,0 +1,25 @@
+{
+  "name": "family-law-assistant",
+  "description": "Comprehensive family law practice toolkit \u2014 case document organization, sensitive client communications, mediation preparation, custody analysis, and court filings",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "family law",
+    "divorce",
+    "child custody",
+    "parenting plan",
+    "mediation"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

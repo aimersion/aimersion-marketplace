@@ -1,0 +1,25 @@
+{
+  "name": "tutoring-business-operator",
+  "description": "Complete business toolkit for tutoring companies and independent tutors \u2014 assessments, progress reports, marketing, scheduling, and differentiated instruction",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "tutoring",
+    "student assessment",
+    "progress report",
+    "tutor scheduling",
+    "marketing"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

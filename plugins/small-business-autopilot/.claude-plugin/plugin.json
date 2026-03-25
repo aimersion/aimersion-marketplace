@@ -1,0 +1,25 @@
+{
+  "name": "small-business-autopilot",
+  "description": "Marketing automation suite for small businesses \u2014 social media scheduling, email campaigns, competitive intelligence, content creation, and lead research",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "marketing automation",
+    "small business",
+    "social media scheduler",
+    "email campaigns",
+    "lead generation"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

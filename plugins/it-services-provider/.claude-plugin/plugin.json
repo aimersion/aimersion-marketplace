@@ -1,0 +1,26 @@
+{
+  "name": "it-services-provider",
+  "description": "Complete operations toolkit for MSPs and IT service companies \u2014 ticket triage, security auditing, QBR preparation, IT documentation, and managed services sales enablement",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "MSP",
+    "managed services",
+    "QBR",
+    "security audit",
+    "ticket triage",
+    "technology assessment"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

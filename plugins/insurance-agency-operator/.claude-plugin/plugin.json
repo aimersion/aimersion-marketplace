@@ -1,0 +1,25 @@
+{
+  "name": "insurance-agency-operator",
+  "description": "Full-service agency management for independent insurance agents \u2014 coverage reviews, cross-selling, claims guidance, marketing campaigns, and client retention workflows",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "insurance agency",
+    "policy review",
+    "cross-sell",
+    "retention",
+    "claims support"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

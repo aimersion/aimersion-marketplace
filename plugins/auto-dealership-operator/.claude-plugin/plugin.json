@@ -1,0 +1,25 @@
+{
+  "name": "auto-dealership-operator",
+  "description": "Complete dealership management toolkit: inventory analytics, lead nurturing, BDC operations, service retention, and marketing planning for car dealership managers and owners",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "car dealership",
+    "BDC",
+    "inventory aging",
+    "lead follow-up",
+    "service retention"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

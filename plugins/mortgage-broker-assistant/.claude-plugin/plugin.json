@@ -1,0 +1,25 @@
+{
+  "name": "mortgage-broker-assistant",
+  "description": "End-to-end mortgage origination toolkit for brokers and loan officers \u2014 rate comparisons, pre-qualification processing, realtor partnerships, pipeline management, and borrower education",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "mortgage broker",
+    "pre-qualification",
+    "rate comparison",
+    "realtor outreach",
+    "pipeline tracking"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

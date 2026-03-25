@@ -1,0 +1,25 @@
+{
+  "name": "wealth-management-advisor",
+  "description": "Sophisticated wealth management toolkit for advisors and private bankers \u2014 portfolio reporting, estate planning, tax strategy, client communications, and compliance tracking",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "wealth management",
+    "estate planning",
+    "tax-loss harvesting",
+    "portfolio report",
+    "client communication"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "landscaping-business-operator",
+  "description": "Run a landscaping and lawn care company \u2014 route optimization, seasonal planning, estimates, customer retention, and content marketing",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "landscaping",
+    "lawn care",
+    "route optimization",
+    "seasonal planner",
+    "landscape estimate"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

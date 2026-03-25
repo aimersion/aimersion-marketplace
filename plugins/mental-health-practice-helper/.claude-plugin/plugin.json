@@ -1,0 +1,25 @@
+{
+  "name": "mental-health-practice-helper",
+  "description": "Practice operations assistant for therapists and counselors \u2014 intake processing, session note templates, ethical marketing, insurance navigation, and group program design",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "therapist",
+    "counselor",
+    "session notes",
+    "insurance billing",
+    "group therapy"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

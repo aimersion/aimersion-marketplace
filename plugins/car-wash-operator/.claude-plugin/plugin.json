@@ -1,0 +1,25 @@
+{
+  "name": "car-wash-operator",
+  "description": "Complete management toolkit for car wash business owners: membership programs, weather-triggered marketing, staff scheduling, equipment maintenance, and local marketing strategies",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "car wash",
+    "membership program",
+    "weather marketing",
+    "staff scheduling",
+    "equipment maintenance"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

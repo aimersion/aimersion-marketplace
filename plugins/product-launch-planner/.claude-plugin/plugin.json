@@ -1,0 +1,26 @@
+{
+  "name": "product-launch-planner",
+  "description": "End-to-end product launch planning suite \u2014 timeline generation, pricing strategy, audience building, content calendars, launch readiness audits, and post-launch analysis. Built on real launch data: 95% of launches fail, this plugin helps you be in the 5%.",
+  "version": "2.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "product launch",
+    "go-to-market",
+    "launch timeline",
+    "pricing strategy",
+    "waitlist",
+    "post-launch analysis"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

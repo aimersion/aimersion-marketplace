@@ -1,0 +1,26 @@
+{
+  "name": "email-marketing-autopilot",
+  "description": "Professional email marketing plugin: build drip sequences with proven timing, write newsletters that drive clicks, optimize subject lines with data-backed formulas, segment audiences by business type, analyze campaigns against real benchmarks, and diagnose deliverability issues. Built for marketers managing real subscriber lists.",
+  "version": "2.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "email marketing",
+    "drip sequences",
+    "newsletter",
+    "subject lines",
+    "deliverability",
+    "list segmentation"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

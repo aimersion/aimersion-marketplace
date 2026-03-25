@@ -1,0 +1,1958 @@
+{
+  "name": "aimersion-ai",
+  "owner": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "metadata": {
+    "description": "World-class AI plugins for every industry, every role, every business. Built by Aimersion AI \u2014 DFW Texas. From healthcare to construction, legal to automotive, knowledge work to marketing automation.",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins",
+    "homepage": "https://aimersion.ai",
+    "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+    "totalPlugins": 71
+  },
+  "plugins": [
+    {
+      "name": "immigration-law-helper",
+      "source": "./plugins/immigration-law-helper",
+      "description": "Immigration law practice toolkit \u2014 case tracking, document checklists, client communications, form preparation, and country conditions research for asylum cases",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Legal",
+      "tags": [
+        "legal",
+        "immigration",
+        "visa",
+        "USCIS",
+        "asylum"
+      ],
+      "keywords": [
+        "immigration",
+        "visa",
+        "USCIS",
+        "asylum",
+        "RFE response",
+        "green card"
+      ]
+    },
+    {
+      "name": "insurance-agency-operator",
+      "source": "./plugins/insurance-agency-operator",
+      "description": "Full-service agency management for independent insurance agents \u2014 coverage reviews, cross-selling, claims guidance, marketing campaigns, and client retention workflows",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Financial Services",
+      "tags": [
+        "financial-services",
+        "insurance",
+        "retention",
+        "cross-sell",
+        "claims"
+      ],
+      "keywords": [
+        "insurance agency",
+        "policy review",
+        "cross-sell",
+        "retention",
+        "claims support"
+      ]
+    },
+    {
+      "name": "review-feedback-manager",
+      "source": "./plugins/review-feedback-manager",
+      "description": "Complete review and reputation management suite for small businesses \u2014 monitor reviews across platforms, respond with proven templates, analyze sentiment, solicit new reviews, and recover from reputation crises",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Marketing",
+      "tags": [
+        "marketing",
+        "reviews",
+        "reputation",
+        "sentiment",
+        "Google"
+      ],
+      "keywords": [
+        "online reviews",
+        "reputation management",
+        "Google reviews",
+        "sentiment analysis",
+        "review solicitation"
+      ]
+    },
+    {
+      "name": "criminal-defense-toolkit",
+      "source": "./plugins/criminal-defense-toolkit",
+      "description": "Criminal defense practice toolkit \u2014 case element analysis, discovery management, motion drafting, client communications, and sentencing mitigation",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Legal",
+      "tags": [
+        "legal",
+        "criminal-defense",
+        "motions",
+        "discovery",
+        "sentencing"
+      ],
+      "keywords": [
+        "criminal defense",
+        "suppression motion",
+        "discovery",
+        "sentencing mitigation",
+        "plea deal"
+      ]
+    },
+    {
+      "name": "chiropractic-practice-builder",
+      "source": "./plugins/chiropractic-practice-builder",
+      "description": "Complete practice growth toolkit for chiropractors \u2014 reactivate patients, communicate care plans, generate reviews, create educational content, and build referral programs",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Healthcare",
+      "tags": [
+        "healthcare",
+        "chiropractic",
+        "patient-retention",
+        "reviews",
+        "marketing"
+      ],
+      "keywords": [
+        "chiropractor",
+        "patient reactivation",
+        "care plan",
+        "social media",
+        "reviews"
+      ]
+    },
+    {
+      "name": "email-marketing-autopilot",
+      "source": "./plugins/email-marketing-autopilot",
+      "description": "Professional email marketing plugin: build drip sequences with proven timing, write newsletters that drive clicks, optimize subject lines with data-backed formulas, segment audiences by business type, analyze campaigns against real benchmarks, and diagnose deliverability issues. Built for marketers managing real subscriber lists.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Marketing",
+      "tags": [
+        "marketing",
+        "email",
+        "drip",
+        "newsletter",
+        "automation"
+      ],
+      "keywords": [
+        "email marketing",
+        "drip sequences",
+        "newsletter",
+        "subject lines",
+        "deliverability",
+        "list segmentation"
+      ]
+    },
+    {
+      "name": "inventory-pricing-optimizer",
+      "source": "./plugins/inventory-pricing-optimizer",
+      "description": "End-to-end inventory and pricing optimization for small businesses \u2014 demand forecasting, reorder point calculations, ABC analysis, competitive pricing frameworks, and seasonal adjustment strategies to eliminate stockouts and overstock",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Retail & eCommerce",
+      "tags": [
+        "retail",
+        "inventory",
+        "pricing",
+        "demand-forecasting",
+        "reorder"
+      ],
+      "keywords": [
+        "inventory management",
+        "pricing strategy",
+        "demand forecast",
+        "reorder point",
+        "seasonal planning"
+      ]
+    },
+    {
+      "name": "roofing-company-operator",
+      "source": "./plugins/roofing-company-operator",
+      "description": "Run a roofing contracting business \u2014 storm response, estimates, crew dispatch, warranty tracking, and lead generation",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Construction",
+      "tags": [
+        "construction",
+        "roofing",
+        "storm-damage",
+        "estimate",
+        "warranty"
+      ],
+      "keywords": [
+        "roofing",
+        "roof estimate",
+        "storm damage",
+        "crew dispatch",
+        "warranty"
+      ]
+    },
+    {
+      "name": "competitive-intel-monitor",
+      "source": "./plugins/competitive-intel-monitor",
+      "description": "Enterprise-grade competitive intelligence platform \u2014 battlecard creation, win/loss analysis, pricing intelligence, market trend monitoring, and strategic competitor research. Built for product marketers, CI professionals, and sales leaders who need actionable intel, not noise.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Marketing",
+      "tags": [
+        "marketing",
+        "competitive-intelligence",
+        "battlecards",
+        "pricing",
+        "win-loss"
+      ],
+      "keywords": [
+        "competitive intelligence",
+        "battlecard",
+        "market trends",
+        "pricing intelligence",
+        "win-loss analysis"
+      ]
+    },
+    {
+      "name": "medical-device-sales-rep",
+      "source": "./plugins/medical-device-sales-rep",
+      "description": "Sales enablement toolkit for medical device representatives \u2014 plan territories, prepare for surgical cases, track competitors, manage surgeon relationships, and summarize clinical evidence",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Healthcare",
+      "tags": [
+        "healthcare",
+        "medical-device",
+        "sales",
+        "surgeon",
+        "territory"
+      ],
+      "keywords": [
+        "medical device",
+        "surgeon relationship",
+        "OR case prep",
+        "territory planning",
+        "clinical evidence"
+      ]
+    },
+    {
+      "name": "veterinary-practice-manager",
+      "source": "./plugins/veterinary-practice-manager",
+      "description": "Practice management toolkit for veterinary clinics \u2014 client communications, inventory tracking, wellness plans, social content, and staff training materials",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Healthcare",
+      "tags": [
+        "healthcare",
+        "veterinary",
+        "pet",
+        "clinic",
+        "wellness"
+      ],
+      "keywords": [
+        "vet clinic",
+        "wellness plans",
+        "pet care",
+        "inventory",
+        "client communication"
+      ]
+    },
+    {
+      "name": "supply-chain-manager",
+      "source": "./plugins/supply-chain-manager",
+      "description": "Complete supply chain and procurement toolkit \u2014 vendor evaluation, demand forecasting, logistics optimization, risk monitoring, and total cost analysis",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Manufacturing",
+      "tags": [
+        "manufacturing",
+        "supply-chain",
+        "logistics",
+        "vendor",
+        "demand-planning"
+      ],
+      "keywords": [
+        "supply chain",
+        "logistics",
+        "vendor evaluation",
+        "demand forecast",
+        "cost analysis",
+        "TCO"
+      ]
+    },
+    {
+      "name": "auto-detailing-business",
+      "source": "./plugins/auto-detailing-business",
+      "description": "Complete business toolkit for auto detailing businesses: service packages, booking optimization, customer retention, social content, and fleet account management",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Automotive",
+      "tags": [
+        "automotive",
+        "detailing",
+        "fleet",
+        "packages",
+        "loyalty"
+      ],
+      "keywords": [
+        "auto detailing",
+        "detailing packages",
+        "fleet proposal",
+        "loyalty program",
+        "booking optimization"
+      ]
+    },
+    {
+      "name": "customer-support-autopilot",
+      "source": "./plugins/customer-support-autopilot",
+      "description": "End-to-end customer support automation: triage tickets, draft responses, write KB articles, package escalations, and monitor satisfaction trends",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Customer Success",
+      "tags": [
+        "customer-success",
+        "support",
+        "ticketing",
+        "escalation",
+        "KB"
+      ],
+      "keywords": [
+        "customer support",
+        "ticket triage",
+        "knowledge base",
+        "escalation",
+        "CSAT",
+        "response drafting"
+      ]
+    },
+    {
+      "name": "auto-dealership-operator",
+      "source": "./plugins/auto-dealership-operator",
+      "description": "Complete dealership management toolkit: inventory analytics, lead nurturing, BDC operations, service retention, and marketing planning for car dealership managers and owners",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Automotive",
+      "tags": [
+        "automotive",
+        "dealership",
+        "inventory",
+        "BDC",
+        "lead-nurture"
+      ],
+      "keywords": [
+        "car dealership",
+        "BDC",
+        "inventory aging",
+        "lead follow-up",
+        "service retention"
+      ]
+    },
+    {
+      "name": "general-contractor-operator",
+      "source": "./plugins/general-contractor-operator",
+      "description": "Run residential and commercial construction projects end-to-end \u2014 estimates, scheduling, change orders, safety compliance, and client communication",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Construction",
+      "tags": [
+        "construction",
+        "contractor",
+        "estimating",
+        "scheduling",
+        "safety"
+      ],
+      "keywords": [
+        "general contractor",
+        "construction estimate",
+        "project schedule",
+        "change order",
+        "OSHA safety"
+      ]
+    },
+    {
+      "name": "wedding-planner-assistant",
+      "source": "./plugins/wedding-planner-assistant",
+      "description": "Complete wedding planning toolkit for planners and event coordinators \u2014 timelines, vendor management, budgets, client communications, and day-of coordination",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Hospitality",
+      "tags": [
+        "hospitality",
+        "wedding",
+        "event-planning",
+        "vendors",
+        "timeline"
+      ],
+      "keywords": [
+        "wedding planner",
+        "vendor management",
+        "wedding timeline",
+        "budget tracking",
+        "day-of coordination"
+      ]
+    },
+    {
+      "name": "shopify-store-optimizer",
+      "source": "./plugins/shopify-store-optimizer",
+      "description": "Complete Shopify store optimization suite \u2014 product page copywriting, conversion rate optimization, email flow automation, collection merchandising, seasonal promotions, and speed optimization. Built from real merchant pain points and proven CRO frameworks.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Retail & eCommerce",
+      "tags": [
+        "ecommerce",
+        "shopify",
+        "conversion",
+        "SEO",
+        "email"
+      ],
+      "keywords": [
+        "Shopify",
+        "product descriptions",
+        "store speed",
+        "email flows",
+        "conversion rate optimization"
+      ]
+    },
+    {
+      "name": "landscaping-business-operator",
+      "source": "./plugins/landscaping-business-operator",
+      "description": "Run a landscaping and lawn care company \u2014 route optimization, seasonal planning, estimates, customer retention, and content marketing",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Construction",
+      "tags": [
+        "construction",
+        "landscaping",
+        "lawn-care",
+        "seasonal",
+        "routes"
+      ],
+      "keywords": [
+        "landscaping",
+        "lawn care",
+        "route optimization",
+        "seasonal planner",
+        "landscape estimate"
+      ]
+    },
+    {
+      "name": "seo-content-machine",
+      "source": "./plugins/seo-content-machine",
+      "description": "Professional SEO content toolkit \u2014 keyword research with SERP-validated methodology, content briefs writers actually use, on-page audits with schema markup and Core Web Vitals, competitive gap analysis, content decay detection, featured snippet optimization, and editorial calendar planning. Covers informational, e-commerce, local, and programmatic SEO.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Marketing",
+      "tags": [
+        "marketing",
+        "SEO",
+        "content",
+        "blog",
+        "keywords"
+      ],
+      "keywords": [
+        "SEO",
+        "content marketing",
+        "keyword research",
+        "blog writing",
+        "on-page optimization"
+      ]
+    },
+    {
+      "name": "tutoring-business-operator",
+      "source": "./plugins/tutoring-business-operator",
+      "description": "Complete business toolkit for tutoring companies and independent tutors \u2014 assessments, progress reports, marketing, scheduling, and differentiated instruction",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Education",
+      "tags": [
+        "education",
+        "tutoring",
+        "student-assessment",
+        "scheduling",
+        "marketing"
+      ],
+      "keywords": [
+        "tutoring",
+        "student assessment",
+        "progress report",
+        "tutor scheduling",
+        "marketing"
+      ]
+    },
+    {
+      "name": "college-admissions-counselor",
+      "source": "./plugins/college-admissions-counselor",
+      "description": "Professional toolkit for college counselors and admissions consultants \u2014 essay coaching, school matching, timeline management, recommendation letters, and financial aid navigation",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Education",
+      "tags": [
+        "education",
+        "college-admissions",
+        "essay",
+        "financial-aid",
+        "timeline"
+      ],
+      "keywords": [
+        "college admissions",
+        "personal statement",
+        "college list",
+        "financial aid",
+        "application timeline"
+      ]
+    },
+    {
+      "name": "k12-school-administrator",
+      "source": "./plugins/k12-school-administrator",
+      "description": "Complete toolkit for K-12 principals and administrators \u2014 parent communications, staff evaluations, enrollment management, grant writing, and discipline tracking",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Education",
+      "tags": [
+        "education",
+        "k12",
+        "school",
+        "grants",
+        "parent-communication"
+      ],
+      "keywords": [
+        "school administrator",
+        "parent newsletter",
+        "grant writing",
+        "staff evaluation",
+        "enrollment"
+      ]
+    },
+    {
+      "name": "data-analytics-consultant",
+      "source": "./plugins/data-analytics-consultant",
+      "description": "Professional data analytics toolkit for consultants: requirements gathering, dashboard design, data storytelling, and client education",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Technology",
+      "tags": [
+        "technology",
+        "data-analytics",
+        "dashboards",
+        "visualization",
+        "insights"
+      ],
+      "keywords": [
+        "data analytics",
+        "dashboard design",
+        "data storytelling",
+        "KPI reporting",
+        "requirements gathering"
+      ]
+    },
+    {
+      "name": "cybersecurity-consultant",
+      "source": "./plugins/cybersecurity-consultant",
+      "description": "Complete toolkit for cybersecurity professionals and consultants \u2014 NIST CSF risk assessments, incident response playbooks, compliance mapping (SOC 2, ISO 27001, CMMC), security awareness training, and professional security report writing",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Technology",
+      "tags": [
+        "technology",
+        "cybersecurity",
+        "compliance",
+        "incident-response",
+        "risk"
+      ],
+      "keywords": [
+        "cybersecurity",
+        "NIST CSF",
+        "SOC 2",
+        "incident response",
+        "risk assessment",
+        "security awareness"
+      ]
+    },
+    {
+      "name": "hr-hiring-assistant",
+      "source": "./plugins/hr-hiring-assistant",
+      "description": "The HR hiring assistant built for growing teams (20-200 employees) who hire without a dedicated recruiter. Write job descriptions that actually attract candidates, run structured interviews with real scorecards, manage offers and counteroffers, onboard by department, and stay compliant with DEI and remote hiring best practices. Works standalone or supercharged with your ATS, HRIS, and calendar.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 HR & People",
+      "tags": [
+        "HR",
+        "hiring",
+        "recruiting",
+        "onboarding",
+        "compensation"
+      ],
+      "keywords": [
+        "hiring",
+        "job description",
+        "interview kit",
+        "offer letter",
+        "onboarding",
+        "DEI",
+        "compensation benchmarking"
+      ]
+    },
+    {
+      "name": "dev-agency-manager",
+      "source": "./plugins/dev-agency-manager",
+      "description": "Complete operations toolkit for software development agency owners \u2014 project proposals, resource allocation, client reporting, process documentation, and lead qualification",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Technology",
+      "tags": [
+        "technology",
+        "dev-agency",
+        "proposals",
+        "client-reporting",
+        "resources"
+      ],
+      "keywords": [
+        "dev agency",
+        "SOW",
+        "project proposal",
+        "resource allocation",
+        "client reporting",
+        "lead qualification"
+      ]
+    },
+    {
+      "name": "corporate-trainer",
+      "source": "./plugins/corporate-trainer",
+      "description": "Professional toolkit for L&D professionals and corporate trainers \u2014 training design, workshop building, eLearning development, ROI measurement, and onboarding programs",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Education",
+      "tags": [
+        "education",
+        "corporate-training",
+        "L&D",
+        "onboarding",
+        "workshop"
+      ],
+      "keywords": [
+        "corporate training",
+        "L&D",
+        "onboarding",
+        "eLearning",
+        "workshop design",
+        "training ROI"
+      ]
+    },
+    {
+      "name": "saas-growth-operator",
+      "source": "./plugins/saas-growth-operator",
+      "description": "Complete growth operations toolkit for SaaS founders and growth teams \u2014 churn analysis, onboarding optimization, pricing strategy, metrics tracking, and account expansion planning",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Technology",
+      "tags": [
+        "technology",
+        "SaaS",
+        "growth",
+        "churn",
+        "metrics"
+      ],
+      "keywords": [
+        "SaaS metrics",
+        "churn reduction",
+        "MRR",
+        "ARR",
+        "onboarding optimization",
+        "pricing strategy"
+      ]
+    },
+    {
+      "name": "corporate-law-assistant",
+      "source": "./plugins/corporate-law-assistant",
+      "description": "Corporate law practice toolkit \u2014 M&A deal tracking, contract review, entity formation, board meeting preparation, and compliance monitoring",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Legal",
+      "tags": [
+        "legal",
+        "corporate-law",
+        "M&A",
+        "contracts",
+        "compliance"
+      ],
+      "keywords": [
+        "corporate law",
+        "entity formation",
+        "board meeting",
+        "contract review",
+        "M&A"
+      ]
+    },
+    {
+      "name": "mental-health-practice-helper",
+      "source": "./plugins/mental-health-practice-helper",
+      "description": "Practice operations assistant for therapists and counselors \u2014 intake processing, session note templates, ethical marketing, insurance navigation, and group program design",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Healthcare",
+      "tags": [
+        "healthcare",
+        "mental-health",
+        "therapy",
+        "counseling",
+        "HIPAA"
+      ],
+      "keywords": [
+        "therapist",
+        "counselor",
+        "session notes",
+        "insurance billing",
+        "group therapy"
+      ]
+    },
+    {
+      "name": "financial-advisor-practice",
+      "source": "./plugins/financial-advisor-practice",
+      "description": "Complete practice management toolkit for independent financial advisors and RIAs \u2014 client reviews, prospect conversion, compliance documentation, market commentary, and financial plan presentations",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Financial Services",
+      "tags": [
+        "financial-services",
+        "financial-advisor",
+        "portfolio",
+        "compliance",
+        "planning"
+      ],
+      "keywords": [
+        "financial advisor",
+        "portfolio review",
+        "market commentary",
+        "financial planning",
+        "client acquisition"
+      ]
+    },
+    {
+      "name": "it-services-provider",
+      "source": "./plugins/it-services-provider",
+      "description": "Complete operations toolkit for MSPs and IT service companies \u2014 ticket triage, security auditing, QBR preparation, IT documentation, and managed services sales enablement",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Technology",
+      "tags": [
+        "technology",
+        "MSP",
+        "IT",
+        "security",
+        "QBR"
+      ],
+      "keywords": [
+        "MSP",
+        "managed services",
+        "QBR",
+        "security audit",
+        "ticket triage",
+        "technology assessment"
+      ]
+    },
+    {
+      "name": "social-media-manager-pro",
+      "source": "./plugins/social-media-manager-pro",
+      "description": "Comprehensive social media management: create platform-specific content, research hashtags, draft engagement replies, analyze performance, and spot trends across X, LinkedIn, Facebook, and Instagram.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Marketing",
+      "tags": [
+        "marketing",
+        "social-media",
+        "content",
+        "hashtags",
+        "analytics"
+      ],
+      "keywords": [
+        "social media",
+        "content creation",
+        "hashtag strategy",
+        "engagement",
+        "trend spotting"
+      ]
+    },
+    {
+      "name": "tax-prep-practice",
+      "source": "./plugins/tax-prep-practice",
+      "description": "Tax season and year-round practice management for tax preparers and CPA firms \u2014 document organization, deduction discovery, extensions, seasonal marketing, and quality review",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Financial Services",
+      "tags": [
+        "financial-services",
+        "tax",
+        "CPA",
+        "deductions",
+        "compliance"
+      ],
+      "keywords": [
+        "tax preparation",
+        "CPA",
+        "deductions",
+        "extension filing",
+        "seasonal marketing"
+      ]
+    },
+    {
+      "name": "online-course-creator",
+      "source": "./plugins/online-course-creator",
+      "description": "End-to-end toolkit for course creators and EdTech entrepreneurs \u2014 curriculum design, lesson writing, launch marketing, student engagement, and platform optimization",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Education",
+      "tags": [
+        "education",
+        "online-course",
+        "curriculum",
+        "launch",
+        "student-engagement"
+      ],
+      "keywords": [
+        "online course",
+        "curriculum design",
+        "course launch",
+        "video script",
+        "student engagement"
+      ]
+    },
+    {
+      "name": "pool-service-operator",
+      "source": "./plugins/pool-service-operator",
+      "description": "Complete operations toolkit for pool service businesses \u2014 route planning, chemical dosing, seasonal maintenance, customer communications, and equipment advisory",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Hospitality",
+      "tags": [
+        "hospitality",
+        "pool-service",
+        "chemicals",
+        "routes",
+        "maintenance"
+      ],
+      "keywords": [
+        "pool service",
+        "chemical calculator",
+        "route optimization",
+        "seasonal maintenance",
+        "customer communication"
+      ]
+    },
+    {
+      "name": "warehouse-manager",
+      "source": "./plugins/warehouse-manager",
+      "description": "Complete warehouse and distribution center management toolkit \u2014 layout optimization, labor planning, receiving, shipping coordination, and KPI tracking",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Manufacturing",
+      "tags": [
+        "manufacturing",
+        "warehouse",
+        "logistics",
+        "labor",
+        "inventory"
+      ],
+      "keywords": [
+        "warehouse",
+        "labor planning",
+        "slotting",
+        "receiving",
+        "shipping",
+        "KPI dashboard"
+      ]
+    },
+    {
+      "name": "family-law-assistant",
+      "source": "./plugins/family-law-assistant",
+      "description": "Comprehensive family law practice toolkit \u2014 case document organization, sensitive client communications, mediation preparation, custody analysis, and court filings",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Legal",
+      "tags": [
+        "legal",
+        "family-law",
+        "divorce",
+        "custody",
+        "mediation"
+      ],
+      "keywords": [
+        "family law",
+        "divorce",
+        "child custody",
+        "parenting plan",
+        "mediation"
+      ]
+    },
+    {
+      "name": "auto-repair-shop-manager",
+      "source": "./plugins/auto-repair-shop-manager",
+      "description": "Complete management toolkit for independent auto repair shops: estimates, customer communication, review management, marketing, and technician productivity tracking",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Automotive",
+      "tags": [
+        "automotive",
+        "auto-repair",
+        "estimate",
+        "technician",
+        "marketing"
+      ],
+      "keywords": [
+        "auto repair",
+        "repair estimate",
+        "technician productivity",
+        "customer update",
+        "review management"
+      ]
+    },
+    {
+      "name": "car-wash-operator",
+      "source": "./plugins/car-wash-operator",
+      "description": "Complete management toolkit for car wash business owners: membership programs, weather-triggered marketing, staff scheduling, equipment maintenance, and local marketing strategies",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Automotive",
+      "tags": [
+        "automotive",
+        "car-wash",
+        "membership",
+        "weather",
+        "staffing"
+      ],
+      "keywords": [
+        "car wash",
+        "membership program",
+        "weather marketing",
+        "staff scheduling",
+        "equipment maintenance"
+      ]
+    },
+    {
+      "name": "electrician-business-manager",
+      "source": "./plugins/electrician-business-manager",
+      "description": "Run an electrical contracting business \u2014 job estimating, permit tracking, customer follow-up, marketing, and apprentice training",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Construction",
+      "tags": [
+        "construction",
+        "electrical",
+        "permits",
+        "estimating",
+        "apprentice"
+      ],
+      "keywords": [
+        "electrician",
+        "electrical estimate",
+        "permit",
+        "NEC code",
+        "apprentice training"
+      ]
+    },
+    {
+      "name": "retail-store-operator",
+      "source": "./plugins/retail-store-operator",
+      "description": "Complete toolkit for brick-and-mortar retail store owners and managers \u2014 visual merchandising, staff scheduling, loss prevention, local marketing, and inventory management",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Retail & eCommerce",
+      "tags": [
+        "retail",
+        "store",
+        "inventory",
+        "visual-merchandising",
+        "loss-prevention"
+      ],
+      "keywords": [
+        "retail store",
+        "visual merchandising",
+        "staff scheduling",
+        "loss prevention",
+        "local marketing"
+      ]
+    },
+    {
+      "name": "small-business-autopilot",
+      "source": "./plugins/small-business-autopilot",
+      "description": "Marketing automation suite for small businesses \u2014 social media scheduling, email campaigns, competitive intelligence, content creation, and lead research",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Marketing",
+      "tags": [
+        "marketing",
+        "small-business",
+        "social-media",
+        "email",
+        "automation"
+      ],
+      "keywords": [
+        "marketing automation",
+        "small business",
+        "social media scheduler",
+        "email campaigns",
+        "lead generation"
+      ]
+    },
+    {
+      "name": "dental-practice-autopilot",
+      "source": "./plugins/dental-practice-autopilot",
+      "description": "Growth engine for dental practices \u2014 patient reactivation, treatment plan presentation, insurance navigation, review management, and marketing campaigns",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Healthcare",
+      "tags": [
+        "healthcare",
+        "dental",
+        "patient-engagement",
+        "insurance",
+        "marketing"
+      ],
+      "keywords": [
+        "dental practice",
+        "patient recall",
+        "treatment plan",
+        "dental insurance",
+        "HIPAA"
+      ]
+    },
+    {
+      "name": "wealth-management-advisor",
+      "source": "./plugins/wealth-management-advisor",
+      "description": "Sophisticated wealth management toolkit for advisors and private bankers \u2014 portfolio reporting, estate planning, tax strategy, client communications, and compliance tracking",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Financial Services",
+      "tags": [
+        "financial-services",
+        "wealth-management",
+        "estate-planning",
+        "tax-strategy",
+        "portfolio"
+      ],
+      "keywords": [
+        "wealth management",
+        "estate planning",
+        "tax-loss harvesting",
+        "portfolio report",
+        "client communication"
+      ]
+    },
+    {
+      "name": "pharmacy-operations",
+      "source": "./plugins/pharmacy-operations",
+      "description": "Operations toolkit for independent pharmacy owners \u2014 inventory optimization, patient adherence programs, marketing campaigns, compliance tracking, and clinical services development",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Healthcare",
+      "tags": [
+        "healthcare",
+        "pharmacy",
+        "medication",
+        "compliance",
+        "patient-adherence"
+      ],
+      "keywords": [
+        "pharmacy",
+        "MTM",
+        "medication adherence",
+        "inventory",
+        "DEA compliance"
+      ]
+    },
+    {
+      "name": "product-launch-planner",
+      "source": "./plugins/product-launch-planner",
+      "description": "End-to-end product launch planning suite \u2014 timeline generation, pricing strategy, audience building, content calendars, launch readiness audits, and post-launch analysis. Built on real launch data: 95% of launches fail, this plugin helps you be in the 5%.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Marketing",
+      "tags": [
+        "marketing",
+        "product-launch",
+        "GTM",
+        "pricing",
+        "audience-building"
+      ],
+      "keywords": [
+        "product launch",
+        "go-to-market",
+        "launch timeline",
+        "pricing strategy",
+        "waitlist",
+        "post-launch analysis"
+      ]
+    },
+    {
+      "name": "franchise-operator",
+      "source": "./plugins/franchise-operator",
+      "description": "Comprehensive plugin for multi-unit franchise owners and operators. Manage unit performance benchmarking, brand compliance audits, staff training and development, local marketing execution, and financial analysis across your franchise portfolio.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Operations",
+      "tags": [
+        "operations",
+        "franchise",
+        "compliance",
+        "unit-economics",
+        "training"
+      ],
+      "keywords": [
+        "franchise",
+        "brand standards",
+        "unit economics",
+        "compliance audit",
+        "staff training",
+        "benchmarking"
+      ]
+    },
+    {
+      "name": "fleet-management-assistant",
+      "source": "./plugins/fleet-management-assistant",
+      "description": "Comprehensive fleet management toolkit: maintenance scheduling, cost analysis, driver management, compliance tracking, and vehicle lifecycle planning for fleet managers and transportation companies",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Automotive",
+      "tags": [
+        "automotive",
+        "fleet",
+        "maintenance",
+        "compliance",
+        "driver"
+      ],
+      "keywords": [
+        "fleet management",
+        "preventive maintenance",
+        "driver compliance",
+        "vehicle lifecycle",
+        "DOT"
+      ]
+    },
+    {
+      "name": "solo-attorney-practice",
+      "source": "./plugins/solo-attorney-practice",
+      "description": "Complete practice management toolkit for solo practitioners and small law firms \u2014 client intake, billing, case management, ethical marketing, and document drafting",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Legal",
+      "tags": [
+        "legal",
+        "attorney",
+        "law-firm",
+        "billing",
+        "case-management"
+      ],
+      "keywords": [
+        "solo attorney",
+        "law firm",
+        "client intake",
+        "billing",
+        "document drafting"
+      ]
+    },
+    {
+      "name": "production-planner",
+      "source": "./plugins/production-planner",
+      "description": "End-to-end toolkit for manufacturing production managers \u2014 production scheduling, quality control, maintenance planning, safety compliance, and continuous improvement",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Manufacturing",
+      "tags": [
+        "manufacturing",
+        "production",
+        "lean",
+        "quality",
+        "safety"
+      ],
+      "keywords": [
+        "production planning",
+        "lean manufacturing",
+        "quality control",
+        "OEE",
+        "OSHA",
+        "5S"
+      ]
+    },
+    {
+      "name": "mortgage-broker-assistant",
+      "source": "./plugins/mortgage-broker-assistant",
+      "description": "End-to-end mortgage origination toolkit for brokers and loan officers \u2014 rate comparisons, pre-qualification processing, realtor partnerships, pipeline management, and borrower education",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Financial Services",
+      "tags": [
+        "financial-services",
+        "mortgage",
+        "pre-qualification",
+        "rates",
+        "realtor"
+      ],
+      "keywords": [
+        "mortgage broker",
+        "pre-qualification",
+        "rate comparison",
+        "realtor outreach",
+        "pipeline tracking"
+      ]
+    },
+    {
+      "name": "home-health-agency-operator",
+      "source": "./plugins/home-health-agency-operator",
+      "description": "Operations toolkit for home health agency owners \u2014 schedule caregivers, manage Medicare compliance, recruit staff, communicate with families, and track quality outcomes",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Healthcare",
+      "tags": [
+        "healthcare",
+        "home-health",
+        "Medicare",
+        "caregiver",
+        "OASIS"
+      ],
+      "keywords": [
+        "home health",
+        "Medicare",
+        "OASIS",
+        "caregiver scheduling",
+        "compliance"
+      ]
+    },
+    {
+      "name": "hotel-operations-manager",
+      "source": "./plugins/hotel-operations-manager",
+      "description": "Comprehensive hotel operations toolkit for GMs and operations managers \u2014 revenue optimization, guest communications, staff coordination, marketing planning, and quality auditing",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Hospitality",
+      "tags": [
+        "hospitality",
+        "hotel",
+        "revenue-management",
+        "guest-experience",
+        "marketing"
+      ],
+      "keywords": [
+        "hotel",
+        "revenue management",
+        "guest communication",
+        "housekeeping",
+        "rate strategy"
+      ]
+    },
+    {
+      "name": "painting-contractor-helper",
+      "source": "./plugins/painting-contractor-helper",
+      "description": "Run a residential and commercial painting company \u2014 estimates, color consulting, crew scheduling, customer experience, and commercial proposals",
+      "version": "0.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Industry \u2014 Construction",
+      "tags": [
+        "construction",
+        "painting",
+        "estimate",
+        "color",
+        "crew-scheduling"
+      ],
+      "keywords": [
+        "painting contractor",
+        "paint estimate",
+        "color consultation",
+        "crew schedule",
+        "commercial proposal"
+      ]
+    },
+    {
+      "name": "influencer-affiliate-manager",
+      "source": "./plugins/influencer-affiliate-manager",
+      "description": "End-to-end influencer and affiliate marketing management: creator vetting with fraud detection, rate card evaluation, FTC-compliant contract generation, campaign tracking with ROI attribution, and affiliate program design with tiered commissions.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Business Functions \u2014 Marketing",
+      "tags": [
+        "marketing",
+        "influencer",
+        "affiliate",
+        "FTC",
+        "contracts"
+      ],
+      "keywords": [
+        "influencer marketing",
+        "affiliate program",
+        "FTC compliance",
+        "creator contracts",
+        "campaign ROI"
+      ]
+    },
+    {
+      "name": "bio-research",
+      "source": "./plugins/bio-research",
+      "description": "Connect to preclinical research tools and databases (literature search, genomics analysis, target prioritization) to accelerate early-stage life sciences R&D",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "science",
+        "bioinformatics",
+        "single-cell",
+        "genomics",
+        "research"
+      ],
+      "keywords": [
+        "bioinformatics",
+        "single-cell RNA",
+        "Nextflow",
+        "scVI",
+        "instrument data",
+        "Allotrope"
+      ]
+    },
+    {
+      "name": "customer-support",
+      "source": "./plugins/customer-support",
+      "description": "Triage tickets, draft responses, escalate issues, and build your knowledge base. Research customer context and turn resolved issues into self-service content.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "customer-success",
+        "support",
+        "triage",
+        "escalation",
+        "knowledge-base"
+      ],
+      "keywords": [
+        "support tickets",
+        "ticket triage",
+        "escalation",
+        "knowledge base",
+        "customer research"
+      ]
+    },
+    {
+      "name": "data",
+      "source": "./plugins/data",
+      "description": "Write SQL, explore datasets, and generate insights faster. Build visualizations and dashboards, and turn raw data into clear stories for stakeholders.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "data",
+        "analytics",
+        "SQL",
+        "visualization",
+        "statistics"
+      ],
+      "keywords": [
+        "data analysis",
+        "SQL queries",
+        "dashboard",
+        "visualization",
+        "statistical analysis",
+        "Python"
+      ]
+    },
+    {
+      "name": "design",
+      "source": "./plugins/design",
+      "description": "Accelerate design workflows \u2014 critique, design system management, UX writing, accessibility audits, research synthesis, and dev handoff. From exploration to pixel-perfect specs.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "design",
+        "UX",
+        "accessibility",
+        "handoff",
+        "design-system"
+      ],
+      "keywords": [
+        "UX design",
+        "accessibility",
+        "WCAG",
+        "design critique",
+        "design system",
+        "user research",
+        "UX writing"
+      ]
+    },
+    {
+      "name": "engineering",
+      "source": "./plugins/engineering",
+      "description": "Streamline engineering workflows \u2014 standups, code review, architecture decisions, incident response, and technical documentation. Works with your existing tools or standalone.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "engineering",
+        "code-review",
+        "architecture",
+        "incident",
+        "testing"
+      ],
+      "keywords": [
+        "code review",
+        "system design",
+        "incident response",
+        "tech debt",
+        "testing strategy",
+        "architecture"
+      ]
+    },
+    {
+      "name": "enterprise-search",
+      "source": "./plugins/enterprise-search",
+      "description": "Search across all of your company's tools in one place. Find anything across email, chat, documents, and wikis without switching between apps.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "productivity",
+        "search",
+        "knowledge-management",
+        "synthesis"
+      ],
+      "keywords": [
+        "enterprise search",
+        "knowledge synthesis",
+        "multi-source search",
+        "information retrieval"
+      ]
+    },
+    {
+      "name": "finance",
+      "source": "./plugins/finance",
+      "description": "Streamline finance and accounting workflows, from journal entries and reconciliation to financial statements and variance analysis. Speed up audit prep, month-end close, and keeping your books clean.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "finance",
+        "accounting",
+        "close",
+        "reconciliation",
+        "SOX"
+      ],
+      "keywords": [
+        "financial statements",
+        "month-end close",
+        "journal entries",
+        "reconciliation",
+        "SOX",
+        "variance analysis"
+      ]
+    },
+    {
+      "name": "human-resources",
+      "source": "./plugins/human-resources",
+      "description": "Streamline people operations \u2014 recruiting, onboarding, performance reviews, compensation analysis, and policy guidance. Maintain compliance and keep your team running smoothly.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "HR",
+        "people",
+        "recruiting",
+        "compensation",
+        "onboarding"
+      ],
+      "keywords": [
+        "HR",
+        "people analytics",
+        "compensation benchmarking",
+        "interview prep",
+        "org planning",
+        "recruiting"
+      ]
+    },
+    {
+      "name": "legal",
+      "source": "./plugins/legal",
+      "description": "Speed up contract review, NDA triage, and compliance workflows for in-house legal teams. Draft legal briefs, organize precedent research, and manage institutional knowledge.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "legal",
+        "contracts",
+        "compliance",
+        "NDA",
+        "risk"
+      ],
+      "keywords": [
+        "contract review",
+        "NDA triage",
+        "compliance",
+        "legal risk",
+        "GDPR",
+        "CCPA"
+      ]
+    },
+    {
+      "name": "marketing",
+      "source": "./plugins/marketing",
+      "description": "Create content, plan campaigns, and analyze performance across marketing channels. Maintain brand voice consistency, track competitors, and report on what's working.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "marketing",
+        "content",
+        "campaigns",
+        "SEO",
+        "brand"
+      ],
+      "keywords": [
+        "marketing campaigns",
+        "content creation",
+        "brand voice",
+        "competitive analysis",
+        "performance analytics"
+      ]
+    },
+    {
+      "name": "operations",
+      "source": "./plugins/operations",
+      "description": "Optimize business operations \u2014 vendor management, process documentation, change management, capacity planning, and compliance tracking. Keep your organization running efficiently.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "operations",
+        "process",
+        "vendor",
+        "risk",
+        "compliance"
+      ],
+      "keywords": [
+        "process optimization",
+        "vendor management",
+        "risk assessment",
+        "change management",
+        "capacity planning"
+      ]
+    },
+    {
+      "name": "product-management",
+      "source": "./plugins/product-management",
+      "description": "Write feature specs, plan roadmaps, and synthesize user research faster. Keep stakeholders updated and stay ahead of the competitive landscape.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "product",
+        "roadmap",
+        "PRD",
+        "metrics",
+        "stakeholders"
+      ],
+      "keywords": [
+        "product roadmap",
+        "feature spec",
+        "PRD",
+        "OKRs",
+        "user research",
+        "sprint planning",
+        "stakeholder updates"
+      ]
+    },
+    {
+      "name": "productivity",
+      "source": "./plugins/productivity",
+      "description": "Manage tasks, plan your day, and build up memory of important context about your work. Syncs with your calendar, email, and chat to keep everything organized and on track.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "productivity",
+        "tasks",
+        "memory",
+        "workflow"
+      ],
+      "keywords": [
+        "task management",
+        "memory management",
+        "personal productivity",
+        "workflow",
+        "daily planning"
+      ]
+    },
+    {
+      "name": "sales",
+      "source": "./plugins/sales",
+      "description": "Prospect, craft outreach, and build deal strategy faster. Prep for calls, manage your pipeline, and write personalized messaging that moves deals forward.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "license": "MIT",
+      "category": "Knowledge Work",
+      "tags": [
+        "sales",
+        "CRM",
+        "outreach",
+        "pipeline",
+        "forecasting"
+      ],
+      "keywords": [
+        "sales",
+        "account research",
+        "call prep",
+        "outreach",
+        "pipeline review",
+        "sales forecast",
+        "battlecard"
+      ]
+    }
+  ]
+}

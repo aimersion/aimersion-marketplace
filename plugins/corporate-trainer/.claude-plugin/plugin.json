@@ -1,0 +1,26 @@
+{
+  "name": "corporate-trainer",
+  "description": "Professional toolkit for L&D professionals and corporate trainers \u2014 training design, workshop building, eLearning development, ROI measurement, and onboarding programs",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "corporate training",
+    "L&D",
+    "onboarding",
+    "eLearning",
+    "workshop design",
+    "training ROI"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

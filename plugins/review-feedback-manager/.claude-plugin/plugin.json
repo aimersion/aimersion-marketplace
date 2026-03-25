@@ -1,0 +1,25 @@
+{
+  "name": "review-feedback-manager",
+  "description": "Complete review and reputation management suite for small businesses \u2014 monitor reviews across platforms, respond with proven templates, analyze sentiment, solicit new reviews, and recover from reputation crises",
+  "version": "2.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "online reviews",
+    "reputation management",
+    "Google reviews",
+    "sentiment analysis",
+    "review solicitation"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

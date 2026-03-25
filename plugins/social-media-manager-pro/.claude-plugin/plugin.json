@@ -1,0 +1,25 @@
+{
+  "name": "social-media-manager-pro",
+  "description": "Comprehensive social media management: create platform-specific content, research hashtags, draft engagement replies, analyze performance, and spot trends across X, LinkedIn, Facebook, and Instagram.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "social media",
+    "content creation",
+    "hashtag strategy",
+    "engagement",
+    "trend spotting"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

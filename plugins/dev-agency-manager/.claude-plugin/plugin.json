@@ -1,0 +1,26 @@
+{
+  "name": "dev-agency-manager",
+  "description": "Complete operations toolkit for software development agency owners \u2014 project proposals, resource allocation, client reporting, process documentation, and lead qualification",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "dev agency",
+    "SOW",
+    "project proposal",
+    "resource allocation",
+    "client reporting",
+    "lead qualification"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

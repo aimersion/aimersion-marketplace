@@ -1,0 +1,25 @@
+{
+  "name": "college-admissions-counselor",
+  "description": "Professional toolkit for college counselors and admissions consultants \u2014 essay coaching, school matching, timeline management, recommendation letters, and financial aid navigation",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "college admissions",
+    "personal statement",
+    "college list",
+    "financial aid",
+    "application timeline"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

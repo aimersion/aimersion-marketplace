@@ -1,0 +1,26 @@
+{
+  "name": "supply-chain-manager",
+  "description": "Complete supply chain and procurement toolkit \u2014 vendor evaluation, demand forecasting, logistics optimization, risk monitoring, and total cost analysis",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "supply chain",
+    "logistics",
+    "vendor evaluation",
+    "demand forecast",
+    "cost analysis",
+    "TCO"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

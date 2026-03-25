@@ -1,0 +1,26 @@
+{
+  "name": "customer-support-autopilot",
+  "description": "End-to-end customer support automation: triage tickets, draft responses, write KB articles, package escalations, and monitor satisfaction trends",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "customer support",
+    "ticket triage",
+    "knowledge base",
+    "escalation",
+    "CSAT",
+    "response drafting"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

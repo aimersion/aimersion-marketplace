@@ -1,0 +1,25 @@
+{
+  "name": "influencer-affiliate-manager",
+  "description": "End-to-end influencer and affiliate marketing management: creator vetting with fraud detection, rate card evaluation, FTC-compliant contract generation, campaign tracking with ROI attribution, and affiliate program design with tiered commissions.",
+  "version": "2.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "influencer marketing",
+    "affiliate program",
+    "FTC compliance",
+    "creator contracts",
+    "campaign ROI"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

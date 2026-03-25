@@ -1,0 +1,25 @@
+{
+  "name": "roofing-company-operator",
+  "description": "Run a roofing contracting business \u2014 storm response, estimates, crew dispatch, warranty tracking, and lead generation",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "roofing",
+    "roof estimate",
+    "storm damage",
+    "crew dispatch",
+    "warranty"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

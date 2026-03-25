@@ -1,0 +1,27 @@
+{
+  "name": "design",
+  "description": "Accelerate design workflows \u2014 critique, design system management, UX writing, accessibility audits, research synthesis, and dev handoff. From exploration to pixel-perfect specs.",
+  "version": "1.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "UX design",
+    "accessibility",
+    "WCAG",
+    "design critique",
+    "design system",
+    "user research",
+    "UX writing"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

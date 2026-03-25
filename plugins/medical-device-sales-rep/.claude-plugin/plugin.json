@@ -1,0 +1,25 @@
+{
+  "name": "medical-device-sales-rep",
+  "description": "Sales enablement toolkit for medical device representatives \u2014 plan territories, prepare for surgical cases, track competitors, manage surgeon relationships, and summarize clinical evidence",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "medical device",
+    "surgeon relationship",
+    "OR case prep",
+    "territory planning",
+    "clinical evidence"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

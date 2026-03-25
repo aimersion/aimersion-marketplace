@@ -1,0 +1,26 @@
+{
+  "name": "production-planner",
+  "description": "End-to-end toolkit for manufacturing production managers \u2014 production scheduling, quality control, maintenance planning, safety compliance, and continuous improvement",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "production planning",
+    "lean manufacturing",
+    "quality control",
+    "OEE",
+    "OSHA",
+    "5S"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "retail-store-operator",
+  "description": "Complete toolkit for brick-and-mortar retail store owners and managers \u2014 visual merchandising, staff scheduling, loss prevention, local marketing, and inventory management",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "retail store",
+    "visual merchandising",
+    "staff scheduling",
+    "loss prevention",
+    "local marketing"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

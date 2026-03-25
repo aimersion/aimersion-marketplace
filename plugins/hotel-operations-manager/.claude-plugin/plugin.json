@@ -1,0 +1,25 @@
+{
+  "name": "hotel-operations-manager",
+  "description": "Comprehensive hotel operations toolkit for GMs and operations managers \u2014 revenue optimization, guest communications, staff coordination, marketing planning, and quality auditing",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "hotel",
+    "revenue management",
+    "guest communication",
+    "housekeeping",
+    "rate strategy"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

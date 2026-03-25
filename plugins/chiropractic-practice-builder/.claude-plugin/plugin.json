@@ -1,0 +1,25 @@
+{
+  "name": "chiropractic-practice-builder",
+  "description": "Complete practice growth toolkit for chiropractors \u2014 reactivate patients, communicate care plans, generate reviews, create educational content, and build referral programs",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "chiropractor",
+    "patient reactivation",
+    "care plan",
+    "social media",
+    "reviews"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

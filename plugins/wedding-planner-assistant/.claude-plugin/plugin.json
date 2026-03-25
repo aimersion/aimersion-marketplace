@@ -1,0 +1,25 @@
+{
+  "name": "wedding-planner-assistant",
+  "description": "Complete wedding planning toolkit for planners and event coordinators \u2014 timelines, vendor management, budgets, client communications, and day-of coordination",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "wedding planner",
+    "vendor management",
+    "wedding timeline",
+    "budget tracking",
+    "day-of coordination"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

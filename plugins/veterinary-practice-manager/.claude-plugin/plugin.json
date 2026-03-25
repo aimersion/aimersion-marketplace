@@ -1,0 +1,25 @@
+{
+  "name": "veterinary-practice-manager",
+  "description": "Practice management toolkit for veterinary clinics \u2014 client communications, inventory tracking, wellness plans, social content, and staff training materials",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "vet clinic",
+    "wellness plans",
+    "pet care",
+    "inventory",
+    "client communication"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

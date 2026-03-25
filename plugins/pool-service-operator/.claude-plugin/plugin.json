@@ -1,0 +1,25 @@
+{
+  "name": "pool-service-operator",
+  "description": "Complete operations toolkit for pool service businesses \u2014 route planning, chemical dosing, seasonal maintenance, customer communications, and equipment advisory",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "pool service",
+    "chemical calculator",
+    "route optimization",
+    "seasonal maintenance",
+    "customer communication"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "inventory-pricing-optimizer",
+  "description": "End-to-end inventory and pricing optimization for small businesses \u2014 demand forecasting, reorder point calculations, ABC analysis, competitive pricing frameworks, and seasonal adjustment strategies to eliminate stockouts and overstock",
+  "version": "2.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "inventory management",
+    "pricing strategy",
+    "demand forecast",
+    "reorder point",
+    "seasonal planning"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

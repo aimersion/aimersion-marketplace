@@ -1,0 +1,25 @@
+{
+  "name": "solo-attorney-practice",
+  "description": "Complete practice management toolkit for solo practitioners and small law firms \u2014 client intake, billing, case management, ethical marketing, and document drafting",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "solo attorney",
+    "law firm",
+    "client intake",
+    "billing",
+    "document drafting"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}

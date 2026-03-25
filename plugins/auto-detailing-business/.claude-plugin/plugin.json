@@ -1,0 +1,25 @@
+{
+  "name": "auto-detailing-business",
+  "description": "Complete business toolkit for auto detailing businesses: service packages, booking optimization, customer retention, social content, and fleet account management",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "auto detailing",
+    "detailing packages",
+    "fleet proposal",
+    "loyalty program",
+    "booking optimization"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "commands": [
+    "./commands"
+  ]
+}
