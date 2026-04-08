@@ -838,7 +838,7 @@ footer {
   </a>
   <div class="topbar-links">
     <a href="https://github.com/aimersion/aimersion-marketplace" target="_blank" class="hide-mobile">GitHub</a>
-    <a href="/cdn-cgi/l/email-protection#c7adabbea9a4af87a6aeaaa2b5b4aea8a9e9a6ae" class="hide-mobile">Contact</a>
+    <a href="mailto:jlynch@aimersion.ai" class="hide-mobile">Contact</a>
     <a href="https://aimersion.ai" target="_blank" class="topbar-cta">aimersion.ai →</a>
   </div>
 </nav>
@@ -1035,13 +1035,13 @@ footer {
   <div class="footer-links">
     <a href="https://aimersion.ai" target="_blank">Website</a>
     <a href="https://github.com/aimersion/aimersion-marketplace" target="_blank">GitHub</a>
-    <a href="/cdn-cgi/l/email-protection#97fdfbeef9f4ffd7f6fefaf2e5e4fef8f9b9f6fe">Contact</a>
+    <a href="mailto:jlynch@aimersion.ai">Contact</a>
   </div>
   <span class="footer-copy">MIT License · Built in DFW, Texas</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── DATA ─────────────────────────────────────────────
+<script>
+// -- DATA ---------------------------------------------
 const DETAILS = {
   'small-business-autopilot': { skills:['competitor-monitor','content-writer','email-campaign-builder','lead-researcher','social-media-scheduler'], cmds:['draft-week','find-leads','morning-brief','write-blog'] },
   'pool-service-operator': { skills:['chemical-calculator','customer-communicator','equipment-advisor','route-optimizer','seasonal-planner'], cmds:['customer-report','daily-schedule','seasonal-checklist','water-test'] },
@@ -1191,25 +1191,25 @@ const PLUGINS = [
 ];
 
 const CATS = {
-  'Business':      { icon:'💼' },
-  'Legal':         { icon:'⚖️' },
-  'Healthcare':    { icon:'🏥' },
-  'Automotive':    { icon:'🚗' },
-  'Trades':        { icon:'🔨' },
-  'E-commerce':    { icon:'🛒' },
-  'Marketing':     { icon:'📢' },
-  'Finance':       { icon:'💰' },
-  'Education':     { icon:'🎓' },
-  'Technology':    { icon:'💻' },
-  'Hospitality':   { icon:'🏨' },
-  'Operations':    { icon:'⚙️' },
-  'Knowledge Work':{ icon:'🧠' }
+  'Business':      { icon:'&#x1F4BC;' },
+  'Legal':         { icon:'&#x2696;&#xFE0F;' },
+  'Healthcare':    { icon:'&#x1F3E5;' },
+  'Automotive':    { icon:'&#x1F697;' },
+  'Trades':        { icon:'&#x1F528;' },
+  'E-commerce':    { icon:'&#x1F6D2;' },
+  'Marketing':     { icon:'&#x1F4E2;' },
+  'Finance':       { icon:'&#x1F4B0;' },
+  'Education':     { icon:'&#x1F393;' },
+  'Technology':    { icon:'&#x1F4BB;' },
+  'Hospitality':   { icon:'&#x1F3E8;' },
+  'Operations':    { icon:'&#x2699;&#xFE0F;' },
+  'Knowledge Work':{ icon:'&#x1F9E0;' }
 };
 
-// ── HELPERS ───────────────────────────────────────────
+// -- HELPERS -------------------------------------------
 function toTitle(s){ return s.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); }
 
-// ── STATS ─────────────────────────────────────────────
+// -- STATS ---------------------------------------------
 function buildStats(){
   let s=0,c=0;
   Object.values(DETAILS).forEach(d=>{s+=d.skills.length;c+=d.cmds.length;});
@@ -1217,7 +1217,7 @@ function buildStats(){
   document.getElementById('statCmds').textContent=c+'+';
 }
 
-// ── CHIPS ─────────────────────────────────────────────
+// -- CHIPS ---------------------------------------------
 function buildChips(){
   const wrap=document.getElementById('chips');
   const allBtn=document.createElement('button');
@@ -1233,7 +1233,7 @@ function buildChips(){
   });
 }
 
-// ── BUILD CATALOG ─────────────────────────────────────
+// -- BUILD CATALOG -------------------------------------
 function buildCatalog(){
   const catalog=document.getElementById('catalog');
   catalog.innerHTML='';
@@ -1259,15 +1259,15 @@ function buildCatalog(){
       <p class="card-desc">${p.desc}</p>
       <div class="card-tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
       <div class="card-meta">
-        <span class="meta-item">🧠 ${d.skills.length} skill${d.skills.length!==1?'s':''}</span>
-        <span class="meta-item">⚡ ${d.cmds.length} command${d.cmds.length!==1?'s':''}</span>
+        <span class="meta-item"> ${d.skills.length} skill${d.skills.length!==1?'s':''}</span>
+        <span class="meta-item"> ${d.cmds.length} command${d.cmds.length!==1?'s':''}</span>
       </div>
-      <button class="card-btn" onclick="openModal('${p.name}')">View & Install →</button>`;
+      <button class="card-btn" onclick="openModal('${p.name}')">View & Install -&gt;</button>`;
     cardsEl.appendChild(card);
   });
 }
 
-// ── FILTER ────────────────────────────────────────────
+// -- FILTER --------------------------------------------
 let currentCat=null;
 function filter(){
   const q=document.getElementById('search').value.toLowerCase().trim();
@@ -1290,11 +1290,11 @@ function filter(){
   document.getElementById('catalog').style.display=total?'':'none';
 }
 
-// ── MODAL ─────────────────────────────────────────────
+// -- MODAL ---------------------------------------------
 function openModal(name){
   const p=PLUGINS.find(x=>x.name===name); if(!p) return;
   const d=DETAILS[name]||{skills:[],cmds:[]};
-  const cfg=CATS[p.cat]||{icon:'📦'};
+  const cfg=CATS[p.cat]||{icon:''};
   const baseUrl=`https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/${name}`;
   const installUrl=`curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash ${name}`;
 
@@ -1317,17 +1317,17 @@ function openModal(name){
     <div class="modal-install">
       <div class="modal-install-title">Install This Plugin</div>
       <div class="modal-ptabs">
-        <button class="modal-ptab active" onclick="modalPTab('claudeai',this,'${name}')">🌐 Claude.ai</button>
-        <button class="modal-ptab" onclick="modalPTab('claudecode',this,'${name}')">⚡ Claude Code</button>
-        <button class="modal-ptab" onclick="modalPTab('api',this,'${name}')">🔌 API</button>
+        <button class="modal-ptab active" onclick="modalPTab('claudeai',this,'${name}')"> Claude.ai</button>
+        <button class="modal-ptab" onclick="modalPTab('claudecode',this,'${name}')"> Claude Code</button>
+        <button class="modal-ptab" onclick="modalPTab('api',this,'${name}')"> API</button>
       </div>
 
       <div class="modal-ppanel active" id="mpp-claudeai-${name}">
         <div class="modal-install-row">
-          <code>Copy skill content → paste into Claude.ai Project Instructions</code>
+          <code>Copy skill content -&gt; paste into Claude.ai Project Instructions</code>
           <button onclick="copySkillForClaudeAI('${name}',this)">Copy Skill</button>
         </div>
-        <p class="modal-install-note">Go to <a href="https://claude.ai" target="_blank">claude.ai</a> → open a Project → Edit Instructions → paste. Active for every chat in that project. No CLI needed.</p>
+        <p class="modal-install-note">Go to <a href="https://claude.ai" target="_blank">claude.ai</a> -&gt; open a Project -&gt; Edit Instructions -&gt; paste. Active for every chat in that project. No CLI needed.</p>
       </div>
 
       <div class="modal-ppanel" id="mpp-claudecode-${name}">
@@ -1368,7 +1368,7 @@ async function copySkillForClaudeAI(name,btn){
   const d=DETAILS[name]||{skills:[]};
   const orig=btn.textContent;
   if(!d.skills.length){ copyText('https://github.com/aimersion/aimersion-marketplace/tree/main/plugins/'+name,btn); return; }
-  btn.textContent='Fetching…';
+  btn.textContent='Fetching...';
   try{
     const texts=await Promise.all(d.skills.map(async skill=>{
       const url=`https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/${name}/skills/${skill}/SKILL.md`;
@@ -1376,8 +1376,8 @@ async function copySkillForClaudeAI(name,btn){
     }));
     const combined=texts.filter(Boolean).join('\n\n---\n\n');
     await navigator.clipboard.writeText(combined);
-    btn.textContent='✓ Copied!';
-    const t=document.getElementById('toast'); t.textContent='✓ All skill content copied — paste into Claude.ai Project Instructions'; t.classList.add('show');
+    btn.textContent='OK Copied!';
+    const t=document.getElementById('toast'); t.textContent='OK All skill content copied -- paste into Claude.ai Project Instructions'; t.classList.add('show');
     setTimeout(()=>t.classList.remove('show'),3000);
     setTimeout(()=>btn.textContent=orig,2000);
   }catch(e){
@@ -1385,7 +1385,7 @@ async function copySkillForClaudeAI(name,btn){
   }
 }
 
-// ── TAB SWITCHERS ─────────────────────────────────────
+// -- TAB SWITCHERS -------------------------------------
 function heroTab(id,btn){
   document.querySelectorAll('.platform-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));
@@ -1399,16 +1399,20 @@ function gsTab(id){
   });
 }
 
-// ── COPY ─────────────────────────────────────────────
+// -- COPY ---------------------------------------------
 function copyText(text,btn){
   navigator.clipboard.writeText(text).catch(()=>{
     const ta=document.createElement('textarea'); ta.value=text;
     document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
   });
   const orig=btn?.textContent||'';
-  if(btn){ btn.textContent='✓ Copied!'; setTimeout(()=>btn.textContent=orig,2000); }
-  const t=document.getElementById('toast'); t.textContent='✓ Copied to clipboard';
+  if(btn){ btn.textContent='OK Copied!'; setTimeout(()=>btn.textContent=orig,2000); }
+  const t=document.getElementById('toast'); t.textContent='OK Copied to clipboard';
   t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500);
 }
 
-// ── INIT ────────
+// -- INIT ---------------------------------------------
+buildStats(); buildChips(); buildCatalog(); filter();
+</script>
+</body>
+</html>
