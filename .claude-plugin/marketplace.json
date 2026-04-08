@@ -10,7 +10,7 @@
     "pluginRoot": "./plugins",
     "homepage": "https://aimersion.ai",
     "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
-    "totalPlugins": 71
+    "totalPlugins": 72
   },
   "plugins": [
     {
@@ -1953,6 +1953,27 @@
         "sales forecast",
         "battlecard"
       ]
+    },
+    {
+      "name": "job-seeker-autopilot",
+      "source": "./plugins/job-seeker-autopilot",
+      "description": "Full-stack autonomous job search engine \u2014 find jobs, research companies, tailor resumes, write cover letters, submit applications at scale, send outreach, track pipeline, and prep for interviews.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.github.io/aimersion-marketplace/plugins/job-seeker-autopilot/",
+      "keywords": [
+        "job search",
+        "resume",
+        "cover letter",
+        "job application",
+        "career",
+        "outreach",
+        "interview"
+      ],
+      "license": "MIT"
     }
   ]
 }
