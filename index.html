@@ -1230,7 +1230,7 @@ function buildChips(){
   Object.entries(CATS).forEach(([cat,cfg])=>{
     const btn=document.createElement('button');
     btn.className='chip';
-    btn.textContent=cfg.icon+' '+cat;
+    btn.innerHTML=cfg.icon+' '+cat;
     btn.onclick=()=>{ document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active')); btn.classList.add('active'); currentCat=cat; filter(); };
     wrap.appendChild(btn);
   });
