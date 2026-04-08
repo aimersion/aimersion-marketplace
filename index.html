@@ -1043,6 +1043,7 @@ footer {
 <script>
 // -- DATA ---------------------------------------------
 const DETAILS = {
+  'job-seeker-autopilot': { skills:['job-finder','resume-tailor','cover-letter-writer','company-researcher','application-submitter','outreach-engine','interview-coach','pipeline-tracker'], cmds:['find-jobs','apply','daily-sprint','interview-prep','pipeline','outreach'] },
   'small-business-autopilot': { skills:['competitor-monitor','content-writer','email-campaign-builder','lead-researcher','social-media-scheduler'], cmds:['draft-week','find-leads','morning-brief','write-blog'] },
   'pool-service-operator': { skills:['chemical-calculator','customer-communicator','equipment-advisor','route-optimizer','seasonal-planner'], cmds:['customer-report','daily-schedule','seasonal-checklist','water-test'] },
   'customer-support-autopilot': { skills:['escalation-packager','kb-writer','response-drafter','satisfaction-monitor','ticket-triager'], cmds:['escalate','kb-article','respond','triage'] },
@@ -1117,6 +1118,7 @@ const DETAILS = {
 };
 
 const PLUGINS = [
+  {name:'job-seeker-autopilot',label:'Job Seeker Autopilot',cat:'Career',desc:'Full-stack autonomous job search: find roles, tailor resumes, write cover letters, apply at scale, send outreach, track pipeline, and ace interviews.',tags:['job search','resume','interviews','career'],version:'1.0.0'},
   {name:'small-business-autopilot',label:'Small Business Autopilot',cat:'Business',desc:'Full-stack marketing automation: social scheduling, email campaigns, lead research, competitor intel, and blog writing.',tags:['marketing','social','email','leads'],version:'1.0.0'},
   {name:'saas-growth-operator',label:'SaaS Growth Operator',cat:'Business',desc:'Drive SaaS growth with churn analysis, expansion planning, onboarding optimization, pricing strategy, and metrics dashboards.',tags:['saas','growth','churn','metrics'],version:'1.0.0'},
   {name:'dev-agency-manager',label:'Dev Agency Manager',cat:'Business',desc:'Run a software development agency: proposals, client reports, lead qualification, resource planning, and process documentation.',tags:['agency','proposals','dev'],version:'1.0.0'},
@@ -1191,6 +1193,7 @@ const PLUGINS = [
 ];
 
 const CATS = {
+  'Career':        { icon:'&#x1F3AF;' },
   'Business':      { icon:'&#x1F4BC;' },
   'Legal':         { icon:'&#x2696;&#xFE0F;' },
   'Healthcare':    { icon:'&#x1F3E5;' },
