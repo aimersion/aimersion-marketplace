@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Seeker Autopilot — Aimersion AI</title>
+<meta name="description" content="Find jobs, tailor your resume, write cover letters, apply at scale, and land interviews — all through AI. A Claude plugin that runs your entire job search.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #111;
+  --ink2: #3a3a3a;
+  --ink3: #6b6b6b;
+  --ink4: #a0a0a0;
+  --rule: #e5e5e5;
+  --bg: #FAFAF8;
+  --bg2: #F3F2EF;
+  --white: #fff;
+  --blue: #1d4ed8;
+  --blue-l: #eff6ff;
+  --green: #15803d;
+  --green-l: #f0fdf4;
+  --amber: #b45309;
+  --amber-l: #fffbeb;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+  padding: 0 40px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-brand { font-weight: 600; font-size: 14px; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink); }
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-links a { font-size: 13px; color: var(--ink3); text-decoration: none; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { background: var(--ink); color: var(--white) !important; padding: 7px 16px; border-radius: 7px; font-weight: 500 !important; font-size: 13px !important; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+  padding: 88px 40px 80px;
+  text-align: center;
+}
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink4);
+  margin-bottom: 28px;
+}
+.hero-label::before, .hero-label::after { content: ''; display: block; width: 20px; height: 1px; background: var(--rule); }
+.hero h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(44px, 6vw, 76px);
+  font-weight: 400;
+  line-height: 1.07;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 em { font-style: italic; color: var(--ink3); }
+.hero-sub {
+  font-size: 18px;
+  color: var(--ink3);
+  max-width: 540px;
+  margin: 0 auto 48px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Hero stats */
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  max-width: 500px;
+  margin: 0 auto 52px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--white);
+}
+.stat { flex: 1; padding: 18px 12px; border-right: 1px solid var(--rule); text-align: center; }
+.stat:last-child { border-right: none; }
+.stat-num { font-family: 'Lora', serif; font-size: 26px; font-weight: 400; color: var(--ink); display: block; margin-bottom: 3px; }
+.stat-lbl { font-size: 11px; color: var(--ink4); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Install box */
+.install-wrap {
+  max-width: 540px;
+  margin: 0 auto;
+}
+.install-tabs {
+  display: flex;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  padding: 5px 5px 0;
+  gap: 4px;
+}
+.itab {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  border-radius: 6px 6px 0 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink3);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.itab.active { background: var(--white); color: var(--ink); }
+.ipanel {
+  display: none;
+  border: 1px solid var(--rule);
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  background: var(--white);
+}
+.ipanel.active { display: block; }
+.install-row {
+  display: flex;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--rule);
+}
+.install-row code {
+  flex: 1;
+  padding: 13px 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--ink2);
+  background: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+.install-row button {
+  padding: 13px 18px;
+  background: var(--ink);
+  border: none;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s;
+  white-space: nowrap;
+}
+.install-row button:hover { background: #333; }
+.install-note {
+  padding: 11px 14px;
+  font-size: 12px;
+  color: var(--ink3);
+  line-height: 1.6;
+  text-align: left;
+}
+.install-note a { color: var(--blue); }
+.install-note strong { color: var(--ink2); font-weight: 500; }
+
+/* ── PIPELINE VISUAL ── */
+.pipeline-section {
+  padding: 80px 40px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+.section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink4); text-align: center; margin-bottom: 12px; }
+.section-title { font-family: 'Lora', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 400; text-align: center; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
+.section-sub { text-align: center; color: var(--ink3); font-size: 16px; font-weight: 300; margin-bottom: 52px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+.pipeline-flow {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.pipe-stage {
+  background: var(--white);
+  padding: 28px 20px;
+  text-align: center;
+  position: relative;
+}
+.pipe-stage:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--rule);
+  border-right: 2px solid var(--rule);
+  transform: translateY(-50%) rotate(45deg);
+  z-index: 1;
+}
+.pipe-icon { font-size: 24px; margin-bottom: 10px; display: block; }
+.pipe-name { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.pipe-desc { font-size: 11px; color: var(--ink4); line-height: 1.5; }
+.pipe-skill { display: inline-block; margin-top: 10px; background: var(--bg2); border: 1px solid var(--rule); border-radius: 4px; padding: 2px 8px; font-size: 10px; font-family: 'DM Mono', monospace; color: var(--ink3); }
+
+/* ── SKILLS GRID ── */
+.skills-section {
+  padding: 80px 40px;
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+}
+.skills-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.skill-card {
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 24px;
+  background: var(--bg);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.skill-card:hover { border-color: var(--ink2); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.skill-card-icon { font-size: 20px; margin-bottom: 12px; display: block; }
+.skill-card-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.skill-card-desc { font-size: 13px; color: var(--ink3); line-height: 1.6; font-weight: 300; margin-bottom: 14px; }
+.skill-triggers { display: flex; flex-wrap: wrap; gap: 5px; }
+.trigger { font-size: 11px; background: var(--bg2); color: var(--ink3); border-radius: 4px; padding: 2px 8px; font-family: 'DM Mono', monospace; }
+
+/* ── COMMANDS ── */
+.commands-section {
+  padding: 80px 40px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+.commands-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+.cmd-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 20px 22px;
+  transition: border-color 0.15s;
+}
+.cmd-card:hover { border-color: var(--ink2); }
+.cmd-name { font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500; color: var(--green); margin-bottom: 6px; }
+.cmd-desc { font-size: 13px; color: var(--ink3); line-height: 1.55; font-weight: 300; }
+.cmd-args { margin-top: 10px; font-size: 11px; color: var(--ink4); font-family: 'DM Mono', monospace; }
+
+/* ── WHAT IT DOES ── */
+.demo-section {
+  padding: 80px 40px;
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+}
+.demo-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.demo-side h3 {
+  font-family: 'Lora', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+.demo-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  align-items: flex-start;
+}
+.demo-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--green-l);
+  border: 1.5px solid #86efac;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--green);
+  font-weight: 700;
+}
+.demo-text { font-size: 14px; color: var(--ink2); line-height: 1.6; font-weight: 300; }
+.demo-text strong { font-weight: 500; color: var(--ink); }
+
+/* Chat preview */
+.chat-preview {
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.chat-header {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chat-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; }
+.chat-messages { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.msg { max-width: 85%; padding: 10px 14px; border-radius: 10px; font-size: 13px; line-height: 1.55; }
+.msg-user { background: var(--ink); color: var(--white); align-self: flex-end; border-bottom-right-radius: 3px; }
+.msg-ai { background: var(--white); border: 1px solid var(--rule); color: var(--ink2); align-self: flex-start; border-bottom-left-radius: 3px; }
+.msg-ai strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 4px; }
+.msg-ai ul { margin-top: 6px; padding-left: 14px; }
+.msg-ai li { margin-bottom: 3px; font-size: 12px; }
+.msg code { font-family: 'DM Mono', monospace; font-size: 11px; background: rgba(0,0,0,0.08); padding: 1px 5px; border-radius: 3px; }
+
+/* ── HOW TO INSTALL ── */
+.install-section {
+  padding: 80px 40px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+.steps-row {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.step { background: var(--white); padding: 28px 24px; }
+.step-n { font-family: 'Lora', serif; font-size: 32px; color: var(--rule); margin-bottom: 12px; display: block; }
+.step h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
+.step p { font-size: 13px; color: var(--ink3); line-height: 1.6; font-weight: 300; }
+.step code { display: inline-block; margin-top: 8px; background: var(--bg2); border: 1px solid var(--rule); border-radius: 5px; padding: 5px 9px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink2); word-break: break-all; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--white);
+  border-top: 1px solid var(--rule);
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-brand { font-weight: 600; font-size: 14px; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 13px; color: var(--ink4); text-decoration: none; }
+.footer-links a:hover { color: var(--ink); }
+.footer-copy { font-size: 12px; color: var(--ink4); }
+
+/* ── TOAST ── */
+.toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(12px); background: var(--ink); color: var(--white); padding: 9px 18px; border-radius: 99px; font-size: 13px; font-weight: 500; z-index: 9999; opacity: 0; transition: all 0.2s; pointer-events: none; white-space: nowrap; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  .demo-grid { grid-template-columns: 1fr; }
+  nav, .hero, .pipeline-section, .skills-section, .commands-section, .demo-section, .install-section { padding-left: 20px; padding-right: 20px; }
+  footer { padding: 20px; }
+  .pipeline-flow { grid-template-columns: 1fr 1fr; }
+  .hero { padding-top: 60px; padding-bottom: 60px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="https://aimersion.ai">
+    <span class="nav-dot"></span>
+    Aimersion AI
+  </a>
+  <div class="nav-links">
+    <a href="https://aimersion.github.io/aimersion-marketplace/">Marketplace</a>
+    <a href="https://github.com/aimersion/aimersion-marketplace">GitHub</a>
+    <a href="https://aimersion.github.io/aimersion-marketplace/" class="nav-cta">All Plugins</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Aimersion AI Plugin</div>
+  <h1>Your <em>entire job search</em>,<br>automated by Claude</h1>
+  <p class="hero-sub">Find jobs, tailor your resume, write cover letters, apply at scale, and prep for interviews — all in one plugin.</p>
+
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">8</span><span class="stat-lbl">Skills</span></div>
+    <div class="stat"><span class="stat-num">6</span><span class="stat-lbl">Commands</span></div>
+    <div class="stat"><span class="stat-num">10+</span><span class="stat-lbl">Job Boards</span></div>
+    <div class="stat"><span class="stat-num">5x</span><span class="stat-lbl">Faster</span></div>
+  </div>
+
+  <div class="install-wrap">
+    <div class="install-tabs">
+      <button class="itab active" onclick="iTab('claudeai',this)">Claude.ai</button>
+      <button class="itab" onclick="iTab('code',this)">Claude Code</button>
+      <button class="itab" onclick="iTab('api',this)">API</button>
+    </div>
+    <div class="ipanel active" id="ip-claudeai">
+      <div class="install-row">
+        <code>Browse skills below &rarr; Copy &rarr; Paste into Project Instructions</code>
+        <button onclick="copyText('https://github.com/aimersion/aimersion-marketplace/tree/main/plugins/job-seeker-autopilot',this)">Copy URL</button>
+      </div>
+      <p class="install-note">Go to <a href="https://claude.ai" target="_blank">claude.ai</a> &rarr; open a <strong>Project</strong> &rarr; <strong>Edit Instructions</strong> &rarr; paste any skill below. Works instantly, no setup.</p>
+    </div>
+    <div class="ipanel" id="ip-code">
+      <div class="install-row">
+        <code>curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash job-seeker-autopilot</code>
+        <button onclick="copyText('curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash job-seeker-autopilot',this)">Copy</button>
+      </div>
+      <p class="install-note">Run in your project directory. Installs all 8 skills into <code>CLAUDE.md</code> and registers 6 slash commands in <code>~/.claude/commands/</code>.</p>
+    </div>
+    <div class="ipanel" id="ip-api">
+      <div class="install-row">
+        <code>https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/job-seeker-autopilot/skills/[skill]/SKILL.md</code>
+        <button onclick="copyText('https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/job-seeker-autopilot/',this)">Copy Base</button>
+      </div>
+      <p class="install-note">Fetch any SKILL.md and inject into your system prompt. Pure markdown, no dependencies, fully composable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE FLOW -->
+<section class="pipeline-section">
+  <div class="section-label">How It Works</div>
+  <h2 class="section-title">End-to-end job search pipeline</h2>
+  <p class="section-sub">Eight specialized skills handle every stage — from finding the job to landing the offer.</p>
+
+  <div class="pipeline-flow">
+    <div class="pipe-stage">
+      <span class="pipe-icon">&#x1F50D;</span>
+      <div class="pipe-name">Find</div>
+      <div class="pipe-desc">Search 10+ job boards, score every role 1-10</div>
+      <span class="pipe-skill">job-finder</span>
+    </div>
+    <div class="pipe-stage">
+      <span class="pipe-icon">&#x1F3E2;</span>
+      <div class="pipe-name">Research</div>
+      <div class="pipe-desc">Company brief, culture intel, interview data</div>
+      <span class="pipe-skill">company-researcher</span>
+    </div>
+    <div class="pipe-stage">
+      <span class="pipe-icon">&#x1F4C4;</span>
+      <div class="pipe-name">Tailor</div>
+      <div class="pipe-desc">ATS-optimized resume, keyword gap analysis</div>
+      <span class="pipe-skill">resume-tailor</span>
+    </div>
+    <div class="pipe-stage">
+      <span class="pipe-icon">&#x270D;</span>
+      <div class="pipe-name">Write</div>
+      <div class="pipe-desc">Specific cover letter + recruiter messages</div>
+      <span class="pipe-skill">cover-letter-writer</span>
+    </div>
+    <div class="pipe-stage">
+      <span class="pipe-icon">&#x1F4E4;</span>
+      <div class="pipe-name">Apply</div>
+      <div class="pipe-desc">4-track submission: ATS + recruiter + HM + referral</div>
+      <span class="pipe-skill">application-submitter</span>
+    </div>
+    <div class="pipe-stage">
+      <span class="pipe-icon">&#x1F4AC;</span>
+      <div class="pipe-name">Outreach</div>
+      <div class="pipe-desc">Network messages, direct recruiter contact</div>
+      <span class="pipe-skill">outreach-engine</span>
+    </div>
+    <div class="pipe-stage">
+      <span class="pipe-icon">&#x1F3AF;</span>
+      <div class="pipe-name">Interview</div>
+      <div class="pipe-desc">Story bank, mock interview, question prep</div>
+      <span class="pipe-skill">interview-coach</span>
+    </div>
+    <div class="pipe-stage">
+      <span class="pipe-icon">&#x1F4CA;</span>
+      <div class="pipe-name">Track</div>
+      <div class="pipe-desc">Pipeline management, follow-ups, metrics</div>
+      <span class="pipe-skill">pipeline-tracker</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section">
+  <div class="section-label">Skills</div>
+  <h2 class="section-title">8 specialized skills</h2>
+  <p class="section-sub">Each skill knows exactly when to activate and what to do. Describe what you need in plain language.</p>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <span class="skill-card-icon">&#x1F50D;</span>
+      <div class="skill-card-name">Job Finder</div>
+      <div class="skill-card-desc">Searches LinkedIn, Indeed, Greenhouse, Lever, Wellfound, and niche boards. Scores every role across fit, company quality, comp, and winability. Returns prioritized A-list, Strong, and Reach tiers.</div>
+      <div class="skill-triggers">
+        <span class="trigger">find me jobs</span>
+        <span class="trigger">search for roles</span>
+        <span class="trigger">job hunt</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-icon">&#x1F4C4;</span>
+      <div class="skill-card-name">Resume Tailor</div>
+      <div class="skill-card-desc">Keyword gap analysis against the JD, ATS scoring, complete rewrite of bullets using Action + Result + Impact formula. Quantifies everything. Shows exactly what changed and why.</div>
+      <div class="skill-triggers">
+        <span class="trigger">tailor my resume</span>
+        <span class="trigger">optimize for this job</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-icon">&#x270D;</span>
+      <div class="skill-card-name">Cover Letter Writer</div>
+      <div class="skill-card-desc">Writes specific, compelling cover letters that use company research and real career stories. Never generic. Includes email subject line and a 30-word LinkedIn InMail version.</div>
+      <div class="skill-triggers">
+        <span class="trigger">write cover letter</span>
+        <span class="trigger">draft my application</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-icon">&#x1F3E2;</span>
+      <div class="skill-card-name">Company Researcher</div>
+      <div class="skill-card-desc">Builds a full intelligence brief: funding, product, culture, interview process, recent news. Surfaces talking points, questions to ask, and red flags to probe. Used before applications and before every interview.</div>
+      <div class="skill-triggers">
+        <span class="trigger">research this company</span>
+        <span class="trigger">interview prep</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-icon">&#x1F4E4;</span>
+      <div class="skill-card-name">Application Submitter</div>
+      <div class="skill-card-desc">Manages the full 4-track strategy: ATS application, LinkedIn recruiter outreach, hiring manager signal, and referral activation. Generates every message, ready to send.</div>
+      <div class="skill-triggers">
+        <span class="trigger">apply to this job</span>
+        <span class="trigger">submit application</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-icon">&#x1F4AC;</span>
+      <div class="skill-card-name">Outreach Engine</div>
+      <div class="skill-card-desc">Generates personalized outreach for recruiters, hiring managers, warm contacts, and cold networking. 6 message types, 3 tone variations each. Includes follow-up cadences and response handling scripts.</div>
+      <div class="skill-triggers">
+        <span class="trigger">message recruiter</span>
+        <span class="trigger">reach out to network</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-icon">&#x1F3AF;</span>
+      <div class="skill-card-name">Interview Coach</div>
+      <div class="skill-card-desc">Builds a 10-story STAR+ bank, generates tailored question sets by role and stage, runs mock interview sessions with feedback. Covers behavioral, technical, case, and salary negotiation.</div>
+      <div class="skill-triggers">
+        <span class="trigger">prep for interview</span>
+        <span class="trigger">practice questions</span>
+        <span class="trigger">mock interview</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-card-icon">&#x1F4CA;</span>
+      <div class="skill-card-name">Pipeline Tracker</div>
+      <div class="skill-card-desc">Manages job search like a sales pipeline with 8 stages. Tracks every application, triggers follow-ups, shows conversion metrics, identifies stuck opportunities, and runs weekly reviews.</div>
+      <div class="skill-triggers">
+        <span class="trigger">show my pipeline</span>
+        <span class="trigger">track applications</span>
+        <span class="trigger">follow up</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMANDS -->
+<section class="commands-section">
+  <div class="section-label">Slash Commands</div>
+  <h2 class="section-title">6 power commands</h2>
+  <p class="section-sub">One-shot commands that orchestrate multiple skills into complete workflows.</p>
+
+  <div class="commands-grid">
+    <div class="cmd-card">
+      <div class="cmd-name">/find-jobs</div>
+      <div class="cmd-desc">Search 10+ job boards, score every role, return prioritized results by tier with direct apply links.</div>
+      <div class="cmd-args">e.g. /find-jobs Senior PM, remote, SaaS, $180k+</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cmd-name">/apply</div>
+      <div class="cmd-desc">Full application package in one command: research, tailored resume, cover letter, recruiter message, pipeline entry.</div>
+      <div class="cmd-args">e.g. /apply [job URL or paste JD]</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cmd-name">/daily-sprint</div>
+      <div class="cmd-desc">Run your complete job search day: pipeline review, new role search, priority application, outreach queue.</div>
+      <div class="cmd-args">e.g. /daily-sprint focus on fintech today</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cmd-name">/interview-prep</div>
+      <div class="cmd-desc">Full interview prep: company brief, likely questions, story bank, mock interview, questions to ask them.</div>
+      <div class="cmd-args">e.g. /interview-prep Acme Corp, Head of Product, final round</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cmd-name">/pipeline</div>
+      <div class="cmd-desc">Show dashboard, follow-up queue, conversion metrics, and what to do today.</div>
+      <div class="cmd-args">e.g. /pipeline update Acme to offer stage</div>
+    </div>
+    <div class="cmd-card">
+      <div class="cmd-name">/outreach</div>
+      <div class="cmd-desc">Generate personalized messages for any target — recruiter, HM, warm contact, or cold network.</div>
+      <div class="cmd-args">e.g. /outreach recruiter at Stripe</div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO CHAT -->
+<section class="demo-section">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="section-label">See It in Action</div>
+    <h2 class="section-title" style="text-align:center; margin-bottom:10px;">What it looks like to use it</h2>
+    <p class="section-sub">From one command to a complete application package.</p>
+
+    <div class="demo-grid">
+      <div class="demo-side">
+        <h3>What you can do with this plugin</h3>
+        <div class="demo-item">
+          <div class="demo-check">&#x2713;</div>
+          <div class="demo-text"><strong>Apply in 20 minutes</strong> instead of 2 hours — research, resume, cover letter, and all outreach messages generated automatically</div>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">&#x2713;</div>
+          <div class="demo-text"><strong>10-20 applications per week</strong> without burning out — the daily sprint command keeps you on pace without the grind</div>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">&#x2713;</div>
+          <div class="demo-text"><strong>Higher response rates</strong> from tailored applications — every resume and cover letter is matched to that specific JD, not generic</div>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">&#x2713;</div>
+          <div class="demo-text"><strong>Never miss a follow-up</strong> — the pipeline tracker surfaces every application that needs action before it goes cold</div>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">&#x2713;</div>
+          <div class="demo-text"><strong>Walk into every interview confident</strong> — story bank built, questions prepped, company researched, mock interview done</div>
+        </div>
+        <div class="demo-item">
+          <div class="demo-check">&#x2713;</div>
+          <div class="demo-text"><strong>Proactive outreach that actually works</strong> — personalized messages for recruiters and hiring managers, not copy-paste spam</div>
+        </div>
+      </div>
+
+      <div class="chat-preview">
+        <div class="chat-header">
+          <span class="chat-dot"></span>
+          Claude.ai with Job Seeker Autopilot
+        </div>
+        <div class="chat-messages">
+          <div class="msg msg-user">/apply https://jobs.greenhouse.io/acme/senior-pm</div>
+          <div class="msg msg-ai">
+            <strong>Building your complete application package for Acme Corp — Senior PM</strong>
+            Researching company... analyzing JD... tailoring resume...<br><br>
+            <ul>
+              <li>Acme raised $40M Series B last month (use in cover letter)</li>
+              <li>Glassdoor 4.2/5, strong eng culture, 47 applicants so far</li>
+              <li>ATS keyword match: 73% &rarr; 94% after tailoring</li>
+              <li>Resume, cover letter, + recruiter message ready</li>
+            </ul>
+          </div>
+          <div class="msg msg-user">What questions will they ask me?</div>
+          <div class="msg msg-ai">
+            <strong>Based on Acme's interview process (Glassdoor + role analysis):</strong>
+            <ul>
+              <li>"How would you improve our onboarding flow?"</li>
+              <li>"Walk me through a 0-to-1 product you shipped"</li>
+              <li>"How do you work with engineering when timelines slip?"</li>
+            </ul>
+            Ready to run a mock interview?
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL STEPS -->
+<section class="install-section">
+  <div class="section-label">Installation</div>
+  <h2 class="section-title">Three ways to install</h2>
+  <p class="section-sub">Pick the method that matches how you use Claude.</p>
+
+  <div class="steps-row">
+    <div class="step">
+      <span class="step-n">1</span>
+      <h4>Claude.ai — Easiest</h4>
+      <p>No setup needed. Copy any skill below, go to claude.ai, open a Project, and paste into Instructions.</p>
+      <code>Project &rarr; Edit Instructions &rarr; Paste</code>
+    </div>
+    <div class="step">
+      <span class="step-n">2</span>
+      <h4>Claude Code CLI</h4>
+      <p>One command installs all 8 skills and 6 slash commands into your project directory.</p>
+      <code>curl -sL ...install.sh | bash job-seeker-autopilot</code>
+    </div>
+    <div class="step">
+      <span class="step-n">3</span>
+      <h4>API / Developers</h4>
+      <p>Fetch individual SKILL.md files and inject into your system prompt. Build your own job search agent.</p>
+      <code>.../plugins/job-seeker-autopilot/skills/[skill]/SKILL.md</code>
+    </div>
+    <div class="step">
+      <span class="step-n">4</span>
+      <h4>Start Using It</h4>
+      <p>Run <code>/daily-sprint</code> to kick off your first job search session, or just describe what you need in plain language.</p>
+      <code>/daily-sprint</code>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">Aimersion AI</span>
+  <div class="footer-links">
+    <a href="https://aimersion.github.io/aimersion-marketplace/">All Plugins</a>
+    <a href="https://github.com/aimersion/aimersion-marketplace" target="_blank">GitHub</a>
+    <a href="https://aimersion.ai" target="_blank">aimersion.ai</a>
+    <a href="mailto:jlynch@aimersion.ai">Contact</a>
+  </div>
+  <span class="footer-copy">MIT License</span>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function iTab(id, btn) {
+  document.querySelectorAll('.ipanel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.itab').forEach(b => b.classList.remove('active'));
+  document.getElementById('ip-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+  });
+  const orig = btn.textContent;
+  btn.textContent = 'Copied!';
+  setTimeout(() => btn.textContent = orig, 2000);
+  const t = document.getElementById('toast');
+  t.textContent = 'Copied to clipboard';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+</script>
+</body>
+</html>
