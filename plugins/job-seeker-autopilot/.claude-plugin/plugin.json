@@ -1,0 +1,25 @@
+{
+  "name": "job-seeker-autopilot",
+  "description": "Full-stack autonomous job search engine — find jobs, research companies, tailor resumes, write cover letters, submit applications, send outreach emails, track your pipeline, and prep for interviews. Apply at scale, land faster.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "job search",
+    "resume",
+    "cover letter",
+    "job application",
+    "career",
+    "outreach",
+    "interview prep",
+    "LinkedIn",
+    "job board"
+  ],
+  "skills": ["./skills"],
+  "commands": ["./commands"]
+}
