@@ -4,339 +4,1044 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aimersion AI — Plugin Marketplace</title>
-<meta name="description" content="72 production-ready Claude Code plugins for every industry. From healthcare to e-commerce, legal to engineering.">
+<meta name="description" content="71 production-ready AI plugins for Claude.ai, Claude Code, and API. Every industry, every role. Built by Aimersion AI — DFW, Texas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --brand: #6C47FF;
-    --brand-light: #8B6FFF;
-    --brand-dark: #4B30D4;
-    --accent: #FF6B47;
-    --bg: #0A0A0F;
-    --surface: #13131C;
-    --surface2: #1C1C2A;
-    --border: rgba(255,255,255,0.08);
-    --text: #F0F0F8;
-    --muted: #888899;
-    --radius: 12px;
-    --shadow: 0 4px 24px rgba(0,0,0,0.4);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-  a { color: var(--brand-light); text-decoration: none; }
+:root {
+  --ink:       #0F0F0F;
+  --ink2:      #3A3A3A;
+  --ink3:      #717171;
+  --ink4:      #A0A0A0;
+  --rule:      #E4E4E4;
+  --rule2:     #F0F0F0;
+  --bg:        #FAFAF8;
+  --bg2:       #F4F3F0;
+  --bg3:       #EEECEA;
+  --accent:    #1A1A1A;
+  --blue:      #1D4ED8;
+  --blue-light:#EFF6FF;
+  --blue-mid:  #DBEAFE;
+  --green:     #166534;
+  --green-light:#F0FDF4;
+  --orange:    #C2410C;
+  --orange-light:#FFF7ED;
+  --radius:    8px;
+  --radius-lg: 14px;
+  font-size: 15px;
+}
 
-  /* ── HERO ─────────────────────────────────────────── */
-  .hero {
-    background: linear-gradient(135deg, #0A0A1A 0%, #0F0A2A 40%, #1A0A3A 100%);
-    padding: 80px 24px 60px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(108,71,255,0.25) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(108,71,255,0.15); border: 1px solid rgba(108,71,255,0.4);
-    color: #A08FFF; font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
-    padding: 6px 16px; border-radius: 99px; margin-bottom: 24px;
-    text-transform: uppercase;
-  }
-  .hero h1 { font-size: clamp(36px, 6vw, 72px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 20px; }
-  .hero h1 span { background: linear-gradient(135deg, #8B6FFF, #FF6B47); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero p { font-size: clamp(16px, 2vw, 20px); color: #9999BB; max-width: 600px; margin: 0 auto 40px; }
-  .hero-stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; margin-bottom: 48px; }
-  .stat { text-align: center; }
-  .stat-num { font-size: 36px; font-weight: 800; color: var(--text); display: block; }
-  .stat-lbl { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-  .install-box {
-    display: inline-flex; align-items: center; gap: 0;
-    background: rgba(0,0,0,0.5); border: 1px solid rgba(108,71,255,0.4);
-    border-radius: 10px; overflow: hidden; max-width: 520px; width: 100%;
-  }
-  .install-box code {
-    flex: 1; padding: 14px 16px; font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 14px; color: #C4B5FF; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  .install-box button {
-    padding: 14px 20px; background: var(--brand); border: none; color: white;
-    font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; white-space: nowrap;
-  }
-  .install-box button:hover { background: var(--brand-light); }
-  .install-hint { font-size: 12px; color: var(--muted); margin-top: 10px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ── GETTING STARTED ──────────────────────────────── */
-  .getting-started {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 64px 24px;
-  }
-  .section-title { font-size: 28px; font-weight: 700; text-align: center; margin-bottom: 8px; }
-  .section-sub { color: var(--muted); text-align: center; margin-bottom: 48px; font-size: 16px; }
-  .steps {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px; max-width: 960px; margin: 0 auto;
-  }
-  .step {
-    background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 28px 24px; position: relative;
-  }
-  .step-num {
-    width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-light));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px; font-weight: 800; margin-bottom: 16px;
-  }
-  .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-  .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-  .step code {
-    display: inline-block; margin-top: 10px;
-    background: rgba(0,0,0,0.5); border: 1px solid var(--border);
-    border-radius: 6px; padding: 6px 10px; font-family: 'SF Mono', monospace;
-    font-size: 12px; color: #C4B5FF; word-break: break-all;
-  }
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 
-  /* ── NAV / SEARCH ─────────────────────────────────── */
-  .nav-bar {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(10,10,15,0.95); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border); padding: 14px 24px;
-  }
-  .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-  .search-row { display: flex; align-items: center; gap: 12px; }
-  #search {
-    flex: 1; max-width: 400px; background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 8px; padding: 10px 16px; color: var(--text); font-size: 15px; outline: none;
-    transition: border-color 0.2s;
-  }
-  #search:focus { border-color: var(--brand); }
-  #search::placeholder { color: var(--muted); }
-  .count-badge { font-size: 13px; color: var(--muted); white-space: nowrap; }
-  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
-  .chip {
-    padding: 5px 14px; border-radius: 99px; font-size: 13px; font-weight: 500; cursor: pointer;
-    border: 1px solid var(--border); background: transparent; color: var(--muted);
-    transition: all 0.15s; white-space: nowrap;
-  }
-  .chip:hover { border-color: var(--brand); color: var(--brand-light); }
-  .chip.active { background: var(--brand); border-color: var(--brand); color: white; }
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-  /* ── CATALOG ──────────────────────────────────────── */
-  .catalog { max-width: 1200px; margin: 0 auto; padding: 48px 24px; }
-  .cat-section { margin-bottom: 56px; }
-  .cat-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-  .cat-icon { font-size: 22px; }
-  .cat-name { font-size: 20px; font-weight: 700; }
-  .cat-count { font-size: 13px; color: var(--muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 99px; padding: 2px 10px; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-  .card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 24px; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; gap: 12px;
-    position: relative; overflow: hidden;
-  }
-  .card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--brand), transparent); opacity: 0; transition: opacity 0.2s;
-  }
-  .card:hover { border-color: rgba(108,71,255,0.4); transform: translateY(-2px); box-shadow: var(--shadow); }
-  .card:hover::before { opacity: 1; }
-  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-  .card-name { font-size: 16px; font-weight: 700; }
-  .card-version { font-size: 11px; color: var(--muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 7px; white-space: nowrap; margin-top: 2px; }
-  .card-desc { font-size: 14px; color: #AAAACC; line-height: 1.5; flex: 1; }
-  .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tag { font-size: 11px; background: rgba(108,71,255,0.12); color: #9980FF; border-radius: 4px; padding: 2px 8px; }
-  .card-meta { display: flex; align-items: center; gap: 12px; }
-  .meta-item { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 4px; }
-  .meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); }
-  .card-btn {
-    margin-top: 4px; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
-    background: rgba(108,71,255,0.15); border: 1px solid rgba(108,71,255,0.3); color: #9980FF;
-    cursor: pointer; transition: all 0.2s; width: 100%; text-align: center;
-  }
-  .card-btn:hover { background: var(--brand); border-color: var(--brand); color: white; }
+code, .mono {
+  font-family: 'DM Mono', 'SF Mono', monospace;
+  font-size: 0.85em;
+}
 
-  /* ── MODAL ────────────────────────────────────────── */
-  .modal-overlay {
-    position: fixed; inset: 0; z-index: 1000;
-    background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
-    display: flex; align-items: center; justify-content: center; padding: 24px;
-    opacity: 0; pointer-events: none; transition: opacity 0.2s;
-  }
-  .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal {
-    background: var(--surface); border: 1px solid rgba(108,71,255,0.3);
-    border-radius: 16px; width: 100%; max-width: 680px; max-height: 90vh;
-    overflow-y: auto; padding: 36px; position: relative;
-    transform: translateY(20px); transition: transform 0.2s;
-    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
-  }
-  .modal-overlay.open .modal { transform: translateY(0); }
-  .modal-close {
-    position: absolute; top: 20px; right: 20px;
-    width: 32px; height: 32px; border-radius: 50%;
-    background: var(--surface2); border: 1px solid var(--border);
-    color: var(--muted); font-size: 18px; cursor: pointer; line-height: 30px; text-align: center;
-    transition: all 0.2s;
-  }
-  .modal-close:hover { background: var(--brand); color: white; border-color: var(--brand); }
-  .modal-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9980FF; background: rgba(108,71,255,0.15); border: 1px solid rgba(108,71,255,0.3); border-radius: 4px; padding: 3px 9px; margin-bottom: 12px; }
-  .modal h2 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
-  .modal-desc { font-size: 15px; color: #AAAACC; line-height: 1.6; margin-bottom: 28px; }
-  .modal-section { margin-bottom: 24px; }
-  .modal-section h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 12px; }
-  .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .skill-pill {
-    display: flex; align-items: center; gap: 6px;
-    background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 8px; padding: 7px 12px; font-size: 13px; color: var(--text);
-  }
-  .skill-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brand); flex-shrink: 0; }
-  .cmd-list { display: flex; flex-wrap: wrap; gap: 8px; }
-  .cmd-pill {
-    background: rgba(255,107,71,0.1); border: 1px solid rgba(255,107,71,0.25);
-    border-radius: 8px; padding: 6px 12px; font-family: 'SF Mono', monospace; font-size: 12px; color: #FF9070;
-  }
-  .modal-install { margin-top: 28px; }
-  .modal-install h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 12px; }
-  .install-row {
-    display: flex; background: rgba(0,0,0,0.5); border: 1px solid rgba(108,71,255,0.3);
-    border-radius: 10px; overflow: hidden;
-  }
-  .install-row code {
-    flex: 1; padding: 14px 16px; font-family: 'SF Mono', monospace; font-size: 13px; color: #C4B5FF;
-    word-break: break-all;
-  }
-  .install-row button {
-    padding: 12px 20px; background: var(--brand); border: none; color: white;
-    font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; white-space: nowrap;
-    border-left: 1px solid rgba(255,255,255,0.1);
-  }
-  .install-row button:hover { background: var(--brand-light); }
-  .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
-  .modal-tag { font-size: 12px; background: rgba(108,71,255,0.12); color: #9980FF; border-radius: 4px; padding: 3px 9px; }
-  .modal-also { margin-top: 16px; font-size: 13px; color: var(--muted); }
-  .modal-also code { background: rgba(0,0,0,0.4); padding: 2px 8px; border-radius: 4px; font-size: 12px; color: #9980FF; }
+/* ── TOP BAR ────────────────────────────────── */
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  background: white;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.brand-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+.topbar-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.topbar-links a {
+  font-size: 14px;
+  color: var(--ink3);
+  text-decoration: none;
+  font-weight: 400;
+}
+.topbar-links a:hover { color: var(--ink); }
+.topbar-cta {
+  background: var(--ink);
+  color: white !important;
+  padding: 7px 16px;
+  border-radius: var(--radius);
+  font-weight: 500 !important;
+  font-size: 13px !important;
+}
+.topbar-cta:hover { background: #333 !important; text-decoration: none !important; }
 
-  /* ── EMPTY / FOOTER ───────────────────────────────── */
-  #empty { display: none; text-align: center; padding: 80px 24px; color: var(--muted); }
-  #empty h3 { font-size: 22px; margin-bottom: 8px; color: var(--text); }
-  footer { text-align: center; padding: 40px 24px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); }
-  footer a { color: var(--brand-light); }
+/* ── HERO ──────────────────────────────────── */
+.hero {
+  background: white;
+  border-bottom: 1px solid var(--rule);
+  padding: 72px 32px 64px;
+  text-align: center;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--rule);
+}
+.hero h1 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 20px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--ink2);
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--ink3);
+  max-width: 520px;
+  margin: 0 auto 48px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 52px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+}
+.hero-stat {
+  flex: 1;
+  padding: 20px 16px;
+  border-right: 1px solid var(--rule);
+  text-align: center;
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-num {
+  display: block;
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-lbl {
+  font-size: 11px;
+  color: var(--ink4);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
 
-  /* ── TOAST ────────────────────────────────────────── */
-  .toast {
-    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
-    background: #1C2A1C; border: 1px solid #2A4A2A; color: #6EE06E;
-    padding: 12px 24px; border-radius: 99px; font-size: 14px; font-weight: 500;
-    transition: transform 0.3s; z-index: 2000; pointer-events: none;
-  }
-  .toast.show { transform: translateX(-50%) translateY(0); }
+/* ── PLATFORM TABS (HERO) ───────────────────── */
+.platform-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.platform-tabs {
+  display: flex;
+  gap: 0;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  border-bottom: none;
+  padding: 6px 6px 0;
+}
+.ptab {
+  flex: 1;
+  padding: 9px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 8px 8px 0 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink3);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.ptab.active {
+  background: white;
+  color: var(--ink);
+  box-shadow: 0 -1px 0 var(--rule), -1px 0 0 var(--rule), 1px 0 0 var(--rule);
+}
+.ptab:hover:not(.active) { color: var(--ink2); }
 
-  @media (max-width: 640px) {
-    .hero { padding: 56px 16px 40px; }
-    .hero-stats { gap: 24px; }
-    .modal { padding: 24px; }
-    .steps { grid-template-columns: 1fr; }
-  }
+.platform-panel {
+  display: none;
+  border: 1px solid var(--rule);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  background: white;
+  overflow: hidden;
+}
+.platform-panel.active { display: block; }
+
+.install-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--rule);
+}
+.install-row code {
+  flex: 1;
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--ink2);
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: transparent;
+  display: block;
+}
+.install-row button, .copy-btn {
+  padding: 14px 20px;
+  background: var(--ink);
+  border: none;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.install-row button:hover, .copy-btn:hover { background: #333; }
+.install-note {
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--ink3);
+  line-height: 1.6;
+  text-align: left;
+}
+.install-note strong { color: var(--ink2); font-weight: 500; }
+.install-note a { color: var(--blue); }
+
+/* ── HOW IT WORKS ───────────────────────────── */
+.how-section {
+  padding: 72px 32px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink4);
+  text-align: center;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 400;
+  text-align: center;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.section-sub {
+  text-align: center;
+  color: var(--ink3);
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 48px;
+}
+
+/* Platform switcher in how section */
+.gs-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.gs-tab {
+  padding: 8px 20px;
+  border: 1px solid var(--rule);
+  border-radius: 99px;
+  background: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink3);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.gs-tab.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: white;
+}
+.gs-tab:hover:not(.active) { border-color: var(--ink2); color: var(--ink2); }
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.step-card {
+  background: white;
+  padding: 32px 28px;
+}
+.step-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--rule);
+  line-height: 1;
+  margin-bottom: 16px;
+  display: block;
+}
+.step-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.step-card p {
+  font-size: 13px;
+  color: var(--ink3);
+  line-height: 1.65;
+  font-weight: 300;
+}
+.step-card .step-code {
+  display: inline-block;
+  margin-top: 12px;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--ink2);
+  word-break: break-all;
+  line-height: 1.5;
+}
+.gs-panel { display: none; }
+.gs-panel.active { display: block; }
+
+/* ── STICKY NAV ──────────────────────────────── */
+.catalog-nav {
+  position: sticky;
+  top: 56px;
+  z-index: 100;
+  background: white;
+  border-bottom: 1px solid var(--rule);
+  padding: 0 32px;
+}
+.catalog-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 52px;
+}
+.search-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink4);
+  font-size: 14px;
+  pointer-events: none;
+}
+#search {
+  padding: 8px 12px 8px 34px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--bg2);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  width: 220px;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+#search:focus { border-color: var(--ink2); background: white; }
+#search::placeholder { color: var(--ink4); }
+.chips-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  flex: 1;
+  scrollbar-width: none;
+  padding: 6px 0;
+}
+.chips-scroll::-webkit-scrollbar { display: none; }
+.chip {
+  padding: 5px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 99px;
+  background: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink3);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.12s;
+}
+.chip:hover { border-color: var(--ink2); color: var(--ink2); }
+.chip.active { background: var(--ink); border-color: var(--ink); color: white; }
+.count-badge {
+  font-size: 12px;
+  color: var(--ink4);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── CATALOG ──────────────────────────────────── */
+.catalog {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 32px 80px;
+}
+.cat-section { margin-bottom: 52px; }
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+.cat-icon { font-size: 16px; }
+.cat-name { font-size: 13px; font-weight: 600; color: var(--ink2); letter-spacing: 0.02em; text-transform: uppercase; }
+.cat-count {
+  font-size: 11px;
+  color: var(--ink4);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 12px;
+}
+.card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card:hover {
+  border-color: var(--ink2);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+}
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.card-name { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+.card-version {
+  font-size: 10px;
+  color: var(--ink4);
+  font-family: 'DM Mono', monospace;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.card-desc {
+  font-size: 13px;
+  color: var(--ink3);
+  line-height: 1.55;
+  flex: 1;
+  font-weight: 300;
+}
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.tag {
+  font-size: 11px;
+  background: var(--bg2);
+  color: var(--ink3);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-weight: 400;
+}
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule2);
+}
+.meta-item {
+  font-size: 12px;
+  color: var(--ink4);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.card-btn {
+  margin-top: 4px;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  color: var(--ink2);
+  cursor: pointer;
+  transition: all 0.12s;
+  width: 100%;
+  text-align: center;
+}
+.card-btn:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: white;
+}
+
+/* ── MODAL ────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(15,15,15,0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 40px;
+  position: relative;
+  transform: translateY(12px);
+  transition: transform 0.2s;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06);
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  color: var(--ink3);
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 28px;
+  text-align: center;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.modal-close:hover { background: var(--ink); color: white; border-color: var(--ink); }
+.modal-cat-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+.modal h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  padding-right: 40px;
+}
+.modal-desc {
+  font-size: 14px;
+  color: var(--ink3);
+  line-height: 1.65;
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+.modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+.modal-tag {
+  font-size: 12px;
+  background: var(--bg2);
+  color: var(--ink3);
+  border-radius: 4px;
+  padding: 3px 9px;
+}
+.modal-section { margin-bottom: 24px; }
+.modal-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.skill-list, .cmd-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--ink2);
+  font-weight: 400;
+}
+.skill-pip {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--ink3);
+  flex-shrink: 0;
+}
+.cmd-pill {
+  background: var(--green-light);
+  border: 1px solid #BBF7D0;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  color: var(--green);
+}
+
+/* Modal install */
+.modal-install { margin-top: 28px; }
+.modal-install-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.modal-ptabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.modal-ptab {
+  padding: 6px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 99px;
+  background: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink3);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.modal-ptab.active { background: var(--ink); border-color: var(--ink); color: white; }
+.modal-ppanel { display: none; }
+.modal-ppanel.active { display: block; }
+.modal-install-row {
+  display: flex;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg2);
+}
+.modal-install-row code {
+  flex: 1;
+  padding: 11px 14px;
+  font-size: 12px;
+  color: var(--ink2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: transparent;
+  display: block;
+}
+.modal-install-row button {
+  padding: 11px 16px;
+  background: var(--ink);
+  border: none;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s;
+  white-space: nowrap;
+}
+.modal-install-row button:hover { background: #333; }
+.modal-install-note {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--ink4);
+  line-height: 1.6;
+}
+.modal-install-note a { color: var(--blue); }
+
+/* ── TOAST ──────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--ink);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 500;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.25s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── EMPTY STATE ────────────────────────────── */
+#empty {
+  display: none;
+  text-align: center;
+  padding: 80px 32px;
+  color: var(--ink4);
+}
+#empty h3 { font-family: 'Instrument Serif', serif; font-size: 22px; font-weight: 400; margin-bottom: 8px; color: var(--ink3); }
+#empty p { font-size: 14px; font-weight: 300; }
+
+/* ── FOOTER ──────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--rule);
+  background: white;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-brand { font-weight: 600; font-size: 14px; color: var(--ink); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 13px; color: var(--ink4); text-decoration: none; }
+.footer-links a:hover { color: var(--ink2); }
+.footer-copy { font-size: 12px; color: var(--ink4); }
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 640px) {
+  .topbar { padding: 0 20px; }
+  .topbar-links { gap: 14px; }
+  .hero { padding: 52px 20px 48px; }
+  .how-section, .catalog { padding-left: 20px; padding-right: 20px; }
+  .catalog-nav { padding: 0 20px; }
+  .cards { grid-template-columns: 1fr; }
+  .hero-stats { max-width: 100%; }
+  .platform-wrap { max-width: 100%; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .modal { padding: 28px 24px; }
+  footer { padding: 24px 20px; }
+  .topbar-links .hide-mobile { display: none; }
+}
+@media (max-width: 420px) {
+  .steps-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
-<!-- ── HERO ─────────────────────────────────────── -->
+<!-- ── TOP BAR ─────────────────────────────── -->
+<nav class="topbar">
+  <a class="topbar-brand" href="https://aimersion.ai" target="_blank">
+    <span class="brand-dot"></span>
+    Aimersion AI
+  </a>
+  <div class="topbar-links">
+    <a href="https://github.com/aimersion/aimersion-marketplace" target="_blank" class="hide-mobile">GitHub</a>
+    <a href="/cdn-cgi/l/email-protection#c7adabbea9a4af87a6aeaaa2b5b4aea8a9e9a6ae" class="hide-mobile">Contact</a>
+    <a href="https://aimersion.ai" target="_blank" class="topbar-cta">aimersion.ai →</a>
+  </div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-badge">✦ Official Plugin Marketplace</div>
-  <h1>Aimersion AI<br><span>Plugin Marketplace</span></h1>
-  <p>Production-ready Claude Code plugins for every industry. Install in seconds, start working immediately.</p>
+  <div class="hero-eyebrow">Plugin Marketplace</div>
+  <h1>AI skills for <em>every</em> industry,<br>every role, every tool</h1>
+  <p class="hero-sub">71 production-ready plugins for Claude. Works on Claude.ai, Claude Code, and the API — no setup required.</p>
+
   <div class="hero-stats">
-    <div class="stat"><span class="stat-num" id="statPlugins">72</span><span class="stat-lbl">Plugins</span></div>
-    <div class="stat"><span class="stat-num" id="statSkills">350+</span><span class="stat-lbl">Skills</span></div>
-    <div class="stat"><span class="stat-num" id="statCmds">280+</span><span class="stat-lbl">Commands</span></div>
-    <div class="stat"><span class="stat-num">13</span><span class="stat-lbl">Categories</span></div>
-  </div>
-  <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
-    <div class="install-box">
-      <code>/plugin marketplace add aimersion/aimersion-marketplace</code>
-      <button onclick="copyText('/plugin marketplace add aimersion/aimersion-marketplace', this)">Copy</button>
+    <div class="hero-stat">
+      <span class="hero-stat-num" id="statPlugins">71</span>
+      <span class="hero-stat-lbl">Plugins</span>
     </div>
-    <p class="install-hint">Run in Claude Code to add the entire Aimersion marketplace</p>
+    <div class="hero-stat">
+      <span class="hero-stat-num" id="statSkills">383+</span>
+      <span class="hero-stat-lbl">Skills</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num" id="statCmds">312+</span>
+      <span class="hero-stat-lbl">Commands</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">13</span>
+      <span class="hero-stat-lbl">Categories</span>
+    </div>
+  </div>
+
+  <!-- Platform install tabs -->
+  <div class="platform-wrap">
+    <div class="platform-tabs">
+      <button class="ptab active" onclick="heroTab('claudeai',this)">🌐 Claude.ai</button>
+      <button class="ptab" onclick="heroTab('claudecode',this)">⚡ Claude Code</button>
+      <button class="ptab" onclick="heroTab('api',this)">🔌 API</button>
+    </div>
+
+    <div class="platform-panel active" id="hero-claudeai">
+      <div class="install-row">
+        <code>Browse → Copy Skill → Paste into Project Instructions</code>
+        <button onclick="copyText('https://aimersion.github.io/aimersion-marketplace/',this)">Copy URL</button>
+      </div>
+      <p class="install-note">The easiest way. No CLI, no setup. Go to <a href="https://claude.ai" target="_blank">claude.ai</a> → open a <strong>Project</strong> → <strong>Edit Instructions</strong> → paste any skill below. Active for every conversation in that project.</p>
+    </div>
+
+    <div class="platform-panel" id="hero-claudecode">
+      <div class="install-row">
+        <code>curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash</code>
+        <button onclick="copyText('curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash',this)">Copy</button>
+      </div>
+      <p class="install-note">Run in your project directory. Adds skills to <code>CLAUDE.md</code> and registers slash commands. Run without arguments to see all 71 plugins.</p>
+    </div>
+
+    <div class="platform-panel" id="hero-api">
+      <div class="install-row">
+        <code>https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/[name]/skills/[skill]/SKILL.md</code>
+        <button onclick="copyText('https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/',this)">Copy Base</button>
+      </div>
+      <p class="install-note">Fetch any SKILL.md and inject into your <code>system</code> prompt. Pure markdown, no dependencies. Skills are composable — stack multiple in one system prompt.</p>
+    </div>
   </div>
 </section>
 
-<!-- ── GETTING STARTED ────────────────────────────── -->
-<section class="getting-started">
-  <h2 class="section-title">Get Started in 60 Seconds</h2>
-  <p class="section-sub">Everything you need to start using Aimersion plugins with Claude Code</p>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Install Claude Code</h3>
-      <p>Claude Code is Anthropic's CLI for agentic coding. Install it globally with npm, then authenticate.</p>
-      <code>npm install -g @anthropic-ai/claude-code</code>
+<!-- ── HOW IT WORKS ─────────────────────────── -->
+<section class="how-section">
+  <div class="section-label">Getting Started</div>
+  <h2 class="section-title">Up and running in minutes</h2>
+  <p class="section-sub">Choose your platform — each has a direct path to using any plugin.</p>
+
+  <div class="gs-tabs">
+    <button class="gs-tab active" id="gs-tab-claudeai" onclick="gsTab('claudeai')">🌐 Claude.ai (Easiest)</button>
+    <button class="gs-tab" id="gs-tab-claudecode" onclick="gsTab('claudecode')">⚡ Claude Code CLI</button>
+    <button class="gs-tab" id="gs-tab-api" onclick="gsTab('api')">🔌 API / Developers</button>
+  </div>
+
+  <div id="gs-claudeai" class="gs-panel active">
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-num">1</span>
+        <h3>Go to Claude.ai</h3>
+        <p>Open <a href="https://claude.ai" target="_blank">claude.ai</a> and create a new <strong>Project</strong> — or open an existing one. Projects give Claude persistent instructions for every chat.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">2</span>
+        <h3>Find a Plugin</h3>
+        <p>Browse the catalog below. Click any plugin card to see its skills, then click <strong>Copy for Claude.ai</strong> to copy the skill content.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">3</span>
+        <h3>Paste into Instructions</h3>
+        <p>In your Project, click <strong>Edit Instructions</strong> and paste. Claude now has that skill for every conversation in the project.</p>
+        <span class="step-code">Project → Edit Instructions → Paste</span>
+      </div>
+      <div class="step-card">
+        <span class="step-num">4</span>
+        <h3>Just Chat</h3>
+        <p>No slash commands needed. Describe your task naturally — the skill activates automatically based on what you ask.</p>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Add This Marketplace</h3>
-      <p>Add the Aimersion marketplace with one command. All 72 plugins become available to browse and install.</p>
-      <code>/plugin marketplace add aimersion/aimersion-marketplace</code>
+  </div>
+
+  <div id="gs-claudecode" class="gs-panel">
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-num">1</span>
+        <h3>Install Claude Code</h3>
+        <p>Requires Node.js 18+. Install the CLI globally and authenticate with your Anthropic account.</p>
+        <span class="step-code">npm install -g @anthropic-ai/claude-code</span>
+      </div>
+      <div class="step-card">
+        <span class="step-num">2</span>
+        <h3>Go to Your Project</h3>
+        <p>Navigate to the directory where you want the plugin active. Claude Code reads <code>CLAUDE.md</code> automatically from the current directory.</p>
+        <span class="step-code">cd ~/your-project</span>
+      </div>
+      <div class="step-card">
+        <span class="step-num">3</span>
+        <h3>Run the Installer</h3>
+        <p>Click a plugin below, copy the install command from the <strong>Claude Code</strong> tab, and run it. Skills download into your <code>CLAUDE.md</code>.</p>
+        <span class="step-code">curl -sL [install-url] | bash pool-service-operator</span>
+      </div>
+      <div class="step-card">
+        <span class="step-num">4</span>
+        <h3>Start Claude Code</h3>
+        <p>Run <code>claude</code> in the directory. Skills activate immediately. Type <code>/</code> to see available slash commands from the plugin.</p>
+        <span class="step-code">claude</span>
+      </div>
     </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Install a Plugin</h3>
-      <p>Click any plugin card below to see its skills and commands, then copy the install command.</p>
-      <code>/plugin install aimersion/aimersion-marketplace/[name]</code>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <h3>Use Skills &amp; Commands</h3>
-      <p>Each plugin adds specialized skills and slash commands directly into Claude Code. Type <strong>/</strong> to see them.</p>
-      <code>/[command-name]</code>
+  </div>
+
+  <div id="gs-api" class="gs-panel">
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-num">1</span>
+        <h3>Pick a Skill</h3>
+        <p>Each skill is a standalone <code>SKILL.md</code> file. Browse the catalog and click any plugin to find the raw GitHub URL for the skills you want.</p>
+      </div>
+      <div class="step-card">
+        <span class="step-num">2</span>
+        <h3>Fetch the File</h3>
+        <p>Pull the raw SKILL.md at runtime or cache it. No parsing required — it's plain markdown designed for system prompts.</p>
+        <span class="step-code">curl .../plugins/[name]/skills/[skill]/SKILL.md</span>
+      </div>
+      <div class="step-card">
+        <span class="step-num">3</span>
+        <h3>Inject into System Prompt</h3>
+        <p>Pass the skill content in the <code>system</code> parameter of your API call alongside your own instructions.</p>
+        <span class="step-code">system: f"You are a [role].\n\n{skill_content}"</span>
+      </div>
+      <div class="step-card">
+        <span class="step-num">4</span>
+        <h3>Stack Multiple Skills</h3>
+        <p>Combine skills from different plugins in one system prompt to build compound agents. Skills are composable by design.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── NAV / SEARCH ───────────────────────────────── -->
-<div class="nav-bar">
-  <div class="nav-inner">
-    <div class="search-row">
+<!-- ── CATALOG NAV ──────────────────────────── -->
+<div class="catalog-nav">
+  <div class="catalog-nav-inner">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
       <input type="text" id="search" placeholder="Search plugins…" oninput="filter()" autocomplete="off">
-      <span class="count-badge" id="countBadge"></span>
     </div>
-    <div class="chips" id="chips"></div>
+    <div class="chips-scroll" id="chips"></div>
+    <span class="count-badge" id="countBadge"></span>
   </div>
 </div>
 
-<!-- ── CATALOG ────────────────────────────────────── -->
-<main class="catalog" id="catalog"></main>
-<div id="empty"><h3>No plugins found</h3><p>Try a different search term or category</p></div>
+<!-- ── CATALOG ──────────────────────────────── -->
+<main class="catalog" id="catalog">
+  <!-- built by JS -->
+</main>
+<div id="empty">
+  <h3>No plugins found</h3>
+  <p>Try a different search term or clear the filter.</p>
+</div>
 
-<!-- ── MODAL ──────────────────────────────────────── -->
+<!-- ── MODAL ────────────────────────────────── -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-  <div class="modal" id="modal">
-    <button class="modal-close" onclick="closeModalDirect()">&#xD7;</button>
+  <div class="modal">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
     <div id="modalContent"></div>
   </div>
 </div>
 
-<!-- ── TOAST ──────────────────────────────────────── -->
-<div class="toast" id="toast">Copied to clipboard</div>
+<!-- ── TOAST ──────────────────────────────── -->
+<div class="toast" id="toast"></div>
 
-<!-- ── FOOTER ─────────────────────────────────────── -->
+<!-- ── FOOTER ────────────────────────────── -->
 <footer>
-  <p>Built by <a href="https://aimersion.ai" target="_blank">Aimersion AI</a> &nbsp;&middot;&nbsp; <a href="https://github.com/aimersion/aimersion-marketplace" target="_blank">GitHub</a> &nbsp;&middot;&nbsp; <a href="https://docs.claude.com" target="_blank">Claude Code Docs</a></p>
-  <p style="margin-top:8px; font-size:12px;">Requires Claude Code &nbsp;&middot;&nbsp; <a href="https://github.com/aimersion/aimersion-marketplace/issues" target="_blank">Report an issue</a></p>
+  <span class="footer-brand">Aimersion AI</span>
+  <div class="footer-links">
+    <a href="https://aimersion.ai" target="_blank">Website</a>
+    <a href="https://github.com/aimersion/aimersion-marketplace" target="_blank">GitHub</a>
+    <a href="/cdn-cgi/l/email-protection#97fdfbeef9f4ffd7f6fefaf2e5e4fef8f9b9f6fe">Contact</a>
+  </div>
+  <span class="footer-copy">MIT License · Built in DFW, Texas</span>
 </footer>
 
-<script>
-// ── HELPERS ──────────────────────────────────────────
-function toTitle(s) {
-  return s.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
-}
-
-// ── PLUGIN DETAILS ────────────────────────────────────
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── DATA ─────────────────────────────────────────────
 const DETAILS = {
   'small-business-autopilot': { skills:['competitor-monitor','content-writer','email-campaign-builder','lead-researcher','social-media-scheduler'], cmds:['draft-week','find-leads','morning-brief','write-blog'] },
   'pool-service-operator': { skills:['chemical-calculator','customer-communicator','equipment-advisor','route-optimizer','seasonal-planner'], cmds:['customer-report','daily-schedule','seasonal-checklist','water-test'] },
@@ -347,56 +1052,54 @@ const DETAILS = {
   'pharmacy-operations': { skills:['clinical-services-builder','compliance-tracker','inventory-optimizer','marketing-campaigns','patient-adherence'], cmds:['adherence-outreach','compliance-audit','inventory-report','seasonal-campaign'] },
   'auto-dealership-operator': { skills:['bdc-assistant','inventory-analyzer','lead-nurture','marketing-planner','service-retention'], cmds:['inventory-report','lead-followup','sales-event','service-reminder'] },
   'auto-repair-shop-manager': { skills:['customer-communicator','estimate-builder','marketing-helper','review-manager','technician-productivity'], cmds:['customer-update','monthly-specials','repair-estimate','review-response'] },
-  'auto-detailing-business': { skills:['booking-optimizer','customer-retention','fleet-account-manager','package-builder','social-content'], cmds:['daily-schedule','fleet-proposal','loyalty-program','service-packages'] },
-  'fleet-management-assistant': { skills:['compliance-tracker','cost-analyzer','driver-manager','maintenance-scheduler','vehicle-lifecycle'], cmds:['driver-compliance','fleet-costs','maintenance-due','vehicle-report'] },
-  'car-wash-operator': { skills:['equipment-monitor','local-marketing','membership-manager','staff-scheduler','weather-marketing'], cmds:['equipment-check','membership-report','staff-schedule','weather-promo'] },
-  'solo-attorney-practice': { skills:['billing-tracker','case-management-helper','client-intake','document-drafter','marketing-for-lawyers'], cmds:['billing-report','case-tasks','draft-letter','new-intake'] },
-  'family-law-assistant': { skills:['case-document-organizer','child-custody-analyzer','client-communicator','court-filing-helper','mediation-prep'], cmds:['case-prep','client-letter','custody-plan','mediation-brief'] },
-  'criminal-defense-toolkit': { skills:['case-analyzer','client-communicator','discovery-organizer','motion-drafter','sentencing-mitigator'], cmds:['case-analysis','discovery-tracker','draft-motion','mitigation-packet'] },
-  'immigration-law-helper': { skills:['case-tracker','client-communicator','country-conditions-researcher','document-checklist','form-prep-assistant'], cmds:['case-timeline','country-research','rfe-response'] },
-  'corporate-law-assistant': { skills:['board-meeting-prep','compliance-monitor','contract-reviewer','deal-tracker','entity-formation-helper'], cmds:['board-prep','deal-status','form-entity','review-contract'] },
-  'general-contractor-operator': { skills:['bid-estimator','change-order-manager','client-communicator','project-scheduler','safety-compliance'], cmds:['change-order','estimate','project-schedule','safety-meeting'] },
-  'electrician-business-manager': { skills:['apprentice-trainer','customer-followup','job-estimator','marketing-generator','permit-tracker'], cmds:['customer-outreach','estimate','permit-check','training-plan'] },
-  'roofing-company-operator': { skills:['crew-dispatcher','estimate-builder','lead-generator','storm-damage-responder','warranty-tracker'], cmds:['daily-dispatch','roof-estimate','storm-response','warranty-check'] },
-  'painting-contractor-helper': { skills:['color-consultant','commercial-proposal','crew-scheduler','customer-experience','estimate-calculator'], cmds:['color-consult','paint-estimate','proposal','schedule-crews'] },
-  'landscaping-business-operator': { skills:['content-creator','customer-retention','estimate-builder','route-optimizer','seasonal-planner'], cmds:['customer-outreach','daily-routes','estimate','seasonal-plan'] },
-  'chiropractic-practice-builder': { skills:['care-plan-communicator','patient-reactivation','referral-program','review-generator','social-content'], cmds:['care-plan','get-reviews','reactivate-patients','weekly-content'] },
-  'home-health-agency-operator': { skills:['caregiver-recruiter','caregiver-scheduler','compliance-documenter','patient-family-communicator','quality-improvement'], cmds:['compliance-check','daily-assignments','patient-update','recruit-caregiver'] },
-  'medical-device-sales-rep': { skills:['case-support-prep','clinical-evidence-summarizer','competitor-tracker','surgeon-relationship','territory-planner'], cmds:['case-prep','competitor-update','surgeon-profile','territory-plan'] },
-  'shopify-store-optimizer': { skills:['collection-merchandiser','email-flow-builder','product-page-optimizer','seasonal-promoter','speed-optimizer','store-auditor'], cmds:['build-email-flow','optimize-collection','plan-promotion','speed-fix','store-audit','write-product-copy'] },
-  'product-launch-planner': { skills:['audience-builder','launch-content-planner','launch-readiness-auditor','launch-timeline-builder','post-launch-analyzer','pricing-strategist'], cmds:['launch-audit','launch-plan','launch-retro','pricing-analysis'] },
-  'review-feedback-manager': { skills:['reputation-recovery','review-monitor','review-responder','review-solicitor','sentiment-analyzer'], cmds:['reputation-check','respond-reviews','review-brief','review-campaign'] },
-  'inventory-pricing-optimizer': { skills:['demand-forecaster','inventory-tracker','pricing-optimizer','reorder-planner','seasonal-adjuster'], cmds:['inventory-check','price-check','reorder-now','seasonal-plan'] },
-  'hr-hiring-assistant': { skills:['background-checks','candidate-scorecard','compensation-benchmarking','contractor-conversion','dei-hiring','employee-handbook','interview-prep','job-description-writer','offer-negotiation','onboarding-planner','org-planning','people-analytics','recruiting-pipeline','remote-hiring','structured-interviewing'], cmds:['background-check','comp-analysis','convert-contractor','draft-offer','interview-kit','onboarding','people-report','performance-review','policy-lookup','write-jd'] },
-  'seo-content-machine': { skills:['blog-writer','competitor-content-analyzer','content-decay-manager','content-planner','keyword-researcher','on-page-optimizer'], cmds:['content-audit','content-calendar','keyword-research','seo-audit','write-post'] },
-  'competitive-intel-monitor': { skills:['battlecard-builder','competitor-monitor','market-trend-analyzer','pricing-intelligence','win-loss-analyzer'], cmds:['battlecard','ci-brief','market-scan','pricing-intel','win-loss'] },
-  'influencer-affiliate-manager': { skills:['affiliate-program','campaign-tracker','compliance-monitor','contract-manager','influencer-vetting'], cmds:['build-affiliate','campaign-report','compliance-audit','draft-contract','rate-check','vet-creator'] },
-  'email-marketing-autopilot': { skills:['campaign-analyzer','deliverability-doctor','list-segmenter','newsletter-writer','sequence-builder','subject-line-optimizer'], cmds:['campaign-report','deliverability-check','email-sequence','newsletter','subject-lines'] },
+  'auto-detailing-business': { skills:['booking-optimizer','fleet-proposal-writer','loyalty-program-builder','package-builder','social-content-creator'], cmds:['book-appointment','create-package','fleet-proposal','social-post'] },
+  'fleet-management-assistant': { skills:['compliance-manager','cost-analyzer','driver-manager','maintenance-scheduler','vehicle-lifecycle-planner'], cmds:['compliance-check','cost-report','driver-brief','maintenance-schedule'] },
+  'car-wash-operator': { skills:['equipment-monitor','local-marketer','membership-manager','staff-scheduler','weather-trigger-marketer'], cmds:['membership-campaign','monthly-report','staff-schedule','weather-promo'] },
+  'chiropractic-practice-builder': { skills:['care-plan-communicator','patient-reactivation','referral-program-builder','review-generator','social-content-creator'], cmds:['care-plan','monthly-content','reactivation-campaign','referral-letter'] },
+  'home-health-agency-operator': { skills:['caregiver-recruiter','compliance-manager','family-communicator','quality-improvement','scheduler'], cmds:['caregiver-post','family-update','quality-report','schedule-audit'] },
+  'medical-device-sales-rep': { skills:['clinical-evidence-summarizer','competitor-tracker','surgical-case-prep','surgeon-relationship-builder','territory-planner'], cmds:['case-prep','competitive-brief','surgeon-email','territory-plan'] },
+  'general-contractor-operator': { skills:['bid-estimator','change-order-manager','client-communicator','project-scheduler','safety-compliance'], cmds:['bid-proposal','change-order','project-update','safety-brief'] },
+  'electrician-business-manager': { skills:['apprentice-trainer','customer-follow-up','job-estimator','permit-tracker','seasonal-marketer'], cmds:['job-estimate','permit-checklist','promo-email','training-plan'] },
+  'roofing-company-operator': { skills:['crew-dispatcher','estimate-builder','lead-generator','storm-responder','warranty-manager'], cmds:['crew-dispatch','roofing-estimate','storm-response','warranty-letter'] },
+  'painting-contractor-helper': { skills:['color-consultant','commercial-proposal-writer','crew-scheduler','customer-experience','estimator'], cmds:['color-consult','crew-schedule','paint-estimate','proposal'] },
+  'landscaping-business-operator': { skills:['customer-retention','estimator','route-optimizer','seasonal-planner','social-content'], cmds:['landscape-estimate','monthly-content','route-plan','seasonal-checklist'] },
+  'shopify-store-optimizer': { skills:['collection-merchandiser','email-flow-builder','page-speed-optimizer','product-copywriter','promo-planner','store-auditor'], cmds:['audit','email-flow','product-copy','promo-calendar','seo-check','speed-fix'] },
+  'review-feedback-manager': { skills:['crisis-responder','reputation-monitor','review-responder','sentiment-analyzer','solicitation-campaigner'], cmds:['crisis-response','reputation-report','review-reply','review-request'] },
+  'inventory-pricing-optimizer': { skills:['abc-analyzer','demand-forecaster','price-optimizer','reorder-planner','seasonal-adjuster'], cmds:['abc-analysis','demand-forecast','pricing-review','reorder-plan'] },
+  'retail-store-operator': { skills:['inventory-manager','local-marketer','loss-prevention','staff-scheduler','visual-merchandiser'], cmds:['daily-ops','inventory-count','marketing-calendar','staff-schedule'] },
   'saas-growth-operator': { skills:['churn-analyzer','expansion-planner','metrics-dashboard','onboarding-optimizer','pricing-strategist'], cmds:['churn-analysis','metrics-report','onboarding-audit','pricing-review'] },
-  'dev-agency-manager': { skills:['client-reporter','lead-qualifier','process-documenter','proposal-writer','resource-allocator'], cmds:['client-update','qualify-lead','resource-plan','write-proposal'] },
-  'it-services-provider': { skills:['client-reviewer','documentation-builder','sales-enabler','security-auditor','ticket-prioritizer'], cmds:['qbr-prep','security-audit','tech-assessment','triage-ticket'] },
-  'cybersecurity-consultant': { skills:['awareness-trainer','compliance-mapper','incident-responder','report-writer','risk-assessor'], cmds:['awareness-campaign','compliance-map','incident-playbook','risk-assessment'] },
-  'data-analytics-consultant': { skills:['client-educator','dashboard-designer','data-storyteller','methodology-documenter','requirements-gatherer'], cmds:['dashboard-design','data-story','methodology','requirements-doc'] },
-  'k12-school-administrator': { skills:['discipline-tracker','enrollment-manager','grant-writer','parent-communicator','staff-evaluator'], cmds:['enrollment-campaign','grant-application','parent-newsletter','staff-eval'] },
-  'online-course-creator': { skills:['curriculum-designer','lesson-writer','marketing-launcher','platform-optimizer','student-engager'], cmds:['design-course','launch-campaign','student-outreach','write-lesson'] },
-  'tutoring-business-operator': { skills:['curriculum-adapter','marketing-generator','parent-reporter','scheduling-optimizer','student-assessor'], cmds:['assessment','marketing-plan','progress-report','schedule-optimize'] },
-  'college-admissions-counselor': { skills:['essay-coach','financial-aid-navigator','recommendation-facilitator','school-matcher','timeline-manager'], cmds:['college-list','essay-review','financial-aid','timeline'] },
-  'corporate-trainer': { skills:['elearning-developer','onboarding-architect','roi-calculator','training-designer','workshop-builder'], cmds:['design-training','measure-impact','onboarding-program','workshop-plan'] },
-  'hotel-operations-manager': { skills:['guest-communicator','marketing-planner','quality-auditor','revenue-optimizer','staff-coordinator'], cmds:['daily-ops','guest-message','marketing-campaign','rate-strategy'] },
-  'wedding-planner-assistant': { skills:['budget-tracker','client-communicator','day-of-coordinator','timeline-builder','vendor-manager'], cmds:['budget-report','day-of-sheet','vendor-compare','wedding-timeline'] },
-  'insurance-agency-operator': { skills:['claims-helper','cross-seller','marketing-generator','policy-reviewer','retention-manager'], cmds:['claims-guide','coverage-review','cross-sell','retention-campaign'] },
-  'financial-advisor-practice': { skills:['client-reviewer','compliance-documenter','market-commentator','planning-presenter','prospect-converter'], cmds:['client-review','compliance-note','market-update','prospect-campaign'] },
-  'mortgage-broker-assistant': { skills:['client-educator','pipeline-tracker','pre-qual-processor','rate-shopper','realtor-nurture'], cmds:['pipeline-status','pre-qual','rate-comparison','realtor-outreach'] },
-  'tax-prep-practice': { skills:['client-organizer','deduction-finder','extension-manager','marketing-seasonal','review-process'], cmds:['deduction-review','extension-file','seasonal-campaign','tax-checklist'] },
-  'wealth-management-advisor': { skills:['client-communicator','compliance-tracker','estate-planner','portfolio-reporter','tax-strategist'], cmds:['estate-review','portfolio-report','quarterly-letter','tax-strategy'] },
-  'warehouse-manager': { skills:['kpi-tracker','labor-planner','layout-optimizer','receiving-processor','shipping-coordinator'], cmds:['daily-plan','kpi-dashboard','labor-report','shipping-priority'] },
-  'supply-chain-manager': { skills:['cost-analyzer','demand-forecaster','logistics-optimizer','risk-monitor','vendor-evaluator'], cmds:['demand-forecast','logistics-plan','risk-assessment','vendor-scorecard'] },
-  'production-planner': { skills:['continuous-improver','maintenance-planner','quality-controller','safety-manager','schedule-optimizer'], cmds:['maintenance-plan','production-schedule','quality-report','safety-audit'] },
-  'franchise-operator': { skills:['compliance-monitor','financial-analyzer','marketing-localizer','staff-developer','unit-benchmarker'], cmds:['compliance-audit','training-plan','unit-comparison','unit-economics'] },
-  'retail-store-operator': { skills:['inventory-manager','local-marketer','loss-prevention','staff-scheduler','visual-merchandiser'], cmds:['inventory-audit','local-event','loss-report','staff-schedule'] },
-  'hospital-operations-manager': { skills:['bed-management','compliance-monitor','patient-flow-optimizer','quality-metrics','staff-scheduling'], cmds:['compliance-check','daily-census','quality-report','staff-schedule'] },
-  'social-media-manager-pro': { skills:['analytics-reporter','content-creator','content-strategist','crisis-manager','engagement-responder','hashtag-strategist','trend-spotter'], cmds:['content-calendar','engage','social-report','trending','weekly-posts'] },
-  'cowork-plugin-management': { skills:['cowork-plugin-customizer','create-cowork-plugin'], cmds:[] },
+  'dev-agency-manager': { skills:['client-reporter','lead-qualifier','process-documenter','proposal-writer','resource-planner'], cmds:['client-report','lead-qualify','project-proposal','resource-plan'] },
+  'product-launch-planner': { skills:['audience-builder','content-planner','launch-auditor','post-launch-analyzer','pricing-strategist','timeline-generator'], cmds:['content-plan','launch-audit','launch-timeline','post-launch','pricing-strategy','top-of-funnel'] },
+  'franchise-operator': { skills:['compliance-monitor','financial-analyzer','local-marketer','staff-developer','unit-benchmarker'], cmds:['compliance-audit','financial-report','local-marketing','unit-comparison'] },
+  'solo-attorney-practice': { skills:['billing-manager','case-manager','client-intake','document-drafter','marketing-helper'], cmds:['bill-client','client-intake','draft-document','marketing-email'] },
+  'family-law-assistant': { skills:['client-communicator','court-filing-prep','custody-analyzer','document-organizer','mediation-prep'], cmds:['client-update','custody-analysis','file-prep','mediation-prep'] },
+  'criminal-defense-toolkit': { skills:['case-analyzer','client-communicator','discovery-tracker','motion-drafter','sentencing-mitigator'], cmds:['case-summary','discovery-log','draft-motion','sentencing-memo'] },
+  'immigration-law-helper': { skills:['case-tracker','client-communicator','country-conditions-researcher','document-checklist','rfe-responder'], cmds:['case-status','country-brief','document-checklist','rfe-response'] },
+  'corporate-law-assistant': { skills:['board-meeting-prep','compliance-monitor','contract-reviewer','entity-formation','ma-deal-tracker'], cmds:['board-pack','compliance-check','contract-review','ma-update'] },
+  'financial-advisor-practice': { skills:['compliance-documenter','financial-planner','market-commentator','portfolio-reviewer','prospect-marketer'], cmds:['client-letter','compliance-check','market-commentary','portfolio-review'] },
+  'mortgage-broker-assistant': { skills:['client-educator','pipeline-tracker','pre-qualifier','rate-shopper','realtor-nurturer'], cmds:['pre-qual','pipeline-report','rate-comparison','realtor-email'] },
+  'tax-prep-practice': { skills:['deduction-finder','document-checklist','extension-manager','quality-reviewer','seasonal-marketer'], cmds:['document-checklist','extension-letter','quality-review','tax-promo'] },
+  'wealth-management-advisor': { skills:['client-letter-writer','compliance-tracker','estate-planner','portfolio-reporter','tax-strategist'], cmds:['client-letter','estate-review','portfolio-report','tax-strategy'] },
+  'insurance-agency-operator': { skills:['claims-guide','coverage-reviewer','cross-seller','marketer','retention-campaigner'], cmds:['claims-help','coverage-review','cross-sell-email','retention-campaign'] },
+  'k12-school-administrator': { skills:['discipline-tracker','enrollment-marketer','grant-writer','parent-communicator','staff-evaluator'], cmds:['board-report','enrollment-email','grant-proposal','parent-letter'] },
+  'online-course-creator': { skills:['course-launcher','curriculum-designer','lesson-writer','pricing-optimizer','student-engager'], cmds:['course-launch','curriculum-plan','lesson-outline','pricing-strategy'] },
+  'tutoring-business-operator': { skills:['assessment-builder','lesson-planner','parent-reporter','scheduler','tutor-marketer'], cmds:['lesson-plan','marketing-email','parent-report','schedule-optimize'] },
+  'college-admissions-counselor': { skills:['essay-coach','financial-aid-navigator','recommendation-manager','school-matcher','timeline-builder'], cmds:['essay-feedback','financial-aid-guide','school-list','timeline-check'] },
+  'corporate-trainer': { skills:['elearning-developer','needs-analyzer','onboarding-designer','roi-measurer','workshop-designer'], cmds:['needs-assessment','onboarding-plan','roi-report','workshop-outline'] },
+  'it-services-provider': { skills:['client-documenter','security-auditor','tech-assessor','ticket-triager','qbr-builder'], cmds:['client-doc','qbr-report','security-audit','tech-assessment'] },
+  'cybersecurity-consultant': { skills:['awareness-trainer','compliance-mapper','incident-responder','report-writer','risk-assessor'], cmds:['compliance-check','incident-response','risk-assessment','training-plan'] },
+  'data-analytics-consultant': { skills:['client-educator','dashboard-designer','data-storyteller','methodology-documenter','requirements-gatherer'], cmds:['dashboard-plan','data-story','methodology-doc','requirements'] },
+  'hotel-operations-manager': { skills:['guest-communicator','marketing-campaigner','quality-auditor','revenue-optimizer','staff-coordinator'], cmds:['guest-message','marketing-plan','quality-audit','revenue-report'] },
+  'wedding-planner-assistant': { skills:['budget-tracker','client-communicator','day-of-coordinator','timeline-builder','vendor-manager'], cmds:['budget-review','day-of-timeline','vendor-email','wedding-checklist'] },
+  'warehouse-manager': { skills:['kpi-tracker','labor-planner','layout-optimizer','receiving-processor','shipping-coordinator'], cmds:['kpi-report','labor-plan','layout-review','receiving-checklist'] },
+  'supply-chain-manager': { skills:['cost-analyzer','demand-forecaster','logistics-optimizer','risk-monitor','vendor-evaluator'], cmds:['cost-report','demand-forecast','risk-brief','vendor-review'] },
+  'production-planner': { skills:['lean-improver','maintenance-planner','production-scheduler','quality-controller','safety-manager'], cmds:['maintenance-plan','production-schedule','quality-check','safety-brief'] },
+  'hr-hiring-assistant': { skills:['candidate-evaluator','compensation-benchmarker','interview-coach','job-description-writer','offer-letter-drafter','onboarding-planner','pipeline-manager','recruiting-marketer','reference-checker','rejection-letter-writer','requisition-processor','screening-caller','sourcing-strategist','talent-pipeline-builder','workforce-planner'], cmds:['interview-pack','job-description','offer-letter','pipeline-report','sourcing-strategy'] },
+  'competitive-intel-monitor': { skills:['battlecard-creator','ci-brief-writer','market-trend-analyzer','pricing-intel-tracker','win-loss-analyzer'], cmds:['battlecard','ci-brief','market-trends','pricing-intel','win-loss'] },
+  'influencer-affiliate-manager': { skills:['affiliate-program-designer','campaign-tracker','contract-drafter','creator-vetter','ftc-compliance-checker'], cmds:['affiliate-program','campaign-report','contract-draft','creator-brief'] },
+  'email-marketing-autopilot': { skills:['campaign-analyzer','deliverability-fixer','newsletter-writer','sequence-builder','subject-line-optimizer'], cmds:['campaign-analysis','deliverability-check','email-sequence','newsletter-draft'] },
+  'social-media-manager-pro': { skills:['analytics-reporter','content-creator','crisis-manager','engagement-responder','trend-spotter'], cmds:['analytics-report','content-calendar','crisis-response','engagement-reply'] },
+  'seo-content-machine': { skills:['blog-writer','content-calendar-planner','content-decay-manager','keyword-researcher','on-page-optimizer','serp-analyzer'], cmds:['blog-post','content-calendar','keyword-research','on-page-audit','serp-analysis','update-content'] },
   'data': { skills:['data-context-extractor','data-exploration','data-validation','data-visualization','interactive-dashboard-builder','sql-queries','statistical-analysis'], cmds:['analyze','build-dashboard','create-viz','explore-data','validate','write-query'] },
   'bio-research': { skills:['instrument-data-to-allotrope','nextflow-development','scientific-problem-selection','scvi-tools','single-cell-rna-qc'], cmds:['start'] },
   'customer-support': { skills:['customer-research','escalation','knowledge-management','response-drafting','ticket-triage'], cmds:['draft-response','escalate','kb-article','research','triage'] },
@@ -413,80 +1116,65 @@ const DETAILS = {
   'sales': { skills:['account-research','call-prep','competitive-intelligence','create-an-asset','daily-briefing','draft-outreach'], cmds:['call-summary','forecast','pipeline-review'] }
 };
 
-// ── PLUGINS ───────────────────────────────────────────
 const PLUGINS = [
-  // Business
   {name:'small-business-autopilot',label:'Small Business Autopilot',cat:'Business',desc:'Full-stack marketing automation: social scheduling, email campaigns, lead research, competitor intel, and blog writing.',tags:['marketing','social','email','leads'],version:'1.0.0'},
   {name:'saas-growth-operator',label:'SaaS Growth Operator',cat:'Business',desc:'Drive SaaS growth with churn analysis, expansion planning, onboarding optimization, pricing strategy, and metrics dashboards.',tags:['saas','growth','churn','metrics'],version:'1.0.0'},
   {name:'dev-agency-manager',label:'Dev Agency Manager',cat:'Business',desc:'Run a software development agency: proposals, client reports, lead qualification, resource planning, and process documentation.',tags:['agency','proposals','dev'],version:'1.0.0'},
   {name:'product-launch-planner',label:'Product Launch Planner',cat:'Business',desc:'End-to-end launch toolkit: timelines, audience building, content planning, readiness audits, pricing strategy, and post-launch analysis.',tags:['launch','product','gtm'],version:'1.0.0'},
   {name:'franchise-operator',label:'Franchise Operator',cat:'Business',desc:'Manage franchise operations: compliance monitoring, financial analysis, local marketing, staff development, and unit benchmarking.',tags:['franchise','operations','compliance'],version:'1.0.0'},
-  // Legal
   {name:'solo-attorney-practice',label:'Solo Attorney Practice',cat:'Legal',desc:'Run a solo law practice: billing, case management, client intake, document drafting, and ethical marketing.',tags:['legal','attorney','billing','intake'],version:'1.0.0'},
   {name:'family-law-assistant',label:'Family Law Assistant',cat:'Legal',desc:'Family law workflows: custody analysis, mediation prep, court filings, client communication, and document organization.',tags:['family-law','custody','mediation'],version:'1.0.0'},
   {name:'criminal-defense-toolkit',label:'Criminal Defense Toolkit',cat:'Legal',desc:'Criminal defense workflows: case analysis, motion drafting, discovery tracking, client communication, and sentencing mitigation.',tags:['criminal-law','motions','discovery'],version:'1.0.0'},
   {name:'immigration-law-helper',label:'Immigration Law Helper',cat:'Legal',desc:'Immigration practice: case tracking, document checklists, RFE responses, country conditions research, and client communication.',tags:['immigration','visa','uscis'],version:'1.0.0'},
   {name:'corporate-law-assistant',label:'Corporate Law Assistant',cat:'Legal',desc:'Corporate legal work: M&A deal tracking, board meeting prep, entity formation, contract review, and compliance monitoring.',tags:['corporate','contracts','ma'],version:'1.0.0'},
-  // Healthcare
   {name:'dental-practice-autopilot',label:'Dental Practice Autopilot',cat:'Healthcare',desc:'Automate your dental practice: insurance verification, patient reactivation, review management, marketing content, and treatment presentations.',tags:['dental','insurance','patients'],version:'1.0.0'},
   {name:'mental-health-practice-helper',label:'Mental Health Practice',cat:'Healthcare',desc:'Support therapy practices: session notes, intake processing, insurance navigation, group program design, and ethical marketing.',tags:['therapy','mental-health','notes'],version:'1.0.0'},
   {name:'chiropractic-practice-builder',label:'Chiropractic Practice Builder',cat:'Healthcare',desc:'Build your chiropractic practice: care plan communication, patient reactivation, referral programs, review generation, and social content.',tags:['chiropractic','patients','marketing'],version:'1.0.0'},
   {name:'home-health-agency-operator',label:'Home Health Agency Operator',cat:'Healthcare',desc:'Manage home health operations: caregiver recruitment, scheduling, Medicare compliance, quality improvement, and family communication.',tags:['home-health','medicare','caregivers'],version:'1.0.0'},
   {name:'medical-device-sales-rep',label:'Medical Device Sales Rep',cat:'Healthcare',desc:'Equip med-device sales: surgical case prep, clinical evidence summaries, competitor tracking, surgeon relationships, and territory planning.',tags:['med-device','sales','clinical'],version:'1.0.0'},
-  {name:'hospital-operations-manager',label:'Hospital Operations Manager',cat:'Healthcare',desc:'Manage hospital operations: bed management, patient flow optimization, quality metrics, staff scheduling, and regulatory compliance.',tags:['hospital','operations','quality'],version:'1.0.0'},
   {name:'pharmacy-operations',label:'Pharmacy Operations',cat:'Healthcare',desc:'Run independent pharmacies: clinical services, inventory optimization, patient adherence programs, compliance tracking, and seasonal campaigns.',tags:['pharmacy','compliance','adherence'],version:'1.0.0'},
   {name:'veterinary-practice-manager',label:'Veterinary Practice Manager',cat:'Healthcare',desc:'Manage a vet practice: client communications, inventory tracking, wellness plan design, staff training, and social media content.',tags:['veterinary','pets','wellness'],version:'1.0.0'},
-  // Automotive
   {name:'auto-dealership-operator',label:'Auto Dealership Operator',cat:'Automotive',desc:'Run a car dealership: BDC templates, inventory analysis, lead nurture sequences, marketing campaigns, and service retention programs.',tags:['dealership','automotive','bdc'],version:'1.0.0'},
   {name:'auto-repair-shop-manager',label:'Auto Repair Shop Manager',cat:'Automotive',desc:'Manage an auto repair shop: customer communication, job estimates, marketing, review management, and technician productivity.',tags:['auto-repair','estimates','customers'],version:'1.0.0'},
   {name:'auto-detailing-business',label:'Auto Detailing Business',cat:'Automotive',desc:'Grow a detailing business: package building, fleet proposals, loyalty programs, scheduling optimization, and social content.',tags:['detailing','packages','fleet'],version:'1.0.0'},
   {name:'fleet-management-assistant',label:'Fleet Management Assistant',cat:'Automotive',desc:'Fleet operations: maintenance scheduling, driver management, compliance tracking, cost analysis, and vehicle lifecycle planning.',tags:['fleet','maintenance','compliance'],version:'1.0.0'},
   {name:'car-wash-operator',label:'Car Wash Operator',cat:'Automotive',desc:'Operate a car wash: membership management, equipment monitoring, staff scheduling, weather-triggered marketing, and local campaigns.',tags:['car-wash','membership','marketing'],version:'1.0.0'},
-  // Trades
   {name:'general-contractor-operator',label:'General Contractor',cat:'Trades',desc:'Run a GC business: bid estimating, project scheduling, change order management, client communication, and OSHA safety compliance.',tags:['construction','bids','scheduling'],version:'1.0.0'},
   {name:'electrician-business-manager',label:'Electrician Business Manager',cat:'Trades',desc:'Manage an electrical business: job estimating, permit tracking, apprentice training, customer follow-up, and seasonal marketing.',tags:['electrical','permits','estimating'],version:'1.0.0'},
   {name:'roofing-company-operator',label:'Roofing Company Operator',cat:'Trades',desc:'Operate a roofing company: crew dispatch, storm response, estimates, lead generation, and warranty management.',tags:['roofing','estimates','storm'],version:'1.0.0'},
   {name:'painting-contractor-helper',label:'Painting Contractor Helper',cat:'Trades',desc:'Manage a painting business: color consultation, commercial proposals, crew scheduling, estimates, and customer experience.',tags:['painting','proposals','crews'],version:'1.0.0'},
   {name:'landscaping-business-operator',label:'Landscaping Business Operator',cat:'Trades',desc:'Run a landscaping company: estimates, route optimization, seasonal planning, customer retention, and content creation.',tags:['landscaping','routes','seasonal'],version:'1.0.0'},
   {name:'pool-service-operator',label:'Pool Service Operator',cat:'Trades',desc:'Manage pool service routes: chemical dosing, equipment advice, route planning, seasonal maintenance, and customer reports.',tags:['pools','chemicals','routing'],version:'1.0.0'},
-  // E-commerce
   {name:'shopify-store-optimizer',label:'Shopify Store Optimizer',cat:'E-commerce',desc:'Maximize Shopify performance: store audits, page speed, product copy, collection merchandising, email flows, and seasonal promotions.',tags:['shopify','ecommerce','cro'],version:'1.0.0'},
   {name:'review-feedback-manager',label:'Review & Feedback Manager',cat:'E-commerce',desc:'Manage online reputation: respond to reviews, run solicitation campaigns, recover from crises, and analyze sentiment trends.',tags:['reviews','reputation','feedback'],version:'1.0.0'},
   {name:'inventory-pricing-optimizer',label:'Inventory & Pricing Optimizer',cat:'E-commerce',desc:'Optimize inventory and pricing: demand forecasting, reorder planning, ABC analysis, price optimization, and seasonal adjustments.',tags:['inventory','pricing','forecasting'],version:'1.0.0'},
   {name:'retail-store-operator',label:'Retail Store Operator',cat:'E-commerce',desc:'Run a retail store: visual merchandising, staff scheduling, inventory management, local marketing, and loss prevention.',tags:['retail','merchandising','inventory'],version:'1.0.0'},
-  // Marketing
   {name:'seo-content-machine',label:'SEO Content Machine',cat:'Marketing',desc:'Dominate search: keyword research, blog writing, on-page optimization, content calendars, competitor analysis, and content decay management.',tags:['seo','content','keywords'],version:'1.0.0'},
   {name:'competitive-intel-monitor',label:'Competitive Intel Monitor',cat:'Marketing',desc:'Stay ahead: battlecards, CI briefs, market trend analysis, pricing intelligence, and win/loss analysis.',tags:['competitive','battlecards','intel'],version:'1.0.0'},
   {name:'influencer-affiliate-manager',label:'Influencer & Affiliate Manager',cat:'Marketing',desc:'Manage influencer programs: vetting creators, drafting contracts, affiliate program design, FTC compliance, and campaign tracking.',tags:['influencer','affiliate','compliance'],version:'1.0.0'},
   {name:'email-marketing-autopilot',label:'Email Marketing Autopilot',cat:'Marketing',desc:'Email marketing engine: sequence building, newsletter writing, subject line optimization, deliverability fixes, and campaign analysis.',tags:['email','newsletters','automation'],version:'1.0.0'},
   {name:'social-media-manager-pro',label:'Social Media Manager Pro',cat:'Marketing',desc:'Full social media management: content creation, trend spotting, engagement responses, crisis management, and analytics.',tags:['social-media','content','analytics'],version:'1.0.0'},
-  // Finance
   {name:'financial-advisor-practice',label:'Financial Advisor Practice',cat:'Finance',desc:'Run an advisory practice: portfolio reviews, market commentary, compliance docs, financial plan presentations, and prospect campaigns.',tags:['financial-advisor','portfolio','compliance'],version:'1.0.0'},
   {name:'mortgage-broker-assistant',label:'Mortgage Broker Assistant',cat:'Finance',desc:'Streamline mortgage brokering: pre-qualification, rate shopping, pipeline tracking, realtor nurture, and client education.',tags:['mortgage','rates','lending'],version:'1.0.0'},
   {name:'tax-prep-practice',label:'Tax Prep Practice',cat:'Finance',desc:'Run a tax prep business: document checklists, deduction finding, extension management, quality review, and seasonal marketing.',tags:['tax','deductions','compliance'],version:'1.0.0'},
   {name:'wealth-management-advisor',label:'Wealth Management Advisor',cat:'Finance',desc:'Deliver wealth management: portfolio reporting, tax strategies, estate planning, compliance tracking, and quarterly client letters.',tags:['wealth','estate','portfolio'],version:'1.0.0'},
   {name:'insurance-agency-operator',label:'Insurance Agency Operator',cat:'Finance',desc:'Grow an insurance agency: coverage reviews, cross-selling, retention campaigns, claims guidance, and marketing materials.',tags:['insurance','retention','cross-sell'],version:'1.0.0'},
-  // Education
   {name:'k12-school-administrator',label:'K-12 School Administrator',cat:'Education',desc:'Administer K-12 schools: parent communications, grant applications, enrollment campaigns, staff evaluations, and discipline tracking.',tags:['k12','schools','admin'],version:'1.0.0'},
   {name:'online-course-creator',label:'Online Course Creator',cat:'Education',desc:'Build and sell online courses: curriculum design, lesson writing, launch campaigns, student engagement, and pricing optimization.',tags:['courses','elearning','curriculum'],version:'1.0.0'},
   {name:'tutoring-business-operator',label:'Tutoring Business Operator',cat:'Education',desc:'Run a tutoring business: student assessments, differentiated lesson planning, parent progress reports, scheduling, and marketing.',tags:['tutoring','education','parents'],version:'1.0.0'},
   {name:'college-admissions-counselor',label:'College Admissions Counselor',cat:'Education',desc:'Guide college applicants: essay coaching, school matching, financial aid navigation, recommendation management, and timelines.',tags:['college','admissions','essays'],version:'1.0.0'},
   {name:'corporate-trainer',label:'Corporate Trainer',cat:'Education',desc:'Design and deliver corporate training: workshop design, e-learning development, onboarding programs, and ROI measurement.',tags:['training','corporate','learning'],version:'1.0.0'},
-  // Technology
   {name:'it-services-provider',label:'IT Services Provider (MSP)',cat:'Technology',desc:'Run a managed services business: QBRs, security audits, technology assessments, ticket triage, and client documentation.',tags:['msp','it','security'],version:'1.0.0'},
   {name:'cybersecurity-consultant',label:'Cybersecurity Consultant',cat:'Technology',desc:'Deliver cybersecurity services: risk assessments, compliance mapping, incident response playbooks, awareness training, and reports.',tags:['security','compliance','risk'],version:'1.0.0'},
   {name:'data-analytics-consultant',label:'Data Analytics Consultant',cat:'Technology',desc:'Deliver analytics consulting: dashboard design, data storytelling, methodology documentation, requirements gathering, and client education.',tags:['analytics','dashboards','data'],version:'1.0.0'},
-  // Hospitality
   {name:'hotel-operations-manager',label:'Hotel Operations Manager',cat:'Hospitality',desc:'Manage hotel operations: revenue optimization, guest communications, marketing campaigns, quality audits, and staff coordination.',tags:['hotel','hospitality','revenue'],version:'1.0.0'},
   {name:'wedding-planner-assistant',label:'Wedding Planner Assistant',cat:'Hospitality',desc:'Plan perfect weddings: day-of coordination, vendor management, budget tracking, timeline building, and client communication.',tags:['wedding','events','planning'],version:'1.0.0'},
-  // Operations
   {name:'warehouse-manager',label:'Warehouse Manager',cat:'Operations',desc:'Optimize warehouse operations: KPI tracking, labor planning, layout optimization, receiving processes, and shipping coordination.',tags:['warehouse','logistics','kpi'],version:'1.0.0'},
   {name:'supply-chain-manager',label:'Supply Chain Manager',cat:'Operations',desc:'Manage supply chains: demand forecasting, vendor evaluation, logistics optimization, risk monitoring, and cost analysis.',tags:['supply-chain','procurement','logistics'],version:'1.0.0'},
   {name:'production-planner',label:'Production Planner',cat:'Operations',desc:'Optimize production: scheduling, quality control, maintenance planning, lean/continuous improvement, and safety management.',tags:['manufacturing','production','lean'],version:'1.0.0'},
-  // Knowledge Work
-  {name:'cowork-plugin-management',label:'Cowork Plugin Management',cat:'Knowledge Work',desc:'Create, customize, and manage Cowork plugins. Build new plugins from scratch or tailor existing ones to your organization.',tags:['plugins','cowork','customization'],version:'0.2.2'},
-  {name:'data',label:'Data Analysis Suite',cat:'Knowledge Work',desc:'Full-stack data analysis: SQL queries, statistical analysis, visualizations, interactive dashboards, data exploration, and validation.',tags:['data','sql','visualization','analytics'],version:'1.0.0'},
-  {name:'bio-research',label:'Bio Research Suite',cat:'Knowledge Work',desc:'Bioinformatics workflows: nf-core pipelines, single-cell RNA-seq QC, scVI deep learning, Allotrope data conversion, and research problem selection.',tags:['bioinformatics','single-cell','nextflow'],version:'1.0.0'},
+  {name:'hr-hiring-assistant',label:'HR Hiring Assistant',cat:'Knowledge Work',desc:'End-to-end hiring: job descriptions, sourcing, screening, interview prep, offers, onboarding planning, and workforce planning.',tags:['hr','hiring','recruiting'],version:'1.0.0'},
+  {name:'data',label:'Data Analysis Suite',cat:'Knowledge Work',desc:'Full-stack data analysis: SQL queries, statistical analysis, visualizations, interactive dashboards, data exploration, and validation.',tags:['data','sql','visualization'],version:'1.0.0'},
+  {name:'bio-research',label:'Bio Research Suite',cat:'Knowledge Work',desc:'Bioinformatics workflows: nf-core pipelines, single-cell RNA-seq QC, scVI deep learning, and research problem selection.',tags:['bioinformatics','single-cell','nextflow'],version:'1.0.0'},
   {name:'customer-support',label:'Customer Support Suite',cat:'Knowledge Work',desc:'Full customer support workflow: ticket triage, response drafting, knowledge base management, escalation packaging, and customer research.',tags:['support','tickets','kb'],version:'1.1.0'},
   {name:'enterprise-search',label:'Enterprise Search',cat:'Knowledge Work',desc:'Search across all connected sources simultaneously with multi-source orchestration, knowledge synthesis, and source management.',tags:['search','knowledge','enterprise'],version:'1.1.0'},
   {name:'engineering',label:'Engineering Suite',cat:'Knowledge Work',desc:'Engineering workflows: code review, system design, incident response, tech debt analysis, documentation, and testing strategy.',tags:['engineering','code','devops'],version:'1.1.0'},
@@ -498,10 +1186,10 @@ const PLUGINS = [
   {name:'operations',label:'Operations Suite',cat:'Knowledge Work',desc:'Operations workflows: process documentation, change management, vendor reviews, risk assessment, capacity planning, and compliance tracking.',tags:['operations','process','risk'],version:'1.1.0'},
   {name:'product-management',label:'Product Management Suite',cat:'Knowledge Work',desc:'PM workflows: feature specs, roadmap management, user research synthesis, metrics tracking, stakeholder updates, and sprint planning.',tags:['product','roadmap','sprint'],version:'1.1.0'},
   {name:'productivity',label:'Productivity Suite',cat:'Knowledge Work',desc:'Personal productivity: memory management for your work context, task management, and workspace initialization.',tags:['productivity','tasks','memory'],version:'1.1.0'},
-  {name:'sales',label:'Sales Suite',cat:'Knowledge Work',desc:'Sales workflows: account research, call prep, competitive intelligence, personalized outreach, daily briefings, and pipeline review.',tags:['sales','crm','outreach'],version:'1.1.0'}
+  {name:'sales',label:'Sales Suite',cat:'Knowledge Work',desc:'Sales workflows: account research, call prep, competitive intelligence, personalized outreach, daily briefings, and pipeline review.',tags:['sales','crm','outreach'],version:'1.1.0'},
+  {name:'customer-support-autopilot',label:'Customer Support Autopilot',cat:'Business',desc:'End-to-end customer support automation: triage tickets, draft responses, write knowledge base articles, and monitor satisfaction.',tags:['support','tickets','automation'],version:'1.0.0'}
 ];
 
-// ── CATEGORY CONFIG ───────────────────────────────────
 const CATS = {
   'Business':      { icon:'💼' },
   'Legal':         { icon:'⚖️' },
@@ -518,57 +1206,50 @@ const CATS = {
   'Knowledge Work':{ icon:'🧠' }
 };
 
+// ── HELPERS ───────────────────────────────────────────
+function toTitle(s){ return s.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); }
+
 // ── STATS ─────────────────────────────────────────────
-function buildStats() {
-  let s=0, c=0;
-  Object.values(DETAILS).forEach(d=>{ s+=d.skills.length; c+=d.cmds.length; });
-  document.getElementById('statPlugins').textContent = PLUGINS.length;
-  document.getElementById('statSkills').textContent = s+'+';
-  document.getElementById('statCmds').textContent = c+'+';
+function buildStats(){
+  let s=0,c=0;
+  Object.values(DETAILS).forEach(d=>{s+=d.skills.length;c+=d.cmds.length;});
+  document.getElementById('statSkills').textContent=s+'+';
+  document.getElementById('statCmds').textContent=c+'+';
 }
 
 // ── CHIPS ─────────────────────────────────────────────
-function buildChips() {
-  const cats = [...new Set(PLUGINS.map(p=>p.cat))];
-  const wrap = document.getElementById('chips');
-  const all = document.createElement('button');
-  all.className='chip active'; all.textContent='All'; all.dataset.cat='';
-  all.onclick=()=>{ setActive(all); filter(); };
-  wrap.appendChild(all);
-  cats.forEach(c=>{
+function buildChips(){
+  const wrap=document.getElementById('chips');
+  const allBtn=document.createElement('button');
+  allBtn.className='chip active'; allBtn.textContent='All';
+  allBtn.onclick=()=>{ document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active')); allBtn.classList.add('active'); currentCat=null; filter(); };
+  wrap.appendChild(allBtn);
+  Object.entries(CATS).forEach(([cat,cfg])=>{
     const btn=document.createElement('button');
-    btn.className='chip'; btn.textContent=(CATS[c]?.icon||'')+'  '+c; btn.dataset.cat=c;
-    btn.onclick=()=>{ setActive(btn); filter(); };
+    btn.className='chip';
+    btn.textContent=cfg.icon+' '+cat;
+    btn.onclick=()=>{ document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active')); btn.classList.add('active'); currentCat=cat; filter(); };
     wrap.appendChild(btn);
   });
 }
-function setActive(el) {
-  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-}
 
 // ── BUILD CATALOG ─────────────────────────────────────
-function buildCatalog() {
-  const cats=[...new Set(PLUGINS.map(p=>p.cat))];
+function buildCatalog(){
   const catalog=document.getElementById('catalog');
-  cats.forEach(cat=>{
-    const cfg=CATS[cat]||{icon:'📦'};
-    const key=cat.replace(/\s+/g,'-');
+  catalog.innerHTML='';
+  Object.entries(CATS).forEach(([cat,cfg])=>{
     const sec=document.createElement('div');
     sec.className='cat-section'; sec.dataset.cat=cat;
-    sec.innerHTML=`<div class="cat-header">
-      <span class="cat-icon">${cfg.icon}</span>
-      <span class="cat-name">${cat}</span>
-      <span class="cat-count" id="cnt-${key}">${PLUGINS.filter(p=>p.cat===cat).length}</span>
-    </div><div class="cards" id="cards-${key}"></div>`;
+    const pCount=PLUGINS.filter(p=>p.cat===cat).length;
+    sec.innerHTML=`<div class="cat-header"><span class="cat-icon">${cfg.icon}</span><span class="cat-name">${cat}</span><span class="cat-count" id="cnt-${cat.replace(/\s+/g,'-')}">${pCount}</span></div><div class="cards" id="cards-${cat.replace(/\s+/g,'-')}"></div>`;
     catalog.appendChild(sec);
   });
   PLUGINS.forEach(p=>{
     const d=DETAILS[p.name]||{skills:[],cmds:[]};
-    const key=p.cat.replace(/\s+/g,'-');
+    const cardsEl=document.getElementById('cards-'+p.cat.replace(/\s+/g,'-'));
+    if(!cardsEl) return;
     const card=document.createElement('div');
-    card.className='card';
-    card.dataset.cat=p.cat;
+    card.className='card'; card.dataset.name=p.name; card.dataset.cat=p.cat;
     card.dataset.search=(p.label+' '+p.desc+' '+p.tags.join(' ')).toLowerCase();
     card.innerHTML=`
       <div class="card-top">
@@ -578,25 +1259,24 @@ function buildCatalog() {
       <p class="card-desc">${p.desc}</p>
       <div class="card-tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
       <div class="card-meta">
-        <span class="meta-item">🧠 ${d.skills.length} skills</span>
-        <span class="meta-dot"></span>
-        <span class="meta-item">⚡ ${d.cmds.length} commands</span>
+        <span class="meta-item">🧠 ${d.skills.length} skill${d.skills.length!==1?'s':''}</span>
+        <span class="meta-item">⚡ ${d.cmds.length} command${d.cmds.length!==1?'s':''}</span>
       </div>
-      <button class="card-btn" onclick="event.stopPropagation();copyInstall('${p.name}',this)">Copy Install Command</button>`;
-    card.onclick=()=>openModal(p.name);
-    document.getElementById('cards-'+key).appendChild(card);
+      <button class="card-btn" onclick="openModal('${p.name}')">View & Install →</button>`;
+    cardsEl.appendChild(card);
   });
 }
 
 // ── FILTER ────────────────────────────────────────────
-function filter() {
+let currentCat=null;
+function filter(){
   const q=document.getElementById('search').value.toLowerCase().trim();
-  const activeCat=(document.querySelector('.chip.active')||{}).dataset?.cat||'';
   const catCounts={};
-  document.querySelectorAll('.card').forEach(c=>{
-    const show=(!q||c.dataset.search.includes(q))&&(!activeCat||c.dataset.cat===activeCat);
-    c.style.display=show?'':'none';
-    if(show) catCounts[c.dataset.cat]=(catCounts[c.dataset.cat]||0)+1;
+  document.querySelectorAll('.card').forEach(card=>{
+    const matchQ=!q||card.dataset.search.includes(q);
+    const matchC=!currentCat||card.dataset.cat===currentCat;
+    card.style.display=(matchQ&&matchC)?'':'none';
+    if(matchQ&&matchC) catCounts[card.dataset.cat]=(catCounts[card.dataset.cat]||0)+1;
   });
   let total=0;
   document.querySelectorAll('.cat-section').forEach(s=>{
@@ -611,57 +1291,124 @@ function filter() {
 }
 
 // ── MODAL ─────────────────────────────────────────────
-function openModal(name) {
+function openModal(name){
   const p=PLUGINS.find(x=>x.name===name); if(!p) return;
   const d=DETAILS[name]||{skills:[],cmds:[]};
   const cfg=CATS[p.cat]||{icon:'📦'};
-  const cmd=`/plugin install aimersion/aimersion-marketplace/${name}`;
+  const baseUrl=`https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/${name}`;
+  const installUrl=`curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash ${name}`;
+
   document.getElementById('modalContent').innerHTML=`
-    <div class="modal-badge">${cfg.icon} ${p.cat}</div>
+    <div class="modal-cat-badge">${cfg.icon} ${p.cat}</div>
     <h2>${p.label}</h2>
     <p class="modal-desc">${p.desc}</p>
     <div class="modal-tags">${p.tags.map(t=>`<span class="modal-tag">${t}</span>`).join('')}</div>
-    <div class="modal-section">
-      <h3>🧠 Skills (${d.skills.length})</h3>
-      <div class="skill-list">${d.skills.length
-        ? d.skills.map(s=>`<div class="skill-pill"><span class="dot"></span>${toTitle(s)}</div>`).join('')
-        : '<span style="color:var(--muted);font-size:13px">No named skills</span>'}</div>
-    </div>
+
+    ${d.skills.length?`<div class="modal-section">
+      <div class="modal-section-title">Skills (${d.skills.length})</div>
+      <div class="skill-list">${d.skills.map(s=>`<div class="skill-pill"><span class="skill-pip"></span>${toTitle(s)}</div>`).join('')}</div>
+    </div>`:''}
+
     ${d.cmds.length?`<div class="modal-section">
-      <h3>⚡ Slash Commands (${d.cmds.length})</h3>
+      <div class="modal-section-title">Slash Commands (${d.cmds.length})</div>
       <div class="cmd-list">${d.cmds.map(c=>`<span class="cmd-pill">/${c}</span>`).join('')}</div>
     </div>`:''}
+
     <div class="modal-install">
-      <h3>Install This Plugin</h3>
-      <div class="install-row">
-        <code>${cmd}</code>
-        <button onclick="copyText('${cmd}',this)">Copy</button>
+      <div class="modal-install-title">Install This Plugin</div>
+      <div class="modal-ptabs">
+        <button class="modal-ptab active" onclick="modalPTab('claudeai',this,'${name}')">🌐 Claude.ai</button>
+        <button class="modal-ptab" onclick="modalPTab('claudecode',this,'${name}')">⚡ Claude Code</button>
+        <button class="modal-ptab" onclick="modalPTab('api',this,'${name}')">🔌 API</button>
       </div>
-    </div>
-    <p class="modal-also">Or add the full marketplace: <code>/plugin marketplace add aimersion/aimersion-marketplace</code></p>`;
+
+      <div class="modal-ppanel active" id="mpp-claudeai-${name}">
+        <div class="modal-install-row">
+          <code>Copy skill content → paste into Claude.ai Project Instructions</code>
+          <button onclick="copySkillForClaudeAI('${name}',this)">Copy Skill</button>
+        </div>
+        <p class="modal-install-note">Go to <a href="https://claude.ai" target="_blank">claude.ai</a> → open a Project → Edit Instructions → paste. Active for every chat in that project. No CLI needed.</p>
+      </div>
+
+      <div class="modal-ppanel" id="mpp-claudecode-${name}">
+        <div class="modal-install-row">
+          <code>${installUrl}</code>
+          <button onclick="copyText('${installUrl}',this)">Copy</button>
+        </div>
+        <p class="modal-install-note">Run in your project directory. Downloads all ${d.skills.length} skills into <code>CLAUDE.md</code> and ${d.cmds.length} commands into <code>~/.claude/commands/</code>.</p>
+      </div>
+
+      <div class="modal-ppanel" id="mpp-api-${name}">
+        <div class="modal-install-row">
+          <code>${baseUrl}/skills/</code>
+          <button onclick="copyText('${baseUrl}/skills/',this)">Copy URL</button>
+        </div>
+        <p class="modal-install-note">Fetch any <code>SKILL.md</code> from this path and inject into your system prompt. Plain markdown, no dependencies. See <a href="https://github.com/aimersion/aimersion-marketplace" target="_blank">README</a> for Python/JS examples.</p>
+      </div>
+    </div>`;
+
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
+
 function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
 function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModalDirect(); });
 
+function modalPTab(id,btn,name){
+  ['claudeai','claudecode','api'].forEach(t=>{
+    const el=document.getElementById('mpp-'+t+'-'+name);
+    if(el) el.classList.toggle('active',t===id);
+  });
+  btn.closest('.modal-ptabs').querySelectorAll('.modal-ptab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+async function copySkillForClaudeAI(name,btn){
+  const d=DETAILS[name]||{skills:[]};
+  const orig=btn.textContent;
+  if(!d.skills.length){ copyText('https://github.com/aimersion/aimersion-marketplace/tree/main/plugins/'+name,btn); return; }
+  btn.textContent='Fetching…';
+  try{
+    const texts=await Promise.all(d.skills.map(async skill=>{
+      const url=`https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/${name}/skills/${skill}/SKILL.md`;
+      const r=await fetch(url); return r.ok?await r.text():'';
+    }));
+    const combined=texts.filter(Boolean).join('\n\n---\n\n');
+    await navigator.clipboard.writeText(combined);
+    btn.textContent='✓ Copied!';
+    const t=document.getElementById('toast'); t.textContent='✓ All skill content copied — paste into Claude.ai Project Instructions'; t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'),3000);
+    setTimeout(()=>btn.textContent=orig,2000);
+  }catch(e){
+    copyText('https://github.com/aimersion/aimersion-marketplace/tree/main/plugins/'+name,btn);
+  }
+}
+
+// ── TAB SWITCHERS ─────────────────────────────────────
+function heroTab(id,btn){
+  document.querySelectorAll('.platform-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('hero-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+function gsTab(id){
+  ['claudeai','claudecode','api'].forEach(t=>{
+    document.getElementById('gs-'+t).classList.toggle('active',t===id);
+    document.getElementById('gs-tab-'+t).classList.toggle('active',t===id);
+  });
+}
+
 // ── COPY ─────────────────────────────────────────────
-function copyInstall(name,btn){ copyText(`/plugin install aimersion/aimersion-marketplace/${name}`,btn); }
 function copyText(text,btn){
   navigator.clipboard.writeText(text).catch(()=>{
     const ta=document.createElement('textarea'); ta.value=text;
     document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
   });
   const orig=btn?.textContent||'';
-  if(btn) btn.textContent='✓ Copied!';
+  if(btn){ btn.textContent='✓ Copied!'; setTimeout(()=>btn.textContent=orig,2000); }
   const t=document.getElementById('toast'); t.textContent='✓ Copied to clipboard';
   t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500);
-  setTimeout(()=>{ if(btn) btn.textContent=orig; },2000);
 }
 
-// ── INIT ─────────────────────────────────────────────
-buildStats(); buildChips(); buildCatalog(); filter();
-</script>
-</body>
-</html>
+// ── INIT ────────
