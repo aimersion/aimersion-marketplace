@@ -1273,7 +1273,8 @@ function buildCatalog(){
 // -- FILTER --------------------------------------------
 let currentCat=null;
 function filter(){
-  const q=document.getElementById('search').value.toLowerCase().trim();
+  const searchEl=document.getElementById('search');
+  const q=searchEl?searchEl.value.toLowerCase().trim():'';
   const catCounts={};
   document.querySelectorAll('.card').forEach(card=>{
     const matchQ=!q||card.dataset.search.includes(q);
@@ -1415,7 +1416,7 @@ function copyText(text,btn){
 }
 
 // -- INIT ---------------------------------------------
-buildStats(); buildChips(); buildCatalog(); filter();
+document.addEventListener('DOMContentLoaded',function(){buildStats();buildChips();buildCatalog();filter();});
 </script>
 </body>
 </html>
