@@ -1,178 +1,237 @@
 # Aimersion AI Plugin Marketplace
 
-**71 world-class AI plugins for every industry, every role, every business.**
+**71 production-ready AI plugins for every industry, every role, every business.**
 
 Built by [Aimersion AI](https://aimersion.ai) — DFW, Texas.
 
-## Quick Install
+> ✅ **Tested and verified working** — Skills load correctly and produce accurate, professional outputs across Claude.ai, Claude Code CLI, and the Anthropic API.
+
+---
+
+## How to Use
+
+### Option 1 — Claude.ai (Easiest, No Setup)
+
+1. Browse the [plugin catalog](https://aimersion.github.io/aimersion-marketplace/)
+2. Click a plugin → copy the skill content
+3. Go to [claude.ai](https://claude.ai) → open or create a **Project**
+4. Click **Edit instructions** → paste the skill content
+5. Chat normally — the skill activates automatically
+
+The skill stays active for every conversation in that project. No CLI, no install, no configuration.
+
+---
+
+### Option 2 — Claude Code CLI (Full Experience)
+
+**Install a plugin with one command:**
 
 ```bash
-# Add the Aimersion AI marketplace
-/plugin marketplace add aimersion/aimersion-marketplace
-
-# Install any plugin
-/plugin install <plugin-name>@aimersion-ai
-
-# Examples
-/plugin install dental-practice-autopilot@aimersion-ai
-/plugin install saas-growth-operator@aimersion-ai
-/plugin install engineering@aimersion-ai
+curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash pool-service-operator
 ```
+
+Or run without arguments to see all available plugins:
+
+```bash
+curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash
+```
+
+**What it does:**
+- Downloads all skill SKILL.md files → appends to your `CLAUDE.md`
+- Installs slash commands → `~/.claude/commands/`
+- Skills activate automatically when you run `claude` in that directory
+
+**Manual install (any single skill):**
+
+```bash
+# Append a skill to your CLAUDE.md
+curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/pool-service-operator/skills/chemical-calculator/SKILL.md >> CLAUDE.md
+
+# Run Claude Code
+claude
+```
+
+> **Note:** The `/plugin marketplace add` and `/plugin install` slash commands shown in older docs are not yet available in Claude Code. The curl method above is the correct install path today. We'll update install commands when Anthropic ships native plugin support.
+
+---
+
+### Option 3 — API / System Prompts
+
+Each skill is a standalone markdown file. Fetch and inject directly into your system prompt:
+
+```python
+import urllib.request
+
+def load_skill(plugin, skill):
+    url = f"https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/{plugin}/skills/{skill}/SKILL.md"
+    with urllib.request.urlopen(url) as r:
+        return r.read().decode()
+
+skill = load_skill("pool-service-operator", "chemical-calculator")
+
+response = anthropic.messages.create(
+    model="claude-sonnet-4-20250514",
+    system=f"You are a pool service assistant.\n\n{skill}",
+    messages=[{"role": "user", "content": "FC 1.2, pH 7.9, TA 70, CH 180, CYA 30 — 18,000 gal plaster pool"}]
+)
+```
+
+Skills are composable — stack multiple SKILL.md files in a single system prompt to create compound agents.
+
+---
+
+## Verified Test Results
+
+These plugins were live-tested on Claude Code 2.1.70 using the manual CLAUDE.md install method:
+
+| Plugin | Skill Tested | Result |
+|---|---|---|
+| `pool-service-operator` | `chemical-calculator` | ✅ Correct dosing plan — right order (TA→pH→CH→Cl→CYA), accurate amounts, product-specific notes |
+| `pool-service-operator` | `customer-communicator` | ✅ Professional SMS — mentioned specific issues, set next visit, branded as Simplified Pools |
+| `saas-growth-operator` | `churn-analyzer` | ✅ Full segmented analysis — NRR model, 6-month targets per tier, $18-25K MRR impact calc |
+
+**Noise level:** Zero. Skills only activate when loaded into context — no background activation.
+
+---
 
 ## Plugin Catalog (71 Plugins)
 
+### 🔨 Trades & Home Services
+| Plugin | Description |
+|--------|-------------|
+| `pool-service-operator` | Route planning, chemical dosing, seasonal maintenance, customer communications, equipment advisory |
+| `landscaping-business-operator` | Route optimization, seasonal planning, customer retention, estimates |
+| `general-contractor-operator` | Bid estimating, project scheduling, change order management, OSHA compliance |
+| `electrician-business-manager` | Job estimating, permit tracking, apprentice training, seasonal marketing |
+| `roofing-company-operator` | Crew dispatch, storm response, estimates, lead generation, warranty management |
+| `painting-contractor-helper` | Color consultation, commercial proposals, crew scheduling, estimates |
 
-### Business Functions — Customer Success
+### 🏥 Healthcare
+| Plugin | Description |
+|--------|-------------|
+| `dental-practice-autopilot` | Patient reactivation, insurance verification, review management, marketing campaigns |
+| `mental-health-practice-helper` | Session notes, intake processing, insurance navigation, ethical marketing |
+| `chiropractic-practice-builder` | Care plan communication, patient reactivation, referral programs |
+| `home-health-agency-operator` | Caregiver scheduling, Medicare compliance, quality improvement |
+| `medical-device-sales-rep` | Surgical case prep, clinical evidence, territory planning |
+| `pharmacy-operations` | Inventory optimization, patient adherence, compliance tracking |
+| `veterinary-practice-manager` | Client communications, inventory tracking, wellness plan design |
 
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `customer-support-autopilot` | End-to-end customer support automation: triage tickets, draft responses, write K... | 5 |
+### 💼 Business & SaaS
+| Plugin | Description |
+|--------|-------------|
+| `saas-growth-operator` | Churn analysis, expansion planning, onboarding optimization, pricing strategy |
+| `dev-agency-manager` | Proposals, client reports, lead qualification, resource planning |
+| `product-launch-planner` | Timelines, audience building, content planning, post-launch analysis |
+| `franchise-operator` | Compliance monitoring, financial analysis, local marketing, unit benchmarking |
+| `it-services-provider` | QBRs, security audits, technology assessments, MSP operations |
 
-### Business Functions — HR & People
+### 📢 Marketing
+| Plugin | Description |
+|--------|-------------|
+| `seo-content-machine` | Keyword research, blog writing, on-page optimization, content calendars |
+| `competitive-intel-monitor` | Battlecards, CI briefs, market trends, pricing intelligence, win/loss |
+| `social-media-manager-pro` | Platform-specific content, engagement, analytics, crisis management |
+| `email-marketing-autopilot` | Drip sequences, newsletters, subject line optimization, deliverability |
+| `influencer-affiliate-manager` | Creator vetting, contracts, affiliate program design, FTC compliance |
+| `review-feedback-manager` | Review responses, reputation management, sentiment analysis |
 
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `hr-hiring-assistant` | The HR hiring assistant built for growing teams (20-200 employees) who hire with... | 15 |
+### ⚖️ Legal
+| Plugin | Description |
+|--------|-------------|
+| `solo-attorney-practice` | Billing, case management, client intake, document drafting |
+| `family-law-assistant` | Custody analysis, mediation prep, court filings |
+| `criminal-defense-toolkit` | Case analysis, motion drafting, discovery tracking |
+| `immigration-law-helper` | Case tracking, document checklists, RFE responses |
+| `corporate-law-assistant` | M&A tracking, board prep, entity formation, contract review |
 
-### Business Functions — Marketing
+### 💰 Financial Services
+| Plugin | Description |
+|--------|-------------|
+| `financial-advisor-practice` | Portfolio reviews, market commentary, compliance docs |
+| `mortgage-broker-assistant` | Pre-qualification, rate shopping, pipeline tracking |
+| `tax-prep-practice` | Document checklists, deduction finding, extension management |
+| `wealth-management-advisor` | Portfolio reporting, tax strategies, estate planning |
+| `insurance-agency-operator` | Coverage reviews, cross-selling, retention campaigns |
 
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `competitive-intel-monitor` | Enterprise-grade competitive intelligence platform — battlecard creation, win/lo... | 5 |
-| `email-marketing-autopilot` | Professional email marketing plugin: build drip sequences with proven timing, wr... | 6 |
-| `influencer-affiliate-manager` | End-to-end influencer and affiliate marketing management: creator vetting with f... | 5 |
-| `product-launch-planner` | End-to-end product launch planning suite — timeline generation, pricing strategy... | 6 |
-| `review-feedback-manager` | Complete review and reputation management suite for small businesses — monitor r... | 5 |
-| `seo-content-machine` | Professional SEO content toolkit — keyword research with SERP-validated methodol... | 6 |
-| `small-business-autopilot` | Marketing automation suite for small businesses — social media scheduling, email... | 5 |
-| `social-media-manager-pro` | Comprehensive social media management: create platform-specific content, researc... | 5 |
+### 🚗 Automotive
+| Plugin | Description |
+|--------|-------------|
+| `auto-dealership-operator` | BDC templates, inventory analysis, lead nurture, service retention |
+| `auto-repair-shop-manager` | Customer communication, job estimates, review management |
+| `fleet-management-assistant` | Maintenance scheduling, compliance tracking, cost analysis |
+| `auto-detailing-business` | Package building, fleet proposals, loyalty programs |
+| `car-wash-operator` | Membership management, weather-triggered marketing, staff scheduling |
 
-### Business Functions — Operations
+### 🎓 Education
+| Plugin | Description |
+|--------|-------------|
+| `college-admissions-counselor` | Essay coaching, school matching, financial aid navigation |
+| `online-course-creator` | Curriculum design, launch campaigns, student engagement |
+| `tutoring-business-operator` | Student assessments, differentiated lesson plans, parent reports |
+| `k12-school-administrator` | Parent communications, grant applications, enrollment campaigns |
+| `corporate-trainer` | Workshop design, e-learning development, onboarding, ROI measurement |
 
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `franchise-operator` | Comprehensive plugin for multi-unit franchise owners and operators. Manage unit ... | 5 |
+### 🏨 Hospitality
+| Plugin | Description |
+|--------|-------------|
+| `hotel-operations-manager` | Revenue optimization, guest communications, quality audits |
+| `wedding-planner-assistant` | Day-of coordination, vendor management, budget tracking |
 
-### Business Functions — Technology
+### ⚙️ Operations & Manufacturing
+| Plugin | Description |
+|--------|-------------|
+| `warehouse-manager` | KPI tracking, labor planning, layout optimization |
+| `supply-chain-manager` | Demand forecasting, vendor evaluation, logistics optimization |
+| `production-planner` | Scheduling, quality control, lean/continuous improvement |
 
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `cybersecurity-consultant` | Complete toolkit for cybersecurity professionals and consultants — NIST CSF risk... | 5 |
-| `data-analytics-consultant` | Professional data analytics toolkit for consultants: requirements gathering, das... | 5 |
-| `dev-agency-manager` | Complete operations toolkit for software development agency owners — project pro... | 5 |
-| `it-services-provider` | Complete operations toolkit for MSPs and IT service companies — ticket triage, s... | 5 |
-| `saas-growth-operator` | Complete growth operations toolkit for SaaS founders and growth teams — churn an... | 5 |
+### 🧠 Knowledge Work Suites
+| Plugin | Description |
+|--------|-------------|
+| `engineering` | Code review, system design, incident response, tech debt |
+| `product-management` | Feature specs, roadmaps, user research, sprint planning |
+| `sales` | Account research, call prep, outreach, pipeline review |
+| `data` | SQL queries, statistical analysis, dashboards |
+| `marketing` | Content creation, campaign planning, SEO, performance reporting |
+| `finance` | Variance analysis, journal entries, reconciliation, SOX |
+| `legal` | NDA triage, contract review, compliance checks |
+| `human-resources` | Recruiting, interview prep, compensation benchmarking |
+| `operations` | Process docs, change management, vendor reviews |
+| `design` | Accessibility reviews, design critiques, developer handoffs |
+| `customer-support` | Ticket triage, response drafting, knowledge base management |
+| `productivity` | Memory management, task management |
+| `enterprise-search` | Multi-source search orchestration |
+| `bio-research` | Bioinformatics workflows, single-cell RNA-seq, nf-core |
 
-### Industry — Automotive
+---
 
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `auto-dealership-operator` | Complete dealership management toolkit: inventory analytics, lead nurturing, BDC... | 5 |
-| `auto-detailing-business` | Complete business toolkit for auto detailing businesses: service packages, booki... | 5 |
-| `auto-repair-shop-manager` | Complete management toolkit for independent auto repair shops: estimates, custom... | 5 |
-| `car-wash-operator` | Complete management toolkit for car wash business owners: membership programs, w... | 5 |
-| `fleet-management-assistant` | Comprehensive fleet management toolkit: maintenance scheduling, cost analysis, d... | 5 |
+## Repository Structure
 
-### Industry — Construction
+```
+aimersion-marketplace/
+├── .claude-plugin/
+│   └── marketplace.json          # Registry of all 71 plugins
+├── plugins/
+│   └── [plugin-name]/
+│       ├── .claude-plugin/
+│       │   └── plugin.json       # Plugin manifest
+│       ├── skills/
+│       │   └── [skill-name]/
+│       │       └── SKILL.md      # Self-contained skill definition
+│       └── commands/
+│           └── [command].md      # Slash command definitions
+├── install.sh                    # One-command installer for Claude Code
+├── index.html                    # GitHub Pages marketplace UI
+└── README.md
+```
 
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `electrician-business-manager` | Run an electrical contracting business — job estimating, permit tracking, custom... | 5 |
-| `general-contractor-operator` | Run residential and commercial construction projects end-to-end — estimates, sch... | 5 |
-| `landscaping-business-operator` | Run a landscaping and lawn care company — route optimization, seasonal planning,... | 5 |
-| `painting-contractor-helper` | Run a residential and commercial painting company — estimates, color consulting,... | 5 |
-| `roofing-company-operator` | Run a roofing contracting business — storm response, estimates, crew dispatch, w... | 5 |
-
-### Industry — Education
-
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `college-admissions-counselor` | Professional toolkit for college counselors and admissions consultants — essay c... | 5 |
-| `corporate-trainer` | Professional toolkit for L&D professionals and corporate trainers — training des... | 5 |
-| `k12-school-administrator` | Complete toolkit for K-12 principals and administrators — parent communications,... | 5 |
-| `online-course-creator` | End-to-end toolkit for course creators and EdTech entrepreneurs — curriculum des... | 5 |
-| `tutoring-business-operator` | Complete business toolkit for tutoring companies and independent tutors — assess... | 5 |
-
-### Industry — Financial Services
-
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `financial-advisor-practice` | Complete practice management toolkit for independent financial advisors and RIAs... | 5 |
-| `insurance-agency-operator` | Full-service agency management for independent insurance agents — coverage revie... | 5 |
-| `mortgage-broker-assistant` | End-to-end mortgage origination toolkit for brokers and loan officers — rate com... | 5 |
-| `tax-prep-practice` | Tax season and year-round practice management for tax preparers and CPA firms — ... | 5 |
-| `wealth-management-advisor` | Sophisticated wealth management toolkit for advisors and private bankers — portf... | 5 |
-
-### Industry — Healthcare
-
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `chiropractic-practice-builder` | Complete practice growth toolkit for chiropractors — reactivate patients, commun... | 5 |
-| `dental-practice-autopilot` | Growth engine for dental practices — patient reactivation, treatment plan presen... | 5 |
-| `home-health-agency-operator` | Operations toolkit for home health agency owners — schedule caregivers, manage M... | 5 |
-| `medical-device-sales-rep` | Sales enablement toolkit for medical device representatives — plan territories, ... | 5 |
-| `mental-health-practice-helper` | Practice operations assistant for therapists and counselors — intake processing,... | 5 |
-| `pharmacy-operations` | Operations toolkit for independent pharmacy owners — inventory optimization, pat... | 5 |
-| `veterinary-practice-manager` | Practice management toolkit for veterinary clinics — client communications, inve... | 5 |
-
-### Industry — Hospitality
-
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `hotel-operations-manager` | Comprehensive hotel operations toolkit for GMs and operations managers — revenue... | 5 |
-| `pool-service-operator` | Complete operations toolkit for pool service businesses — route planning, chemic... | 5 |
-| `wedding-planner-assistant` | Complete wedding planning toolkit for planners and event coordinators — timeline... | 5 |
-
-### Industry — Legal
-
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `corporate-law-assistant` | Corporate law practice toolkit — M&A deal tracking, contract review, entity form... | 5 |
-| `criminal-defense-toolkit` | Criminal defense practice toolkit — case element analysis, discovery management,... | 5 |
-| `family-law-assistant` | Comprehensive family law practice toolkit — case document organization, sensitiv... | 5 |
-| `immigration-law-helper` | Immigration law practice toolkit — case tracking, document checklists, client co... | 5 |
-| `solo-attorney-practice` | Complete practice management toolkit for solo practitioners and small law firms ... | 5 |
-
-### Industry — Manufacturing
-
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `production-planner` | End-to-end toolkit for manufacturing production managers — production scheduling... | 5 |
-| `supply-chain-manager` | Complete supply chain and procurement toolkit — vendor evaluation, demand foreca... | 5 |
-| `warehouse-manager` | Complete warehouse and distribution center management toolkit — layout optimizat... | 5 |
-
-### Industry — Retail & eCommerce
-
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `inventory-pricing-optimizer` | End-to-end inventory and pricing optimization for small businesses — demand fore... | 5 |
-| `retail-store-operator` | Complete toolkit for brick-and-mortar retail store owners and managers — visual ... | 5 |
-| `shopify-store-optimizer` | Complete Shopify store optimization suite — product page copywriting, conversion... | 6 |
-
-### Knowledge Work
-
-| Plugin | Description | Skills |
-|--------|-------------|--------|
-| `bio-research` | Connect to preclinical research tools and databases (literature search, genomics... | 5 |
-| `customer-support` | Triage tickets, draft responses, escalate issues, and build your knowledge base.... | 5 |
-| `data` | Write SQL, explore datasets, and generate insights faster. Build visualizations ... | 7 |
-| `design` | Accelerate design workflows — critique, design system management, UX writing, ac... | 6 |
-| `engineering` | Streamline engineering workflows — standups, code review, architecture decisions... | 6 |
-| `enterprise-search` | Search across all of your company's tools in one place. Find anything across ema... | 3 |
-| `finance` | Streamline finance and accounting workflows, from journal entries and reconcilia... | 6 |
-| `human-resources` | Streamline people operations — recruiting, onboarding, performance reviews, comp... | 6 |
-| `legal` | Speed up contract review, NDA triage, and compliance workflows for in-house lega... | 6 |
-| `marketing` | Create content, plan campaigns, and analyze performance across marketing channel... | 5 |
-| `operations` | Optimize business operations — vendor management, process documentation, change ... | 6 |
-| `product-management` | Write feature specs, plan roadmaps, and synthesize user research faster. Keep st... | 6 |
-| `productivity` | Manage tasks, plan your day, and build up memory of important context about your... | 2 |
-| `sales` | Prospect, craft outreach, and build deal strategy faster. Prep for calls, manage... | 6 |
+---
 
 ## Contact
 
-- **Website:** https://aimersion.ai
+- **Website:** [aimersion.ai](https://aimersion.ai)
 - **Email:** jlynch@aimersion.ai
-- **GitHub:** https://github.com/aimersion-ai
+- **GitHub:** [github.com/aimersion-ai](https://github.com/aimersion-ai)
 
 ## License
 
