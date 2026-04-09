@@ -14,11 +14,5 @@
     "knowledge synthesis",
     "multi-source search",
     "information retrieval"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
