@@ -16,11 +16,5 @@
     "receiving",
     "shipping",
     "KPI dashboard"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
