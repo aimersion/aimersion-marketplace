@@ -17,11 +17,5 @@
     "pipeline review",
     "sales forecast",
     "battlecard"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
