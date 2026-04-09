@@ -15,11 +15,5 @@
     "market trends",
     "pricing intelligence",
     "win-loss analysis"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
