@@ -16,11 +16,5 @@
     "subject lines",
     "deliverability",
     "list segmentation"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
