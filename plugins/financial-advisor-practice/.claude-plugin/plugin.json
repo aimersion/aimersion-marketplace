@@ -15,11 +15,5 @@
     "market commentary",
     "financial planning",
     "client acquisition"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
