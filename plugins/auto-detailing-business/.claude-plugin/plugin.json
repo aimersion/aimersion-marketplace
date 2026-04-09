@@ -15,11 +15,5 @@
     "fleet proposal",
     "loyalty program",
     "booking optimization"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
