@@ -15,11 +15,5 @@
     "board meeting",
     "contract review",
     "M&A"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
