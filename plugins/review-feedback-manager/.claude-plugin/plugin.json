@@ -15,11 +15,5 @@
     "Google reviews",
     "sentiment analysis",
     "review solicitation"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
