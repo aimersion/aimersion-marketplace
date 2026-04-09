@@ -15,11 +15,5 @@
     "inventory aging",
     "lead follow-up",
     "service retention"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
