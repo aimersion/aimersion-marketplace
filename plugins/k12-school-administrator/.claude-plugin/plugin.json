@@ -15,11 +15,5 @@
     "grant writing",
     "staff evaluation",
     "enrollment"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
