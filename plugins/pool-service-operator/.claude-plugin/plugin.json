@@ -15,11 +15,5 @@
     "route optimization",
     "seasonal maintenance",
     "customer communication"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
