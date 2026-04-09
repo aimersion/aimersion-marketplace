@@ -15,11 +15,5 @@
     "color consultation",
     "crew schedule",
     "commercial proposal"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
