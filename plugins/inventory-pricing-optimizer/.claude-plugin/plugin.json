@@ -15,11 +15,5 @@
     "demand forecast",
     "reorder point",
     "seasonal planning"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
