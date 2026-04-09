@@ -15,11 +15,5 @@
     "weather marketing",
     "staff scheduling",
     "equipment maintenance"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
