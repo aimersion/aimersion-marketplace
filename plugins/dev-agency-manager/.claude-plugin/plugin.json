@@ -16,11 +16,5 @@
     "resource allocation",
     "client reporting",
     "lead qualification"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
