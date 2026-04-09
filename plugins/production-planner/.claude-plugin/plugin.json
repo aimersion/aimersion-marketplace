@@ -16,11 +16,5 @@
     "OEE",
     "OSHA",
     "5S"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
