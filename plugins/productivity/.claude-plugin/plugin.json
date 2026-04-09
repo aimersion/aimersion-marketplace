@@ -15,11 +15,5 @@
     "personal productivity",
     "workflow",
     "daily planning"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
