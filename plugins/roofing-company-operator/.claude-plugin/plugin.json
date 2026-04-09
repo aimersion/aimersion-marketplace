@@ -15,11 +15,5 @@
     "storm damage",
     "crew dispatch",
     "warranty"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
