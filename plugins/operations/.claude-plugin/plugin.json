@@ -15,11 +15,5 @@
     "risk assessment",
     "change management",
     "capacity planning"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
