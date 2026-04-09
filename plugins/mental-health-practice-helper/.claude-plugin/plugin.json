@@ -15,11 +15,5 @@
     "session notes",
     "insurance billing",
     "group therapy"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
