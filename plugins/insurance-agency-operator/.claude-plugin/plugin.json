@@ -15,11 +15,5 @@
     "cross-sell",
     "retention",
     "claims support"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
