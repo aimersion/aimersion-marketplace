@@ -15,11 +15,5 @@
     "guest communication",
     "housekeeping",
     "rate strategy"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
