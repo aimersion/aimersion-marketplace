@@ -1,6 +1,6 @@
 {
   "name": "job-seeker-autopilot",
-  "description": "Full-stack autonomous job search engine — find jobs, research companies, tailor resumes, write cover letters, submit applications, send outreach emails, track your pipeline, and prep for interviews. Apply at scale, land faster.",
+  "description": "Full-stack autonomous job search engine \u2014 find jobs, research companies, tailor resumes, write cover letters, submit applications, send outreach emails, track your pipeline, and prep for interviews. Apply at scale, land faster.",
   "version": "1.0.0",
   "author": {
     "name": "Aimersion AI",
@@ -19,7 +19,5 @@
     "interview prep",
     "LinkedIn",
     "job board"
-  ],
-  "skills": ["./skills"],
-  "commands": ["./commands"]
+  ]
 }
