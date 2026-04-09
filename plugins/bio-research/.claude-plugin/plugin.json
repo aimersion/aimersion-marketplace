@@ -16,11 +16,5 @@
     "scVI",
     "instrument data",
     "Allotrope"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
