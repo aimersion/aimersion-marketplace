@@ -15,11 +15,5 @@
     "course launch",
     "video script",
     "student engagement"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
