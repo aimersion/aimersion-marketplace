@@ -16,11 +16,5 @@
     "incident response",
     "risk assessment",
     "security awareness"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
