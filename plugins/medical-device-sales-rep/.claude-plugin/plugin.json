@@ -15,11 +15,5 @@
     "OR case prep",
     "territory planning",
     "clinical evidence"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
