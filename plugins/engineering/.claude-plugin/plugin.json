@@ -16,11 +16,5 @@
     "tech debt",
     "testing strategy",
     "architecture"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
