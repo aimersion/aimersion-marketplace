@@ -15,11 +15,5 @@
     "project schedule",
     "change order",
     "OSHA safety"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
