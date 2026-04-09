@@ -15,11 +15,5 @@
     "route optimization",
     "seasonal planner",
     "landscape estimate"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
