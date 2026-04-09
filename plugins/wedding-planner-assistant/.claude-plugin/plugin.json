@@ -15,11 +15,5 @@
     "wedding timeline",
     "budget tracking",
     "day-of coordination"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
