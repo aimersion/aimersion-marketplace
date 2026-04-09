@@ -17,11 +17,5 @@
     "onboarding",
     "DEI",
     "compensation benchmarking"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
