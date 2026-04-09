@@ -15,11 +15,5 @@
     "child custody",
     "parenting plan",
     "mediation"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
