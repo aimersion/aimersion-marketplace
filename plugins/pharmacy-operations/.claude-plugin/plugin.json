@@ -15,11 +15,5 @@
     "medication adherence",
     "inventory",
     "DEA compliance"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
