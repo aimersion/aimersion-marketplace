@@ -15,11 +15,5 @@
     "driver compliance",
     "vehicle lifecycle",
     "DOT"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
