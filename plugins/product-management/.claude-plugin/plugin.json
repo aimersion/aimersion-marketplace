@@ -17,11 +17,5 @@
     "user research",
     "sprint planning",
     "stakeholder updates"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
