@@ -15,11 +15,5 @@
     "care plan",
     "social media",
     "reviews"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
