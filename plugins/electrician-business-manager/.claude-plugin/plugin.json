@@ -15,11 +15,5 @@
     "permit",
     "NEC code",
     "apprentice training"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
