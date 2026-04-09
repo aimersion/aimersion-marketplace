@@ -16,11 +16,5 @@
     "demand forecast",
     "cost analysis",
     "TCO"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
