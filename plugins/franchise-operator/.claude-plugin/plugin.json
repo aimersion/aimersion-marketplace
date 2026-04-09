@@ -16,11 +16,5 @@
     "compliance audit",
     "staff training",
     "benchmarking"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
