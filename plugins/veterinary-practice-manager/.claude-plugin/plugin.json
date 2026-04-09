@@ -15,11 +15,5 @@
     "pet care",
     "inventory",
     "client communication"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
