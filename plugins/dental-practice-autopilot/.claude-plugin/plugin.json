@@ -15,11 +15,5 @@
     "treatment plan",
     "dental insurance",
     "HIPAA"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
