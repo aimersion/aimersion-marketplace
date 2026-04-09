@@ -15,11 +15,5 @@
     "client intake",
     "billing",
     "document drafting"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
