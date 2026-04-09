@@ -15,11 +15,5 @@
     "progress report",
     "tutor scheduling",
     "marketing"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
