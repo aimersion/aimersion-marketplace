@@ -16,11 +16,5 @@
     "asylum",
     "RFE response",
     "green card"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
