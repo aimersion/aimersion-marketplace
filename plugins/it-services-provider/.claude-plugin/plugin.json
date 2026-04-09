@@ -16,11 +16,5 @@
     "security audit",
     "ticket triage",
     "technology assessment"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
