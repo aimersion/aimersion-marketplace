@@ -15,11 +15,5 @@
     "FTC compliance",
     "creator contracts",
     "campaign ROI"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
