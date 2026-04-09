@@ -15,11 +15,5 @@
     "discovery",
     "sentencing mitigation",
     "plea deal"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
