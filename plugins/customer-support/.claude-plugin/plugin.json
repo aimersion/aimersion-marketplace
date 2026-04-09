@@ -15,11 +15,5 @@
     "escalation",
     "knowledge base",
     "customer research"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
