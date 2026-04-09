@@ -16,11 +16,5 @@
     "interview prep",
     "org planning",
     "recruiting"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
