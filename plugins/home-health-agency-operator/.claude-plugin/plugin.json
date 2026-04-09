@@ -15,11 +15,5 @@
     "OASIS",
     "caregiver scheduling",
     "compliance"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
