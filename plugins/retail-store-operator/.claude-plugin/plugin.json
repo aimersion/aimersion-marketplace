@@ -15,11 +15,5 @@
     "staff scheduling",
     "loss prevention",
     "local marketing"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
