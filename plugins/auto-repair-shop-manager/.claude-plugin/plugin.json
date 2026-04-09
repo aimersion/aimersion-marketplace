@@ -15,11 +15,5 @@
     "technician productivity",
     "customer update",
     "review management"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
