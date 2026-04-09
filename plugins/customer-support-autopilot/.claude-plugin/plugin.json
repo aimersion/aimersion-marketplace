@@ -16,11 +16,5 @@
     "escalation",
     "CSAT",
     "response drafting"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
