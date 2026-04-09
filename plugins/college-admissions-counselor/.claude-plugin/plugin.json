@@ -15,11 +15,5 @@
     "college list",
     "financial aid",
     "application timeline"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
