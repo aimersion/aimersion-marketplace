@@ -16,11 +16,5 @@
     "legal risk",
     "GDPR",
     "CCPA"
-  ],
-  "skills": [
-    "./skills"
-  ],
-  "commands": [
-    "./commands"
   ]
 }
