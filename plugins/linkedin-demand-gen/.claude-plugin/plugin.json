@@ -1,0 +1,21 @@
+{
+  "name": "linkedin-demand-gen",
+  "description": "LinkedIn as a B2B demand channel — ICP engagement as brand, behavior-triggered outreach sequences, founder thought leadership, and buying signal monitoring. Turns LinkedIn from a social media task into a systematic pipeline source.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "LinkedIn",
+    "outbound",
+    "demand generation",
+    "B2B",
+    "thought leadership",
+    "social selling",
+    "outreach"
+  ]
+}
