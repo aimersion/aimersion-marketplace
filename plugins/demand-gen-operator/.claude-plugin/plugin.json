@@ -1,0 +1,21 @@
+{
+  "name": "demand-gen-operator",
+  "description": "B2B demand generation OS — ICP intelligence, content strategy, multi-channel content engine, content repurposing, and webinar lifecycle management. The unified system for turning market insight into pipeline-generating content at scale.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "demand generation",
+    "ICP",
+    "content strategy",
+    "B2B marketing",
+    "content engine",
+    "webinar",
+    "repurposing"
+  ]
+}
