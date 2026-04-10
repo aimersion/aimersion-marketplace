@@ -1,0 +1,21 @@
+{
+  "name": "marketing-revenue-intelligence",
+  "description": "The intelligence layer for B2B marketing — CRO, MQL attribution, funnel diagnostics, marketing-sales alignment, and weekly CMO-level reporting. Know what's actually working, fix what isn't, and build the feedback loops that make the whole system improve over time.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "marketing analytics",
+    "CRO",
+    "attribution",
+    "funnel optimization",
+    "marketing intelligence",
+    "MQL",
+    "revenue marketing"
+  ]
+}
