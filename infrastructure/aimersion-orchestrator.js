@@ -366,6 +366,40 @@ async function runJob(clientSlug, jobName) {
 
     logSession(clientSlug, jobName, 'completed', result);
 
+    // Write session to Supabase if configured
+    if (SUPABASE_URL && SUPABASE_SERVICE_KEY) {
+      try {
+        const { createClient } = require('@supabase/supabase-js');
+        const sb = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
+        const { data: clientRow } = await sb.from('clients').select('id').eq('slug', clientSlug).single();
+        if (clientRow) {
+          await sb.from('agent_sessions').insert({
+            client_id: clientRow.id,
+            session_type: jobName,
+            trigger_type: 'cron',
+            status: 'completed',
+            plugin_used: job.plugin,
+            output_raw: result.substring(0, 10000),
+            started_at: new Date().toISOString(),
+            completed_at: new Date().toISOString(),
+          });
+          console.log('Session logged to Supabase');
+          // If requires approval, write to approval_queue too
+          if (job.requires_approval) {
+            await sb.from('approval_queue').insert({
+              client_id: clientRow.id,
+              content_type: jobName,
+              content_data: { title: jobName.replace(/_/g,' ') + ' — ' + new Date().toLocaleDateString(), body: result.substring(0, 5000) },
+              status: 'pending',
+            });
+            console.log('Added to approval_queue in Supabase');
+          }
+        }
+      } catch(e) {
+        console.log('Supabase write skipped:', e.message);
+      }
+    }
+
     // Route output based on destination
     if (job.output_destination === 'slack') {
       await postToSlack(ctx.slack_webhook, result, jobName);
