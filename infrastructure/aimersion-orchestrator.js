@@ -304,6 +304,106 @@ async function postToSlack(webhookUrl, text, jobName) {
   }
 }
 
+
+// ============================================================
+// CONTENT CALENDAR PARSER
+// Parses Claude output into individual pieces for approval queue
+// ============================================================
+
+function parseContentCalendar(text) {
+  const pieces = [];
+  
+  // LinkedIn posts
+  const liRegex = /###\s*((?:MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY)[^\n]*?)\n+(?:\*\*[^*]+\*\*\n+)?((?:[\s\S]*?))(?=###\s*(?:MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY)|##\s*[2-9]\.|$)/gi;
+  let m;
+  while ((m = liRegex.exec(text)) !== null) {
+    const day = m[1].trim().replace(/^###\s*/, '');
+    const body = m[2].trim();
+    if (body.length > 50) {
+      // Extract pillar and funnel from body
+      const pillarMatch = body.match(/\*\*Pillar:\*\*\s*([^\n]+)/);
+      const funnelMatch = body.match(/\*\*Funnel stage:\*\*\s*([^\n|]+)/);
+      pieces.push({
+        type: 'linkedin_post',
+        title: day,
+        body: body.replace(/\*\*(?:Funnel stage|Pillar):\*\*[^\n]+\n*/g, '').trim(),
+        day,
+        pillar: pillarMatch ? pillarMatch[1].trim() : '',
+        funnel_stage: funnelMatch ? funnelMatch[1].trim() : 'tofu',
+      });
+    }
+  }
+
+  // Blog post
+  const blogMatch = text.match(/##\s*2\..*?BLOG POST[\s\S]*?(?=---\n+##\s*3\.|$)/i);
+  if (blogMatch) {
+    const titleMatch = blogMatch[0].match(/\*\*Title:\*\*\s*([^\n]+)/);
+    pieces.push({
+      type: 'blog_post',
+      title: titleMatch ? titleMatch[1].trim() : 'Blog post — week of ' + new Date().toLocaleDateString(),
+      body: blogMatch[0].replace(/##\s*2\..*?\n/, '').trim().substring(0, 8000),
+      day: 'Tuesday',
+      pillar: '',
+      funnel_stage: 'mofu',
+    });
+  }
+
+  // Email
+  const emailMatch = text.match(/##\s*3\..*?EMAIL[\s\S]*?(?=---\n+##\s*4\.|$)/i);
+  if (emailMatch) {
+    const subjectMatch = emailMatch[0].match(/\*\*Subject line:\*\*\s*([^\n]+)/);
+    pieces.push({
+      type: 'email',
+      title: subjectMatch ? 'Email: ' + subjectMatch[1].trim() : 'Thursday email',
+      body: emailMatch[0].replace(/##\s*3\..*?\n/, '').trim().substring(0, 5000),
+      day: 'Thursday',
+      pillar: '',
+      funnel_stage: 'mofu',
+    });
+  }
+
+  // Ad copy
+  const adMatch = text.match(/##\s*4\..*?AD COPY[\s\S]*?(?=---\n+##\s*5\.|$)/i);
+  if (adMatch) {
+    pieces.push({
+      type: 'ad_copy',
+      title: 'LinkedIn Ad Copy — 2 variants',
+      body: adMatch[0].replace(/##\s*4\..*?\n/, '').trim().substring(0, 3000),
+      day: 'Ongoing',
+      pillar: '',
+      funnel_stage: 'mofu',
+    });
+  }
+
+  // Video script
+  const videoMatch = text.match(/##\s*5\..*?VIDEO[\s\S]*?(?=---\n+##\s*[6-9]\.|---\s*$|$)/i);
+  if (videoMatch) {
+    const titleMatch = videoMatch[0].match(/\*\*Title:\*\*\s*([^\n]+)/);
+    pieces.push({
+      type: 'video_script',
+      title: titleMatch ? 'Video: ' + titleMatch[1].trim() : '60-second video script',
+      body: videoMatch[0].replace(/##\s*5\..*?\n/, '').trim().substring(0, 3000),
+      day: 'Flexible',
+      pillar: '',
+      funnel_stage: 'tofu',
+    });
+  }
+
+  // Fallback: if parsing failed, create one item with full output
+  if (pieces.length === 0) {
+    pieces.push({
+      type: 'content_calendar',
+      title: 'Content Calendar — ' + new Date().toLocaleDateString(),
+      body: text.substring(0, 8000),
+      day: 'Week',
+      pillar: '',
+      funnel_stage: 'mixed',
+    });
+  }
+
+  return pieces;
+}
+
 // ============================================================
 // MAIN RUNNER
 // ============================================================
@@ -386,13 +486,27 @@ async function runJob(clientSlug, jobName) {
           console.log('Session logged to Supabase');
           // If requires approval, write to approval_queue too
           if (job.requires_approval) {
-            await sb.from('approval_queue').insert({
-              client_id: clientRow.id,
-              content_type: jobName,
-              content_data: { title: jobName.replace(/_/g,' ') + ' — ' + new Date().toLocaleDateString(), body: result.substring(0, 5000) },
-              status: 'pending',
-            });
-            console.log('Added to approval_queue in Supabase');
+            // Parse content_calendar into individual pieces
+            if (jobName === 'content_calendar') {
+              const pieces = parseContentCalendar(result);
+              for (const piece of pieces) {
+                await sb.from('approval_queue').insert({
+                  client_id: clientRow.id,
+                  content_type: piece.type,
+                  content_data: { title: piece.title, body: piece.body, day: piece.day, pillar: piece.pillar, funnel_stage: piece.funnel_stage },
+                  status: 'pending',
+                });
+              }
+              console.log(`Added ${pieces.length} content pieces to approval_queue in Supabase`);
+            } else {
+              await sb.from('approval_queue').insert({
+                client_id: clientRow.id,
+                content_type: jobName,
+                content_data: { title: jobName.replace(/_/g,' ') + ' — ' + new Date().toLocaleDateString(), body: result.substring(0, 5000) },
+                status: 'pending',
+              });
+              console.log('Added to approval_queue in Supabase');
+            }
           }
         }
       } catch(e) {
