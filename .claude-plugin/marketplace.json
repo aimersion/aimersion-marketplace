@@ -10,7 +10,7 @@
     "pluginRoot": "./plugins",
     "homepage": "https://aimersion.ai",
     "repository": "https://github.com/aimersion-ai/aimersion-marketplace",
-    "totalPlugins": 72
+    "totalPlugins": 76
   },
   "plugins": [
     {
@@ -1974,6 +1974,81 @@
         "interview"
       ],
       "license": "MIT"
+    },
+    {
+      "name": "demand-gen-operator",
+      "source": "./plugins/demand-gen-operator",
+      "description": "B2B demand generation OS \u2014 ICP intelligence, content strategy, multi-channel content engine, content repurposing, and webinar lifecycle management.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "keywords": [
+        "demand generation",
+        "ICP",
+        "content strategy",
+        "B2B marketing",
+        "webinar"
+      ]
+    },
+    {
+      "name": "linkedin-demand-gen",
+      "source": "./plugins/linkedin-demand-gen",
+      "description": "LinkedIn as a B2B demand channel \u2014 ICP engagement, behavior-triggered outreach sequences, thought leadership writing, and buying signal monitoring.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "keywords": [
+        "LinkedIn",
+        "outbound",
+        "demand generation",
+        "B2B",
+        "thought leadership",
+        "social selling"
+      ]
+    },
+    {
+      "name": "paid-acquisition-operator",
+      "source": "./plugins/paid-acquisition-operator",
+      "description": "B2B paid acquisition OS \u2014 campaign architecture, pain-led ad copy, ICP-to-audience translation, performance analysis, and retargeting sequences.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "keywords": [
+        "paid acquisition",
+        "LinkedIn ads",
+        "Google ads",
+        "B2B advertising",
+        "CPL",
+        "retargeting"
+      ]
+    },
+    {
+      "name": "marketing-revenue-intelligence",
+      "source": "./plugins/marketing-revenue-intelligence",
+      "description": "The intelligence layer for B2B marketing \u2014 CRO, MQL attribution, funnel diagnostics, marketing-sales alignment, and weekly CMO-level reporting.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Aimersion AI",
+        "email": "jlynch@aimersion.ai"
+      },
+      "homepage": "https://aimersion.ai",
+      "keywords": [
+        "marketing analytics",
+        "CRO",
+        "attribution",
+        "funnel optimization",
+        "MQL",
+        "revenue marketing"
+      ]
     }
   ]
 }
