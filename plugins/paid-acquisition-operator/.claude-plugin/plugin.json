@@ -1,0 +1,21 @@
+{
+  "name": "paid-acquisition-operator",
+  "description": "B2B paid acquisition OS — campaign architecture, pain-led ad copy, ICP-to-audience translation, performance analysis, retargeting sequences, and budget reallocation. Build paid programs that generate pipeline, not just clicks.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aimersion AI",
+    "email": "jlynch@aimersion.ai"
+  },
+  "homepage": "https://aimersion.ai",
+  "repository": "https://github.com/aimersion/aimersion-marketplace",
+  "license": "MIT",
+  "keywords": [
+    "paid acquisition",
+    "LinkedIn ads",
+    "Google ads",
+    "B2B advertising",
+    "demand generation",
+    "retargeting",
+    "CPL"
+  ]
+}
