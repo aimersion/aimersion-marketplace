@@ -1,3 +1,4 @@
+// seed_approvals.js — reads content_calendar log, parses, writes to Supabase
 const fs = require('fs');
 const https = require('https');
 const os = require('os');
@@ -19,100 +20,73 @@ const raw = fs.readFileSync(logPath, 'utf8');
 const text = raw.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 console.log('Size:', text.length, 'chars');
 
-// Show all headers to understand structure
-const allHeaders = text.split('\n').filter(l => /^#{1,3}\s/.test(l));
-console.log('\nAll headers found:');
-allHeaders.forEach(h => console.log(' ', h.substring(0, 80)));
+// Debug: show all heading lines
+const headings = text.split('\n').filter(l => /^#{1,3}\s/.test(l));
+console.log('\nHeadings found:');
+headings.forEach(h => console.log(' ', JSON.stringify(h)));
 
 // ============================================================
-// SMART PARSER — splits on ### headers, classifies each block
+// PARSE — split on any ## or ### heading
 // ============================================================
 const pieces = [];
 
-// Split entire text on ### boundaries
-const blocks = text.split(/\n(?=###\s)/);
+// Split whole doc into chunks at ## or ### boundaries
+const chunks = text.split(/\n(?=#{1,3} )/);
 
-for (const block of blocks) {
-  const lines = block.trim().split('\n');
-  const header = lines[0];
-  if (!header.startsWith('###')) continue;
+for (const chunk of chunks) {
+  if (!chunk.trim()) continue;
+  const firstLine = chunk.split('\n')[0].trim();
+  const rest = chunk.split('\n').slice(1).join('\n').trim();
 
-  const title = header.replace(/^###\s*/, '').trim();
-  const body = lines.slice(1).join('\n').trim();
-  if (body.length < 50) continue;
-
-  // Classify by title keywords
-  let type = 'linkedin_post';
-  let day = '';
-  let funnel = 'tofu';
-
-  const tl = title.toLowerCase();
-
-  if (/blog|article|seo|2[,\s]?000\s*word/i.test(tl)) {
-    type = 'blog_post'; day = 'Tuesday';
-  } else if (/email|subject:/i.test(tl) || /\*\*subject/i.test(body.substring(0, 200))) {
-    type = 'email'; day = 'Thursday'; funnel = 'mofu';
-  } else if (/ad\s+(variant|copy|creative)|variant\s+[ab]/i.test(tl)) {
-    type = 'ad_copy'; day = 'Ongoing'; funnel = 'mofu';
-  } else if (/video\s+script|60[-\s]sec|script:/i.test(tl)) {
-    type = 'video_script'; day = 'Flexible';
-  } else if (/linkedin/i.test(tl)) {
-    type = 'linkedin_post';
-    // Infer day from order (first 5 linkedin posts = Mon-Fri)
-    const liCount = pieces.filter(p => p.type === 'linkedin_post').length;
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-    day = days[liCount] || 'Weekday';
-    funnel = liCount >= 3 ? 'mofu' : 'tofu';
-    if (liCount === 4) funnel = 'bofu';
-  }
-
-  pieces.push({ type, title, body: body.substring(0, 6000), day, funnel_stage: funnel, pillar: '' });
-  console.log(`  -> ${type}: ${title.substring(0, 60)}`);
-}
-
-// If ### didn't work, try ## blocks
-if (pieces.length === 0) {
-  console.log('\nNo ### blocks found, trying ## blocks...');
-  const blocks2 = text.split(/\n(?=##\s)/);
-  for (const block of blocks2) {
-    const lines = block.trim().split('\n');
-    const header = lines[0];
-    if (!header.startsWith('##')) continue;
-    const title = header.replace(/^##\s*/, '').trim();
-    const body = lines.slice(1).join('\n').trim();
+  // ### Day headers = LinkedIn posts
+  if (/^###/.test(firstLine)) {
+    const title = firstLine.replace(/^#+\s*/, '').trim();
+    if (!/MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY/i.test(title)) continue;
+    const body = rest
+      .replace(/\*\*Funnel stage[^\n]*\n?/gi, '')
+      .replace(/\*\*Pillar[^\n]*\n?/gi, '')
+      .replace(/^---+\s*$/gm, '')
+      .trim();
     if (body.length < 50) continue;
+    const day = (title.match(/MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY/i) || [''])[0];
+    const funnelMap = { FRIDAY: 'bofu', THURSDAY: 'mofu' };
+    pieces.push({ type: 'linkedin_post', title, body: body.substring(0, 4000), day, funnel_stage: funnelMap[day.toUpperCase()] || 'tofu', pillar: '' });
 
-    const tl = title.toLowerCase();
-    let type = 'linkedin_post', day = '', funnel = 'tofu';
-    if (/blog/i.test(tl)) { type = 'blog_post'; day = 'Tuesday'; }
-    else if (/email/i.test(tl)) { type = 'email'; day = 'Thursday'; funnel = 'mofu'; }
-    else if (/ad/i.test(tl)) { type = 'ad_copy'; day = 'Ongoing'; funnel = 'mofu'; }
-    else if (/video/i.test(tl)) { type = 'video_script'; day = 'Flexible'; }
-    else {
-      const liCount = pieces.filter(p => p.type === 'linkedin_post').length;
-      day = ['Monday','Tuesday','Wednesday','Thursday','Friday'][liCount] || 'Weekday';
-      funnel = liCount >= 3 ? 'mofu' : 'tofu';
-    }
-    pieces.push({ type, title, body: body.substring(0, 6000), day, funnel_stage: funnel, pillar: '' });
-    console.log(`  -> ${type}: ${title.substring(0, 60)}`);
+  // ## 2. Blog post
+  } else if (/^## .*2\.|^## .*BLOG/i.test(firstLine)) {
+    const tm = chunk.match(/\*\*Title:\*\*\s*([^\n]+)/);
+    const title = tm ? tm[1].trim() : 'Blog post';
+    pieces.push({ type: 'blog_post', title, body: chunk.substring(0, 8000).trim(), day: 'Tuesday', funnel_stage: 'mofu', pillar: '' });
+
+  // ## 3. Email
+  } else if (/^## .*3\.|^## .*EMAIL/i.test(firstLine)) {
+    const sm = chunk.match(/\*\*Subject line:\*\*\s*([^\n]+)/i);
+    const title = sm ? 'Email: ' + sm[1].trim() : 'Thursday email';
+    pieces.push({ type: 'email', title, body: chunk.substring(0, 5000).trim(), day: 'Thursday', funnel_stage: 'mofu', pillar: '' });
+
+  // ## 4. Ad copy
+  } else if (/^## .*4\.|^## .*AD COPY/i.test(firstLine)) {
+    pieces.push({ type: 'ad_copy', title: 'LinkedIn Ad Copy — 2 variants', body: chunk.substring(0, 4000).trim(), day: 'Ongoing', funnel_stage: 'mofu', pillar: '' });
+
+  // ## 5. Video
+  } else if (/^## .*5\.|^## .*VIDEO/i.test(firstLine)) {
+    const tm = chunk.match(/\*\*Title:\*\*\s*([^\n]+)/);
+    const title = tm ? 'Video: ' + tm[1].trim() : '60-second video script';
+    pieces.push({ type: 'video_script', title, body: chunk.substring(0, 4000).trim(), day: 'Flexible', funnel_stage: 'tofu', pillar: '' });
   }
 }
 
-// Last resort: whole file as one item
-if (pieces.length === 0) {
-  console.log('\nFallback: inserting full output as single item');
-  pieces.push({
-    type: 'content_calendar_raw',
-    title: 'Content Calendar — ' + logFiles[0].replace('zizo-content_calendar-','').replace('.txt',''),
-    body: text.substring(0, 8000),
-    day: 'Week', funnel_stage: 'mixed', pillar: '',
-  });
-}
+console.log(`\nParsed ${pieces.length} pieces:`);
+pieces.forEach(p => console.log(`  ${p.type}: ${p.title.substring(0, 55)}`));
 
-console.log(`\nTotal: ${pieces.length} pieces ready to insert`);
+if (pieces.length === 0) {
+  console.log('\n⚠️  No pieces parsed. Raw heading structure shown above.');
+  console.log('File content sample:\n', text.substring(0, 800));
+  process.exit(0);
+}
 
 // ============================================================
-// SUPABASE WRITE
+// SUPABASE HELPERS
 // ============================================================
 function sbReq(method, path, body) {
   return new Promise((resolve, reject) => {
@@ -129,15 +103,14 @@ function sbReq(method, path, body) {
 }
 
 (async () => {
-  // Clear old blobs
-  await sbReq('DELETE', '/rest/v1/approval_queue?content_type=eq.content_calendar', null);
-  await sbReq('DELETE', '/rest/v1/approval_queue?content_type=eq.content_calendar_raw', null);
-  console.log('\n✓ Cleared old blobs');
+  // Delete ALL pending items for clean slate
+  await sbReq('DELETE', '/rest/v1/approval_queue?status=eq.pending', null);
+  console.log('\n✓ Cleared pending queue');
 
-  // Get client ID
+  // Get client
   const cr = await sbReq('GET', '/rest/v1/clients?slug=eq.zizo&select=id', null);
   const clientId = JSON.parse(cr.body)[0]?.id;
-  if (!clientId) { console.error('Client zizo not found'); process.exit(1); }
+  if (!clientId) { console.error('Client zizo not found in DB'); process.exit(1); }
   console.log('✓ Client ID:', clientId);
 
   let ok = 0;
@@ -149,9 +122,9 @@ function sbReq(method, path, body) {
       status: 'pending',
     });
     if (res.status < 300) { ok++; console.log(`  ✓ ${p.type}: ${p.title.substring(0, 50)}`); }
-    else console.log(`  ✗ HTTP ${res.status}: ${res.body.substring(0, 150)}`);
+    else console.log(`  ✗ ${p.type}: HTTP ${res.status} — ${res.body.substring(0, 150)}`);
   }
 
   console.log(`\n✅ ${ok}/${pieces.length} pieces written to Supabase`);
-  if (ok > 0) console.log('   Refresh marketingpro-wine.vercel.app/approvals');
+  if (ok > 0) console.log('   → marketingpro-wine.vercel.app/approvals');
 })().catch(console.error);
