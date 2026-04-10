@@ -4,71 +4,115 @@ const os = require('os');
 
 const SB_URL = process.env.SUPABASE_URL || 'https://zdhwkctdqxkhnyrmovua.supabase.co';
 const SB_KEY = process.env.SUPABASE_SERVICE_KEY;
-
 if (!SB_KEY) { console.error('SUPABASE_SERVICE_KEY not set — run: source ~/.zprofile'); process.exit(1); }
 
-// Find most recent log file
+// Find most recent content_calendar log
 const logDir = os.homedir() + '/aimersion-logs';
-const logFiles = fs.readdirSync(logDir).filter(f => f.includes('content_calendar')).sort().reverse();
-if (!logFiles.length) { console.error('No content_calendar log found in', logDir); process.exit(1); }
+const logFiles = fs.readdirSync(logDir)
+  .filter(f => f.includes('content_calendar') && f.endsWith('.txt'))
+  .sort().reverse();
+if (!logFiles.length) { console.error('No content_calendar log in', logDir); process.exit(1); }
+
 const logPath = logDir + '/' + logFiles[0];
 console.log('Reading:', logPath);
-const text = fs.readFileSync(logPath, 'utf8');
-console.log('Log length:', text.length, 'chars');
+const raw = fs.readFileSync(logPath, 'utf8');
+const text = raw.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+console.log('Size:', text.length, 'chars');
+
+// Show all headers to understand structure
+const allHeaders = text.split('\n').filter(l => /^#{1,3}\s/.test(l));
+console.log('\nAll headers found:');
+allHeaders.forEach(h => console.log(' ', h.substring(0, 80)));
 
 // ============================================================
-// PARSE INTO INDIVIDUAL PIECES
+// SMART PARSER — splits on ### headers, classifies each block
 // ============================================================
 const pieces = [];
 
-// LinkedIn posts — find ### DAY headers
-const dayMatches = [...text.matchAll(/###\s*((?:MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY)[^\n]*)/gi)];
-const blogStart = text.search(/##\s*2\./);
-for (let i = 0; i < dayMatches.length; i++) {
-  const start = dayMatches[i].index;
-  const end = dayMatches[i+1] ? dayMatches[i+1].index : (blogStart > 0 ? blogStart : start + 3000);
-  let body = text.slice(start, end)
-    .replace(/^###[^\n]+\n/, '')
-    .replace(/\*\*Funnel stage:[^\n]+\n?/g, '')
-    .replace(/\*\*Pillar:[^\n]+\n?/g, '')
-    .replace(/^---+\s*$/gm, '')
-    .trim();
-  if (body.length > 100) {
-    const title = dayMatches[i][1].trim();
-    pieces.push({ type: 'linkedin_post', title, body: body.substring(0, 4000), day: title.split('—')[0].trim(), funnel_stage: 'tofu', pillar: '' });
+// Split entire text on ### boundaries
+const blocks = text.split(/\n(?=###\s)/);
+
+for (const block of blocks) {
+  const lines = block.trim().split('\n');
+  const header = lines[0];
+  if (!header.startsWith('###')) continue;
+
+  const title = header.replace(/^###\s*/, '').trim();
+  const body = lines.slice(1).join('\n').trim();
+  if (body.length < 50) continue;
+
+  // Classify by title keywords
+  let type = 'linkedin_post';
+  let day = '';
+  let funnel = 'tofu';
+
+  const tl = title.toLowerCase();
+
+  if (/blog|article|seo|2[,\s]?000\s*word/i.test(tl)) {
+    type = 'blog_post'; day = 'Tuesday';
+  } else if (/email|subject:/i.test(tl) || /\*\*subject/i.test(body.substring(0, 200))) {
+    type = 'email'; day = 'Thursday'; funnel = 'mofu';
+  } else if (/ad\s+(variant|copy|creative)|variant\s+[ab]/i.test(tl)) {
+    type = 'ad_copy'; day = 'Ongoing'; funnel = 'mofu';
+  } else if (/video\s+script|60[-\s]sec|script:/i.test(tl)) {
+    type = 'video_script'; day = 'Flexible';
+  } else if (/linkedin/i.test(tl)) {
+    type = 'linkedin_post';
+    // Infer day from order (first 5 linkedin posts = Mon-Fri)
+    const liCount = pieces.filter(p => p.type === 'linkedin_post').length;
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    day = days[liCount] || 'Weekday';
+    funnel = liCount >= 3 ? 'mofu' : 'tofu';
+    if (liCount === 4) funnel = 'bofu';
+  }
+
+  pieces.push({ type, title, body: body.substring(0, 6000), day, funnel_stage: funnel, pillar: '' });
+  console.log(`  -> ${type}: ${title.substring(0, 60)}`);
+}
+
+// If ### didn't work, try ## blocks
+if (pieces.length === 0) {
+  console.log('\nNo ### blocks found, trying ## blocks...');
+  const blocks2 = text.split(/\n(?=##\s)/);
+  for (const block of blocks2) {
+    const lines = block.trim().split('\n');
+    const header = lines[0];
+    if (!header.startsWith('##')) continue;
+    const title = header.replace(/^##\s*/, '').trim();
+    const body = lines.slice(1).join('\n').trim();
+    if (body.length < 50) continue;
+
+    const tl = title.toLowerCase();
+    let type = 'linkedin_post', day = '', funnel = 'tofu';
+    if (/blog/i.test(tl)) { type = 'blog_post'; day = 'Tuesday'; }
+    else if (/email/i.test(tl)) { type = 'email'; day = 'Thursday'; funnel = 'mofu'; }
+    else if (/ad/i.test(tl)) { type = 'ad_copy'; day = 'Ongoing'; funnel = 'mofu'; }
+    else if (/video/i.test(tl)) { type = 'video_script'; day = 'Flexible'; }
+    else {
+      const liCount = pieces.filter(p => p.type === 'linkedin_post').length;
+      day = ['Monday','Tuesday','Wednesday','Thursday','Friday'][liCount] || 'Weekday';
+      funnel = liCount >= 3 ? 'mofu' : 'tofu';
+    }
+    pieces.push({ type, title, body: body.substring(0, 6000), day, funnel_stage: funnel, pillar: '' });
+    console.log(`  -> ${type}: ${title.substring(0, 60)}`);
   }
 }
 
-// Blog post
-const blogM = text.match(/##\s*2\.[\s\S]*?(?=---\n##\s*3\.|$)/);
-if (blogM) {
-  const tm = blogM[0].match(/\*\*Title:\*\*\s*([^\n]+)/);
-  pieces.push({ type: 'blog_post', title: tm ? tm[1].trim() : 'Blog post — week of Apr 14', body: blogM[0].substring(0, 8000), day: 'Tuesday', funnel_stage: 'mofu', pillar: '' });
+// Last resort: whole file as one item
+if (pieces.length === 0) {
+  console.log('\nFallback: inserting full output as single item');
+  pieces.push({
+    type: 'content_calendar_raw',
+    title: 'Content Calendar — ' + logFiles[0].replace('zizo-content_calendar-','').replace('.txt',''),
+    body: text.substring(0, 8000),
+    day: 'Week', funnel_stage: 'mixed', pillar: '',
+  });
 }
 
-// Email
-const emailM = text.match(/##\s*3\.[\s\S]*?(?=---\n##\s*4\.|$)/);
-if (emailM) {
-  const sm = emailM[0].match(/\*\*Subject line:\*\*\s*([^\n]+)/);
-  pieces.push({ type: 'email', title: sm ? 'Email: ' + sm[1].trim() : 'Thursday email', body: emailM[0].substring(0, 5000), day: 'Thursday', funnel_stage: 'mofu', pillar: '' });
-}
-
-// Ad copy
-const adM = text.match(/##\s*4\.[\s\S]*?(?=---\n##\s*5\.|$)/);
-if (adM) pieces.push({ type: 'ad_copy', title: 'LinkedIn Ads — 2 variants', body: adM[0].substring(0, 4000), day: 'Ongoing', funnel_stage: 'mofu', pillar: '' });
-
-// Video
-const vidM = text.match(/##\s*5\.[\s\S]*$/);
-if (vidM) {
-  const tm2 = vidM[0].match(/\*\*Title:\*\*\s*([^\n]+)/);
-  pieces.push({ type: 'video_script', title: tm2 ? 'Video: ' + tm2[1].trim() : '60-second video script', body: vidM[0].substring(0, 4000), day: 'Flexible', funnel_stage: 'tofu', pillar: '' });
-}
-
-console.log(`\nParsed ${pieces.length} pieces:`);
-pieces.forEach(p => console.log(`  ${p.type}: ${p.title.substring(0,60)}`));
+console.log(`\nTotal: ${pieces.length} pieces ready to insert`);
 
 // ============================================================
-// WRITE TO SUPABASE
+// SUPABASE WRITE
 // ============================================================
 function sbReq(method, path, body) {
   return new Promise((resolve, reject) => {
@@ -85,18 +129,17 @@ function sbReq(method, path, body) {
 }
 
 (async () => {
-  // Delete old blobs
+  // Clear old blobs
   await sbReq('DELETE', '/rest/v1/approval_queue?content_type=eq.content_calendar', null);
-  console.log('\n✓ Cleared old content_calendar blobs');
+  await sbReq('DELETE', '/rest/v1/approval_queue?content_type=eq.content_calendar_raw', null);
+  console.log('\n✓ Cleared old blobs');
 
   // Get client ID
-  const clientRes = await sbReq('GET', '/rest/v1/clients?slug=eq.zizo&select=id', null);
-  const clients = JSON.parse(clientRes.body);
-  const clientId = clients[0]?.id;
-  if (!clientId) { console.error('Client zizo not found in DB'); process.exit(1); }
+  const cr = await sbReq('GET', '/rest/v1/clients?slug=eq.zizo&select=id', null);
+  const clientId = JSON.parse(cr.body)[0]?.id;
+  if (!clientId) { console.error('Client zizo not found'); process.exit(1); }
   console.log('✓ Client ID:', clientId);
 
-  // Insert each piece
   let ok = 0;
   for (const p of pieces) {
     const res = await sbReq('POST', '/rest/v1/approval_queue', {
@@ -105,10 +148,10 @@ function sbReq(method, path, body) {
       content_data: { title: p.title, body: p.body, day: p.day, funnel_stage: p.funnel_stage, pillar: p.pillar },
       status: 'pending',
     });
-    if (res.status < 300) { ok++; console.log(`  ✓ ${p.type}: ${p.title.substring(0,50)}`); }
-    else console.log(`  ✗ ${p.type}: ${res.status} ${res.body.substring(0,100)}`);
+    if (res.status < 300) { ok++; console.log(`  ✓ ${p.type}: ${p.title.substring(0, 50)}`); }
+    else console.log(`  ✗ HTTP ${res.status}: ${res.body.substring(0, 150)}`);
   }
 
-  console.log(`\n✅ Done — ${ok}/${pieces.length} pieces written to Supabase approval_queue`);
-  console.log('   Refresh marketingpro-wine.vercel.app/approvals to see them');
+  console.log(`\n✅ ${ok}/${pieces.length} pieces written to Supabase`);
+  if (ok > 0) console.log('   Refresh marketingpro-wine.vercel.app/approvals');
 })().catch(console.error);
