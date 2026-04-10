@@ -851,7 +851,7 @@ footer {
 
   <div class="hero-stats">
     <div class="hero-stat">
-      <span class="hero-stat-num" id="statPlugins">72</span>
+      <span class="hero-stat-num" id="statPlugins">76</span>
       <span class="hero-stat-lbl">Plugins</span>
     </div>
     <div class="hero-stat">
@@ -1114,7 +1114,11 @@ const DETAILS = {
   'operations': { skills:['change-management','compliance-tracking','process-optimization','resource-planning','risk-assessment','vendor-management'], cmds:['capacity-plan','change-request','process-doc','runbook','status-report','vendor-review'] },
   'product-management': { skills:['competitive-analysis','feature-spec','metrics-tracking','roadmap-management','stakeholder-comms','user-research-synthesis'], cmds:['competitive-brief','metrics-review','roadmap-update','sprint-planning','stakeholder-update','synthesize-research','write-spec'] },
   'productivity': { skills:['memory-management','task-management'], cmds:['start','update'] },
-  'sales': { skills:['account-research','call-prep','competitive-intelligence','create-an-asset','daily-briefing','draft-outreach'], cmds:['call-summary','forecast','pipeline-review'] }
+  'sales': { skills:['account-research','call-prep','competitive-intelligence','create-an-asset','daily-briefing','draft-outreach'], cmds:['call-summary','forecast','pipeline-review'] },
+  'demand-gen-operator': { skills:['content-repurposer','content-strategy','demand-content-writer','icp-intelligence','webinar-engine'], cmds:['create-content-brief','repurpose','webinar-plan','weekly-calendar'] },
+  'linkedin-demand-gen': { skills:['icp-engagement','outreach-sequencer','sales-trigger-monitor','thought-leadership-writer'], cmds:['draft-outreach','engagement-plan','linkedin-post','trigger-report'] },
+  'paid-acquisition-operator': { skills:['ad-copy-engine','audience-intelligence','campaign-architect','performance-analyzer','retargeting-planner'], cmds:['ad-variants','budget-realloc','campaign-brief','performance-report'] },
+  'marketing-revenue-intelligence': { skills:['conversion-optimizer','funnel-diagnostics','marketing-sales-alignment','mql-attribution','weekly-intelligence-report'], cmds:['audit-landing-page','funnel-health','mql-report','weekly-report'] },
 };
 
 const PLUGINS = [
@@ -1189,7 +1193,11 @@ const PLUGINS = [
   {name:'product-management',label:'Product Management Suite',cat:'Knowledge Work',desc:'PM workflows: feature specs, roadmap management, user research synthesis, metrics tracking, stakeholder updates, and sprint planning.',tags:['product','roadmap','sprint'],version:'1.1.0'},
   {name:'productivity',label:'Productivity Suite',cat:'Knowledge Work',desc:'Personal productivity: memory management for your work context, task management, and workspace initialization.',tags:['productivity','tasks','memory'],version:'1.1.0'},
   {name:'sales',label:'Sales Suite',cat:'Knowledge Work',desc:'Sales workflows: account research, call prep, competitive intelligence, personalized outreach, daily briefings, and pipeline review.',tags:['sales','crm','outreach'],version:'1.1.0'},
-  {name:'customer-support-autopilot',label:'Customer Support Autopilot',cat:'Business',desc:'End-to-end customer support automation: triage tickets, draft responses, write knowledge base articles, and monitor satisfaction.',tags:['support','tickets','automation'],version:'1.0.0'}
+  {name:'customer-support-autopilot',label:'Customer Support Autopilot',cat:'Business',desc:'End-to-end customer support automation: triage tickets, draft responses, write knowledge base articles, and monitor satisfaction.',tags:['support','tickets','automation'],version:'1.0.0'},
+  {name:'demand-gen-operator',label:'Demand Gen Operator',cat:'Marketing',desc:'B2B demand generation OS — ICP intelligence, content strategy, multi-channel content engine, content repurposing, and full webinar lifecycle management.',tags:['demand-gen','ICP','content','B2B','webinar'],version:'1.0.0'},
+  {name:'linkedin-demand-gen',label:'LinkedIn Demand Gen',cat:'Marketing',desc:'LinkedIn as a B2B pipeline channel — systematic ICP engagement, behavior-triggered outreach sequences, thought leadership writing, and buying signal monitoring.',tags:['LinkedIn','outbound','B2B','thought-leadership','social-selling'],version:'1.0.0'},
+  {name:'paid-acquisition-operator',label:'Paid Acquisition Operator',cat:'Marketing',desc:'B2B paid acquisition OS — campaign architecture, pain-led ad copy, ICP-to-audience targeting, performance analysis, retargeting sequences, and budget reallocation.',tags:['paid-ads','LinkedIn-ads','Google-ads','CPL','retargeting'],version:'1.0.0'},
+  {name:'marketing-revenue-intelligence',label:'Marketing Revenue Intelligence',cat:'Marketing',desc:'The B2B marketing intelligence layer — CRO, MQL attribution, funnel diagnostics, marketing-sales alignment, and weekly CMO-level performance reporting.',tags:['CRO','attribution','funnel','MQL','marketing-ops'],version:'1.0.0'},
 ];
 
 const CATS = {
