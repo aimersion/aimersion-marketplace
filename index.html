@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aimersion AI — Plugin Marketplace</title>
-<meta name="description" content="71 production-ready AI plugins for Claude.ai, Claude Code, and API. Every industry, every role. Built by Aimersion AI — DFW, Texas.">
+<meta name="description" content="72 production-ready AI plugins for Claude.ai, Claude Code, and API. Every industry, every role. Built by Aimersion AI — DFW, Texas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -851,7 +851,7 @@ footer {
 
   <div class="hero-stats">
     <div class="hero-stat">
-      <span class="hero-stat-num" id="statPlugins">71</span>
+      <span class="hero-stat-num" id="statPlugins">72</span>
       <span class="hero-stat-lbl">Plugins</span>
     </div>
     <div class="hero-stat">
@@ -886,10 +886,10 @@ footer {
 
     <div class="platform-panel" id="hero-claudecode">
       <div class="install-row">
-        <code>curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash</code>
-        <button onclick="copyText('curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash',this)">Copy</button>
+        <code>claude plugin marketplace add aimersion/aimersion-marketplace</code>
+        <button onclick="copyText('claude plugin marketplace add aimersion/aimersion-marketplace',this)">Copy</button>
       </div>
-      <p class="install-note">Run in your project directory. Adds skills to <code>CLAUDE.md</code> and registers slash commands. Run without arguments to see all 71 plugins.</p>
+      <p class="install-note">Run once in your terminal. All 72 plugins appear in the built-in <code>/plugin</code> browser. Then install any plugin with <code>/plugin install [name]@aimersion-marketplace</code></p>
     </div>
 
     <div class="platform-panel" id="hero-api">
@@ -945,26 +945,26 @@ footer {
       <div class="step-card">
         <span class="step-num">1</span>
         <h3>Install Claude Code</h3>
-        <p>Requires Node.js 18+. Install the CLI globally and authenticate with your Anthropic account.</p>
+        <p>Requires Node.js 18+. Install the CLI globally, then authenticate with your Anthropic account.</p>
         <span class="step-code">npm install -g @anthropic-ai/claude-code</span>
       </div>
       <div class="step-card">
         <span class="step-num">2</span>
-        <h3>Go to Your Project</h3>
-        <p>Navigate to the directory where you want the plugin active. Claude Code reads <code>CLAUDE.md</code> automatically from the current directory.</p>
-        <span class="step-code">cd ~/your-project</span>
+        <h3>Add the Marketplace</h3>
+        <p>Run this once in your terminal. It registers all 72 Aimersion plugins in Claude Code's built-in plugin browser.</p>
+        <span class="step-code">claude plugin marketplace add aimersion/aimersion-marketplace</span>
       </div>
       <div class="step-card">
         <span class="step-num">3</span>
-        <h3>Run the Installer</h3>
-        <p>Click a plugin below, copy the install command from the <strong>Claude Code</strong> tab, and run it. Skills download into your <code>CLAUDE.md</code>.</p>
-        <span class="step-code">curl -sL [install-url] | bash pool-service-operator</span>
+        <h3>Install Any Plugin</h3>
+        <p>Inside Claude Code, open the plugin browser and install. Or run the install command directly. Skills activate immediately.</p>
+        <span class="step-code">/plugin install pool-service-operator@aimersion-marketplace</span>
       </div>
       <div class="step-card">
         <span class="step-num">4</span>
-        <h3>Start Claude Code</h3>
-        <p>Run <code>claude</code> in the directory. Skills activate immediately. Type <code>/</code> to see available slash commands from the plugin.</p>
-        <span class="step-code">claude</span>
+        <h3>Use Slash Commands</h3>
+        <p>Type <code>/</code> to see all commands from installed plugins. Skills also fire automatically when your task matches the skill's domain.</p>
+        <span class="step-code">/pool-service-operator:water-test FC 1.2 pH 7.9 TA 70</span>
       </div>
     </div>
   </div>
@@ -1300,7 +1300,7 @@ function openModal(name){
   const d=DETAILS[name]||{skills:[],cmds:[]};
   const cfg=CATS[p.cat]||{icon:''};
   const baseUrl=`https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/${name}`;
-  const installUrl=`curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash ${name}`;
+  const installUrl=`/plugin install ${name}@aimersion-marketplace`;
 
   document.getElementById('modalContent').innerHTML=`
     <div class="modal-cat-badge">${cfg.icon} ${p.cat}</div>
@@ -1335,11 +1335,12 @@ function openModal(name){
       </div>
 
       <div class="modal-ppanel" id="mpp-claudecode-${name}">
+        <p class="modal-install-note" style="margin-bottom:8px;color:var(--ink3)">First time? Add the marketplace once: <code style="font-size:11px">claude plugin marketplace add aimersion/aimersion-marketplace</code></p>
         <div class="modal-install-row">
           <code>${installUrl}</code>
           <button onclick="copyText('${installUrl}',this)">Copy</button>
         </div>
-        <p class="modal-install-note">Run in your project directory. Downloads all ${d.skills.length} skills into <code>CLAUDE.md</code> and ${d.cmds.length} commands into <code>~/.claude/commands/</code>.</p>
+        <p class="modal-install-note">Run inside Claude Code after adding the marketplace. Skills activate immediately &mdash; use <code>/${name}:[command]</code> for slash commands, or just describe your task and skills auto-trigger.</p>
       </div>
 
       <div class="modal-ppanel" id="mpp-api-${name}">
