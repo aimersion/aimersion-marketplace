@@ -15,7 +15,7 @@
  *   0 9 * * 2  node /path/to/orchestrator.js --client zizo --job outreach_draft
  */
 
-const { execSync, spawn } = require('child_process');
+const { spawnSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
@@ -342,16 +342,24 @@ async function runJob(clientSlug, jobName) {
   try {
     console.log('\nRunning Claude agent...\n');
 
-    // Run Claude Code with the plugin
-    const result = execSync(
-      `${CLAUDE_BIN} --plugin-dir "${pluginDir}" --print "${prompt.replace(/"/g, '\\"')}"`,
+    // Run Claude Code — pass prompt via stdin to avoid all shell escaping issues
+    const proc = spawnSync(
+      CLAUDE_BIN,
+      ['--plugin-dir', pluginDir, '--print', '-'],
       {
         cwd: workDir,
-        timeout: 300000, // 5 min timeout
-        maxBuffer: 10 * 1024 * 1024, // 10MB output buffer
+        input: prompt,
+        timeout: 600000,
+        maxBuffer: 10 * 1024 * 1024,
         encoding: 'utf8',
+        env: { ...process.env, TERM: 'dumb', NO_COLOR: '1' },
       }
     );
+
+    if (proc.error) throw proc.error;
+    if (proc.status !== 0) throw new Error(proc.stderr || `Claude exited with code ${proc.status}`);
+
+    const result = proc.stdout;
 
     console.log('\nAgent completed. Output preview:');
     console.log(result.substring(0, 500) + '...\n');
