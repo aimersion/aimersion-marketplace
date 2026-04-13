@@ -1,238 +1,206 @@
-# Aimersion AI Plugin Marketplace
+# Aimersion AI Marketing Agent System
 
-**71 production-ready AI plugins for every industry, every role, every business.**
+A complete AI marketing automation stack — runs in the Claude desktop app on your Mac and generates a full week of B2B marketing content automatically.
 
-Built by [Aimersion AI](https://aimersion.ai) — DFW, Texas.
+## What It Does
 
-> ✅ **Tested and verified working** — Skills load correctly and produce accurate, professional outputs across Claude.ai, Claude Code CLI, and the Anthropic API.
+Six automated agents handle your entire marketing system:
 
----
+| Stage | Agent | What It Generates |
+|-------|-------|-------------------|
+| 1 | Signal Scan | Tier 1 buying signals from ICP accounts |
+| 2 | Content Calendar | 10 publish-ready pieces/week (LinkedIn × 5, blog, email, ads, video) |
+| 3 | Outreach Sequences | Personalized LinkedIn messages for hot signals |
+| 3 | Paid Review | Ad performance analysis + budget recommendations |
+| 6 | Weekly Report | CMO intelligence report — what worked, what didn't |
+| 1 | ICP Refresh | Monthly ICP update from win/loss data |
 
-## How to Use
+Everything flows into a web dashboard at your Vercel URL where you can read, approve, and manage content.
 
-### Option 1 — Claude.ai (Easiest, No Setup)
+## Quick Start
 
-1. Browse the [plugin catalog](https://aimersion.github.io/aimersion-marketplace/)
-2. Click a plugin → copy the skill content
-3. Go to [claude.ai](https://claude.ai) → open or create a **Project**
-4. Click **Edit instructions** → paste the skill content
-5. Chat normally — the skill activates automatically
+### Prerequisites
+- Mac with [Claude Code](https://claude.ai/code) installed
+- [Node.js](https://nodejs.org) 18+
+- [Supabase](https://supabase.com) account (free tier works)
+- [Vercel](https://vercel.com) account (free tier works)
+- Anthropic API key (for direct API calls)
 
-The skill stays active for every conversation in that project. No CLI, no install, no configuration.
+### 1. Clone this repo
+```bash
+git clone https://github.com/aimersion/aimersion-marketplace
+cd aimersion-marketplace
+```
 
----
+### 2. Set up environment variables
+Add these to your `~/.zprofile` (loads for all shells including cron):
+```bash
+echo 'export ANTHROPIC_API_KEY="your_key_here"' >> ~/.zprofile
+echo 'export SUPABASE_URL="https://your-project.supabase.co"' >> ~/.zprofile
+echo 'export SUPABASE_SERVICE_KEY="your_service_role_key"' >> ~/.zprofile
+source ~/.zprofile
+```
 
-### Option 2 — Claude Code CLI (Full Experience)
+### 3. Set up Supabase database
+1. Create a new Supabase project
+2. Go to SQL Editor and run `infrastructure/aimersion-client-schema.sql`
+3. Run `infrastructure/zizo-kb-seed.sql` to load the example ZIZO client
 
-**Install a plugin with one command:**
+### 4. Create your client context file
+```bash
+mkdir -p ~/aimersion-clients/your-client
+cp infrastructure/zizo-context.json ~/aimersion-clients/your-client/context.json
+# Edit context.json with your client's details
+```
+
+### 5. Run your first agent
+```bash
+node infrastructure/aimersion-orchestrator.js --client your-client --job content_calendar
+```
+
+Output saves to `~/aimersion-logs/` and writes to Supabase automatically.
+
+### 6. Deploy the dashboard (optional)
+1. Fork `github.com/aimersion/marketingpro`
+2. Import to Vercel
+3. Set env vars: `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4. Deploy — dashboard is live at your Vercel URL
+
+### 7. Set up cron (optional — for fully automated runs)
+```bash
+# Edit crontab
+crontab -e
+
+# Add these lines:
+0 8 * * 1  source ~/.zprofile && node ~/Documents/aimersion/orchestrator.js --client your-client --job content_calendar
+0 6 * * 1  source ~/.zprofile && node ~/Documents/aimersion/orchestrator.js --client your-client --job monday_report
+0 7 * * *  source ~/.zprofile && node ~/Documents/aimersion/orchestrator.js --client your-client --job trigger_scan
+```
+
+## Client Context File
+
+The `context.json` file tells every agent who the client is and what to write about:
+
+```json
+{
+  "client_name": "ZIZO",
+  "product": "Employee performance management + gamification platform",
+  "icp_summary": "Directors of Operations at call centers and collections agencies",
+  "primary_pain": "High agent attrition and disengagement",
+  "messaging_pillars": [
+    "From Burnout to Buy-In",
+    "Replace the spreadsheet",
+    "Motivation that scales",
+    "Prove ROI fast"
+  ],
+  "weekly_theme": "The real cost of call center attrition",
+  "proof_points": {
+    "attrition": "30% reduction",
+    "productivity": "80-96% increase",
+    "roi_timeline": "Under 90 days"
+  }
+}
+```
+
+Customize this for any B2B company and the agents will generate content that speaks directly to their ICP.
+
+## Content Calendar Output Format
+
+Each run generates content using this exact structure (required for the parser):
+
+```
+## 1. LINKEDIN POSTS (Monday-Friday)
+
+### MONDAY — [Hook title]
+[Full post text]
+
+### TUESDAY — [Hook title]
+[Full post text]
+
+...
+
+## 2. TUESDAY BLOG POST
+
+**Title:** [SEO title]
+[Full blog post]
+
+## 3. THURSDAY EMAIL TO LIST
+
+**Subject line:** [subject]
+[Full email]
+
+## 4. LINKEDIN AD COPY — 2 VARIANTS
+...
+
+## 5. 60-SECOND VIDEO SCRIPT
+...
+```
+
+The orchestrator parses this into individual pieces and writes each one to the `approval_queue` table in Supabase. They appear in the dashboard under Approvals.
+
+## Architecture
+
+```
+Mac Studio (your machine)
+├── orchestrator.js          ← runs on cron or manually
+├── ~/aimersion-clients/
+│   └── your-client/
+│       └── context.json     ← client knowledge base
+└── ~/aimersion-logs/        ← all output saved here
+
+Anthropic API
+└── claude-opus-4-5          ← generates all content
+
+Supabase
+├── clients                  ← client registry
+├── client_config            ← ICP, messaging, brand voice
+├── agent_sessions           ← every run logged here
+├── approval_queue           ← content pending review
+└── (35 total tables)        ← full CRM + marketing schema
+
+Vercel (Next.js dashboard)
+└── marketingpro-wine.vercel.app
+    ├── /dashboard           ← overview + metrics
+    ├── /approvals           ← review and approve content
+    ├── /agents              ← run history
+    ├── /setup               ← trigger runs manually
+    └── (8 total pages)
+```
+
+## Available Jobs
+
+| Job | Plugin | Schedule | Approval needed |
+|-----|--------|----------|-----------------|
+| `content_calendar` | demand-gen-operator | Monday 8am | Yes |
+| `monday_report` | marketing-revenue-intelligence | Monday 6am | No (auto) |
+| `trigger_scan` | linkedin-demand-gen | Daily 7am | Yes |
+| `outreach_draft` | linkedin-demand-gen | Tuesday 9am | Yes |
+| `paid_performance` | paid-acquisition-operator | Friday 4pm | No (auto) |
+| `icp_refresh` | demand-gen-operator | 1st of month | Yes |
+
+## Using With Claude App (No Code Required)
+
+You can run the demand-gen-operator plugin directly in the Claude app without any infrastructure:
+
+1. In Claude, reference the plugin: `Use the demand-gen-operator skill`
+2. Paste your client context
+3. Ask: `Generate a full content calendar for the week of [date]`
+4. Copy the output and paste into your content management system
+
+The plugin skills are in `plugins/demand-gen-operator/skills/`.
+
+## Seed Approvals Script
+
+If you have existing log files and want to populate the approval queue:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash pool-service-operator
+source ~/.zprofile
+curl -s https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/infrastructure/seed_approvals.js \
+  -o /tmp/seed_approvals.js && node /tmp/seed_approvals.js
 ```
-
-Or run without arguments to see all available plugins:
-
-```bash
-curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/install.sh | bash
-```
-
-**What it does:**
-- Downloads all skill SKILL.md files → appends to your `CLAUDE.md`
-- Installs slash commands → `~/.claude/commands/`
-- Skills activate automatically when you run `claude` in that directory
-
-**Manual install (any single skill):**
-
-```bash
-# Append a skill to your CLAUDE.md
-curl -sL https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/pool-service-operator/skills/chemical-calculator/SKILL.md >> CLAUDE.md
-
-# Run Claude Code
-claude
-```
-
-> **Note:** The `/plugin marketplace add` and `/plugin install` slash commands shown in older docs are not yet available in Claude Code. The curl method above is the correct install path today. We'll update install commands when Anthropic ships native plugin support.
-
----
-
-### Option 3 — API / System Prompts
-
-Each skill is a standalone markdown file. Fetch and inject directly into your system prompt:
-
-```python
-import urllib.request
-
-def load_skill(plugin, skill):
-    url = f"https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/{plugin}/skills/{skill}/SKILL.md"
-    with urllib.request.urlopen(url) as r:
-        return r.read().decode()
-
-skill = load_skill("pool-service-operator", "chemical-calculator")
-
-response = anthropic.messages.create(
-    model="claude-sonnet-4-20250514",
-    system=f"You are a pool service assistant.\n\n{skill}",
-    messages=[{"role": "user", "content": "FC 1.2, pH 7.9, TA 70, CH 180, CYA 30 — 18,000 gal plaster pool"}]
-)
-```
-
-Skills are composable — stack multiple SKILL.md files in a single system prompt to create compound agents.
-
----
-
-## Verified Test Results
-
-These plugins were live-tested on Claude Code 2.1.70 using the manual CLAUDE.md install method:
-
-| Plugin | Skill Tested | Result |
-|---|---|---|
-| `pool-service-operator` | `chemical-calculator` | ✅ Correct dosing plan — right order (TA→pH→CH→Cl→CYA), accurate amounts, product-specific notes |
-| `pool-service-operator` | `customer-communicator` | ✅ Professional SMS — mentioned specific issues, set next visit, branded as Simplified Pools |
-| `saas-growth-operator` | `churn-analyzer` | ✅ Full segmented analysis — NRR model, 6-month targets per tier, $18-25K MRR impact calc |
-
-**Noise level:** Zero. Skills only activate when loaded into context — no background activation.
-
----
-
-## Plugin Catalog (71 Plugins)
-
-### 🔨 Trades & Home Services
-| Plugin | Description |
-|--------|-------------|
-| `pool-service-operator` | Route planning, chemical dosing, seasonal maintenance, customer communications, equipment advisory |
-| `landscaping-business-operator` | Route optimization, seasonal planning, customer retention, estimates |
-| `general-contractor-operator` | Bid estimating, project scheduling, change order management, OSHA compliance |
-| `electrician-business-manager` | Job estimating, permit tracking, apprentice training, seasonal marketing |
-| `roofing-company-operator` | Crew dispatch, storm response, estimates, lead generation, warranty management |
-| `painting-contractor-helper` | Color consultation, commercial proposals, crew scheduling, estimates |
-
-### 🏥 Healthcare
-| Plugin | Description |
-|--------|-------------|
-| `dental-practice-autopilot` | Patient reactivation, insurance verification, review management, marketing campaigns |
-| `mental-health-practice-helper` | Session notes, intake processing, insurance navigation, ethical marketing |
-| `chiropractic-practice-builder` | Care plan communication, patient reactivation, referral programs |
-| `home-health-agency-operator` | Caregiver scheduling, Medicare compliance, quality improvement |
-| `medical-device-sales-rep` | Surgical case prep, clinical evidence, territory planning |
-| `pharmacy-operations` | Inventory optimization, patient adherence, compliance tracking |
-| `veterinary-practice-manager` | Client communications, inventory tracking, wellness plan design |
-
-### 💼 Business & SaaS
-| Plugin | Description |
-|--------|-------------|
-| `saas-growth-operator` | Churn analysis, expansion planning, onboarding optimization, pricing strategy |
-| `dev-agency-manager` | Proposals, client reports, lead qualification, resource planning |
-| `product-launch-planner` | Timelines, audience building, content planning, post-launch analysis |
-| `franchise-operator` | Compliance monitoring, financial analysis, local marketing, unit benchmarking |
-| `it-services-provider` | QBRs, security audits, technology assessments, MSP operations |
-
-### 📢 Marketing
-| Plugin | Description |
-|--------|-------------|
-| `seo-content-machine` | Keyword research, blog writing, on-page optimization, content calendars |
-| `competitive-intel-monitor` | Battlecards, CI briefs, market trends, pricing intelligence, win/loss |
-| `social-media-manager-pro` | Platform-specific content, engagement, analytics, crisis management |
-| `email-marketing-autopilot` | Drip sequences, newsletters, subject line optimization, deliverability |
-| `influencer-affiliate-manager` | Creator vetting, contracts, affiliate program design, FTC compliance |
-| `review-feedback-manager` | Review responses, reputation management, sentiment analysis |
-
-### ⚖️ Legal
-| Plugin | Description |
-|--------|-------------|
-| `solo-attorney-practice` | Billing, case management, client intake, document drafting |
-| `family-law-assistant` | Custody analysis, mediation prep, court filings |
-| `criminal-defense-toolkit` | Case analysis, motion drafting, discovery tracking |
-| `immigration-law-helper` | Case tracking, document checklists, RFE responses |
-| `corporate-law-assistant` | M&A tracking, board prep, entity formation, contract review |
-
-### 💰 Financial Services
-| Plugin | Description |
-|--------|-------------|
-| `financial-advisor-practice` | Portfolio reviews, market commentary, compliance docs |
-| `mortgage-broker-assistant` | Pre-qualification, rate shopping, pipeline tracking |
-| `tax-prep-practice` | Document checklists, deduction finding, extension management |
-| `wealth-management-advisor` | Portfolio reporting, tax strategies, estate planning |
-| `insurance-agency-operator` | Coverage reviews, cross-selling, retention campaigns |
-
-### 🚗 Automotive
-| Plugin | Description |
-|--------|-------------|
-| `auto-dealership-operator` | BDC templates, inventory analysis, lead nurture, service retention |
-| `auto-repair-shop-manager` | Customer communication, job estimates, review management |
-| `fleet-management-assistant` | Maintenance scheduling, compliance tracking, cost analysis |
-| `auto-detailing-business` | Package building, fleet proposals, loyalty programs |
-| `car-wash-operator` | Membership management, weather-triggered marketing, staff scheduling |
-
-### 🎓 Education
-| Plugin | Description |
-|--------|-------------|
-| `college-admissions-counselor` | Essay coaching, school matching, financial aid navigation |
-| `online-course-creator` | Curriculum design, launch campaigns, student engagement |
-| `tutoring-business-operator` | Student assessments, differentiated lesson plans, parent reports |
-| `k12-school-administrator` | Parent communications, grant applications, enrollment campaigns |
-| `corporate-trainer` | Workshop design, e-learning development, onboarding, ROI measurement |
-
-### 🏨 Hospitality
-| Plugin | Description |
-|--------|-------------|
-| `hotel-operations-manager` | Revenue optimization, guest communications, quality audits |
-| `wedding-planner-assistant` | Day-of coordination, vendor management, budget tracking |
-
-### ⚙️ Operations & Manufacturing
-| Plugin | Description |
-|--------|-------------|
-| `warehouse-manager` | KPI tracking, labor planning, layout optimization |
-| `supply-chain-manager` | Demand forecasting, vendor evaluation, logistics optimization |
-| `production-planner` | Scheduling, quality control, lean/continuous improvement |
-
-### 🧠 Knowledge Work Suites
-| Plugin | Description |
-|--------|-------------|
-| `engineering` | Code review, system design, incident response, tech debt |
-| `product-management` | Feature specs, roadmaps, user research, sprint planning |
-| `sales` | Account research, call prep, outreach, pipeline review |
-| `data` | SQL queries, statistical analysis, dashboards |
-| `marketing` | Content creation, campaign planning, SEO, performance reporting |
-| `finance` | Variance analysis, journal entries, reconciliation, SOX |
-| `legal` | NDA triage, contract review, compliance checks |
-| `human-resources` | Recruiting, interview prep, compensation benchmarking |
-| `operations` | Process docs, change management, vendor reviews |
-| `design` | Accessibility reviews, design critiques, developer handoffs |
-| `customer-support` | Ticket triage, response drafting, knowledge base management |
-| `productivity` | Memory management, task management |
-| `enterprise-search` | Multi-source search orchestration |
-| `bio-research` | Bioinformatics workflows, single-cell RNA-seq, nf-core |
-
----
-
-## Repository Structure
-
-```
-aimersion-marketplace/
-├── .claude-plugin/
-│   └── marketplace.json          # Registry of all 71 plugins
-├── plugins/
-│   └── [plugin-name]/
-│       ├── .claude-plugin/
-│       │   └── plugin.json       # Plugin manifest
-│       ├── skills/
-│       │   └── [skill-name]/
-│       │       └── SKILL.md      # Self-contained skill definition
-│       └── commands/
-│           └── [command].md      # Slash command definitions
-├── install.sh                    # One-command installer for Claude Code
-├── index.html                    # GitHub Pages marketplace UI
-└── README.md
-```
-
----
-
-## Contact
-
-- **Website:** [aimersion.ai](https://aimersion.ai)
-- **Email:** jlynch@aimersion.ai
-- **GitHub:** [github.com/aimersion-ai](https://github.com/aimersion-ai)
 
 ## License
 
-MIT © Aimersion AI
+MIT — use freely, customize for your clients.
+
+Built by [Aimersion AI](https://aimersionagent.com) — DFW, Texas.
