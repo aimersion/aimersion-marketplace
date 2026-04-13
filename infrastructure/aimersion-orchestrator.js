@@ -63,80 +63,76 @@ Be specific. Use real numbers if available. If data is missing, say so explicitl
 
   content_calendar: {
     plugin: 'demand-gen-operator',
-    description: 'Generate full week of content — 15+ pieces across all channels',
-    prompt: (ctx) => `
-You are building the content calendar for ${ctx.client_name} for the week of ${ctx.week_starting}.
+    description: 'Generate full week of content — 10+ pieces across all channels',
+    useApi: true,  // Use Anthropic API directly for reliable structured output
+    prompt: (ctx) => `You are a B2B content strategist for ${ctx.client_name}.
 
-COMPANY: ${ctx.product}
+PRODUCT: ${ctx.product}
 ICP: ${ctx.icp_summary}
-MESSAGING PILLARS: ${JSON.stringify(ctx.messaging_pillars)}
-THIS WEEK'S THEME: ${ctx.weekly_theme || ctx.primary_pain}
-BRAND VOICE: Direct, confident, pain-led. Lead with the cost of inaction.
+THEME THIS WEEK: ${ctx.weekly_theme || ctx.primary_pain}
+PILLARS: ${Array.isArray(ctx.messaging_pillars) ? ctx.messaging_pillars.join(' | ') : ctx.messaging_pillars}
+PROOF POINTS: 30% attrition reduction, ROI in 90 days, 6-month money-back guarantee, 80-96% productivity increase
+VOICE: Direct, challenger, pain-led. Every piece starts with the cost of inaction.
 
-CRITICAL INSTRUCTIONS:
-- Output ONLY the content pieces below. No summary tables. No preambles. No "I'll now write..."
-- Use EXACTLY these section headers so the parser can find each piece
-- Write every piece in full — complete and ready to publish
+Write the complete content calendar. Use EXACTLY these headers:
 
-## 1. LINKEDIN POSTS (Monday–Friday)
+## 1. LINKEDIN POSTS (Monday-Friday)
 
-### MONDAY, ${ctx.week_starting} — [Hook title]
-[Full post — 150-300 words, ready to copy-paste to LinkedIn]
+### MONDAY — [title]
 
-### TUESDAY — [Hook title]  
+[Full post, 200-300 words, ready to publish on LinkedIn]
+
+### TUESDAY — [title]
+
 [Full post]
 
-### WEDNESDAY — [Hook title]
+### WEDNESDAY — [title]
+
 [Full post]
 
-### THURSDAY — [Hook title]
-[Full post — MOFU, reference a specific outcome]
+### THURSDAY — [title]
 
-### FRIDAY — [Hook title]
-[Full post — BOFU, reference the guarantee or ROI]
+[Full post — MOFU angle, reference a customer outcome]
+
+### FRIDAY — [title]
+
+[Full post — BOFU angle, reference the 90-day guarantee]
 
 ## 2. TUESDAY BLOG POST
 
-**Title:** [SEO-optimized title targeting: call center attrition, employee gamification, or contact center performance]
+**Title:** [SEO title]
 **Meta description:** [155 chars]
 
-[Full 1,500+ word blog post — complete, publish-ready]
+[Full 1,500+ word blog post, complete and publish-ready]
 
 ## 3. THURSDAY EMAIL TO LIST
 
-**Subject line:** [Subject]
-**Preview text:** [Preview]
+**Subject line:** [subject]
+**Preview text:** [preview]
 
-[Full email body — complete, ready to send]
+[Full email body]
 
 ## 4. LINKEDIN AD COPY — 2 VARIANTS
 
 ### Variant A — Pain-Led
-**Intro text:** [1 line hook]
+**Intro text:** [hook]
 **Body:** [3-4 sentences]
-**Headline:** [5 words max]
+**Headline:** [short]
 **CTA:** Learn More
 
 ### Variant B — Outcome-Led
-**Intro text:** [1 line hook]
+**Intro text:** [hook]
 **Body:** [3-4 sentences]
-**Headline:** [5 words max]
+**Headline:** [short]
 **CTA:** Book a Demo
 
 ## 5. 60-SECOND VIDEO SCRIPT
 
-**Title:** "[Script title]"
-**Format:** Talking head to camera
-**Audience:** Directors/VPs of Operations at call centers
+**Title:** "[title]"
 
-[0:00–0:10] [Opening line]
-[0:10–0:25] [Problem]
-[0:25–0:45] [Solution]
-[0:45–0:55] [Proof]
-[0:55–1:00] [CTA]
+[Full timestamped script]
 
-Output all 10 pieces now. Start immediately with ## 1. LINKEDIN POSTS
-    `.trim(),
+Write every piece in full. No summaries. No placeholders. Start with ## 1.`,
     requires_approval: true,
     output_destination: 'approval_queue',
   },
@@ -486,7 +482,13 @@ async function runJob(clientSlug, jobName) {
     if (proc.error) throw proc.error;
     if (proc.status !== 0) throw new Error(proc.stderr || `Claude exited with code ${proc.status}`);
 
-    const result = proc.stdout;
+    // If job uses API directly (more reliable for structured content output)
+    let result;
+    if (job.useApi && process.env.ANTHROPIC_API_KEY) {
+      result = await runViaApi(prompt);
+    } else {
+      result = proc.stdout;
+    }
 
     console.log('\nAgent completed. Output preview:');
     console.log(result.substring(0, 500) + '...\n');
