@@ -67,23 +67,77 @@ Be specific. Use real numbers if available. If data is missing, say so explicitl
     prompt: (ctx) => `
 You are building the content calendar for ${ctx.client_name} for the week of ${ctx.week_starting}.
 
+COMPANY: ${ctx.product}
 ICP: ${ctx.icp_summary}
-Messaging pillars: ${ctx.messaging_pillars}
-This week's theme: ${ctx.weekly_theme || 'ICP core pain — ' + ctx.primary_pain}
+MESSAGING PILLARS: ${JSON.stringify(ctx.messaging_pillars)}
+THIS WEEK'S THEME: ${ctx.weekly_theme || ctx.primary_pain}
+BRAND VOICE: Direct, confident, pain-led. Lead with the cost of inaction.
 
-Using the weekly-calendar command and demand-content-writer skill:
+CRITICAL INSTRUCTIONS:
+- Output ONLY the content pieces below. No summary tables. No preambles. No "I'll now write..."
+- Use EXACTLY these section headers so the parser can find each piece
+- Write every piece in full — complete and ready to publish
 
-1. Generate Monday through Friday LinkedIn posts (5 full posts, ready to publish)
-2. Write the Tuesday blog post outline (SEO-targeted, 1500+ words)
-3. Draft the Thursday email to the list (complete subject + body)
-4. Write 2 LinkedIn ad copy variants (for paid team)
-5. Write one 60-second video script
+## 1. LINKEDIN POSTS (Monday–Friday)
 
-For each piece: write the complete text, ready to publish. Not outlines — actual content.
+### MONDAY, ${ctx.week_starting} — [Hook title]
+[Full post — 150-300 words, ready to copy-paste to LinkedIn]
 
-Output each piece clearly labeled and separated.
+### TUESDAY — [Hook title]  
+[Full post]
+
+### WEDNESDAY — [Hook title]
+[Full post]
+
+### THURSDAY — [Hook title]
+[Full post — MOFU, reference a specific outcome]
+
+### FRIDAY — [Hook title]
+[Full post — BOFU, reference the guarantee or ROI]
+
+## 2. TUESDAY BLOG POST
+
+**Title:** [SEO-optimized title targeting: call center attrition, employee gamification, or contact center performance]
+**Meta description:** [155 chars]
+
+[Full 1,500+ word blog post — complete, publish-ready]
+
+## 3. THURSDAY EMAIL TO LIST
+
+**Subject line:** [Subject]
+**Preview text:** [Preview]
+
+[Full email body — complete, ready to send]
+
+## 4. LINKEDIN AD COPY — 2 VARIANTS
+
+### Variant A — Pain-Led
+**Intro text:** [1 line hook]
+**Body:** [3-4 sentences]
+**Headline:** [5 words max]
+**CTA:** Learn More
+
+### Variant B — Outcome-Led
+**Intro text:** [1 line hook]
+**Body:** [3-4 sentences]
+**Headline:** [5 words max]
+**CTA:** Book a Demo
+
+## 5. 60-SECOND VIDEO SCRIPT
+
+**Title:** "[Script title]"
+**Format:** Talking head to camera
+**Audience:** Directors/VPs of Operations at call centers
+
+[0:00–0:10] [Opening line]
+[0:10–0:25] [Problem]
+[0:25–0:45] [Solution]
+[0:45–0:55] [Proof]
+[0:55–1:00] [CTA]
+
+Output all 10 pieces now. Start immediately with ## 1. LINKEDIN POSTS
     `.trim(),
-    requires_approval: true,    // needs human review before publishing
+    requires_approval: true,
     output_destination: 'approval_queue',
   },
 
@@ -313,100 +367,73 @@ async function postToSlack(webhookUrl, text, jobName) {
 function parseContentCalendar(text) {
   const pieces = [];
   
-  // LinkedIn posts
-  const liRegex = /###\s*((?:MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY)[^\n]*?)\n+(?:\*\*[^*]+\*\*\n+)?((?:[\s\S]*?))(?=###\s*(?:MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY)|##\s*[2-9]\.|$)/gi;
-  let m;
-  while ((m = liRegex.exec(text)) !== null) {
-    const day = m[1].trim().replace(/^###\s*/, '');
-    const body = m[2].trim();
-    if (body.length > 50) {
-      // Extract pillar and funnel from body
-      const pillarMatch = body.match(/\*\*Pillar:\*\*\s*([^\n]+)/);
-      const funnelMatch = body.match(/\*\*Funnel stage:\*\*\s*([^\n|]+)/);
-      pieces.push({
-        type: 'linkedin_post',
-        title: day,
-        body: body.replace(/\*\*(?:Funnel stage|Pillar):\*\*[^\n]+\n*/g, '').trim(),
-        day,
-        pillar: pillarMatch ? pillarMatch[1].trim() : '',
-        funnel_stage: funnelMatch ? funnelMatch[1].trim() : 'tofu',
-      });
+  // Normalize line endings
+  text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  
+  // Split into chunks on ## boundaries
+  const chunks = text.split(/\n(?=## [0-9]+\.)/);
+  
+  for (const chunk of chunks) {
+    const lines = chunk.split('\n');
+    const header = lines[0].trim();
+    
+    // ## 1. LinkedIn Posts — split on ### day headers
+    if (/^## 1\./i.test(header) || /LINKEDIN POSTS/i.test(header)) {
+      const dayParts = chunk.split(/\n(?=### )/);
+      for (const part of dayParts) {
+        const partLines = part.split('\n');
+        const h = partLines[0].trim();
+        if (!h.startsWith('###')) continue;
+        const title = h.replace(/^###\s*/, '').trim();
+        if (!/MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY/i.test(title)) continue;
+        const body = partLines.slice(1)
+          .filter(l => !l.match(/^\*\*Funnel stage/i) && !l.match(/^\*\*Pillar/i) && !l.match(/^---+$/))
+          .join('\n').trim();
+        if (body.length < 80) continue;
+        const day = (title.match(/MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY/i) || [''])[0].toUpperCase();
+        const funnel = {FRIDAY:'bofu', THURSDAY:'mofu'}[day] || 'tofu';
+        pieces.push({ type: 'linkedin_post', title, body: body.substring(0, 4000), day, funnel_stage: funnel, pillar: '' });
+      }
+    }
+    // ## 2. Blog
+    else if (/^## 2\./i.test(header) || /BLOG POST/i.test(header)) {
+      const tm = chunk.match(/\*\*Title:\*\*\s*([^\n]+)/i);
+      pieces.push({ type: 'blog_post', title: tm ? tm[1].trim() : 'Blog post', body: chunk.substring(0, 8000).trim(), day: 'Tuesday', funnel_stage: 'mofu', pillar: '' });
+    }
+    // ## 3. Email
+    else if (/^## 3\./i.test(header) || /EMAIL/i.test(header)) {
+      const sm = chunk.match(/\*\*Subject line:\*\*\s*([^\n]+)/i);
+      pieces.push({ type: 'email', title: sm ? 'Email: ' + sm[1].trim() : 'Thursday email', body: chunk.substring(0, 5000).trim(), day: 'Thursday', funnel_stage: 'mofu', pillar: '' });
+    }
+    // ## 4. Ad copy
+    else if (/^## 4\./i.test(header) || /AD COPY/i.test(header)) {
+      pieces.push({ type: 'ad_copy', title: 'LinkedIn Ad Copy — 2 variants', body: chunk.substring(0, 4000).trim(), day: 'Ongoing', funnel_stage: 'mofu', pillar: '' });
+    }
+    // ## 5. Video
+    else if (/^## 5\./i.test(header) || /VIDEO/i.test(header)) {
+      const tm = chunk.match(/\*\*Title:\*\*\s*["\'"]?([^\"\n]+)/i);
+      pieces.push({ type: 'video_script', title: tm ? 'Video: ' + tm[1].trim() : '60-second video script', body: chunk.substring(0, 4000).trim(), day: 'Flexible', funnel_stage: 'tofu', pillar: '' });
     }
   }
 
-  // Blog post
-  const blogMatch = text.match(/##\s*2\..*?BLOG POST[\s\S]*?(?=---\n+##\s*3\.|$)/i);
-  if (blogMatch) {
-    const titleMatch = blogMatch[0].match(/\*\*Title:\*\*\s*([^\n]+)/);
-    pieces.push({
-      type: 'blog_post',
-      title: titleMatch ? titleMatch[1].trim() : 'Blog post — week of ' + new Date().toLocaleDateString(),
-      body: blogMatch[0].replace(/##\s*2\..*?\n/, '').trim().substring(0, 8000),
-      day: 'Tuesday',
-      pillar: '',
-      funnel_stage: 'mofu',
-    });
-  }
-
-  // Email
-  const emailMatch = text.match(/##\s*3\..*?EMAIL[\s\S]*?(?=---\n+##\s*4\.|$)/i);
-  if (emailMatch) {
-    const subjectMatch = emailMatch[0].match(/\*\*Subject line:\*\*\s*([^\n]+)/);
-    pieces.push({
-      type: 'email',
-      title: subjectMatch ? 'Email: ' + subjectMatch[1].trim() : 'Thursday email',
-      body: emailMatch[0].replace(/##\s*3\..*?\n/, '').trim().substring(0, 5000),
-      day: 'Thursday',
-      pillar: '',
-      funnel_stage: 'mofu',
-    });
-  }
-
-  // Ad copy
-  const adMatch = text.match(/##\s*4\..*?AD COPY[\s\S]*?(?=---\n+##\s*5\.|$)/i);
-  if (adMatch) {
-    pieces.push({
-      type: 'ad_copy',
-      title: 'LinkedIn Ad Copy — 2 variants',
-      body: adMatch[0].replace(/##\s*4\..*?\n/, '').trim().substring(0, 3000),
-      day: 'Ongoing',
-      pillar: '',
-      funnel_stage: 'mofu',
-    });
-  }
-
-  // Video script
-  const videoMatch = text.match(/##\s*5\..*?VIDEO[\s\S]*?(?=---\n+##\s*[6-9]\.|---\s*$|$)/i);
-  if (videoMatch) {
-    const titleMatch = videoMatch[0].match(/\*\*Title:\*\*\s*([^\n]+)/);
-    pieces.push({
-      type: 'video_script',
-      title: titleMatch ? 'Video: ' + titleMatch[1].trim() : '60-second video script',
-      body: videoMatch[0].replace(/##\s*5\..*?\n/, '').trim().substring(0, 3000),
-      day: 'Flexible',
-      pillar: '',
-      funnel_stage: 'tofu',
-    });
-  }
-
-  // Fallback: if parsing failed, create one item with full output
+  // Fallback: if no ## sections found, try ### day headers directly
   if (pieces.length === 0) {
-    pieces.push({
-      type: 'content_calendar',
-      title: 'Content Calendar — ' + new Date().toLocaleDateString(),
-      body: text.substring(0, 8000),
-      day: 'Week',
-      pillar: '',
-      funnel_stage: 'mixed',
-    });
+    const dayParts = text.split(/\n(?=### (?:MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY))/i);
+    for (const part of dayParts) {
+      const lines = part.split('\n');
+      const h = lines[0].trim();
+      if (!h.startsWith('###')) continue;
+      const title = h.replace(/^###\s*/, '').trim();
+      const body = lines.slice(1).filter(l => !l.match(/^\*\*Funnel|^\*\*Pillar|^---/i)).join('\n').trim();
+      if (body.length < 80) continue;
+      const day = (title.match(/MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY/i)||[''])[0].toUpperCase();
+      pieces.push({ type: 'linkedin_post', title, body: body.substring(0, 4000), day, funnel_stage: 'tofu', pillar: '' });
+    }
   }
 
   return pieces;
 }
 
-// ============================================================
-// MAIN RUNNER
-// ============================================================
 
 async function runJob(clientSlug, jobName) {
   const job = JOB_DEFINITIONS[jobName];
