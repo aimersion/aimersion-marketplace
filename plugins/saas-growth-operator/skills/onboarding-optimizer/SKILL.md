@@ -1,99 +1,167 @@
 ---
 name: onboarding-optimizer
 description: >
-  Optimize SaaS user onboarding flows for faster activation and higher retention. This skill should be used when the user asks about "onboarding flow", "user activation", "time-to-value", "product tour", "first-run experience", "welcome sequence", "activation rate", "onboarding emails", "user setup", "feature adoption", "getting started experience", or needs help designing, auditing, or improving how new users experience their product for the first time. Also trigger when discussing trial conversion, free-to-paid conversion, or new user drop-off.
+  Design and optimize SaaS onboarding flows to maximize activation, reduce time-to-value, 
+  and prevent early churn. Use this skill when someone asks about "onboarding", "activation 
+  rate", "time to value", "users not activating", "free trial conversion", "first week 
+  experience", "aha moment", "onboarding flow", "onboarding emails", "new user experience", 
+  or when free trial conversion or early churn is the problem. The first 30 days determine 
+  whether a customer stays for 3 years or churns at renewal. This is where SaaS is won or lost.
+version: 1.1.0
 ---
 
 # Onboarding Optimizer
 
-Design and optimize SaaS onboarding experiences that drive activation and long-term retention.
+Design onboarding that turns signups into activated, retained customers — by getting 
+users to their "aha moment" as fast as possible and removing every obstacle between 
+signup and value.
 
-## The Activation Framework
+## The Onboarding Framework
 
-Onboarding success = getting users to their "aha moment" as fast as possible with minimum friction.
+### Core Principle: Minimize Time to First Value
 
-### Defining the Aha Moment
+Onboarding has one job: get the user to experience the core value of your product before 
+they lose momentum. Everything else is secondary.
 
-The aha moment is the point where a user first experiences the core value of the product. Examples:
-- Slack: Sending and receiving first message in a team channel
-- Dropbox: Saving a file and accessing it from another device
-- Zoom: Completing first video call
-- HubSpot: Importing contacts and sending first email
+**Define your activation metric first:**
+- What is the specific action in your product that correlates with long-term retention?
+- Examples: "User creates first project," "User sends first message to their team," "User imports first data set"
+- This is your North Star for onboarding design
 
-**How to identify yours:**
-1. Compare behaviors of retained vs. churned users in first 7 days
-2. Look for actions that correlate most strongly with 30/60/90-day retention
-3. Test hypotheses: "Users who do X within Y days retain at Z% vs. baseline"
+### Onboarding Audit Checklist
 
-### Activation Metrics
+**First 5 minutes (critical):**
+- [ ] Does the signup flow collect only essential info? (Every unnecessary field costs conversions)
+- [ ] Does the user land in a context that makes immediate action obvious?
+- [ ] Is there a clear "first step" that takes < 60 seconds to complete?
+- [ ] Is the empty state helpful? (Empty dashboards kill activation — use starter templates, sample data, or guided prompts)
+- [ ] Does the welcome email arrive within 2 minutes and point to a specific action?
 
-**Primary metrics:**
-- Activation rate: % of signups who reach the aha moment
-- Time-to-value (TTV): Median time from signup to aha moment
-- Onboarding completion rate: % who finish the setup flow
+**First 24 hours:**
+- [ ] Is there a product tour that shows the path to value, not every feature?
+- [ ] Are tooltips/walkthroughs contextual (appear when relevant) not forced upfront?
+- [ ] Does the "Day 1" email address the most common first-day friction?
+- [ ] Is there a visible progress indicator toward activation?
 
-**Secondary metrics:**
-- Setup step completion by step (funnel)
-- Feature adoption breadth in first session
-- Return rate within 24/48/72 hours
-- Invite/share rate (viral coefficient)
+**First 7 days:**
+- [ ] Are the Day 3 and Day 7 emails triggered by behavior, not just time?
+- [ ] Do low-activity users get a different path than high-activity users?
+- [ ] Is there a human touchpoint for high-value trial users?
 
-### Onboarding Design Principles
+**First 30 days:**
+- [ ] Is there a clear milestone email when they hit the activation moment?
+- [ ] Are upgrade prompts triggered by usage limits, not arbitrary timing?
+- [ ] Is there a "getting started" checklist with < 5 items?
 
-1. **Progressive disclosure**: Show only what's needed now, reveal complexity later
-2. **Quick wins**: Let users accomplish something meaningful within 2 minutes
-3. **Guided, not gated**: Provide structure without blocking exploration
-4. **Contextual education**: Teach features when they're relevant, not all upfront
-5. **Celebrate progress**: Acknowledge milestones (first action, setup complete, first result)
-6. **Remove decisions**: Default intelligently, don't ask users to configure before using
+### Onboarding Email Sequences
 
-### Onboarding Flow Architecture
+**Welcome Email (send immediately on signup):**
+```
+Subject: [Specific outcome], not "Welcome to [Product]"
+Good: "Your first [outcome] is 3 steps away"
+Bad: "Welcome to [Product Name]!"
 
-For detailed patterns and templates, read `references/activation-patterns.md`.
+Body structure:
+- What they just signed up for (in their words, not yours)
+- The single most important first action
+- A link directly to that action (no navigation required)
+- What to expect in the next 7 days
+- Reply-to that actually gets read (humanize this)
+Length: Under 150 words
+```
 
-**The ideal flow (PLG):**
-1. Signup (minimize fields: email + password, or SSO only)
-2. Single qualifying question (role, use case, team size — pick ONE)
-3. Personalized quick-start based on answer
-4. Guided first action (reach the aha moment)
-5. Expansion prompts (invite team, connect integrations, explore features)
+**Day 2-3 Email (if not yet activated):**
+```
+Trigger: No activation event in 48 hours
+Subject: "Quick question about [Product]"
+Body:
+- Acknowledge they signed up but haven't [done activation action]
+- Ask one question: "What's getting in the way?" (genuinely — this improves the product)
+- Offer one concrete help: video walkthrough, 15-min call, or specific doc
+- Remove friction: link directly to where they got stuck
+```
 
-**Common antipatterns to eliminate:**
-- Requiring email verification before any product access
-- Long setup wizards before showing value
-- Feature tours that explain everything before the user has context
-- Requiring credit card for trial start (reduces signups 60-80%)
-- Blank-slate experience with no guidance
+**Activation Celebration Email (triggered by activation event):**
+```
+Trigger: User completes activation action
+Subject: "You just [specific achievement]"
+Body:
+- Celebrate the specific thing they did (not generic "great job")
+- Show what's now possible (the next horizon)
+- Suggest the logical next action that builds on what they just did
+- This is your highest-engagement email — use it to drive the next behavior
+```
 
-## Onboarding Channels
+**Day 7 — Value Reminder (for non-churned users):**
+```
+Trigger: Day 7 for users who activated but haven't used a key feature
+Body:
+- Reference what they've done so far (personalized with their actual usage data)
+- Introduce one feature that adds value based on their usage pattern
+- Social proof: what customers at their stage typically do next
+- Direct link to try the feature
+```
 
-Effective onboarding spans multiple touchpoints:
+**Day 14 — Expansion Signal (for activated users):**
+```
+Trigger: High-activity users approaching a usage limit or trial end
+Body:
+- Show them their results (specific numbers from their account)
+- Compare to what they'd have without the product (the counterfactual)
+- Make the upgrade path frictionless — one click, pre-filled plan selection
+- Address the top upgrade objection proactively
+```
 
-**In-app:**
-- Welcome modal or quick-start checklist
-- Tooltips and hotspots on key features
-- Progress indicator (setup 3/5 complete)
-- Empty state designs that prompt first action
+### Product Tour Design
 
-**Email:**
-- Welcome email (immediate, warm, one clear CTA)
-- Day 1: Setup completion prompt
-- Day 3: Value reinforcement + case study
-- Day 7: Feature highlight based on usage
-- Day 14: Check-in for trial users
+**Principles:**
+- Tours should be 3-5 steps maximum — not a comprehensive feature walkthrough
+- Each step = one specific action the user takes, with an immediate visible result
+- Skip the "here's our nav bar" tour — users can find the nav. They can't always find the value.
+- Offer to skip — forced tours train users to click through without reading
+- Contextual tooltips > forced walkthroughs: appear when the user navigates to a feature, not as an upfront lecture
 
-**Human touch (for higher-ACV products):**
-- Automated CSM assignment based on plan/potential
-- Kickoff call template
-- Technical onboarding session
-- 30-day check-in
+**Tour Structure:**
+```
+Step 1: Get them to create/import their first real piece of data
+Step 2: Show them the core value (the "aha moment" action)
+Step 3: Show them one key collaboration or sharing feature
+Step 4: Show them where to find help
+[Done — resist the urge to show everything]
+```
 
-## Output Guidelines
+### Activation Rate Benchmarks
+
+| Product Type | Typical Activation | Good | Excellent |
+|-------------|-------------------|------|-----------|
+| B2C apps | 25-35% | 40-50% | 60%+ |
+| SMB SaaS | 20-30% | 35-45% | 55%+ |
+| Mid-market SaaS | 15-25% | 30-40% | 50%+ |
+| Enterprise SaaS | 10-20% | 25-35% | 45%+ |
+
+*Activation defined as completing the product-specific activation event within 14 days of signup*
+
+### Diagnosing Onboarding Problems
+
+**Low signup-to-activation rate (< 20%):**
+- Audit the first 5 minutes — where do users drop off?
+- Check your activation definition — is it too hard to reach?
+- Review the empty state — are users landing in a blank, unhelpful dashboard?
+
+**Users activate but churn in first 30 days:**
+- The activation metric may not correlate with real value — validate with customer interviews
+- Check if the "day 2-7" experience has a drop-off cliff
+- Review whether users are building habits (returning) or just completing a task once
+
+**High trial-to-paid conversion rate but low retention:**
+- Onboarding created false activation — users bought before they really understood the value
+- Fix: slow down the upgrade ask, ensure genuine activation before conversion pressure
+
+### Output Guidelines
 
 When designing or auditing onboarding:
-- Map every step from signup to activation
-- Identify and quantify friction at each step
-- Benchmark TTV against product category
-- Provide specific, implementable recommendations
-- Include wireframe descriptions or flow diagrams where helpful
-- Estimate impact of each recommendation on activation rate
+1. Start with the activation event definition — everything else flows from this
+2. Map the current user journey step by step and mark every friction point
+3. Prioritize the first 5 minutes above all else — this is where 60-80% of activation failures happen
+4. Recommend specific copy for the most important email in the sequence (usually the welcome)
+5. Quantify the impact: "Improving activation from 25% to 35% on 1,000 signups/month = 100 more activated users/month = [X ARR based on their conversion rate]"
