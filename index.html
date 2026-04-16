@@ -2,1609 +2,806 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aimersion AI — 76 AI Plugins for Claude · Every Industry, Every Role</title>
-<meta name="description" content="72 production-ready AI plugins for Claude.ai, Claude Code, and API. Every industry, every role. Built by Aimersion AI — DFW, Texas.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Aimersion AI — 76 AI Plugins for Claude</title>
+<meta name="description" content="76 production-ready AI plugins for Claude. Works on Claude.ai app, Claude Code, and API. Every industry, every role. Add superpowers to Claude in 30 seconds.">
+<meta property="og:title" content="Aimersion AI Plugin Marketplace — 76 AI Plugins for Claude">
+<meta property="og:description" content="Add expert AI skills to Claude in 30 seconds. 76 plugins across every industry — marketing, legal, healthcare, SaaS, trades, and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink:       #0F0F0F;
-  --ink2:      #3A3A3A;
-  --ink3:      #717171;
-  --ink4:      #A0A0A0;
-  --rule:      #E4E4E4;
-  --rule2:     #F0F0F0;
-  --bg:        #FAFAF8;
-  --bg2:       #F4F3F0;
-  --bg3:       #EEECEA;
-  --accent:    #1A1A1A;
-  --blue:      #1D4ED8;
-  --blue-light:#EFF6FF;
-  --blue-mid:  #DBEAFE;
-  --green:     #166534;
-  --green-light:#F0FDF4;
-  --orange:    #C2410C;
-  --orange-light:#FFF7ED;
-  --radius:    8px;
-  --radius-lg: 14px;
-  font-size: 15px;
+  --ink: #0F172A;
+  --ink2: #334155;
+  --ink3: #64748B;
+  --ink4: #94A3B8;
+  --rule: #E2E8F0;
+  --rule2: #F1F5F9;
+  --bg: #FFFFFF;
+  --bg2: #F8FAFC;
+  --bg3: #F1F5F9;
+  --teal: #0D9488;
+  --teal-lt: #F0FDFA;
+  --teal-bd: #99F6E4;
+  --blue: #1D4ED8;
+  --blue-lt: #EFF6FF;
+  --radius: 10px;
+  --radius-lg: 16px;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--teal); text-decoration: none; }
+button { font-family: 'Inter', -apple-system, sans-serif; cursor: pointer; border: none; }
 
-body {
-  font-family: 'DM Sans', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-a { color: var(--blue); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-code, .mono {
-  font-family: 'DM Mono', 'SF Mono', monospace;
-  font-size: 0.85em;
-}
-
-/* ── TOP BAR ────────────────────────────────── */
-.topbar {
+/* ── NAV ─────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--rule);
-  background: white;
-  padding: 0 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
-  position: sticky;
-  top: 0;
-  z-index: 200;
+  padding: 0 20px; height: 52px;
+  display: flex; align-items: center; justify-content: space-between;
 }
-.topbar-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 600;
-  font-size: 15px;
-  color: var(--ink);
-  text-decoration: none;
-}
-.brand-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--ink);
-}
-.topbar-links {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.topbar-links a {
-  font-size: 14px;
-  color: var(--ink3);
-  text-decoration: none;
-  font-weight: 400;
-}
-.topbar-links a:hover { color: var(--ink); }
-.topbar-cta {
-  background: var(--ink);
-  color: white !important;
-  padding: 7px 16px;
-  border-radius: var(--radius);
-  font-weight: 500 !important;
-  font-size: 13px !important;
-}
-.topbar-cta:hover { background: #333 !important; text-decoration: none !important; }
+.nav-brand { font-weight: 600; font-size: 15px; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+.nav-links { display: flex; gap: 16px; align-items: center; }
+.nav-links a { font-size: 13px; color: var(--ink3); font-weight: 500; }
+.nav-cta { background: var(--teal); color: white !important; padding: 7px 14px; border-radius: 8px; font-size: 13px; font-weight: 500; }
 
-/* ── HERO ──────────────────────────────────── */
+/* ── HERO ─────────────────────────────────────── */
 .hero {
-  background: white;
-  border-bottom: 1px solid var(--rule);
-  padding: 72px 32px 64px;
+  background: var(--ink);
+  padding: 48px 20px 40px;
   text-align: center;
 }
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink3);
-  margin-bottom: 24px;
-}
-.hero-eyebrow::before, .hero-eyebrow::after {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 1px;
-  background: var(--rule);
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(13,148,136,0.2); color: #5DCAA5;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 100px; border: 1px solid rgba(13,148,136,0.3);
+  margin-bottom: 20px;
 }
 .hero h1 {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: clamp(42px, 6vw, 72px);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 20px;
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: clamp(26px, 6vw, 42px); font-weight: 600; color: white;
+  line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 14px;
 }
-.hero h1 em {
-  font-style: italic;
-  color: var(--ink2);
-}
+.hero h1 em { color: #5DCAA5; font-style: normal; }
 .hero-sub {
-  font-size: 17px;
-  color: var(--ink3);
-  max-width: 520px;
-  margin: 0 auto 48px;
-  font-weight: 300;
-  line-height: 1.7;
+  font-size: 16px; color: #94A3B8; font-weight: 400;
+  max-width: 480px; margin: 0 auto 28px; line-height: 1.6;
 }
 .hero-stats {
-  display: flex;
-  justify-content: center;
-  gap: 0;
-  margin-bottom: 52px;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
-  background: white;
+  display: flex; justify-content: center; gap: 0;
+  border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius);
+  overflow: hidden; max-width: 380px; margin: 0 auto 32px;
 }
 .hero-stat {
-  flex: 1;
-  padding: 20px 16px;
-  border-right: 1px solid var(--rule);
-  text-align: center;
+  flex: 1; padding: 14px 8px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.1);
 }
 .hero-stat:last-child { border-right: none; }
-.hero-stat-num {
-  display: block;
-  font-family: 'Instrument Serif', serif;
-  font-size: 28px;
-  font-weight: 400;
-  color: var(--ink);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-.hero-stat-lbl {
-  font-size: 11px;
-  color: var(--ink4);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
+.hero-stat-num { display: block; font-size: 22px; font-weight: 600; color: white; line-height: 1; }
+.hero-stat-lbl { display: block; font-size: 10px; color: #64748B; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 3px; }
 
-/* ── PLATFORM TABS (HERO) ───────────────────── */
-.platform-wrap {
-  max-width: 600px;
-  margin: 0 auto;
+/* ── MOBILE INSTALL CTA ───────────────────────── */
+.hero-install {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg); padding: 20px; max-width: 480px; margin: 0 auto;
 }
-.platform-tabs {
-  display: flex;
-  gap: 0;
-  background: var(--bg2);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  border-bottom: none;
-  padding: 6px 6px 0;
-}
-.ptab {
-  flex: 1;
-  padding: 9px 12px;
-  border: none;
-  background: transparent;
-  border-radius: 8px 8px 0 0;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink3);
-  cursor: pointer;
-  transition: all 0.15s;
-  white-space: nowrap;
-}
-.ptab.active {
-  background: white;
-  color: var(--ink);
-  box-shadow: 0 -1px 0 var(--rule), -1px 0 0 var(--rule), 1px 0 0 var(--rule);
-}
-.ptab:hover:not(.active) { color: var(--ink2); }
-
-.platform-panel {
-  display: none;
-  border: 1px solid var(--rule);
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  background: white;
-  overflow: hidden;
-}
-.platform-panel.active { display: block; }
-
-.install-row {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  background: var(--bg2);
-  border-bottom: 1px solid var(--rule);
-}
-.install-row code {
-  flex: 1;
-  padding: 14px 16px;
-  font-size: 13px;
-  color: var(--ink2);
+.hero-install-label { font-size: 11px; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+.hero-install-steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.hero-install-step {
+  display: flex; align-items: flex-start; gap: 10px;
   text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background: transparent;
-  display: block;
-}
-.install-row button, .copy-btn {
-  padding: 14px 20px;
-  background: var(--ink);
-  border: none;
-  color: white;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.15s;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.install-row button:hover, .copy-btn:hover { background: #333; }
-.install-note {
-  padding: 12px 16px;
-  font-size: 13px;
-  color: var(--ink3);
-  line-height: 1.6;
-  text-align: left;
-}
-.install-note strong { color: var(--ink2); font-weight: 500; }
-.install-note a { color: var(--blue); }
-
-/* ── HOW IT WORKS ───────────────────────────── */
-.how-section {
-  padding: 72px 32px;
-  border-bottom: 1px solid var(--rule);
-  background: var(--bg);
-}
-.section-label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink4);
-  text-align: center;
-  margin-bottom: 12px;
-}
-.section-title {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 400;
-  text-align: center;
-  color: var(--ink);
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
-}
-.section-sub {
-  text-align: center;
-  color: var(--ink3);
-  font-size: 16px;
-  font-weight: 300;
-  margin-bottom: 48px;
-}
-
-/* Platform switcher in how section */
-.gs-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-.gs-tab {
-  padding: 8px 20px;
-  border: 1px solid var(--rule);
-  border-radius: 99px;
-  background: white;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink3);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.gs-tab.active {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: white;
-}
-.gs-tab:hover:not(.active) { border-color: var(--ink2); color: var(--ink2); }
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1px;
-  max-width: 960px;
-  margin: 0 auto;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-.step-card {
-  background: white;
-  padding: 32px 28px;
 }
 .step-num {
-  font-family: 'Instrument Serif', serif;
-  font-size: 36px;
-  font-weight: 400;
-  color: var(--rule);
-  line-height: 1;
-  margin-bottom: 16px;
-  display: block;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--teal); color: white; font-size: 11px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  margin-top: 1px;
 }
-.step-card h3 {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 8px;
+.step-text { font-size: 13px; color: #CBD5E1; line-height: 1.5; }
+.step-text strong { color: white; font-weight: 500; }
+.browse-btn {
+  width: 100%; padding: 14px; background: var(--teal); color: white;
+  border-radius: var(--radius); font-size: 15px; font-weight: 600;
+  border: none; cursor: pointer; transition: opacity 0.15s;
 }
-.step-card p {
-  font-size: 13px;
-  color: var(--ink3);
-  line-height: 1.65;
-  font-weight: 300;
-}
-.step-card .step-code {
-  display: inline-block;
-  margin-top: 12px;
-  background: var(--bg2);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--ink2);
-  word-break: break-all;
-  line-height: 1.5;
-}
-.gs-panel { display: none; }
-.gs-panel.active { display: block; }
+.browse-btn:active { opacity: 0.85; }
+.hero-note { font-size: 11px; color: #475569; margin-top: 10px; }
 
-/* ── STICKY NAV ──────────────────────────────── */
-.catalog-nav {
-  position: sticky;
-  top: 56px;
-  z-index: 100;
-  background: white;
-  border-bottom: 1px solid var(--rule);
-  padding: 0 32px;
+/* ── SEARCH + FILTER ──────────────────────────── */
+.search-bar {
+  position: sticky; top: 52px; z-index: 90;
+  background: white; border-bottom: 1px solid var(--rule);
+  padding: 12px 20px;
 }
-.catalog-nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  height: 52px;
-}
-.search-wrap {
-  position: relative;
-  flex-shrink: 0;
-}
+.search-input-wrap { position: relative; }
 .search-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--ink4);
-  font-size: 14px;
-  pointer-events: none;
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--ink4); font-size: 15px; pointer-events: none;
 }
-#search {
-  padding: 8px 12px 8px 34px;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  background: var(--bg2);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
-  color: var(--ink);
-  width: 220px;
-  outline: none;
-  transition: border-color 0.15s, background 0.15s;
+#searchInput {
+  width: 100%; padding: 10px 12px 10px 36px;
+  border: 1.5px solid var(--rule); border-radius: 10px;
+  font-size: 15px; font-family: 'Inter', sans-serif; color: var(--ink);
+  background: var(--bg2); outline: none; transition: border-color 0.15s;
+  -webkit-appearance: none;
 }
-#search:focus { border-color: var(--ink2); background: white; }
-#search::placeholder { color: var(--ink4); }
-.chips-scroll {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  flex: 1;
-  scrollbar-width: none;
-  padding: 6px 0;
+#searchInput:focus { border-color: var(--teal); background: white; }
+.cat-scroll {
+  display: flex; gap: 8px; overflow-x: auto; padding: 10px 0 2px;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
 }
-.chips-scroll::-webkit-scrollbar { display: none; }
-.chip {
-  padding: 5px 14px;
-  border: 1px solid var(--rule);
-  border-radius: 99px;
-  background: white;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--ink3);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.12s;
+.cat-scroll::-webkit-scrollbar { display: none; }
+.cat-pill {
+  padding: 6px 14px; border-radius: 100px; border: 1.5px solid var(--rule);
+  font-size: 12px; font-weight: 500; white-space: nowrap; cursor: pointer;
+  background: white; color: var(--ink3); transition: all 0.15s; flex-shrink: 0;
 }
-.chip:hover { border-color: var(--ink2); color: var(--ink2); }
-.chip.active { background: var(--ink); border-color: var(--ink); color: white; }
-.count-badge {
-  font-size: 12px;
-  color: var(--ink4);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
+.cat-pill.active { background: var(--teal); border-color: var(--teal); color: white; }
 
-/* ── CATALOG ──────────────────────────────────── */
-.catalog {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 48px 32px 80px;
-}
-.cat-section { margin-bottom: 52px; }
-.cat-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--rule);
-}
-.cat-icon { font-size: 16px; }
-.cat-name { font-size: 13px; font-weight: 600; color: var(--ink2); letter-spacing: 0.02em; text-transform: uppercase; }
-.cat-count {
-  font-size: 11px;
-  color: var(--ink4);
-  font-weight: 400;
-  margin-left: 4px;
-}
+/* ── CARDS GRID ───────────────────────────────── */
+.catalog { padding: 16px 20px 80px; max-width: 1200px; margin: 0 auto; }
+.results-count { font-size: 12px; color: var(--ink4); font-weight: 500; margin-bottom: 14px; padding: 0 2px; }
+.cards { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media(min-width:580px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+@media(min-width:900px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+@media(min-width:1200px) { .cards { grid-template-columns: repeat(4, 1fr); } }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-  gap: 12px;
-}
 .card {
-  background: white;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-lg);
-  padding: 22px;
-  cursor: pointer;
-  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  background: white; border: 1.5px solid var(--rule); border-radius: var(--radius-lg);
+  padding: 16px; cursor: pointer; transition: all 0.15s; position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
-.card:hover {
-  border-color: var(--ink2);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-  transform: translateY(-1px);
+.card:active { transform: scale(0.98); border-color: var(--teal); }
+.card:hover { border-color: var(--teal); }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.card-icon {
+  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; background: var(--bg2);
 }
-.card-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-}
-.card-name { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.3; }
-.card-version {
-  font-size: 10px;
-  color: var(--ink4);
-  font-family: 'DM Mono', monospace;
-  flex-shrink: 0;
-  margin-top: 3px;
-}
-.card-desc {
-  font-size: 13px;
-  color: var(--ink3);
-  line-height: 1.55;
-  flex: 1;
-  font-weight: 300;
-}
-.card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-.tag {
-  font-size: 11px;
-  background: var(--bg2);
-  color: var(--ink3);
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-weight: 400;
-}
-.card-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-top: 10px;
-  border-top: 1px solid var(--rule2);
-}
-.meta-item {
-  font-size: 12px;
-  color: var(--ink4);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.card-btn {
-  margin-top: 4px;
-  padding: 8px 14px;
-  border-radius: var(--radius);
-  font-size: 13px;
-  font-weight: 500;
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg2);
-  border: 1px solid var(--rule);
-  color: var(--ink2);
-  cursor: pointer;
-  transition: all 0.12s;
-  width: 100%;
-  text-align: center;
-}
-.card-btn:hover {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: white;
-}
-
-/* ── MODAL ────────────────────────────────────── */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(15,15,15,0.5);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s;
-}
-.modal-overlay.open { opacity: 1; pointer-events: all; }
-.modal {
-  background: white;
-  border: 1px solid var(--rule);
-  border-radius: 18px;
-  width: 100%;
-  max-width: 640px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 40px;
-  position: relative;
-  transform: translateY(12px);
-  transition: transform 0.2s;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06);
-}
-.modal-overlay.open .modal { transform: translateY(0); }
-.modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--bg2);
-  border: 1px solid var(--rule);
-  color: var(--ink3);
-  font-size: 16px;
-  cursor: pointer;
-  line-height: 28px;
-  text-align: center;
+.card-meta { flex: 1; min-width: 0; }
+.card-cat { font-size: 10px; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 0.06em; }
+.card-name { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.3; margin-top: 2px; }
+.card-arrow { color: var(--ink4); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+.card-desc { font-size: 13px; color: var(--ink3); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-skills { font-size: 11px; color: var(--ink4); font-weight: 500; }
+.card-use-btn {
+  padding: 7px 14px; background: var(--teal-lt); color: var(--teal);
+  border-radius: 8px; font-size: 12px; font-weight: 600; border: 1px solid var(--teal-bd);
   transition: all 0.15s;
-  flex-shrink: 0;
 }
-.modal-close:hover { background: var(--ink); color: white; border-color: var(--ink); }
-.modal-cat-badge {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--ink4);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 10px;
-}
-.modal h2 {
-  font-family: 'Instrument Serif', serif;
-  font-size: 28px;
-  font-weight: 400;
-  color: var(--ink);
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  padding-right: 40px;
-}
-.modal-desc {
-  font-size: 14px;
-  color: var(--ink3);
-  line-height: 1.65;
-  margin-bottom: 28px;
-  font-weight: 300;
-}
-.modal-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
-.modal-tag {
-  font-size: 12px;
-  background: var(--bg2);
-  color: var(--ink3);
-  border-radius: 4px;
-  padding: 3px 9px;
-}
-.modal-section { margin-bottom: 24px; }
-.modal-section-title {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--ink4);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 12px;
-}
-.skill-list, .cmd-list { display: flex; flex-wrap: wrap; gap: 8px; }
-.skill-pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--bg2);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 13px;
-  color: var(--ink2);
-  font-weight: 400;
-}
-.skill-pip {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--ink3);
-  flex-shrink: 0;
-}
-.cmd-pill {
-  background: var(--green-light);
-  border: 1px solid #BBF7D0;
-  border-radius: 6px;
-  padding: 5px 11px;
-  font-size: 12px;
-  font-family: 'DM Mono', monospace;
-  color: var(--green);
-}
+.card:active .card-use-btn, .card:hover .card-use-btn { background: var(--teal); color: white; }
 
-/* Modal install */
-.modal-install { margin-top: 28px; }
-.modal-install-title {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--ink4);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 12px;
+/* ── BOTTOM SHEET (mobile modal) ──────────────── */
+.sheet-overlay {
+  position: fixed; inset: 0; background: rgba(15,23,42,0.5);
+  z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.2s;
 }
-.modal-ptabs {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
+.sheet-overlay.open { opacity: 1; pointer-events: all; }
+.sheet {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: white; border-radius: 20px 20px 0 0;
+  max-height: 92vh; overflow-y: auto; overscroll-behavior: contain;
+  transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.32,0.72,0,1);
+  z-index: 201; padding-bottom: env(safe-area-inset-bottom, 20px);
 }
-.modal-ptab {
-  padding: 6px 14px;
-  border: 1px solid var(--rule);
-  border-radius: 99px;
-  background: white;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--ink3);
-  cursor: pointer;
-  transition: all 0.12s;
-}
-.modal-ptab.active { background: var(--ink); border-color: var(--ink); color: white; }
-.modal-ppanel { display: none; }
-.modal-ppanel.active { display: block; }
-.modal-install-row {
-  display: flex;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--bg2);
-}
-.modal-install-row code {
-  flex: 1;
-  padding: 11px 14px;
-  font-size: 12px;
-  color: var(--ink2);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  background: transparent;
-  display: block;
-}
-.modal-install-row button {
-  padding: 11px 16px;
-  background: var(--ink);
-  border: none;
-  color: white;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.12s;
-  white-space: nowrap;
-}
-.modal-install-row button:hover { background: #333; }
-.modal-install-note {
-  margin-top: 8px;
-  font-size: 12px;
-  color: var(--ink4);
-  line-height: 1.6;
-}
-.modal-install-note a { color: var(--blue); }
+.sheet-overlay.open .sheet { transform: translateY(0); }
+.sheet-handle { width: 36px; height: 4px; background: #E2E8F0; border-radius: 2px; margin: 12px auto 0; }
+.sheet-body { padding: 20px 20px 24px; }
+.sheet-cat { font-size: 11px; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+.sheet-title { font-size: 22px; font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 10px; }
+.sheet-desc { font-size: 15px; color: var(--ink3); line-height: 1.65; margin-bottom: 16px; }
+.sheet-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.sheet-tag { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 100px; background: var(--bg3); color: var(--ink3); }
 
-/* ── TOAST ──────────────────────────────────── */
-.toast {
-  position: fixed;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%) translateY(16px);
-  background: var(--ink);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 99px;
-  font-size: 13px;
-  font-weight: 500;
-  z-index: 9999;
-  opacity: 0;
-  transition: all 0.25s;
-  pointer-events: none;
-  white-space: nowrap;
-}
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+/* Skills + Commands */
+.sheet-section-title { font-size: 11px; font-weight: 600; color: var(--ink4); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 10px; }
+.skills-grid { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+.skill-chip { display: flex; align-items: center; gap: 6px; padding: 7px 12px; background: var(--bg2); border: 1px solid var(--rule); border-radius: 8px; font-size: 12px; color: var(--ink2); font-weight: 500; }
+.skill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+.cmds-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+.cmd-chip { padding: 5px 10px; background: #0F172A; color: #94A3B8; border-radius: 6px; font-size: 12px; font-family: 'SF Mono', 'Fira Code', monospace; }
 
-/* ── EMPTY STATE ────────────────────────────── */
-#empty {
-  display: none;
-  text-align: center;
-  padding: 80px 32px;
-  color: var(--ink4);
+/* Install section */
+.install-box {
+  background: var(--ink); border-radius: var(--radius-lg); padding: 20px; margin-top: 4px;
 }
-#empty h3 { font-family: 'Instrument Serif', serif; font-size: 22px; font-weight: 400; margin-bottom: 8px; color: var(--ink3); }
-#empty p { font-size: 14px; font-weight: 300; }
+.install-box-title { font-size: 13px; font-weight: 600; color: white; margin-bottom: 4px; }
+.install-box-sub { font-size: 12px; color: #64748B; margin-bottom: 16px; }
 
-/* ── FOOTER ──────────────────────────────────── */
-footer {
-  border-top: 1px solid var(--rule);
-  background: white;
-  padding: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
+/* Platform tabs */
+.ptabs { display: flex; background: rgba(255,255,255,0.06); border-radius: 10px; padding: 4px; gap: 2px; margin-bottom: 16px; }
+.ptab {
+  flex: 1; padding: 8px 4px; text-align: center; font-size: 12px; font-weight: 500;
+  color: #64748B; border-radius: 8px; background: transparent;
+  transition: all 0.15s; border: none;
 }
-.footer-brand { font-weight: 600; font-size: 14px; color: var(--ink); }
-.footer-links { display: flex; gap: 20px; }
-.footer-links a { font-size: 13px; color: var(--ink4); text-decoration: none; }
-.footer-links a:hover { color: var(--ink2); }
-.footer-copy { font-size: 12px; color: var(--ink4); }
+.ptab.active { background: white; color: var(--ink); }
 
-/* ── RESPONSIVE ──────────────────────────────── */
-@media (max-width: 640px) {
-  .topbar { padding: 0 20px; }
-  .topbar-links { gap: 14px; }
-  .hero { padding: 52px 20px 48px; }
-  .how-section, .catalog { padding-left: 20px; padding-right: 20px; }
-  .catalog-nav { padding: 0 20px; }
-  .cards { grid-template-columns: 1fr; }
-  .hero-stats { max-width: 100%; }
-  .platform-wrap { max-width: 100%; }
-  .steps-grid { grid-template-columns: 1fr 1fr; }
-  .modal { padding: 28px 24px; }
-  footer { padding: 24px 20px; }
-  .topbar-links .hide-mobile { display: none; }
+/* Claude.ai install — THE MAIN PATH */
+.claudeai-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+.claudeai-step { display: flex; gap: 10px; align-items: flex-start; }
+.cs-num { width: 24px; height: 24px; border-radius: 50%; background: var(--teal); color: white; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.cs-text { font-size: 13px; color: #CBD5E1; line-height: 1.5; }
+.cs-text strong { color: white; }
+.cs-text a { color: #5DCAA5; }
+
+.copy-prompt-btn {
+  width: 100%; padding: 14px; background: var(--teal); color: white;
+  border-radius: 10px; font-size: 15px; font-weight: 600; border: none;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: opacity 0.15s; -webkit-tap-highlight-color: transparent;
 }
-@media (max-width: 420px) {
-  .steps-grid { grid-template-columns: 1fr; }
+.copy-prompt-btn:active { opacity: 0.85; }
+.copy-prompt-btn.copied { background: #15803D; }
+
+.code-row {
+  display: flex; background: rgba(255,255,255,0.05); border-radius: 8px;
+  overflow: hidden; margin-bottom: 10px; align-items: stretch;
 }
+.code-row code { flex: 1; padding: 12px; font-size: 11px; color: #94A3B8; font-family: 'SF Mono','Fira Code',monospace; word-break: break-all; background: transparent; }
+.code-row button { padding: 12px 16px; background: rgba(255,255,255,0.1); color: white; font-size: 12px; font-weight: 500; white-space: nowrap; flex-shrink: 0; border: none; transition: background 0.15s; }
+.code-row button:active { background: rgba(255,255,255,0.2); }
+.install-note { font-size: 12px; color: #475569; line-height: 1.5; }
+.install-note a { color: #5DCAA5; }
+
+/* Panel show/hide */
+.ppanel { display: none; }
+.ppanel.active { display: block; }
+
+/* ── FOOTER ───────────────────────────────────── */
+footer { background: var(--ink); padding: 40px 20px; text-align: center; }
+.footer-brand { font-size: 16px; font-weight: 600; color: white; margin-bottom: 8px; }
+.footer-sub { font-size: 13px; color: #475569; margin-bottom: 20px; }
+.footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: #475569; transition: color 0.15s; }
+.footer-links a:hover { color: var(--teal); }
+
+/* ── EMPTY STATE ──────────────────────────────── */
+.empty { text-align: center; padding: 60px 20px; }
+.empty-icon { font-size: 40px; margin-bottom: 12px; }
+.empty h3 { font-size: 17px; color: var(--ink); margin-bottom: 6px; }
+.empty p { font-size: 14px; color: var(--ink3); }
 </style>
 </head>
 <body>
 
-<!-- ── TOP BAR ─────────────────────────────── -->
-<nav class="topbar">
-  <a class="topbar-brand" href="https://aimersion.ai" target="_blank">
-    <span class="brand-dot"></span>
+<!-- ── NAV ─────────────────────────────────────── -->
+<nav class="nav">
+  <a class="nav-brand" href="https://aimersion.ai" target="_blank">
+    <span class="nav-dot"></span>
     Aimersion AI
   </a>
-  <div class="topbar-links">
-    <a href="https://github.com/aimersion/aimersion-marketplace" target="_blank" class="hide-mobile">GitHub</a>
-    <a href="mailto:jlynch@aimersion.ai" class="hide-mobile">Contact</a>
-    <a href="https://aimersion.ai" target="_blank" class="topbar-cta">aimersion.ai →</a>
+  <div class="nav-links">
+    <a href="https://github.com/aimersion/aimersion-marketplace" target="_blank">GitHub</a>
+    <a href="https://aimersion.ai" target="_blank" class="nav-cta">Get Help →</a>
   </div>
 </nav>
 
-<!-- ── HERO ────────────────────────────────── -->
+<!-- ── HERO ─────────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-eyebrow">Plugin Marketplace</div>
-  <h1>AI skills for <em>every</em> industry,<br>every role, every tool</h1>
-  <p class="hero-sub">71 production-ready plugins for Claude. Works on Claude.ai, Claude Code, and the API — no setup required.</p>
+  <div class="hero-badge">76 Free Plugins for Claude</div>
+  <h1>Give Claude <em>expert skills</em><br>in any industry</h1>
+  <p class="hero-sub">Add a plugin to Claude in 30 seconds. Works on the Claude app, Claude Code, and the API — no setup, no code.</p>
 
   <div class="hero-stats">
     <div class="hero-stat">
-      <span class="hero-stat-num" id="statPlugins">76</span>
+      <span class="hero-stat-num">76</span>
       <span class="hero-stat-lbl">Plugins</span>
     </div>
     <div class="hero-stat">
-      <span class="hero-stat-num" id="statSkills">383+</span>
+      <span class="hero-stat-num">401</span>
       <span class="hero-stat-lbl">Skills</span>
     </div>
     <div class="hero-stat">
-      <span class="hero-stat-num" id="statCmds">312+</span>
+      <span class="hero-stat-num">332</span>
       <span class="hero-stat-lbl">Commands</span>
     </div>
     <div class="hero-stat">
-      <span class="hero-stat-num">13</span>
-      <span class="hero-stat-lbl">Categories</span>
+      <span class="hero-stat-num">Free</span>
+      <span class="hero-stat-lbl">Always</span>
     </div>
   </div>
 
-  <!-- Platform install tabs -->
-  <div class="platform-wrap">
-    <div class="platform-tabs">
-      <button class="ptab active" onclick="heroTab('claudeai',this)">🌐 Claude.ai</button>
-      <button class="ptab" onclick="heroTab('claudecode',this)">⚡ Claude Code</button>
-      <button class="ptab" onclick="heroTab('api',this)">🔌 API</button>
-    </div>
-
-    <div class="platform-panel active" id="hero-claudeai">
-      <div class="install-row">
-        <code>Browse → Copy Skill → Paste into Project Instructions</code>
-        <button onclick="copyText('https://aimersion.github.io/aimersion-marketplace/',this)">Copy URL</button>
+  <div class="hero-install">
+    <div class="hero-install-label">Using the Claude App? Here's how:</div>
+    <div class="hero-install-steps">
+      <div class="hero-install-step">
+        <div class="step-num">1</div>
+        <div class="step-text">Find a plugin below and tap <strong>Use in Claude App</strong></div>
       </div>
-      <p class="install-note">The easiest way. No CLI, no setup. Go to <a href="https://claude.ai" target="_blank">claude.ai</a> → open a <strong>Project</strong> → <strong>Edit Instructions</strong> → paste any skill below. Active for every conversation in that project.</p>
-    </div>
-
-    <div class="platform-panel" id="hero-claudecode">
-      <div class="install-row">
-        <code>claude plugin marketplace add aimersion/aimersion-marketplace</code>
-        <button onclick="copyText('claude plugin marketplace add aimersion/aimersion-marketplace',this)">Copy</button>
+      <div class="hero-install-step">
+        <div class="step-num">2</div>
+        <div class="step-text">The skill prompt is copied to your clipboard automatically</div>
       </div>
-      <p class="install-note">Run once in your terminal. All 72 plugins appear in the built-in <code>/plugin</code> browser. Then install any plugin with <code>/plugin install [name]@aimersion-marketplace</code></p>
-    </div>
-
-    <div class="platform-panel" id="hero-api">
-      <div class="install-row">
-        <code>https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/[name]/skills/[skill]/SKILL.md</code>
-        <button onclick="copyText('https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/',this)">Copy Base</button>
+      <div class="hero-install-step">
+        <div class="step-num">3</div>
+        <div class="step-text">In Claude: open a <strong>Project → Instructions → Paste</strong><br>That's it. Every chat in that project has the skill.</div>
       </div>
-      <p class="install-note">Fetch any SKILL.md and inject into your <code>system</code> prompt. Pure markdown, no dependencies. Skills are composable — stack multiple in one system prompt.</p>
     </div>
+    <button class="browse-btn" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">Browse All 76 Plugins ↓</button>
+    <div class="hero-note">Free forever · No account required · Open source on GitHub</div>
   </div>
 </section>
 
-<!-- ── HOW IT WORKS ─────────────────────────── -->
-<section class="how-section">
-  <div class="section-label">Getting Started</div>
-  <h2 class="section-title">Up and running in minutes</h2>
-  <p class="section-sub">Choose your platform — each has a direct path to using any plugin.</p>
-
-  <div class="gs-tabs">
-    <button class="gs-tab active" id="gs-tab-claudeai" onclick="gsTab('claudeai')">🌐 Claude.ai (Easiest)</button>
-    <button class="gs-tab" id="gs-tab-claudecode" onclick="gsTab('claudecode')">⚡ Claude Code CLI</button>
-    <button class="gs-tab" id="gs-tab-api" onclick="gsTab('api')">🔌 API / Developers</button>
+<!-- ── SEARCH + FILTER ─────────────────────────── -->
+<div class="search-bar">
+  <div class="search-input-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="search" id="searchInput" placeholder="Search plugins, industries, or roles..." autocomplete="off" autocorrect="off" spellcheck="false">
   </div>
+  <div class="cat-scroll" id="catScroll"></div>
+</div>
 
-  <div id="gs-claudeai" class="gs-panel active">
-    <div class="steps-grid">
-      <div class="step-card">
-        <span class="step-num">1</span>
-        <h3>Go to Claude.ai</h3>
-        <p>Open <a href="https://claude.ai" target="_blank">claude.ai</a> and create a new <strong>Project</strong> — or open an existing one. Projects give Claude persistent instructions for every chat.</p>
-      </div>
-      <div class="step-card">
-        <span class="step-num">2</span>
-        <h3>Find a Plugin</h3>
-        <p>Browse the catalog below. Click any plugin card to see its skills, then click <strong>Copy for Claude.ai</strong> to copy the skill content.</p>
-      </div>
-      <div class="step-card">
-        <span class="step-num">3</span>
-        <h3>Paste into Instructions</h3>
-        <p>In your Project, click <strong>Edit Instructions</strong> and paste. Claude now has that skill for every conversation in the project.</p>
-        <span class="step-code">Project → Edit Instructions → Paste</span>
-      </div>
-      <div class="step-card">
-        <span class="step-num">4</span>
-        <h3>Just Chat</h3>
-        <p>No slash commands needed. Describe your task naturally — the skill activates automatically based on what you ask.</p>
-      </div>
-    </div>
-  </div>
-
-  <div id="gs-claudecode" class="gs-panel">
-    <div class="steps-grid">
-      <div class="step-card">
-        <span class="step-num">1</span>
-        <h3>Install Claude Code</h3>
-        <p>Requires Node.js 18+. Install the CLI globally, then authenticate with your Anthropic account.</p>
-        <span class="step-code">npm install -g @anthropic-ai/claude-code</span>
-      </div>
-      <div class="step-card">
-        <span class="step-num">2</span>
-        <h3>Add the Marketplace</h3>
-        <p>Run this once in your terminal. It registers all 72 Aimersion plugins in Claude Code's built-in plugin browser.</p>
-        <span class="step-code">claude plugin marketplace add aimersion/aimersion-marketplace</span>
-      </div>
-      <div class="step-card">
-        <span class="step-num">3</span>
-        <h3>Install Any Plugin</h3>
-        <p>Inside Claude Code, open the plugin browser and install. Or run the install command directly. Skills activate immediately.</p>
-        <span class="step-code">/plugin install pool-service-operator@aimersion-marketplace</span>
-      </div>
-      <div class="step-card">
-        <span class="step-num">4</span>
-        <h3>Use Slash Commands</h3>
-        <p>Type <code>/</code> to see all commands from installed plugins. Skills also fire automatically when your task matches the skill's domain.</p>
-        <span class="step-code">/pool-service-operator:water-test FC 1.2 pH 7.9 TA 70</span>
-      </div>
-    </div>
-  </div>
-
-  <div id="gs-api" class="gs-panel">
-    <div class="steps-grid">
-      <div class="step-card">
-        <span class="step-num">1</span>
-        <h3>Pick a Skill</h3>
-        <p>Each skill is a standalone <code>SKILL.md</code> file. Browse the catalog and click any plugin to find the raw GitHub URL for the skills you want.</p>
-      </div>
-      <div class="step-card">
-        <span class="step-num">2</span>
-        <h3>Fetch the File</h3>
-        <p>Pull the raw SKILL.md at runtime or cache it. No parsing required — it's plain markdown designed for system prompts.</p>
-        <span class="step-code">curl .../plugins/[name]/skills/[skill]/SKILL.md</span>
-      </div>
-      <div class="step-card">
-        <span class="step-num">3</span>
-        <h3>Inject into System Prompt</h3>
-        <p>Pass the skill content in the <code>system</code> parameter of your API call alongside your own instructions.</p>
-        <span class="step-code">system: f"You are a [role].\n\n{skill_content}"</span>
-      </div>
-      <div class="step-card">
-        <span class="step-num">4</span>
-        <h3>Stack Multiple Skills</h3>
-        <p>Combine skills from different plugins in one system prompt to build compound agents. Skills are composable by design.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CATALOG NAV ──────────────────────────── -->
-<div class="catalog-nav">
-  <div class="catalog-nav-inner">
-    <div class="search-wrap">
-      <span class="search-icon">⌕</span>
-      <input type="text" id="search" placeholder="Search plugins…" oninput="filter()" autocomplete="off">
-    </div>
-    <div class="chips-scroll" id="chips"></div>
-    <span class="count-badge" id="countBadge"></span>
+<!-- ── CATALOG ─────────────────────────────────── -->
+<div class="catalog" id="catalog">
+  <div class="results-count" id="resultsCount"></div>
+  <div class="cards" id="cards"></div>
+  <div class="empty" id="emptyState" style="display:none">
+    <div class="empty-icon">🔍</div>
+    <h3>No plugins found</h3>
+    <p>Try a different search term or category</p>
   </div>
 </div>
 
-<!-- ── CATALOG ──────────────────────────────── -->
-<main class="catalog" id="catalog">
-  <!-- built by JS -->
-</main>
-<div id="empty">
-  <h3>No plugins found</h3>
-  <p>Try a different search term or clear the filter.</p>
-</div>
-
-<!-- ── MODAL ────────────────────────────────── -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModalDirect()">✕</button>
-    <div id="modalContent"></div>
+<!-- ── BOTTOM SHEET ────────────────────────────── -->
+<div class="sheet-overlay" id="sheetOverlay" onclick="closeSheet(event)">
+  <div class="sheet" id="sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-body" id="sheetBody"></div>
   </div>
 </div>
 
-<!-- ── TOAST ──────────────────────────────── -->
-<div class="toast" id="toast"></div>
-
-<!-- ── FOOTER ────────────────────────────── -->
+<!-- ── FOOTER ───────────────────────────────────── -->
 <footer>
-  <span class="footer-brand">Aimersion AI</span>
+  <div class="footer-brand">Aimersion AI</div>
+  <div class="footer-sub">Building the AI infrastructure layer for every business.</div>
   <div class="footer-links">
-    <a href="https://aimersion.ai" target="_blank">Website</a>
+    <a href="https://aimersion.ai" target="_blank">aimersion.ai</a>
     <a href="https://github.com/aimersion/aimersion-marketplace" target="_blank">GitHub</a>
-    <a href="mailto:jlynch@aimersion.ai">Contact</a>
+    <a href="mailto:jlynch@aimersion.ai">jlynch@aimersion.ai</a>
+    <a href="https://aimersionagent.com" target="_blank">Book a call</a>
   </div>
-  <span class="footer-copy">MIT License · Built in DFW, Texas</span>
 </footer>
 
 <script>
-// -- DATA ---------------------------------------------
+// ── DATA ────────────────────────────────────────
+const CATS = {
+  'Career':       { icon: '💼', color: '#7C3AED' },
+  'Business':     { icon: '🏢', color: '#1D4ED8' },
+  'Legal':        { icon: '⚖️', color: '#1D4ED8' },
+  'Healthcare':   { icon: '🏥', color: '#DC2626' },
+  'Automotive':   { icon: '🚗', color: '#D97706' },
+  'Trades':       { icon: '🔧', color: '#D97706' },
+  'E-commerce':   { icon: '🛒', color: '#0D9488' },
+  'Marketing':    { icon: '📣', color: '#0D9488' },
+  'Finance':      { icon: '💰', color: '#15803D' },
+  'Education':    { icon: '🎓', color: '#7C3AED' },
+  'Technology':   { icon: '💻', color: '#1D4ED8' },
+  'Hospitality':  { icon: '🏨', color: '#D97706' },
+  'Operations':   { icon: '⚙️', color: '#475569' },
+  'Knowledge Work':{ icon: '🧠', color: '#7C3AED' },
+};
+
 const DETAILS = {
-  'job-seeker-autopilot': { skills:['job-finder','resume-tailor','cover-letter-writer','company-researcher','application-submitter','outreach-engine','interview-coach','pipeline-tracker'], cmds:['find-jobs','apply','daily-sprint','interview-prep','pipeline','outreach'] },
-  'small-business-autopilot': { skills:['competitor-monitor','content-writer','email-campaign-builder','lead-researcher','social-media-scheduler'], cmds:['draft-week','find-leads','morning-brief','write-blog'] },
-  'pool-service-operator': { skills:['chemical-calculator','customer-communicator','equipment-advisor','route-optimizer','seasonal-planner'], cmds:['customer-report','daily-schedule','seasonal-checklist','water-test'] },
-  'customer-support-autopilot': { skills:['escalation-packager','kb-writer','response-drafter','satisfaction-monitor','ticket-triager'], cmds:['escalate','kb-article','respond','triage'] },
-  'dental-practice-autopilot': { skills:['insurance-verifier-helper','marketing-content','patient-reactivation','review-manager','treatment-plan-presenter'], cmds:['monthly-marketing','recall-campaign','review-response','treatment-plan'] },
-  'veterinary-practice-manager': { skills:['client-communicator','inventory-tracker','social-content','staff-trainer','wellness-plan-builder'], cmds:['client-outreach','inventory-check','social-posts','wellness-package'] },
-  'mental-health-practice-helper': { skills:['group-program-builder','insurance-navigator','intake-processor','marketing-for-therapists','session-notes-template'], cmds:['content-ideas','insurance-help','intake-prep','session-note'] },
-  'pharmacy-operations': { skills:['clinical-services-builder','compliance-tracker','inventory-optimizer','marketing-campaigns','patient-adherence'], cmds:['adherence-outreach','compliance-audit','inventory-report','seasonal-campaign'] },
-  'auto-dealership-operator': { skills:['bdc-assistant','inventory-analyzer','lead-nurture','marketing-planner','service-retention'], cmds:['inventory-report','lead-followup','sales-event','service-reminder'] },
-  'auto-repair-shop-manager': { skills:['customer-communicator','estimate-builder','marketing-helper','review-manager','technician-productivity'], cmds:['customer-update','monthly-specials','repair-estimate','review-response'] },
-  'auto-detailing-business': { skills:['booking-optimizer','fleet-proposal-writer','loyalty-program-builder','package-builder','social-content-creator'], cmds:['book-appointment','create-package','fleet-proposal','social-post'] },
-  'fleet-management-assistant': { skills:['compliance-manager','cost-analyzer','driver-manager','maintenance-scheduler','vehicle-lifecycle-planner'], cmds:['compliance-check','cost-report','driver-brief','maintenance-schedule'] },
-  'car-wash-operator': { skills:['equipment-monitor','local-marketer','membership-manager','staff-scheduler','weather-trigger-marketer'], cmds:['membership-campaign','monthly-report','staff-schedule','weather-promo'] },
-  'chiropractic-practice-builder': { skills:['care-plan-communicator','patient-reactivation','referral-program-builder','review-generator','social-content-creator'], cmds:['care-plan','monthly-content','reactivation-campaign','referral-letter'] },
-  'home-health-agency-operator': { skills:['caregiver-recruiter','compliance-manager','family-communicator','quality-improvement','scheduler'], cmds:['caregiver-post','family-update','quality-report','schedule-audit'] },
-  'medical-device-sales-rep': { skills:['clinical-evidence-summarizer','competitor-tracker','surgical-case-prep','surgeon-relationship-builder','territory-planner'], cmds:['case-prep','competitive-brief','surgeon-email','territory-plan'] },
-  'general-contractor-operator': { skills:['bid-estimator','change-order-manager','client-communicator','project-scheduler','safety-compliance'], cmds:['bid-proposal','change-order','project-update','safety-brief'] },
-  'electrician-business-manager': { skills:['apprentice-trainer','customer-follow-up','job-estimator','permit-tracker','seasonal-marketer'], cmds:['job-estimate','permit-checklist','promo-email','training-plan'] },
-  'roofing-company-operator': { skills:['crew-dispatcher','estimate-builder','lead-generator','storm-responder','warranty-manager'], cmds:['crew-dispatch','roofing-estimate','storm-response','warranty-letter'] },
-  'painting-contractor-helper': { skills:['color-consultant','commercial-proposal-writer','crew-scheduler','customer-experience','estimator'], cmds:['color-consult','crew-schedule','paint-estimate','proposal'] },
-  'landscaping-business-operator': { skills:['customer-retention','estimator','route-optimizer','seasonal-planner','social-content'], cmds:['landscape-estimate','monthly-content','route-plan','seasonal-checklist'] },
-  'shopify-store-optimizer': { skills:['collection-merchandiser','email-flow-builder','page-speed-optimizer','product-copywriter','promo-planner','store-auditor'], cmds:['audit','email-flow','product-copy','promo-calendar','seo-check','speed-fix'] },
-  'review-feedback-manager': { skills:['crisis-responder','reputation-monitor','review-responder','sentiment-analyzer','solicitation-campaigner'], cmds:['crisis-response','reputation-report','review-reply','review-request'] },
-  'inventory-pricing-optimizer': { skills:['abc-analyzer','demand-forecaster','price-optimizer','reorder-planner','seasonal-adjuster'], cmds:['abc-analysis','demand-forecast','pricing-review','reorder-plan'] },
-  'retail-store-operator': { skills:['inventory-manager','local-marketer','loss-prevention','staff-scheduler','visual-merchandiser'], cmds:['daily-ops','inventory-count','marketing-calendar','staff-schedule'] },
-  'saas-growth-operator': { skills:['churn-analyzer','expansion-planner','metrics-dashboard','onboarding-optimizer','pricing-strategist'], cmds:['churn-analysis','metrics-report','onboarding-audit','pricing-review'] },
-  'dev-agency-manager': { skills:['client-reporter','lead-qualifier','process-documenter','proposal-writer','resource-planner'], cmds:['client-report','lead-qualify','project-proposal','resource-plan'] },
-  'product-launch-planner': { skills:['audience-builder','content-planner','launch-auditor','post-launch-analyzer','pricing-strategist','timeline-generator'], cmds:['content-plan','launch-audit','launch-timeline','post-launch','pricing-strategy','top-of-funnel'] },
-  'franchise-operator': { skills:['compliance-monitor','financial-analyzer','local-marketer','staff-developer','unit-benchmarker'], cmds:['compliance-audit','financial-report','local-marketing','unit-comparison'] },
-  'solo-attorney-practice': { skills:['billing-manager','case-manager','client-intake','document-drafter','marketing-helper'], cmds:['bill-client','client-intake','draft-document','marketing-email'] },
-  'family-law-assistant': { skills:['client-communicator','court-filing-prep','custody-analyzer','document-organizer','mediation-prep'], cmds:['client-update','custody-analysis','file-prep','mediation-prep'] },
-  'criminal-defense-toolkit': { skills:['case-analyzer','client-communicator','discovery-tracker','motion-drafter','sentencing-mitigator'], cmds:['case-summary','discovery-log','draft-motion','sentencing-memo'] },
-  'immigration-law-helper': { skills:['case-tracker','client-communicator','country-conditions-researcher','document-checklist','rfe-responder'], cmds:['case-status','country-brief','document-checklist','rfe-response'] },
-  'corporate-law-assistant': { skills:['board-meeting-prep','compliance-monitor','contract-reviewer','entity-formation','ma-deal-tracker'], cmds:['board-pack','compliance-check','contract-review','ma-update'] },
-  'financial-advisor-practice': { skills:['compliance-documenter','financial-planner','market-commentator','portfolio-reviewer','prospect-marketer'], cmds:['client-letter','compliance-check','market-commentary','portfolio-review'] },
-  'mortgage-broker-assistant': { skills:['client-educator','pipeline-tracker','pre-qualifier','rate-shopper','realtor-nurturer'], cmds:['pre-qual','pipeline-report','rate-comparison','realtor-email'] },
-  'tax-prep-practice': { skills:['deduction-finder','document-checklist','extension-manager','quality-reviewer','seasonal-marketer'], cmds:['document-checklist','extension-letter','quality-review','tax-promo'] },
-  'wealth-management-advisor': { skills:['client-letter-writer','compliance-tracker','estate-planner','portfolio-reporter','tax-strategist'], cmds:['client-letter','estate-review','portfolio-report','tax-strategy'] },
-  'insurance-agency-operator': { skills:['claims-guide','coverage-reviewer','cross-seller','marketer','retention-campaigner'], cmds:['claims-help','coverage-review','cross-sell-email','retention-campaign'] },
-  'k12-school-administrator': { skills:['discipline-tracker','enrollment-marketer','grant-writer','parent-communicator','staff-evaluator'], cmds:['board-report','enrollment-email','grant-proposal','parent-letter'] },
-  'online-course-creator': { skills:['course-launcher','curriculum-designer','lesson-writer','pricing-optimizer','student-engager'], cmds:['course-launch','curriculum-plan','lesson-outline','pricing-strategy'] },
-  'tutoring-business-operator': { skills:['assessment-builder','lesson-planner','parent-reporter','scheduler','tutor-marketer'], cmds:['lesson-plan','marketing-email','parent-report','schedule-optimize'] },
-  'college-admissions-counselor': { skills:['essay-coach','financial-aid-navigator','recommendation-manager','school-matcher','timeline-builder'], cmds:['essay-feedback','financial-aid-guide','school-list','timeline-check'] },
-  'corporate-trainer': { skills:['elearning-developer','needs-analyzer','onboarding-designer','roi-measurer','workshop-designer'], cmds:['needs-assessment','onboarding-plan','roi-report','workshop-outline'] },
-  'it-services-provider': { skills:['client-documenter','security-auditor','tech-assessor','ticket-triager','qbr-builder'], cmds:['client-doc','qbr-report','security-audit','tech-assessment'] },
-  'cybersecurity-consultant': { skills:['awareness-trainer','compliance-mapper','incident-responder','report-writer','risk-assessor'], cmds:['compliance-check','incident-response','risk-assessment','training-plan'] },
-  'data-analytics-consultant': { skills:['client-educator','dashboard-designer','data-storyteller','methodology-documenter','requirements-gatherer'], cmds:['dashboard-plan','data-story','methodology-doc','requirements'] },
-  'hotel-operations-manager': { skills:['guest-communicator','marketing-campaigner','quality-auditor','revenue-optimizer','staff-coordinator'], cmds:['guest-message','marketing-plan','quality-audit','revenue-report'] },
-  'wedding-planner-assistant': { skills:['budget-tracker','client-communicator','day-of-coordinator','timeline-builder','vendor-manager'], cmds:['budget-review','day-of-timeline','vendor-email','wedding-checklist'] },
-  'warehouse-manager': { skills:['kpi-tracker','labor-planner','layout-optimizer','receiving-processor','shipping-coordinator'], cmds:['kpi-report','labor-plan','layout-review','receiving-checklist'] },
-  'supply-chain-manager': { skills:['cost-analyzer','demand-forecaster','logistics-optimizer','risk-monitor','vendor-evaluator'], cmds:['cost-report','demand-forecast','risk-brief','vendor-review'] },
-  'production-planner': { skills:['lean-improver','maintenance-planner','production-scheduler','quality-controller','safety-manager'], cmds:['maintenance-plan','production-schedule','quality-check','safety-brief'] },
-  'hr-hiring-assistant': { skills:['candidate-evaluator','compensation-benchmarker','interview-coach','job-description-writer','offer-letter-drafter','onboarding-planner','pipeline-manager','recruiting-marketer','reference-checker','rejection-letter-writer','requisition-processor','screening-caller','sourcing-strategist','talent-pipeline-builder','workforce-planner'], cmds:['interview-pack','job-description','offer-letter','pipeline-report','sourcing-strategy'] },
-  'competitive-intel-monitor': { skills:['battlecard-creator','ci-brief-writer','market-trend-analyzer','pricing-intel-tracker','win-loss-analyzer'], cmds:['battlecard','ci-brief','market-trends','pricing-intel','win-loss'] },
-  'influencer-affiliate-manager': { skills:['affiliate-program-designer','campaign-tracker','contract-drafter','creator-vetter','ftc-compliance-checker'], cmds:['affiliate-program','campaign-report','contract-draft','creator-brief'] },
-  'email-marketing-autopilot': { skills:['campaign-analyzer','deliverability-fixer','newsletter-writer','sequence-builder','subject-line-optimizer'], cmds:['campaign-analysis','deliverability-check','email-sequence','newsletter-draft'] },
-  'social-media-manager-pro': { skills:['analytics-reporter','content-creator','crisis-manager','engagement-responder','trend-spotter'], cmds:['analytics-report','content-calendar','crisis-response','engagement-reply'] },
-  'seo-content-machine': { skills:['blog-writer','content-calendar-planner','content-decay-manager','keyword-researcher','on-page-optimizer','serp-analyzer'], cmds:['blog-post','content-calendar','keyword-research','on-page-audit','serp-analysis','update-content'] },
-  'data': { skills:['data-context-extractor','data-exploration','data-validation','data-visualization','interactive-dashboard-builder','sql-queries','statistical-analysis'], cmds:['analyze','build-dashboard','create-viz','explore-data','validate','write-query'] },
-  'bio-research': { skills:['instrument-data-to-allotrope','nextflow-development','scientific-problem-selection','scvi-tools','single-cell-rna-qc'], cmds:['start'] },
-  'customer-support': { skills:['customer-research','escalation','knowledge-management','response-drafting','ticket-triage'], cmds:['draft-response','escalate','kb-article','research','triage'] },
-  'enterprise-search': { skills:['knowledge-synthesis','search-strategy','source-management'], cmds:['digest','search'] },
-  'engineering': { skills:['code-review','documentation','incident-response','system-design','tech-debt','testing-strategy'], cmds:['architecture','debug','deploy-checklist','incident','review','standup'] },
-  'design': { skills:['accessibility-review','design-critique','design-handoff','design-system-management','user-research','ux-writing'], cmds:['accessibility','critique','design-system','handoff','research-synthesis','ux-copy'] },
-  'legal': { skills:['canned-responses','compliance','contract-review','legal-risk-assessment','meeting-briefing','nda-triage'], cmds:['brief','compliance-check','respond','review-contract','signature-request','triage-nda','vendor-check'] },
-  'human-resources': { skills:['compensation-benchmarking','employee-handbook','interview-prep','org-planning','people-analytics','recruiting-pipeline'], cmds:['comp-analysis','draft-offer','onboarding','people-report','performance-review','policy-lookup'] },
-  'finance': { skills:['audit-support','close-management','financial-statements','journal-entry-prep','reconciliation','variance-analysis'], cmds:['income-statement','journal-entry','sox-testing'] },
-  'marketing': { skills:['brand-voice','campaign-planning','competitive-analysis','content-creation','performance-analytics'], cmds:['brand-review','campaign-plan','competitive-brief','draft-content','email-sequence','performance-report','seo-audit'] },
-  'operations': { skills:['change-management','compliance-tracking','process-optimization','resource-planning','risk-assessment','vendor-management'], cmds:['capacity-plan','change-request','process-doc','runbook','status-report','vendor-review'] },
-  'product-management': { skills:['competitive-analysis','feature-spec','metrics-tracking','roadmap-management','stakeholder-comms','user-research-synthesis'], cmds:['competitive-brief','metrics-review','roadmap-update','sprint-planning','stakeholder-update','synthesize-research','write-spec'] },
-  'productivity': { skills:['memory-management','task-management'], cmds:['start','update'] },
-  'sales': { skills:['account-research','call-prep','competitive-intelligence','create-an-asset','daily-briefing','draft-outreach'], cmds:['call-summary','forecast','pipeline-review'] },
-  'demand-gen-operator': { skills:['content-repurposer','content-strategy','demand-content-writer','icp-intelligence','webinar-engine'], cmds:['create-content-brief','repurpose','webinar-plan','weekly-calendar'] },
-  'linkedin-demand-gen': { skills:['icp-engagement','outreach-sequencer','sales-trigger-monitor','thought-leadership-writer'], cmds:['draft-outreach','engagement-plan','linkedin-post','trigger-report'] },
-  'paid-acquisition-operator': { skills:['ad-copy-engine','audience-intelligence','campaign-architect','performance-analyzer','retargeting-planner'], cmds:['ad-variants','budget-realloc','campaign-brief','performance-report'] },
-  'marketing-revenue-intelligence': { skills:['conversion-optimizer','funnel-diagnostics','marketing-sales-alignment','mql-attribution','weekly-intelligence-report'], cmds:['audit-landing-page','funnel-health','mql-report','weekly-report'] },
+  'job-seeker-autopilot': { skills:['Resume Tailor','Cover Letter Writer','Job Research','Outreach Writer','Interview Coach','Salary Negotiator','Application Tracker','LinkedIn Optimizer'], cmds:['tailor-resume','cover-letter','job-research','outreach','interview-prep','salary-negotiation'] },
+  'small-business-autopilot': { skills:['Content Writer','Email Campaign Builder','Competitor Monitor','Lead Researcher','Social Post Writer','Review Responder'], cmds:['blog-post','email-campaign','competitor-brief','social-posts'] },
+  'saas-growth-operator': { skills:['Churn Analyzer','Expansion Planner','Onboarding Optimizer','Metrics Dashboard','Pricing Strategist'], cmds:['churn-analysis','metrics-report','onboarding-audit','pricing-review'] },
+  'dev-agency-manager': { skills:['Proposal Writer','Client Reporter','Lead Qualifier','Resource Planner','Process Documenter'], cmds:['proposal','client-report','lead-qualify','resource-plan'] },
+  'product-launch-planner': { skills:['Launch Strategist','Audience Builder','Content Planner','Readiness Auditor','Post-launch Analyzer'], cmds:['launch-timeline','audience-plan','content-calendar','readiness-audit'] },
+  'franchise-operator': { skills:['Compliance Monitor','Financial Analyzer','Local Marketer','Staff Developer','Unit Benchmarker'], cmds:['compliance-check','financial-report','local-campaign','staff-review'] },
+  'customer-support-autopilot': { skills:['Ticket Triager','Response Drafter','KB Article Writer','Escalation Packager','Satisfaction Monitor'], cmds:['triage','draft-response','kb-article','escalate'] },
+  'solo-attorney-practice': { skills:['Billing Narrator','Client Intake','Document Drafter','Case Organizer','Ethical Marketer'], cmds:['billing-narrative','client-intake','draft-document','marketing-plan'] },
+  'family-law-assistant': { skills:['Custody Analyzer','Mediation Prep','Court Filing Helper','Client Communicator','Document Organizer'], cmds:['custody-analysis','mediation-brief','client-letter','case-summary'] },
+  'criminal-defense-toolkit': { skills:['Case Analyzer','Motion Drafter','Discovery Tracker','Client Communicator','Mitigation Planner'], cmds:['case-analysis','draft-motion','discovery-log','mitigation-narrative'] },
+  'immigration-law-helper': { skills:['Case Tracker','Document Checker','RFE Responder','Country Researcher','Client Communicator'], cmds:['case-status','document-checklist','rfe-response','country-brief'] },
+  'corporate-law-assistant': { skills:['Deal Tracker','Board Prep','Entity Former','Contract Reviewer','Compliance Monitor'], cmds:['deal-checklist','board-minutes','entity-formation','contract-review'] },
+  'dental-practice-autopilot': { skills:['Insurance Verifier','Patient Reactivator','Review Generator','Marketing Writer','Treatment Presenter'], cmds:['insurance-check','reactivation-campaign','review-request','treatment-presentation'] },
+  'mental-health-practice-helper': { skills:['Session Note Writer','Intake Processor','Insurance Navigator','Group Program Designer','Ethical Marketer'], cmds:['session-notes','intake-form','insurance-appeal','group-program'] },
+  'chiropractic-practice-builder': { skills:['Care Plan Communicator','Patient Reactivator','Referral Builder','Review Generator','Social Content Writer'], cmds:['care-plan','reactivation','referral-program','social-posts'] },
+  'home-health-agency-operator': { skills:['Caregiver Recruiter','Scheduler','Medicare Compliance','Quality Improver','Family Communicator'], cmds:['job-posting','schedule','compliance-check','family-update'] },
+  'medical-device-sales-rep': { skills:['Case Prep','Clinical Evidence Writer','Competitor Tracker','Relationship Manager','Territory Planner'], cmds:['case-prep','clinical-brief','competitor-update','territory-plan'] },
+  'pharmacy-operations': { skills:['Clinical Service Builder','Inventory Optimizer','Adherence Outreach','Compliance Tracker','Seasonal Campaign Writer'], cmds:['service-plan','inventory-review','adherence-campaign','compliance-log'] },
+  'veterinary-practice-manager': { skills:['Client Communicator','Inventory Tracker','Wellness Plan Designer','Staff Trainer','Social Content Writer'], cmds:['client-update','wellness-plan','staff-training','social-posts'] },
+  'auto-dealership-operator': { skills:['BDC Script Writer','Inventory Analyst','Lead Nurture Builder','Campaign Creator','Service Retainer'], cmds:['bdc-script','inventory-analysis','nurture-sequence','service-campaign'] },
+  'auto-repair-shop-manager': { skills:['Customer Communicator','Job Estimator','Marketing Writer','Review Manager','Technician Tracker'], cmds:['repair-estimate','customer-update','marketing-copy','review-response'] },
+  'auto-detailing-business': { skills:['Package Builder','Fleet Proposal Writer','Loyalty Designer','Schedule Optimizer','Content Creator'], cmds:['service-packages','fleet-proposal','loyalty-program','social-posts'] },
+  'fleet-management-assistant': { skills:['Maintenance Scheduler','Driver Manager','Compliance Tracker','Cost Analyzer','Lifecycle Planner'], cmds:['maintenance-schedule','compliance-check','cost-analysis','lifecycle-plan'] },
+  'car-wash-operator': { skills:['Membership Manager','Equipment Monitor','Staff Scheduler','Weather Marketer','Campaign Writer'], cmds:['membership-campaign','equipment-log','staff-schedule','weather-promo'] },
+  'general-contractor-operator': { skills:['Bid Estimator','Project Scheduler','Change Order Manager','Client Communicator','OSHA Documenter'], cmds:['bid-estimate','project-schedule','change-order','safety-doc'] },
+  'electrician-business-manager': { skills:['Job Estimator','Permit Tracker','Apprentice Trainer','Customer Follow-up','Marketing Writer'], cmds:['job-estimate','permit-tracker','training-plan','follow-up-campaign'] },
+  'roofing-company-operator': { skills:['Storm Responder','Estimate Writer','Crew Dispatcher','Lead Generator','Warranty Manager'], cmds:['storm-response','roof-estimate','crew-dispatch','warranty-doc'] },
+  'painting-contractor-helper': { skills:['Color Consultant','Proposal Writer','Crew Scheduler','Estimate Builder','Customer Experience Designer'], cmds:['color-consult','proposal','crew-schedule','estimate'] },
+  'landscaping-business-operator': { skills:['Estimate Writer','Route Optimizer','Seasonal Planner','Customer Retainer','Content Creator'], cmds:['estimate','route-plan','seasonal-schedule','retention-campaign'] },
+  'pool-service-operator': { skills:['Chemical Calculator','Equipment Advisor','Route Planner','Seasonal Checker','Customer Reporter'], cmds:['chemical-dose','equipment-check','route-optimize','customer-report'] },
+  'shopify-store-optimizer': { skills:['Store Auditor','Speed Optimizer','Product Copy Writer','Collection Merchandiser','Email Flow Builder','Promo Planner'], cmds:['store-audit','product-copy','email-flow','seasonal-promo'] },
+  'review-feedback-manager': { skills:['Review Responder','Solicitation Campaign Builder','Crisis Recovery Planner','Sentiment Analyzer'], cmds:['respond-review','review-campaign','crisis-response','sentiment-report'] },
+  'inventory-pricing-optimizer': { skills:['Demand Forecaster','Reorder Planner','ABC Analyzer','Price Optimizer','Seasonal Adjuster'], cmds:['demand-forecast','reorder-plan','abc-analysis','pricing-review'] },
+  'retail-store-operator': { skills:['Visual Merchandiser','Staff Scheduler','Inventory Manager','Local Marketer','Loss Prevention Advisor'], cmds:['merch-plan','staff-schedule','inventory-review','local-campaign'] },
+  'seo-content-machine': { skills:['Keyword Researcher','Blog Writer','On-page Optimizer','Content Calendar Builder','Competitor Content Analyzer','Content Decay Manager'], cmds:['keyword-research','blog-post','on-page-audit','content-calendar','competitor-analysis'] },
+  'competitive-intel-monitor': { skills:['Battlecard Builder','CI Brief Writer','Market Trend Analyzer','Pricing Intel Tracker','Win/Loss Analyzer'], cmds:['battlecard','ci-brief','market-trends','pricing-intel','win-loss-analysis'] },
+  'influencer-affiliate-manager': { skills:['Creator Vetter','Contract Drafter','Affiliate Program Designer','FTC Compliance Checker','Campaign Tracker'], cmds:['creator-brief','contract-template','affiliate-program','compliance-check'] },
+  'email-marketing-autopilot': { skills:['Campaign Analyzer','Deliverability Doctor','List Segmenter','Sequence Builder','Subject Line Optimizer','Newsletter Writer'], cmds:['campaign-analysis','deliverability-audit','sequence-build','newsletter'] },
+  'social-media-manager-pro': { skills:['Content Creator','Analytics Reporter','Engagement Responder','Trend Spotter','Crisis Manager'], cmds:['create-posts','analytics-report','engagement-response','crisis-plan'] },
+  'demand-gen-operator': { skills:['Demand Content Writer','Content Strategist','ICP Intelligence','Content Repurposer','Webinar Engine'], cmds:['content-brief','weekly-calendar','repurpose','webinar-plan'] },
+  'linkedin-demand-gen': { skills:['ICP Engagement','Outreach Sequencer','Sales Trigger Monitor','Thought Leadership Writer'], cmds:['draft-outreach','engagement-plan','linkedin-post','trigger-report'] },
+  'paid-acquisition-operator': { skills:['Ad Copy Engine','Audience Intelligence','Campaign Architect','Performance Analyzer','Retargeting Planner'], cmds:['ad-variants','campaign-brief','performance-report','budget-realloc'] },
+  'marketing-revenue-intelligence': { skills:['Conversion Optimizer','Funnel Diagnostics','Marketing-Sales Alignment','MQL Attribution','Weekly Intelligence Report'], cmds:['funnel-health','mql-report','audit-landing-page','weekly-report'] },
+  'financial-advisor-practice': { skills:['Portfolio Reviewer','Market Commentator','Compliance Documenter','Financial Plan Presenter','Prospect Campaign Writer'], cmds:['portfolio-review','market-commentary','compliance-doc','prospect-campaign'] },
+  'mortgage-broker-assistant': { skills:['Pre-qualifier','Rate Shopper','Pipeline Tracker','Realtor Nurture Builder','Client Educator'], cmds:['pre-qual','rate-comparison','pipeline-review','realtor-outreach'] },
+  'tax-prep-practice': { skills:['Document Checklist Builder','Deduction Finder','Extension Manager','Quality Reviewer','Seasonal Marketer'], cmds:['client-checklist','deduction-analysis','extension-guide','seasonal-campaign'] },
+  'wealth-management-advisor': { skills:['Portfolio Reporter','Tax Strategist','Estate Planner','Compliance Tracker','Quarterly Letter Writer'], cmds:['portfolio-report','tax-strategy','estate-summary','client-letter'] },
+  'insurance-agency-operator': { skills:['Coverage Reviewer','Cross-seller','Retention Campaign Builder','Claims Guide','Marketing Writer'], cmds:['coverage-review','cross-sell-plan','retention-campaign','claims-guide'] },
+  'k12-school-administrator': { skills:['Parent Communicator','Grant Writer','Enrollment Campaign Builder','Staff Evaluator','Discipline Tracker'], cmds:['parent-letter','grant-application','enrollment-campaign','staff-eval'] },
+  'online-course-creator': { skills:['Curriculum Designer','Lesson Writer','Launch Campaign Builder','Student Engagement Designer','Pricing Optimizer'], cmds:['curriculum-plan','lesson-draft','launch-campaign','pricing-strategy'] },
+  'tutoring-business-operator': { skills:['Student Assessor','Lesson Planner','Parent Reporter','Scheduler','Marketing Writer'], cmds:['student-assessment','lesson-plan','parent-report','marketing-copy'] },
+  'college-admissions-counselor': { skills:['Essay Coach','School Matcher','Financial Aid Navigator','Recommendation Manager','Timeline Builder'], cmds:['essay-feedback','school-list','financial-aid-plan','timeline'] },
+  'corporate-trainer': { skills:['Workshop Designer','E-learning Developer','Onboarding Planner','ROI Measurer','Facilitator Guide Writer'], cmds:['workshop-design','elearning-outline','onboarding-plan','roi-report'] },
+  'it-services-provider': { skills:['QBR Builder','Security Auditor','Technology Assessor','Ticket Triager','Client Documenter'], cmds:['qbr-deck','security-audit','tech-assessment','ticket-triage'] },
+  'cybersecurity-consultant': { skills:['Risk Assessor','Compliance Mapper','Incident Response Planner','Awareness Trainer','Executive Reporter'], cmds:['risk-assessment','compliance-gap','incident-playbook','exec-report'] },
+  'data-analytics-consultant': { skills:['Dashboard Designer','Data Storyteller','Methodology Documenter','Requirements Gatherer','Client Educator'], cmds:['dashboard-brief','data-story','methodology-doc','requirements-doc'] },
+  'hotel-operations-manager': { skills:['Revenue Optimizer','Guest Communicator','Marketing Campaign Builder','Quality Auditor','Staff Coordinator'], cmds:['revenue-strategy','guest-message','marketing-campaign','quality-audit'] },
+  'wedding-planner-assistant': { skills:['Day-of Coordinator','Vendor Manager','Budget Tracker','Timeline Builder','Client Communicator'], cmds:['day-of-timeline','vendor-brief','budget-review','client-update'] },
+  'warehouse-manager': { skills:['KPI Tracker','Labor Planner','Layout Optimizer','Receiving Process Builder','Shipping Coordinator'], cmds:['kpi-report','labor-plan','layout-review','receiving-sop'] },
+  'supply-chain-manager': { skills:['Demand Forecaster','Vendor Evaluator','Logistics Optimizer','Risk Monitor','Cost Analyzer'], cmds:['demand-forecast','vendor-scorecard','logistics-review','risk-report'] },
+  'production-planner': { skills:['Production Scheduler','Quality Controller','Maintenance Planner','Lean Improvement Facilitator','Safety Manager'], cmds:['production-schedule','quality-check','maintenance-plan','lean-analysis'] },
+  'hr-hiring-assistant': { skills:['Job Description Writer','Sourcing Strategist','Screening Scorer','Interview Guide Builder','Offer Negotiator','Onboarding Planner','Compensation Benchmarker','Background Check Manager','Candidate Scorecard Builder','Workforce Planner'], cmds:['job-description','sourcing-plan','interview-guide','offer-letter','onboarding-plan','comp-benchmark'] },
+  'data': { skills:['SQL Query Builder','Statistical Analyzer','Visualization Planner','Dashboard Designer','Data Explorer','Validation Framework','Code Generator'], cmds:['sql-query','stat-analysis','viz-plan','dashboard','data-explore'] },
+  'bio-research': { skills:['Pipeline Runner','Single-cell QC','scVI Integrator','Research Problem Selector','Result Interpreter'], cmds:['run-pipeline'] },
+  'customer-support': { skills:['Ticket Triager','Response Drafter','KB Manager','Escalation Packager','Customer Researcher'], cmds:['triage','draft-response','kb-article','escalate','customer-research'] },
+  'enterprise-search': { skills:['Multi-source Searcher','Knowledge Synthesizer','Source Manager'], cmds:['search','synthesize'] },
+  'engineering': { skills:['Code Reviewer','System Designer','Incident Responder','Tech Debt Analyzer','Documentation Writer','Testing Strategist'], cmds:['code-review','system-design','incident-postmortem','tech-debt-analysis','documentation'] },
+  'design': { skills:['Accessibility Reviewer','Design Critiquer','Developer Handoff Writer','Design System Manager','UX Writer','User Researcher'], cmds:['accessibility-audit','design-critique','handoff-doc','ux-copy','research-synthesis'] },
+  'legal': { skills:['NDA Triager','Contract Reviewer','Compliance Checker','Meeting Briefer','Risk Assessor','Response Writer'], cmds:['nda-review','contract-summary','compliance-check','meeting-brief','risk-assessment'] },
+  'human-resources': { skills:['Recruiting Pipeline Manager','Interview Prep Builder','Compensation Analyzer','Org Planner','People Analyst','Policy Lookup'], cmds:['recruiting-pipeline','interview-prep','comp-analysis','org-design','people-analytics'] },
+  'finance': { skills:['Variance Analyzer','Journal Entry Writer','Reconciliation Builder','Financial Statement Preparer','SOX Tester','Close Manager'], cmds:['variance-analysis','journal-entry','reconciliation','financial-statement','sox-testing'] },
+  'marketing': { skills:['Content Creator','Campaign Planner','Competitive Analyst','Brand Voice Keeper','SEO Auditor','Performance Reporter'], cmds:['content-brief','campaign-plan','competitive-analysis','seo-audit','performance-report'] },
+  'operations': { skills:['Process Documenter','Change Manager','Vendor Reviewer','Risk Assessor','Capacity Planner','Compliance Tracker'], cmds:['process-doc','change-plan','vendor-review','risk-assessment','capacity-plan'] },
+  'product-management': { skills:['Feature Spec Writer','Roadmap Manager','User Research Synthesizer','Metrics Tracker','Stakeholder Updater','Sprint Planner'], cmds:['feature-spec','roadmap-update','research-synthesis','metrics-report','sprint-plan'] },
+  'productivity': { skills:['Memory Manager','Task Organizer'], cmds:['initialize','task-plan'] },
+  'sales': { skills:['Account Researcher','Call Prep Builder','Competitive Intelligence','Outreach Writer','Daily Briefer','Pipeline Reviewer'], cmds:['account-research','call-prep','competitive-intel','draft-outreach','pipeline-review'] },
 };
 
 const PLUGINS = [
-  // ── Career ──────────────────────────────────────────────────
-  {name:'job-seeker-autopilot',label:'Job Seeker Autopilot',cat:'Career',
-   desc:'Stop sending resumes into the void. This plugin runs your job search like a campaign — finds the right roles, tailors every resume and cover letter to the specific JD, writes outreach that gets responses, and tracks your pipeline so nothing falls through the cracks. Land interviews faster, negotiate better offers, spend less time on applications.',
-   tags:['job search','resume','interviews','career'],version:'1.0.0'},
-
-  // ── Business ────────────────────────────────────────────────
-  {name:'small-business-autopilot',label:'Small Business Autopilot',cat:'Business',
-   desc:'Get the marketing output of a full-time marketing hire — without the hire. Writes your blog posts, social content, and email campaigns. Researches your competitors. Builds your lead lists. All in your voice, all targeting your customers. Spend your time running your business, not writing about it.',
-   tags:['marketing','social','email','leads'],version:'1.0.0'},
-  {name:'saas-growth-operator',label:'SaaS Growth Operator',cat:'Business',
-   desc:'Your churn is higher than it should be. Your onboarding is leaking revenue. Your pricing may be leaving money on the table. This plugin runs the analytics that expose exactly where growth is breaking down — then tells you precisely what to fix, in what order, with expected impact. Stop guessing. Start growing.',
-   tags:['saas','growth','churn','metrics'],version:'1.0.0'},
-  {name:'dev-agency-manager',label:'Dev Agency Manager',cat:'Business',
-   desc:'Win more projects and deliver them profitably. Write proposals that close. Produce client reports that build trust and justify retainers. Qualify leads so you stop wasting time on bad fits. Plan resources so you stop burning out your best engineers. Run a more profitable agency with less administrative drag.',
-   tags:['agency','proposals','dev'],version:'1.0.0'},
-  {name:'product-launch-planner',label:'Product Launch Planner',cat:'Business',
-   desc:'Launches fail in the planning, not the execution. This plugin builds you the launch system — the timeline, the audience build strategy, the content calendar, the pricing logic, and the post-launch analysis. Stop launching on hope. Launch on a plan that's actually been thought through.',
-   tags:['launch','product','gtm'],version:'1.0.0'},
-  {name:'franchise-operator',label:'Franchise Operator',cat:'Business',
-   desc:'Franchise success is about execution consistency. This plugin monitors compliance across units before it becomes a problem, analyzes unit financials to catch underperformers early, builds local marketing that headquarters would approve, and develops your managers so you're not the ceiling of every location.',
-   tags:['franchise','operations','compliance'],version:'1.0.0'},
-  {name:'customer-support-autopilot',label:'Customer Support Autopilot',cat:'Business',
-   desc:'Your support team spends 40% of their time on questions that have the same answer. This plugin triages tickets by priority and complexity, drafts responses that sound human, builds the knowledge base articles that eliminate repeat questions, and monitors satisfaction so problems surface before they become reviews.',
-   tags:['support','tickets','automation'],version:'1.0.0'},
-
-  // ── Legal ────────────────────────────────────────────────────
-  {name:'solo-attorney-practice',label:'Solo Attorney Practice',cat:'Legal',
-   desc:'Solo practice means doing the work AND running the business. This plugin handles the operational drag — billing narratives, client intake, document drafting, and ethical marketing that grows your referral network. Spend more time on legal work. Spend less on administrative work that doesn't pay.',
-   tags:['legal','attorney','billing','intake'],version:'1.0.0'},
-  {name:'family-law-assistant',label:'Family Law Assistant',cat:'Legal',
-   desc:'Family law cases are emotionally complex and administratively demanding. This plugin helps you analyze custody arrangements against applicable standards, prepare mediation strategy, draft client communications that reduce anxiety without overpromising, and keep case documentation organized when every detail matters.',
-   tags:['family-law','custody','mediation'],version:'1.0.0'},
-  {name:'criminal-defense-toolkit',label:'Criminal Defense Toolkit',cat:'Legal',
-   desc:'Every criminal case has a timeline and a theory. This plugin helps you build both — analyzing case facts against statutory elements, drafting motions, tracking discovery, and developing mitigation narratives that humanize your client for the court. Better-prepared cases produce better outcomes.',
-   tags:['criminal-law','motions','discovery'],version:'1.0.0'},
-  {name:'immigration-law-helper',label:'Immigration Law Helper',cat:'Legal',
-   desc:'Immigration practice moves at the speed of policy changes and filing deadlines. This plugin tracks case status and upcoming deadlines, builds country conditions research for asylum cases, drafts RFE responses with proper supporting structure, and manages client communications in the language they understand.',
-   tags:['immigration','visa','uscis'],version:'1.0.0'},
-  {name:'corporate-law-assistant',label:'Corporate Law Assistant',cat:'Legal',
-   desc:'Corporate work is high-stakes and high-volume. This plugin tracks M&A deal checklists so nothing slips, prepares board meeting materials, reviews contracts for missing provisions and unusual terms, monitors compliance calendars, and produces entity formation documents that are complete the first time.',
-   tags:['corporate','contracts','ma'],version:'1.0.0'},
-
-  // ── Healthcare ──────────────────────────────────────────────
-  {name:'dental-practice-autopilot',label:'Dental Practice Autopilot',cat:'Healthcare',
-   desc:'Empty chairs cost you money every hour. This plugin reactivates patients who haven't been in for 12+ months, verifies insurance before appointments so checkout is frictionless, generates review requests that grow your Google rating, and produces treatment presentation copy that helps patients say yes to the care they need.',
-   tags:['dental','insurance','patients'],version:'1.0.0'},
-  {name:'mental-health-practice-helper',label:'Mental Health Practice',cat:'Healthcare',
-   desc:'Clinicians spend 20-30% of their time on documentation. This plugin helps you complete session notes efficiently while maintaining the clinical specificity your licensing requires, navigate insurance billing complexity, design group programs, and market your practice ethically — so you can see more patients and burn out less.',
-   tags:['therapy','mental-health','notes'],version:'1.0.0'},
-  {name:'chiropractic-practice-builder',label:'Chiropractic Practice Builder',cat:'Healthcare',
-   desc:'Chiropractic growth runs on referrals, reviews, and reactivations. This plugin builds all three — crafts the care plan presentations that help patients commit to a full course of treatment, reactivates inactive patients with the right message at the right time, and generates referral programs that turn happy patients into advocates.',
-   tags:['chiropractic','patients','marketing'],version:'1.0.0'},
-  {name:'home-health-agency-operator',label:'Home Health Agency Operator',cat:'Healthcare',
-   desc:'Home health is built on caregiver quality and Medicare compliance. This plugin helps you recruit better caregivers with job postings that attract the right people, maintains the documentation Medicare requires for reimbursement, coordinates scheduling to minimize gaps, and communicates with families in ways that build trust.',
-   tags:['home-health','medicare','caregivers'],version:'1.0.0'},
-  {name:'medical-device-sales-rep',label:'Medical Device Sales Rep',cat:'Healthcare',
-   desc:'Surgeons and physicians don't have time for unprepared reps. This plugin preps you for every surgical case, builds clinical evidence summaries for product conversations, tracks competitor activity in your territory, helps you develop surgeon relationships that survive rep transitions, and plans your territory for maximum coverage.',
-   tags:['med-device','sales','clinical'],version:'1.0.0'},
-  {name:'pharmacy-operations',label:'Pharmacy Operations',cat:'Healthcare',
-   desc:'Independent pharmacies compete on services that chains can't match. This plugin helps you build those services — clinical programs that generate revenue and patient loyalty, inventory optimization that reduces waste, adherence outreach that keeps patients on therapy and out of the hospital, and seasonal campaigns that bring in new business.',
-   tags:['pharmacy','compliance','adherence'],version:'1.0.0'},
-  {name:'veterinary-practice-manager',label:'Veterinary Practice Manager',cat:'Healthcare',
-   desc:'Pet owners choose their vet based on trust, not proximity. This plugin helps you build that trust at scale — client communications that are warm and medically clear, wellness plan designs that keep pets healthier and clients more loyal, staff training on client communication, and social content that shows the human side of your practice.',
-   tags:['veterinary','pets','wellness'],version:'1.0.0'},
-
-  // ── Automotive ──────────────────────────────────────────────
-  {name:'auto-dealership-operator',label:'Auto Dealership Operator',cat:'Automotive',
-   desc:'Dealership margins are thin and competition is everywhere. This plugin sharpens every edge — BDC scripts that convert more calls to appointments, inventory analysis that surfaces the right units to promote, lead nurture sequences that keep you top-of-mind through a 90-day buying cycle, and service retention campaigns that keep customers coming back after purchase.',
-   tags:['dealership','automotive','bdc'],version:'1.0.0'},
-  {name:'auto-repair-shop-manager',label:'Auto Repair Shop Manager',cat:'Automotive',
-   desc:'Auto repair earns loyalty through communication and competence. This plugin helps you communicate repair findings in plain language customers trust, write estimates that are transparent and convert, respond to negative reviews in ways that recover reputation, and run marketing that brings in the profitable jobs — not just oil changes.',
-   tags:['auto-repair','estimates','customers'],version:'1.0.0'},
-  {name:'auto-detailing-business',label:'Auto Detailing Business',cat:'Automotive',
-   desc:'Detailing is a premium service sold to people who care about their cars. This plugin helps you package and price your services to command premium rates, win fleet and corporate accounts with proposals that speak their language, build loyalty programs that keep customers booking before they think to look elsewhere, and create content that shows the transformation.',
-   tags:['detailing','packages','fleet'],version:'1.0.0'},
-  {name:'fleet-management-assistant',label:'Fleet Management Assistant',cat:'Automotive',
-   desc:'Fleet downtime costs real money every hour. This plugin builds the systems that prevent it — maintenance schedules that catch problems before they become breakdowns, compliance tracking that keeps your vehicles on the road legally, cost analysis that shows where budget is being wasted, and vehicle lifecycle planning that times replacements right.',
-   tags:['fleet','maintenance','compliance'],version:'1.0.0'},
-  {name:'car-wash-operator',label:'Car Wash Operator',cat:'Automotive',
-   desc:'Car wash success is membership retention and weather resilience. This plugin helps you build a membership base that provides predictable revenue regardless of weather, manage equipment monitoring to minimize downtime, schedule staff efficiently for variable demand, and run weather-triggered promotions that drive volume on good days.',
-   tags:['car-wash','membership','marketing'],version:'1.0.0'},
-
-  // ── Trades ──────────────────────────────────────────────────
-  {name:'general-contractor-operator',label:'General Contractor',cat:'Trades',
-   desc:'Winning the right jobs at profitable margins is a GC's core challenge. This plugin helps you write bids that are competitive but not underpriced, manage project timelines so you're not eating costs from schedule slippage, handle change orders in writing before they become disputes, and maintain the OSHA documentation that protects you on every site.',
-   tags:['construction','bids','scheduling'],version:'1.0.0'},
-  {name:'electrician-business-manager',label:'Electrician Business Manager',cat:'Trades',
-   desc:'Electrical work is skilled, licensed, and increasingly in demand. This plugin helps you estimate jobs accurately so you're not leaving money on the table or losing bids to luck, track permits so inspections happen on schedule, develop your apprentices into journeymen faster, follow up with customers who generate repeat business, and market for the commercial and industrial jobs that pay best.',
-   tags:['electrical','permits','estimating'],version:'1.0.0'},
-  {name:'roofing-company-operator',label:'Roofing Company Operator',cat:'Trades',
-   desc:'Storm seasons make or break roofing companies. This plugin builds the operational muscle for both — rapid storm response systems that let you capture demand before competitors, accurate estimates from property measurements, lead generation in your territory, and the warranty management documentation that protects you from callbacks.',
-   tags:['roofing','estimates','storm'],version:'1.0.0'},
-  {name:'painting-contractor-helper',label:'Painting Contractor Helper',cat:'Trades',
-   desc:'Painting bids are won on trust and lost on vague estimates. This plugin helps you produce proposals that are specific enough to justify your price over the low bidder, provide color consultation that makes the decision process easier for clients, schedule crews efficiently, and follow up in ways that generate referrals from every happy customer.',
-   tags:['painting','proposals','crews'],version:'1.0.0'},
-  {name:'landscaping-business-operator',label:'Landscaping Business Operator',cat:'Trades',
-   desc:'Landscaping revenue is seasonal but your costs aren't. This plugin helps you flatten that curve — building a service mix that generates revenue year-round, optimizing routes to minimize drive time between jobs, retaining customers through consistent communication, and creating the seasonal content that fills your spring calendar in January.',
-   tags:['landscaping','routes','seasonal'],version:'1.0.0'},
-  {name:'pool-service-operator',label:'Pool Service Operator',cat:'Trades',
-   desc:'Pool service customers stay forever if you communicate well and never show up to a green pool. This plugin helps you calculate chemical dosing correctly for any pool volume, diagnose equipment problems before they become expensive repairs, optimize your service route to fit more stops per day, and communicate with customers in ways that build the trust that prevents them from ever shopping around.',
-   tags:['pools','chemicals','routing'],version:'1.0.0'},
-
-  // ── E-commerce ──────────────────────────────────────────────
-  {name:'shopify-store-optimizer',label:'Shopify Store Optimizer',cat:'E-commerce',
-   desc:'Your Shopify store is converting a fraction of the visitors it could. This plugin finds the friction — slow pages, weak product copy, confusing collections, abandoned cart flows that don't recover — and tells you exactly what to fix. Then writes the copy, plans the promotions, and builds the email flows that turn your store into a real revenue engine.',
-   tags:['shopify','ecommerce','cro'],version:'1.0.0'},
-  {name:'review-feedback-manager',label:'Review & Feedback Manager',cat:'E-commerce',
-   desc:'Online reviews are now the first thing potential customers see. This plugin helps you get more good ones, respond to bad ones in ways that recover the relationship, run proactive solicitation campaigns after every positive interaction, and analyze sentiment trends so you find product and service problems before they compound into a rating problem.',
-   tags:['reviews','reputation','feedback'],version:'1.0.0'},
-  {name:'inventory-pricing-optimizer',label:'Inventory & Pricing Optimizer',cat:'E-commerce',
-   desc:'Dead inventory and stockouts both cost you money — one ties up cash, the other loses sales. This plugin builds the forecasting models that keep you in stock on what sells and clears what doesn't before it becomes a write-off. Then optimizes your pricing — by product, by season, by competitive position — so you're not leaving margin on the table.',
-   tags:['inventory','pricing','forecasting'],version:'1.0.0'},
-  {name:'retail-store-operator',label:'Retail Store Operator',cat:'E-commerce',
-   desc:'Retail success is a hundred small decisions made well every week. This plugin helps you make them — visual merchandising that drives impulse buys, staff scheduling that matches traffic patterns, inventory management that keeps your cash flowing, local marketing that brings in foot traffic, and loss prevention practices that protect your margins.',
-   tags:['retail','merchandising','inventory'],version:'1.0.0'},
-
-  // ── Marketing ───────────────────────────────────────────────
-  {name:'seo-content-machine',label:'SEO Content Machine',cat:'Marketing',
-   desc:'Organic search is the only marketing channel that compounds. This plugin builds the engine — keyword research that finds the terms your customers actually use, blog posts that rank for them, on-page optimization that captures featured snippets, a content calendar tied to search opportunity, and a refresh system that keeps rankings from decaying. Set it up once. Benefit for years.',
-   tags:['seo','content','keywords'],version:'1.0.0'},
-  {name:'competitive-intel-monitor',label:'Competitive Intel Monitor',cat:'Marketing',
-   desc:'Your competitors are moving and you're finding out too late. This plugin builds the intelligence system — battlecards your sales team actually uses in real conversations, market trend analysis before the trend becomes obvious, pricing intelligence that tells you when you're leaving money on the table or pricing yourself out of deals, and win/loss analysis that tells you why you're winning or losing.',
-   tags:['competitive','battlecards','intel'],version:'1.0.0'},
-  {name:'influencer-affiliate-manager',label:'Influencer & Affiliate Manager',cat:'Marketing',
-   desc:'Influencer programs fail because of bad vetting, unclear contracts, and no accountability. This plugin fixes all three — builds the criteria for finding creators whose audience actually matches your customers, drafts agreements that protect you, designs affiliate programs with commission structures that attract and retain partners, and tracks performance so you know what's generating ROI.',
-   tags:['influencer','affiliate','compliance'],version:'1.0.0'},
-  {name:'email-marketing-autopilot',label:'Email Marketing Autopilot',cat:'Marketing',
-   desc:'Email is the highest-ROI marketing channel you're probably underusing. This plugin writes the sequences that nurture leads from awareness to purchase, newsletters that people actually read, subject lines that get opened without tricks, deliverability fixes that keep you out of spam, and campaign analysis that tells you what's working before you waste budget on what isn't.',
-   tags:['email','newsletters','automation'],version:'1.0.0'},
-  {name:'social-media-manager-pro',label:'Social Media Manager Pro',cat:'Marketing',
-   desc:'Social media ROI is built on consistency and content quality — both of which are hard to maintain while running a business. This plugin writes platform-native content for LinkedIn, Instagram, X, and Facebook in your brand voice, monitors trends before they peak, drafts thoughtful engagement responses, and handles the analytics so you know what resonates with your audience.',
-   tags:['social-media','content','analytics'],version:'1.0.0'},
-  {name:'demand-gen-operator',label:'Demand Gen Operator',cat:'Marketing',
-   desc:'B2B pipeline starts with content that makes your ICP feel understood before they ever talk to sales. This plugin runs the full demand gen engine — figures out exactly who your ICP is and what keeps them up at night, writes the content that speaks to that pain across LinkedIn, email, blog, and ads, and repurposes everything so one piece of content becomes ten. Your competitors are creating noise. This creates demand.',
-   tags:['demand-gen','ICP','content','B2B','webinar'],version:'1.0.0'},
-  {name:'linkedin-demand-gen',label:'LinkedIn Demand Gen',cat:'Marketing',
-   desc:'LinkedIn is the only B2B channel where you can reach a specific Director of Operations at a 500-person collections agency before they're even looking for a solution. This plugin turns LinkedIn into a pipeline channel — systematic engagement with your ICP accounts, outreach sequences triggered by buying signals, thought leadership that builds the familiarity that makes cold outreach not cold.',
-   tags:['LinkedIn','outbound','B2B','thought-leadership','social-selling'],version:'1.0.0'},
-  {name:'paid-acquisition-operator',label:'Paid Acquisition Operator',cat:'Marketing',
-   desc:'B2B paid media fails because of three things: wrong audience targeting, generic ad copy that doesn't convert, and no system for improving performance week over week. This plugin fixes all three — translates your ICP into precise LinkedIn and Google audiences, writes pain-led ad copy that repels unqualified clicks and attracts the right buyers, and produces the weekly performance analysis that tells you where to put next week's budget.',
-   tags:['paid-ads','LinkedIn-ads','Google-ads','CPL','retargeting'],version:'1.0.0'},
-  {name:'marketing-revenue-intelligence',label:'Marketing Revenue Intelligence',cat:'Marketing',
-   desc:'Most marketing teams can tell you impressions and click-through rates. Very few can tell you which blog post sourced a $200K deal nine months later. This plugin builds the attribution model that connects your marketing activity to revenue, diagnoses where your funnel is leaking, aligns your MQL definition with what sales actually closes, and delivers the CMO-level weekly report that answers "is marketing working?"',
-   tags:['CRO','attribution','funnel','MQL','marketing-ops'],version:'1.0.0'},
-
-  // ── Finance ──────────────────────────────────────────────────
-  {name:'financial-advisor-practice',label:'Financial Advisor Practice',cat:'Finance',
-   desc:'Advisory practices grow on client relationships and compliance. This plugin helps you deliver both — portfolio reviews that show clients exactly where they stand and why, market commentary that demonstrates expertise without the noise, compliance documentation that protects your practice, and marketing campaigns that reach the right prospects through the right channels.',
-   tags:['financial-advisor','portfolio','compliance'],version:'1.0.0'},
-  {name:'mortgage-broker-assistant',label:'Mortgage Broker Assistant',cat:'Finance',
-   desc:'Mortgage clients are anxious, making the biggest financial decision of their lives, and comparing you to every other option. This plugin helps you win that comparison — pre-qualification communications that set realistic expectations, rate analysis that explains the right loan for their situation, a pipeline tracker so no client falls through the cracks, and realtor nurture that builds the referral relationships that feed your business.',
-   tags:['mortgage','rates','lending'],version:'1.0.0'},
-  {name:'tax-prep-practice',label:'Tax Prep Practice',cat:'Finance',
-   desc:'Tax season is a sprint and a compliance marathon. This plugin keeps you from dropping the ball — client document checklists that arrive before the deadline, deduction-finding analysis across complex returns, extension management so the IRS never surprises a client, and the seasonal marketing that keeps your calendar full before January.',
-   tags:['tax','deductions','compliance'],version:'1.0.0'},
-  {name:'wealth-management-advisor',label:'Wealth Management Advisor',cat:'Finance',
-   desc:'Wealth management is relationship management at scale. This plugin helps you maintain the quality of every client relationship — portfolio performance letters that are readable and reassuring, tax-efficient strategy recommendations that save clients real money, estate planning coordination that protects their legacy, and compliance documentation that protects your practice.',
-   tags:['wealth','estate','portfolio'],version:'1.0.0'},
-  {name:'insurance-agency-operator',label:'Insurance Agency Operator',cat:'Finance',
-   desc:'Insurance agencies grow through retention and cross-sell — not just new business. This plugin builds both — coverage review processes that find gaps before a claim exposes them, cross-sell sequences for clients with adjacent needs, retention campaigns that prevent the annual competitor shopping trip, and marketing materials that explain complex coverages in ways that actually build understanding.',
-   tags:['insurance','retention','cross-sell'],version:'1.0.0'},
-
-  // ── Education ───────────────────────────────────────────────
-  {name:'k12-school-administrator',label:'K-12 School Administrator',cat:'Education',
-   desc:'School administrators communicate with a dozen different audiences — parents, teachers, students, the district, the board, and the community. This plugin writes each communication appropriately for its audience, manages grant applications that bring in resources, builds enrollment campaigns, and handles the documentation that keeps the school running and protected.',
-   tags:['k12','schools','admin'],version:'1.0.0'},
-  {name:'online-course-creator',label:'Online Course Creator',cat:'Education',
-   desc:'Most online courses fail not because of bad content but because of bad structure and worse marketing. This plugin builds courses that students actually complete — logical curriculum design, lessons that teach by doing rather than watching, launch campaigns that build an audience before you launch, and pricing strategy that reflects the transformation you deliver.',
-   tags:['courses','elearning','curriculum'],version:'1.0.0'},
-  {name:'tutoring-business-operator',label:'Tutoring Business Operator',cat:'Education',
-   desc:'Tutoring businesses run on parent confidence. This plugin helps you build it — student assessment reports that show exactly where a student is and why, lesson plans differentiated for how each student learns, progress reports that give parents the specifics they need to feel the investment is working, and marketing that reaches the parents who are actively looking for help.',
-   tags:['tutoring','education','parents'],version:'1.0.0'},
-  {name:'college-admissions-counselor',label:'College Admissions Counselor',cat:'Education',
-   desc:'College applications are one of the highest-stakes writing processes a family will ever go through. This plugin helps you guide students through it — essay coaching that finds the authentic story only they can tell, school matching that builds a balanced list, financial aid strategy that maximizes the offer, and the timeline management that keeps a senior's senior year from becoming a crisis.',
-   tags:['college','admissions','essays'],version:'1.0.0'},
-  {name:'corporate-trainer',label:'Corporate Trainer',cat:'Education',
-   desc:'Corporate training that doesn't change behavior is wasted budget. This plugin designs programs that do change it — workshop design with learning objectives tied to measurable outcomes, e-learning development that people actually complete, onboarding programs that reduce time-to-productivity, and ROI measurement that proves training value to stakeholders who would otherwise cut the budget.',
-   tags:['training','corporate','learning'],version:'1.0.0'},
-
-  // ── Technology ──────────────────────────────────────────────
-  {name:'it-services-provider',label:'IT Services Provider (MSP)',cat:'Technology',
-   desc:'MSP clients leave because of communication failures, not technical ones. They don't understand what you're doing, don't see the value, and get spooked by any outage. This plugin builds the communication infrastructure that keeps clients — QBRs that demonstrate ROI in business terms, security audit reports that translate risk into dollars, and technology assessments that lead naturally to managed service agreements.',
-   tags:['msp','it','security'],version:'1.0.0'},
-  {name:'cybersecurity-consultant',label:'Cybersecurity Consultant',cat:'Technology',
-   desc:'Cybersecurity is only worth buying when the risk is real and understandable. This plugin helps you make it real — risk assessments that translate technical vulnerabilities into business impact, compliance gap analysis for SOC 2, ISO 27001, or HIPAA, incident response playbooks that tell your client exactly what to do when (not if) something happens, and executive reports that speak to the board, not the IT team.',
-   tags:['security','compliance','risk'],version:'1.0.0'},
-  {name:'data-analytics-consultant',label:'Data Analytics Consultant',cat:'Technology',
-   desc:'Data consultants lose clients when insights don't translate into decisions. This plugin helps you close that gap — dashboards designed around the questions stakeholders actually ask, data storytelling that turns a scatter plot into an action, methodology documentation that makes your work reproducible and your clients self-sufficient, and requirements gathering that prevents the 11th-hour scope change.',
-   tags:['analytics','dashboards','data'],version:'1.0.0'},
-
-  // ── Hospitality ─────────────────────────────────────────────
-  {name:'hotel-operations-manager',label:'Hotel Operations Manager',cat:'Hospitality',
-   desc:'Hotel revenue is perishable — every empty room tonight is revenue gone forever. This plugin optimizes the decisions that fill those rooms and make each stay worth reviewing — revenue management that prices dynamically against occupancy and demand, guest communications that resolve issues before the review, marketing campaigns for corporate and group business, and quality audits that catch the small things before they become big ones.',
-   tags:['hotel','hospitality','revenue'],version:'1.0.0'},
-  {name:'wedding-planner-assistant',label:'Wedding Planner Assistant',cat:'Hospitality',
-   desc:'Wedding planning is high-stakes, emotionally charged, and operationally complex. This plugin builds the systems that make you look effortless to clients — vendor coordination that surfaces problems in time to solve them, day-of timelines that account for everything that will go wrong, budget tracking that keeps clients in reality without conflict, and client communications that turn anxious couples into calm ones.',
-   tags:['wedding','events','planning'],version:'1.0.0'},
-
-  // ── Operations ──────────────────────────────────────────────
-  {name:'warehouse-manager',label:'Warehouse Manager',cat:'Operations',
-   desc:'Warehouse efficiency is measured in dollars per square foot and orders per labor hour. This plugin tracks the KPIs that reveal where those numbers are breaking down, plans labor against inbound and outbound volume before you're over or understaffed, designs layout changes that reduce travel time, and builds the receiving processes that prevent inventory accuracy problems before they ripple downstream.',
-   tags:['warehouse','logistics','kpi'],version:'1.0.0'},
-  {name:'supply-chain-manager',label:'Supply Chain Manager',cat:'Operations',
-   desc:'Supply chain disruptions used to be rare. Now they're predictable. This plugin builds the supply chain resilience that protects revenue — demand forecasting that accounts for variability, vendor scoring that identifies risk before it becomes a stockout, logistics optimization that finds cost without sacrificing reliability, and the risk monitoring that gives you warning before the problem arrives.',
-   tags:['supply-chain','procurement','logistics'],version:'1.0.0'},
-  {name:'production-planner',label:'Production Planner',cat:'Operations',
-   desc:'Production planning is a daily negotiation between demand, capacity, and quality. This plugin runs the analysis that makes that negotiation winnable — production schedules that maximize throughput without breaking equipment, quality control frameworks that catch defects at source rather than final inspection, maintenance planning that prevents the unplanned downtime that wrecks a production week, and lean tools that reduce waste continuously.',
-   tags:['manufacturing','production','lean'],version:'1.0.0'},
-
-  // ── Knowledge Work ──────────────────────────────────────────
-  {name:'hr-hiring-assistant',label:'HR Hiring Assistant',cat:'Knowledge Work',
-   desc:'Bad hires cost 1-3x annual salary. This plugin builds the hiring process that prevents them — job descriptions that attract the right people and deter the wrong ones, structured interview scorecards that make evaluation objective, compensation benchmarks so you're competitive without overpaying, background check workflows that stay compliant, and onboarding plans that make the first 90 days a success. Hire better. Onboard faster. Retain longer.',
-   tags:['hr','hiring','recruiting'],version:'1.0.0'},
-  {name:'data',label:'Data Analysis Suite',cat:'Knowledge Work',
-   desc:'Turn raw data into decisions. Full-stack analysis from SQL queries to statistical models to visualizations — whether you're debugging a dataset, building an executive dashboard, or running the analysis that answers the question someone asked in this morning's meeting. Bring your data, describe what you need, and get results that are accurate and actually explainable.',
-   tags:['data','sql','visualization'],version:'1.0.0'},
-  {name:'bio-research',label:'Bio Research Suite',cat:'Knowledge Work',
-   desc:'Computational biology workflows for researchers who need to move fast without making errors. From nf-core pipeline setup to single-cell RNA-seq QC and scVI deep learning integration — the commands, the parameters, and the interpretation of what the results actually mean. Stop Googling StackOverflow at midnight before your next lab meeting.',
-   tags:['bioinformatics','single-cell','nextflow'],version:'1.0.0'},
-  {name:'customer-support',label:'Customer Support Suite',cat:'Knowledge Work',
-   desc:'Great customer support requires speed, consistency, and genuine empathy — all at the same time. This plugin helps you triage tickets by priority and urgency, draft responses that solve the problem without creating new ones, build the knowledge base articles that prevent repeat tickets, and package escalations with the full context that engineering or management needs to act. Faster resolution. Happier customers. Lower ticket volume over time.',
-   tags:['support','tickets','kb'],version:'1.1.0'},
-  {name:'enterprise-search',label:'Enterprise Search',cat:'Knowledge Work',
-   desc:'The answer exists somewhere in your organization. Finding it shouldn't take three Slack threads, two emails, and a calendar invite. This plugin searches across all connected sources simultaneously — documents, databases, emails, wikis — synthesizes what's relevant, and surfaces the answer with source attribution so you know you can trust it.',
-   tags:['search','knowledge','enterprise'],version:'1.1.0'},
-  {name:'engineering',label:'Engineering Suite',cat:'Knowledge Work',
-   desc:'Engineering velocity is blocked by the work that surrounds the work — code reviews that take days, documentation nobody writes, incidents that repeat because the postmortem never happened. This plugin handles that surrounding work: code review feedback that's specific and educational, system design documentation that explains decisions, incident postmortems that actually identify root causes, and tech debt analysis that helps leadership understand what cutting corners costs.',
-   tags:['engineering','code','devops'],version:'1.1.0'},
-  {name:'design',label:'Design Suite',cat:'Knowledge Work',
-   desc:'Design work is subjective until it isn't — and good critique makes it objective. This plugin provides structured feedback on designs against accessibility standards, user mental models, and design system consistency. Writes the developer handoff documentation that prevents "that's not what I designed" conversations. Drafts UX copy in the voice of the product. And synthesizes user research into the actionable insights that actually change the next design decision.',
-   tags:['design','ux','accessibility'],version:'1.1.0'},
-  {name:'legal',label:'Legal Suite',cat:'Knowledge Work',
-   desc:'In-house legal is always understaffed relative to the volume of work. This plugin handles the high-volume, lower-stakes work so your team can focus on what matters — NDA triage that flags the unusual clauses before they reach legal review, contract summaries that give business stakeholders what they need without the full document, compliance checks against your policy library, and risk assessments that quantify what "I'm not sure about this clause" actually means.',
-   tags:['legal','contracts','compliance'],version:'1.1.0'},
-  {name:'human-resources',label:'Human Resources Suite',cat:'Knowledge Work',
-   desc:'HR touches every employee at every stage of their tenure. This plugin helps you do it well — recruiting pipelines that move faster and evaluate better, interview guides that are legally compliant and actually predictive, compensation analysis that keeps you competitive in a market where candidates have data, org design scenarios when the structure isn't working, and people analytics that surface problems before they become turnover.',
-   tags:['hr','recruiting','people'],version:'1.1.0'},
-  {name:'finance',label:'Finance Suite',cat:'Knowledge Work',
-   desc:'Finance teams close the books, but the real value is in the analysis that helps the business understand what the numbers mean. This plugin handles both — variance analysis that explains why actuals diverged from plan in language non-finance stakeholders understand, journal entries that are properly documented, reconciliations that catch the discrepancies, and SOX testing procedures that satisfy auditors without taking all quarter.',
-   tags:['finance','accounting','sox'],version:'1.1.0'},
-  {name:'marketing',label:'Marketing Suite',cat:'Knowledge Work',
-   desc:'Marketing runs on content, campaigns, and data — and there's never enough time for all three. This plugin helps you run all three better — content that sounds like your brand and converts, campaign planning that starts from customer insight rather than calendar pressure, competitive analysis that tells you what to do differently, SEO audits that find the quick wins, and performance reporting that goes beyond traffic to tell you what's actually driving revenue.',
-   tags:['marketing','content','seo'],version:'1.1.0'},
-  {name:'operations',label:'Operations Suite',cat:'Knowledge Work',
-   desc:'Operations is the function that makes everything else possible — and the one that gets blamed when anything goes wrong. This plugin documents the processes that let the company scale without breaking, manages change so initiatives actually land, evaluates vendors before you're locked in, assesses risk before it becomes a crisis, plans capacity before the constraint becomes a bottleneck, and maintains the compliance tracking that keeps the business protected.',
-   tags:['operations','process','risk'],version:'1.1.0'},
-  {name:'product-management',label:'Product Management Suite',cat:'Knowledge Work',
-   desc:'Product managers live in the gap between what engineering can build, what customers need, and what the business requires. This plugin helps you navigate that gap — feature specs that give engineering enough context to build the right thing, roadmaps that explain prioritization decisions without a meeting, user research synthesis that finds the pattern in 40 interviews, and stakeholder updates that build confidence without overpromising.',
-   tags:['product','roadmap','sprint'],version:'1.1.0'},
-  {name:'productivity',label:'Productivity Suite',cat:'Knowledge Work',
-   desc:'Context switching and information overload are the enemy of deep work. This plugin helps you reclaim focused time — maintains your working memory across sessions so you're never starting from scratch, organizes tasks by context and energy level, and initializes your workspace with the right context before you start the day. Less time remembering. More time doing.',
-   tags:['productivity','tasks','memory'],version:'1.1.0'},
-  {name:'sales',label:'Sales Suite',cat:'Knowledge Work',
-   desc:'Preparation wins deals. This plugin does the preparation — deep account research before a discovery call, competitive intelligence for every deal where a competitor is mentioned, personalized outreach that references something real about the prospect, a daily briefing that surfaces which deals need attention today, and pipeline reviews that find the stuck deals before they die quietly. More pipeline, better conversion, fewer surprises at quarter end.',
-   tags:['sales','crm','outreach'],version:'1.1.0'},
+  {name:'job-seeker-autopilot',label:'Job Seeker Autopilot',cat:'Career',desc:'Stop sending resumes into the void. This plugin runs your job search like a campaign — finds the right roles, tailors every resume and cover letter to the specific JD, writes outreach that gets responses, and tracks your pipeline so nothing falls through the cracks.',tags:['job search','resume','interviews','career']},
+  {name:'small-business-autopilot',label:'Small Business Autopilot',cat:'Business',desc:'Get the marketing output of a full-time marketing hire — without the hire. Writes your blog posts, social content, and email campaigns. Researches your competitors. Builds your lead lists. All in your voice, all targeting your customers.',tags:['marketing','social','email','leads']},
+  {name:'saas-growth-operator',label:'SaaS Growth Operator',cat:'Business',desc:'Your churn is higher than it should be. Your onboarding is leaking revenue. This plugin runs the analytics that expose exactly where growth is breaking down — then tells you precisely what to fix, in what order, with expected impact.',tags:['saas','growth','churn','metrics']},
+  {name:'dev-agency-manager',label:'Dev Agency Manager',cat:'Business',desc:'Win more projects and deliver them profitably. Write proposals that close. Produce client reports that build trust and justify retainers. Plan resources so you stop burning out your best engineers.',tags:['agency','proposals','dev']},
+  {name:'product-launch-planner',label:'Product Launch Planner',cat:'Business',desc:"Launches fail in the planning, not the execution. This plugin builds the launch system — the timeline, the audience build strategy, the content calendar, the pricing logic. Stop launching on hope.",tags:['launch','product','gtm']},
+  {name:'franchise-operator',label:'Franchise Operator',cat:'Business',desc:'Monitors compliance across units before it becomes a problem, analyzes unit financials to catch underperformers early, builds local marketing that headquarters would approve.',tags:['franchise','operations','compliance']},
+  {name:'customer-support-autopilot',label:'Customer Support Autopilot',cat:'Business',desc:'Your support team spends 40% of their time on questions that have the same answer. This plugin triages tickets, drafts responses, builds the knowledge base articles that eliminate repeat questions.',tags:['support','tickets','automation']},
+  {name:'solo-attorney-practice',label:'Solo Attorney Practice',cat:'Legal',desc:'Solo practice means doing the work AND running the business. This plugin handles the operational drag — billing narratives, client intake, document drafting, and ethical marketing.',tags:['legal','attorney','billing','intake']},
+  {name:'family-law-assistant',label:'Family Law Assistant',cat:'Legal',desc:'Analyze custody arrangements, prepare mediation strategy, draft client communications that reduce anxiety without overpromising, and keep case documentation organized when every detail matters.',tags:['family-law','custody','mediation']},
+  {name:'criminal-defense-toolkit',label:'Criminal Defense Toolkit',cat:'Legal',desc:'Build your case theory — analyzing case facts against statutory elements, drafting motions, tracking discovery, and developing mitigation narratives that humanize your client for the court.',tags:['criminal-law','motions','discovery']},
+  {name:'immigration-law-helper',label:'Immigration Law Helper',cat:'Legal',desc:'Tracks case status and deadlines, builds country conditions research for asylum cases, drafts RFE responses with proper supporting structure, and manages client communications clearly.',tags:['immigration','visa','uscis']},
+  {name:'corporate-law-assistant',label:'Corporate Law Assistant',cat:'Legal',desc:"Tracks M&A deal checklists so nothing slips, prepares board meeting materials, reviews contracts for missing provisions, monitors compliance calendars.",tags:['corporate','contracts','ma']},
+  {name:'dental-practice-autopilot',label:'Dental Practice Autopilot',cat:'Healthcare',desc:"Empty chairs cost you money every hour. Reactivates patients who haven't been in for 12+ months, verifies insurance before appointments, generates review requests that grow your Google rating.",tags:['dental','insurance','patients']},
+  {name:'mental-health-practice-helper',label:'Mental Health Practice',cat:'Healthcare',desc:'Clinicians spend 20-30% of their time on documentation. Complete session notes efficiently, navigate insurance billing complexity, design group programs, and market your practice ethically.',tags:['therapy','mental-health','notes']},
+  {name:'chiropractic-practice-builder',label:'Chiropractic Practice Builder',cat:'Healthcare',desc:'Chiropractic growth runs on referrals, reviews, and reactivations. Crafts care plan presentations, reactivates inactive patients, and generates referral programs that turn happy patients into advocates.',tags:['chiropractic','patients','marketing']},
+  {name:'home-health-agency-operator',label:'Home Health Agency Operator',cat:'Healthcare',desc:'Helps you recruit better caregivers, maintain Medicare documentation for reimbursement, coordinate scheduling to minimize gaps, and communicate with families in ways that build trust.',tags:['home-health','medicare','caregivers']},
+  {name:'medical-device-sales-rep',label:'Medical Device Sales Rep',cat:'Healthcare',desc:'Preps you for every surgical case, builds clinical evidence summaries for product conversations, tracks competitor activity in your territory, and helps you develop surgeon relationships.',tags:['med-device','sales','clinical']},
+  {name:'pharmacy-operations',label:'Pharmacy Operations',cat:'Healthcare',desc:'Build clinical programs that generate revenue, optimize inventory to reduce waste, run adherence outreach that keeps patients on therapy, and seasonal campaigns that bring in new business.',tags:['pharmacy','compliance','adherence']},
+  {name:'veterinary-practice-manager',label:'Veterinary Practice Manager',cat:'Healthcare',desc:'Client communications that are warm and medically clear, wellness plan designs that keep pets healthier and clients more loyal, and social content that shows the human side of your practice.',tags:['veterinary','pets','wellness']},
+  {name:'auto-dealership-operator',label:'Auto Dealership Operator',cat:'Automotive',desc:'BDC scripts that convert more calls to appointments, inventory analysis that surfaces the right units to promote, lead nurture sequences through a 90-day buying cycle, and service retention campaigns.',tags:['dealership','automotive','bdc']},
+  {name:'auto-repair-shop-manager',label:'Auto Repair Shop Manager',cat:'Automotive',desc:'Communicate repair findings in plain language customers trust, write estimates that are transparent and convert, respond to negative reviews in ways that recover reputation.',tags:['auto-repair','estimates','customers']},
+  {name:'auto-detailing-business',label:'Auto Detailing Business',cat:'Automotive',desc:'Package and price your services to command premium rates, win fleet and corporate accounts with proposals that speak their language, build loyalty programs that keep customers booking.',tags:['detailing','packages','fleet']},
+  {name:'fleet-management-assistant',label:'Fleet Management Assistant',cat:'Automotive',desc:'Maintenance schedules that catch problems before they become breakdowns, compliance tracking that keeps vehicles on the road legally, cost analysis that shows where budget is being wasted.',tags:['fleet','maintenance','compliance']},
+  {name:'car-wash-operator',label:'Car Wash Operator',cat:'Automotive',desc:'Build a membership base that provides predictable revenue regardless of weather, manage equipment monitoring to minimize downtime, and run weather-triggered promotions that drive volume.',tags:['car-wash','membership','marketing']},
+  {name:'general-contractor-operator',label:'General Contractor',cat:'Trades',desc:'Write bids that are competitive but not underpriced, manage project timelines so you stop eating costs from slippage, handle change orders in writing before they become disputes.',tags:['construction','bids','scheduling']},
+  {name:'electrician-business-manager',label:'Electrician Business Manager',cat:'Trades',desc:'Estimate jobs accurately so you stop leaving money on the table, track permits so inspections happen on schedule, develop your apprentices faster, and market for the commercial jobs that pay best.',tags:['electrical','permits','estimating']},
+  {name:'roofing-company-operator',label:'Roofing Company Operator',cat:'Trades',desc:'Rapid storm response systems that let you capture demand before competitors, accurate estimates, lead generation in your territory, and the warranty documentation that protects you from callbacks.',tags:['roofing','estimates','storm']},
+  {name:'painting-contractor-helper',label:'Painting Contractor Helper',cat:'Trades',desc:'Produce proposals that are specific enough to justify your price over the low bidder, provide color consultation, schedule crews efficiently, and follow up in ways that generate referrals.',tags:['painting','proposals','crews']},
+  {name:'landscaping-business-operator',label:'Landscaping Business Operator',cat:'Trades',desc:'Build a service mix that generates revenue year-round, optimize routes to minimize drive time, retain customers through consistent communication, and fill your spring calendar in January.',tags:['landscaping','routes','seasonal']},
+  {name:'pool-service-operator',label:'Pool Service Operator',cat:'Trades',desc:'Calculate chemical dosing correctly, diagnose equipment problems before they become expensive repairs, optimize your service route, and communicate with customers in ways that prevent them from ever shopping around.',tags:['pools','chemicals','routing']},
+  {name:'shopify-store-optimizer',label:'Shopify Store Optimizer',cat:'E-commerce',desc:"Your Shopify store is converting a fraction of the visitors it could. This plugin finds the friction — slow pages, weak product copy, abandoned cart flows — and tells you exactly what to fix.",tags:['shopify','ecommerce','cro']},
+  {name:'review-feedback-manager',label:'Review & Feedback Manager',cat:'E-commerce',desc:'Get more good reviews, respond to bad ones in ways that recover the relationship, run proactive solicitation campaigns, and analyze sentiment trends before they compound into a rating problem.',tags:['reviews','reputation','feedback']},
+  {name:'inventory-pricing-optimizer',label:'Inventory & Pricing Optimizer',cat:'E-commerce',desc:"Dead inventory ties up cash. Stockouts lose sales. This plugin builds the forecasting models that keep you in stock on what sells and clears what doesn't before it becomes a write-off.",tags:['inventory','pricing','forecasting']},
+  {name:'retail-store-operator',label:'Retail Store Operator',cat:'E-commerce',desc:'Visual merchandising that drives impulse buys, staff scheduling that matches traffic patterns, inventory management that keeps your cash flowing, and local marketing that brings in foot traffic.',tags:['retail','merchandising','inventory']},
+  {name:'seo-content-machine',label:'SEO Content Machine',cat:'Marketing',desc:'Organic search is the only marketing channel that compounds. This plugin builds the engine — keyword research, blog posts that rank, on-page optimization, and a refresh system that keeps rankings from decaying.',tags:['seo','content','keywords']},
+  {name:'competitive-intel-monitor',label:'Competitive Intel Monitor',cat:'Marketing',desc:"Your competitors are moving and you're finding out too late. Battlecards your sales team actually uses, market trend analysis before the trend becomes obvious, pricing intelligence, and win/loss analysis.",tags:['competitive','battlecards','intel']},
+  {name:'influencer-affiliate-manager',label:'Influencer & Affiliate Manager',cat:'Marketing',desc:'Builds the criteria for finding creators whose audience matches your customers, drafts agreements that protect you, designs affiliate programs that attract and retain partners, and tracks ROI.',tags:['influencer','affiliate','compliance']},
+  {name:'email-marketing-autopilot',label:'Email Marketing Autopilot',cat:'Marketing',desc:'Email is the highest-ROI marketing channel you\'re probably underusing. Sequences that nurture leads, newsletters people actually read, deliverability fixes that keep you out of spam.',tags:['email','newsletters','automation']},
+  {name:'social-media-manager-pro',label:'Social Media Manager Pro',cat:'Marketing',desc:'Writes platform-native content for LinkedIn, Instagram, X, and Facebook in your brand voice, monitors trends before they peak, drafts engagement responses, and reports on what resonates.',tags:['social-media','content','analytics']},
+  {name:'demand-gen-operator',label:'Demand Gen Operator',cat:'Marketing',desc:"B2B pipeline starts with content that makes your ICP feel understood before they ever talk to sales. Figures out who your ICP is, writes content that speaks to their pain, and repurposes everything so one piece becomes ten.",tags:['demand-gen','ICP','content','B2B']},
+  {name:'linkedin-demand-gen',label:'LinkedIn Demand Gen',cat:'Marketing',desc:"LinkedIn is the only B2B channel where you can reach a specific Director at a 500-person company before they're even looking for a solution. Systematic ICP engagement, signal-triggered outreach, thought leadership writing.",tags:['LinkedIn','outbound','B2B','social-selling']},
+  {name:'paid-acquisition-operator',label:'Paid Acquisition Operator',cat:'Marketing',desc:'B2B paid media fails because of wrong targeting, generic ad copy, and no improvement system. This plugin translates your ICP into precise LinkedIn and Google audiences and writes pain-led copy that converts.',tags:['paid-ads','LinkedIn-ads','Google-ads','CPL']},
+  {name:'marketing-revenue-intelligence',label:'Marketing Revenue Intelligence',cat:'Marketing',desc:'Builds the attribution model that connects marketing activity to revenue, diagnoses where the funnel is leaking, aligns your MQL definition with what sales actually closes, and delivers the weekly CMO report.',tags:['CRO','attribution','funnel','MQL']},
+  {name:'financial-advisor-practice',label:'Financial Advisor Practice',cat:'Finance',desc:'Portfolio reviews that show clients exactly where they stand, market commentary that demonstrates expertise, compliance documentation that protects your practice, and campaigns that reach the right prospects.',tags:['financial-advisor','portfolio','compliance']},
+  {name:'mortgage-broker-assistant',label:'Mortgage Broker Assistant',cat:'Finance',desc:'Pre-qualification communications that set realistic expectations, rate analysis that explains the right loan, a pipeline tracker so no client falls through, and realtor nurture that builds referral relationships.',tags:['mortgage','rates','lending']},
+  {name:'tax-prep-practice',label:'Tax Prep Practice',cat:'Finance',desc:"Client document checklists that arrive before the deadline, deduction-finding analysis, extension management so the IRS never surprises a client, and seasonal marketing that keeps your calendar full.",tags:['tax','deductions','compliance']},
+  {name:'wealth-management-advisor',label:'Wealth Management Advisor',cat:'Finance',desc:'Portfolio performance letters that are readable and reassuring, tax-efficient strategy recommendations, estate planning coordination, and compliance documentation that protects your practice.',tags:['wealth','estate','portfolio']},
+  {name:'insurance-agency-operator',label:'Insurance Agency Operator',cat:'Finance',desc:'Coverage review processes that find gaps before a claim exposes them, cross-sell sequences, retention campaigns that prevent annual competitor shopping, and marketing that explains complex coverages clearly.',tags:['insurance','retention','cross-sell']},
+  {name:'k12-school-administrator',label:'K-12 School Administrator',cat:'Education',desc:'Parent communications, grant applications that bring in resources, enrollment campaigns, staff evaluations, and the documentation that keeps the school running and protected.',tags:['k12','schools','admin']},
+  {name:'online-course-creator',label:'Online Course Creator',cat:'Education',desc:'Most online courses fail not because of bad content but bad structure and worse marketing. Logical curriculum design, lessons that teach by doing, launch campaigns that build audiences before you launch.',tags:['courses','elearning','curriculum']},
+  {name:'tutoring-business-operator',label:'Tutoring Business Operator',cat:'Education',desc:'Student assessment reports that show exactly where a student is and why, differentiated lesson plans, progress reports that give parents the specifics they need, and marketing that reaches parents actively looking.',tags:['tutoring','education','parents']},
+  {name:'college-admissions-counselor',label:'College Admissions Counselor',cat:'Education',desc:'Essay coaching that finds the authentic story only they can tell, school matching that builds a balanced list, financial aid strategy that maximizes the offer, and timeline management that prevents senior year crises.',tags:['college','admissions','essays']},
+  {name:'corporate-trainer',label:'Corporate Trainer',cat:'Education',desc:'Training that actually changes behavior — workshop design with measurable outcomes, e-learning development people complete, onboarding programs that reduce time-to-productivity, and ROI measurement that saves your budget.',tags:['training','corporate','learning']},
+  {name:'it-services-provider',label:'IT Services Provider (MSP)',cat:'Technology',desc:'MSP clients leave because of communication failures, not technical ones. QBRs that demonstrate ROI in business terms, security audit reports that translate risk into dollars, and technology assessments that close managed service agreements.',tags:['msp','it','security']},
+  {name:'cybersecurity-consultant',label:'Cybersecurity Consultant',cat:'Technology',desc:'Risk assessments that translate technical vulnerabilities into business impact, compliance gap analysis for SOC 2, ISO 27001, or HIPAA, incident response playbooks, and executive reports that speak to the board.',tags:['security','compliance','risk']},
+  {name:'data-analytics-consultant',label:'Data Analytics Consultant',cat:'Technology',desc:'Dashboards designed around the questions stakeholders actually ask, data storytelling that turns scatter plots into actions, methodology documentation that makes your work reproducible.',tags:['analytics','dashboards','data']},
+  {name:'hotel-operations-manager',label:'Hotel Operations Manager',cat:'Hospitality',desc:"Every empty room is revenue gone forever. Revenue management that prices dynamically, guest communications that resolve issues before the review, marketing campaigns for corporate and group business.",tags:['hotel','hospitality','revenue']},
+  {name:'wedding-planner-assistant',label:'Wedding Planner Assistant',cat:'Hospitality',desc:'Vendor coordination that surfaces problems in time to solve them, day-of timelines that account for everything that will go wrong, budget tracking that keeps clients in reality without conflict.',tags:['wedding','events','planning']},
+  {name:'warehouse-manager',label:'Warehouse Manager',cat:'Operations',desc:"KPIs that reveal where efficiency is breaking down, labor planning against inbound and outbound volume, layout changes that reduce travel time, and receiving processes that prevent inventory accuracy problems.",tags:['warehouse','logistics','kpi']},
+  {name:'supply-chain-manager',label:'Supply Chain Manager',cat:'Operations',desc:'Demand forecasting that accounts for variability, vendor scoring that identifies risk before it becomes a stockout, logistics optimization that finds cost without sacrificing reliability.',tags:['supply-chain','procurement','logistics']},
+  {name:'production-planner',label:'Production Planner',cat:'Operations',desc:'Production schedules that maximize throughput, quality control frameworks that catch defects at source, maintenance planning that prevents unplanned downtime, and lean tools that reduce waste continuously.',tags:['manufacturing','production','lean']},
+  {name:'hr-hiring-assistant',label:'HR Hiring Assistant',cat:'Knowledge Work',desc:'Bad hires cost 1-3x annual salary. Job descriptions that attract the right people, structured scorecards that make evaluation objective, compensation benchmarks, background check workflows, and onboarding plans.',tags:['hr','hiring','recruiting']},
+  {name:'data',label:'Data Analysis Suite',cat:'Knowledge Work',desc:'Turn raw data into decisions. Full-stack analysis from SQL queries to statistical models to visualizations. Bring your data, describe what you need, and get results that are accurate and actually explainable.',tags:['data','sql','visualization']},
+  {name:'bio-research',label:'Bio Research Suite',cat:'Knowledge Work',desc:'nf-core pipelines, single-cell RNA-seq QC, scVI deep learning — the commands, parameters, and interpretation of results. Stop Googling StackOverflow at midnight before your next lab meeting.',tags:['bioinformatics','single-cell','nextflow']},
+  {name:'customer-support',label:'Customer Support Suite',cat:'Knowledge Work',desc:'Triage tickets by priority, draft responses that solve problems without creating new ones, build knowledge base articles that prevent repeat tickets, and package escalations with full context.',tags:['support','tickets','kb']},
+  {name:'enterprise-search',label:'Enterprise Search',cat:'Knowledge Work',desc:"The answer exists somewhere in your organization. Finding it shouldn't take three Slack threads. Searches across all connected sources, synthesizes what's relevant, and surfaces the answer with source attribution.",tags:['search','knowledge','enterprise']},
+  {name:'engineering',label:'Engineering Suite',cat:'Knowledge Work',desc:'Code review feedback that\'s specific and educational, system design documentation, incident postmortems that actually identify root causes, and tech debt analysis that helps leadership understand what cutting corners costs.',tags:['engineering','code','devops']},
+  {name:'design',label:'Design Suite',cat:'Knowledge Work',desc:'Structured feedback on designs against accessibility standards, developer handoff documentation that prevents "that\'s not what I designed" conversations, UX copy in the voice of the product.',tags:['design','ux','accessibility']},
+  {name:'legal',label:'Legal Suite',cat:'Knowledge Work',desc:"NDA triage that flags unusual clauses, contract summaries for business stakeholders, compliance checks against your policy library, and risk assessments that quantify what 'I'm not sure about this clause' actually means.",tags:['legal','contracts','compliance']},
+  {name:'human-resources',label:'Human Resources Suite',cat:'Knowledge Work',desc:'Recruiting pipelines that move faster, interview guides that are legally compliant and actually predictive, compensation analysis, org design scenarios, and people analytics that surface problems before they become turnover.',tags:['hr','recruiting','people']},
+  {name:'finance',label:'Finance Suite',cat:'Knowledge Work',desc:'Variance analysis in language non-finance stakeholders understand, properly documented journal entries, reconciliations that catch discrepancies, and SOX testing procedures that satisfy auditors.',tags:['finance','accounting','sox']},
+  {name:'marketing',label:'Marketing Suite',cat:'Knowledge Work',desc:'Content that sounds like your brand and converts, campaign planning from customer insight, competitive analysis that tells you what to do differently, SEO audits for quick wins, and reporting beyond traffic to actual revenue.',tags:['marketing','content','seo']},
+  {name:'operations',label:'Operations Suite',cat:'Knowledge Work',desc:'Documents the processes that let the company scale without breaking, manages change so initiatives actually land, evaluates vendors before you\'re locked in, and maintains compliance tracking.',tags:['operations','process','risk']},
+  {name:'product-management',label:'Product Management Suite',cat:'Knowledge Work',desc:'Feature specs that give engineering enough context, roadmaps that explain prioritization without a meeting, user research synthesis that finds the pattern in 40 interviews, and stakeholder updates that build confidence.',tags:['product','roadmap','sprint']},
+  {name:'productivity',label:'Productivity Suite',cat:'Knowledge Work',desc:'Maintains your working memory across sessions so you\'re never starting from scratch, organizes tasks by context and energy level, and initializes your workspace with the right context before you start the day.',tags:['productivity','tasks','memory']},
+  {name:'sales',label:'Sales Suite',cat:'Knowledge Work',desc:'Deep account research before discovery calls, competitive intelligence for every deal, personalized outreach that references something real, a daily briefing that surfaces which deals need attention, and pipeline reviews.',tags:['sales','crm','outreach']},
 ];
 
-const CATS = {
-  'Career':        { icon:'&#x1F3AF;' },
-  'Business':      { icon:'&#x1F4BC;' },
-  'Legal':         { icon:'&#x2696;&#xFE0F;' },
-  'Healthcare':    { icon:'&#x1F3E5;' },
-  'Automotive':    { icon:'&#x1F697;' },
-  'Trades':        { icon:'&#x1F528;' },
-  'E-commerce':    { icon:'&#x1F6D2;' },
-  'Marketing':     { icon:'&#x1F4E2;' },
-  'Finance':       { icon:'&#x1F4B0;' },
-  'Education':     { icon:'&#x1F393;' },
-  'Technology':    { icon:'&#x1F4BB;' },
-  'Hospitality':   { icon:'&#x1F3E8;' },
-  'Operations':    { icon:'&#x2699;&#xFE0F;' },
-  'Knowledge Work':{ icon:'&#x1F9E0;' }
-};
+// ── RENDER ────────────────────────────────────────────────────────
+let activeCat = 'All';
+let searchTerm = '';
 
-// -- HELPERS -------------------------------------------
 function toTitle(s){ return s.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase()); }
 
-// -- STATS ---------------------------------------------
-function buildStats(){
-  let s=0,c=0;
-  Object.values(DETAILS).forEach(d=>{s+=d.skills.length;c+=d.cmds.length;});
-  document.getElementById('statSkills').textContent=s+'+';
-  document.getElementById('statCmds').textContent=c+'+';
+function buildCats(){
+  const counts = {};
+  PLUGINS.forEach(p=>{ counts[p.cat]=(counts[p.cat]||0)+1; });
+  const catScroll = document.getElementById('catScroll');
+  const allCats = ['All',...Object.keys(CATS)];
+  catScroll.innerHTML = allCats.map(c=>`
+    <button class="cat-pill${c==='All'?' active':''}" onclick="filterCat('${c}',this)">
+      ${c==='All'?'All (76)':`${CATS[c]?.icon||''} ${c}`}
+    </button>
+  `).join('');
 }
 
-// -- CHIPS ---------------------------------------------
-function buildChips(){
-  const wrap=document.getElementById('chips');
-  const allBtn=document.createElement('button');
-  allBtn.className='chip active'; allBtn.textContent='All';
-  allBtn.onclick=()=>{ document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active')); allBtn.classList.add('active'); currentCat=null; filter(); };
-  wrap.appendChild(allBtn);
-  Object.entries(CATS).forEach(([cat,cfg])=>{
-    const btn=document.createElement('button');
-    btn.className='chip';
-    btn.innerHTML=cfg.icon+' '+cat;
-    btn.onclick=()=>{ document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active')); btn.classList.add('active'); currentCat=cat; filter(); };
-    wrap.appendChild(btn);
-  });
+function filterCat(cat, btn){
+  activeCat = cat;
+  document.querySelectorAll('.cat-pill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCards();
 }
 
-// -- BUILD CATALOG -------------------------------------
-function buildCatalog(){
-  const catalog=document.getElementById('catalog');
-  catalog.innerHTML='';
-  Object.entries(CATS).forEach(([cat,cfg])=>{
-    const sec=document.createElement('div');
-    sec.className='cat-section'; sec.dataset.cat=cat;
-    const pCount=PLUGINS.filter(p=>p.cat===cat).length;
-    sec.innerHTML=`<div class="cat-header"><span class="cat-icon">${cfg.icon}</span><span class="cat-name">${cat}</span><span class="cat-count" id="cnt-${cat.replace(/\s+/g,'-')}">${pCount}</span></div><div class="cards" id="cards-${cat.replace(/\s+/g,'-')}"></div>`;
-    catalog.appendChild(sec);
+function renderCards(){
+  const q = searchTerm.toLowerCase();
+  const filtered = PLUGINS.filter(p=>{
+    const catMatch = activeCat === 'All' || p.cat === activeCat;
+    const searchMatch = !q || 
+      p.label.toLowerCase().includes(q) ||
+      p.desc.toLowerCase().includes(q) ||
+      p.cat.toLowerCase().includes(q) ||
+      p.tags.some(t=>t.toLowerCase().includes(q));
+    return catMatch && searchMatch;
   });
-  PLUGINS.forEach(p=>{
-    const d=DETAILS[p.name]||{skills:[],cmds:[]};
-    const cardsEl=document.getElementById('cards-'+p.cat.replace(/\s+/g,'-'));
-    if(!cardsEl) return;
-    const card=document.createElement('div');
-    card.className='card'; card.dataset.name=p.name; card.dataset.cat=p.cat;
-    card.dataset.search=(p.label+' '+p.desc+' '+p.tags.join(' ')).toLowerCase();
-    card.innerHTML=`
+  
+  const count = document.getElementById('resultsCount');
+  const cards = document.getElementById('cards');
+  const empty = document.getElementById('emptyState');
+  
+  count.textContent = `${filtered.length} plugin${filtered.length!==1?'s':''} ${activeCat!=='All'?`in ${activeCat}`:''}`;
+  
+  if(filtered.length === 0){
+    cards.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  
+  cards.innerHTML = filtered.map(p=>{
+    const cfg = CATS[p.cat] || {icon:'🔧'};
+    const d = DETAILS[p.name] || {skills:[],cmds:[]};
+    return `
+    <div class="card" onclick="openSheet('${p.name}')">
       <div class="card-top">
-        <span class="card-name">${p.label}</span>
-        <span class="card-version">v${p.version}</span>
-      </div>
-      <p class="card-desc">${p.desc}</p>
-      <div class="card-tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-      <div class="card-meta">
-        <span class="meta-item"> ${d.skills.length} skill${d.skills.length!==1?'s':''}</span>
-        <span class="meta-item"> ${d.cmds.length} command${d.cmds.length!==1?'s':''}</span>
-      </div>
-      <button class="card-btn" onclick="openModal('${p.name}')">View & Install -&gt;</button>`;
-    cardsEl.appendChild(card);
-  });
-}
-
-// -- FILTER --------------------------------------------
-let currentCat=null;
-function filter(){
-  const searchEl=document.getElementById('search');
-  const q=searchEl?searchEl.value.toLowerCase().trim():'';
-  const catCounts={};
-  document.querySelectorAll('.card').forEach(card=>{
-    const matchQ=!q||card.dataset.search.includes(q);
-    const matchC=!currentCat||card.dataset.cat===currentCat;
-    card.style.display=(matchQ&&matchC)?'':'none';
-    if(matchQ&&matchC) catCounts[card.dataset.cat]=(catCounts[card.dataset.cat]||0)+1;
-  });
-  let total=0;
-  document.querySelectorAll('.cat-section').forEach(s=>{
-    const n=catCounts[s.dataset.cat]||0; total+=n;
-    s.style.display=n?'':'none';
-    const el=document.getElementById('cnt-'+s.dataset.cat.replace(/\s+/g,'-'));
-    if(el) el.textContent=n;
-  });
-  document.getElementById('countBadge').textContent=total+' plugin'+(total===1?'':'s');
-  document.getElementById('empty').style.display=total?'none':'block';
-  document.getElementById('catalog').style.display=total?'':'none';
-}
-
-// -- MODAL ---------------------------------------------
-function openModal(name){
-  const p=PLUGINS.find(x=>x.name===name); if(!p) return;
-  const d=DETAILS[name]||{skills:[],cmds:[]};
-  const cfg=CATS[p.cat]||{icon:''};
-  const baseUrl=`https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/${name}`;
-  const installUrl=`/plugin install ${name}@aimersion-marketplace`;
-
-  document.getElementById('modalContent').innerHTML=`
-    <div class="modal-cat-badge">${cfg.icon} ${p.cat}</div>
-    <h2>${p.label}</h2>
-    <p class="modal-desc">${p.desc}</p>
-    <div class="modal-tags">${p.tags.map(t=>`<span class="modal-tag">${t}</span>`).join('')}</div>
-
-    ${d.skills.length?`<div class="modal-section">
-      <div class="modal-section-title">Skills (${d.skills.length})</div>
-      <div class="skill-list">${d.skills.map(s=>`<div class="skill-pill"><span class="skill-pip"></span>${toTitle(s)}</div>`).join('')}</div>
-    </div>`:''}
-
-    ${d.cmds.length?`<div class="modal-section">
-      <div class="modal-section-title">Slash Commands (${d.cmds.length})</div>
-      <div class="cmd-list">${d.cmds.map(c=>`<span class="cmd-pill">/${c}</span>`).join('')}</div>
-    </div>`:''}
-
-    <div class="modal-install">
-      <div class="modal-install-title">Install This Plugin</div>
-      <div class="modal-ptabs">
-        <button class="modal-ptab active" onclick="modalPTab('claudeai',this,'${name}')"> Claude.ai</button>
-        <button class="modal-ptab" onclick="modalPTab('claudecode',this,'${name}')"> Claude Code</button>
-        <button class="modal-ptab" onclick="modalPTab('api',this,'${name}')"> API</button>
-      </div>
-
-      <div class="modal-ppanel active" id="mpp-claudeai-${name}">
-        <div class="modal-install-row">
-          <code>Copy skill content -&gt; paste into Claude.ai Project Instructions</code>
-          <button onclick="copySkillForClaudeAI('${name}',this)">Copy Skill</button>
+        <div class="card-icon">${cfg.icon}</div>
+        <div class="card-meta">
+          <div class="card-cat">${p.cat}</div>
+          <div class="card-name">${p.label}</div>
         </div>
-        <p class="modal-install-note">Go to <a href="https://claude.ai" target="_blank">claude.ai</a> -&gt; open a Project -&gt; Edit Instructions -&gt; paste. Active for every chat in that project. No CLI needed.</p>
+        <div class="card-arrow">›</div>
       </div>
-
-      <div class="modal-ppanel" id="mpp-claudecode-${name}">
-        <p class="modal-install-note" style="margin-bottom:8px;color:var(--ink3)">First time? Add the marketplace once: <code style="font-size:11px">claude plugin marketplace add aimersion/aimersion-marketplace</code></p>
-        <div class="modal-install-row">
-          <code>${installUrl}</code>
-          <button onclick="copyText('${installUrl}',this)">Copy</button>
-        </div>
-        <p class="modal-install-note">Run inside Claude Code after adding the marketplace. Skills activate immediately &mdash; use <code>/${name}:[command]</code> for slash commands, or just describe your task and skills auto-trigger.</p>
-      </div>
-
-      <div class="modal-ppanel" id="mpp-api-${name}">
-        <div class="modal-install-row">
-          <code>${baseUrl}/skills/</code>
-          <button onclick="copyText('${baseUrl}/skills/',this)">Copy URL</button>
-        </div>
-        <p class="modal-install-note">Fetch any <code>SKILL.md</code> from this path and inject into your system prompt. Plain markdown, no dependencies. See <a href="https://github.com/aimersion/aimersion-marketplace" target="_blank">README</a> for Python/JS examples.</p>
+      <div class="card-desc">${p.desc}</div>
+      <div class="card-footer">
+        <div class="card-skills">${d.skills.length} skills · ${d.cmds.length} commands</div>
+        <div class="card-use-btn">Use this →</div>
       </div>
     </div>`;
-
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
+  }).join('');
 }
 
-function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
-function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModalDirect(); });
+// ── SEARCH ────────────────────────────────────────────────────────
+document.getElementById('searchInput').addEventListener('input', function(){
+  searchTerm = this.value;
+  renderCards();
+});
 
-function modalPTab(id,btn,name){
-  ['claudeai','claudecode','api'].forEach(t=>{
-    const el=document.getElementById('mpp-'+t+'-'+name);
-    if(el) el.classList.toggle('active',t===id);
-  });
-  btn.closest('.modal-ptabs').querySelectorAll('.modal-ptab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+// ── BOTTOM SHEET ──────────────────────────────────────────────────
+function openSheet(name){
+  const p = PLUGINS.find(x=>x.name===name);
+  if(!p) return;
+  const d = DETAILS[p.name] || {skills:[],cmds:[]};
+  const cfg = CATS[p.cat] || {icon:'🔧'};
+  const baseUrl = `https://github.com/aimersion/aimersion-marketplace/tree/main/plugins/${name}`;
+  const installCmd = `/plugin install ${name}@aimersion-marketplace`;
+  const claudeAIPrompt = `You are an expert ${p.label}. Use the skills and knowledge from the Aimersion ${p.label} plugin to help me. Plugin: https://github.com/aimersion/aimersion-marketplace/tree/main/plugins/${name}\n\nSkills available: ${d.skills.join(', ')}\n\nHow can I help you today?`;
+
+  document.getElementById('sheetBody').innerHTML = `
+    <div class="sheet-cat">${cfg.icon} ${p.cat}</div>
+    <div class="sheet-title">${p.label}</div>
+    <div class="sheet-desc">${p.desc}</div>
+    <div class="sheet-tags">${p.tags.map(t=>`<span class="sheet-tag">${t}</span>`).join('')}</div>
+
+    ${d.skills.length ? `
+    <div class="sheet-section-title">Skills included (${d.skills.length})</div>
+    <div class="skills-grid">
+      ${d.skills.map(s=>`<div class="skill-chip"><span class="skill-dot"></span>${s}</div>`).join('')}
+    </div>` : ''}
+
+    ${d.cmds.length ? `
+    <div class="sheet-section-title">Slash commands (${d.cmds.length})</div>
+    <div class="cmds-grid">
+      ${d.cmds.map(c=>`<span class="cmd-chip">/${c}</span>`).join('')}
+    </div>` : ''}
+
+    <div class="install-box">
+      <div class="install-box-title">Add to Claude</div>
+      <div class="install-box-sub">Choose how you use Claude:</div>
+
+      <div class="ptabs">
+        <button class="ptab active" onclick="switchPTab('claudeai','${name}',this)">Claude App</button>
+        <button class="ptab" onclick="switchPTab('claudecode','${name}',this)">Claude Code</button>
+        <button class="ptab" onclick="switchPTab('api','${name}',this)">API</button>
+      </div>
+
+      <!-- CLAUDE APP PANEL — MAIN PATH -->
+      <div class="ppanel active" id="pp-claudeai-${name}">
+        <div class="claudeai-steps">
+          <div class="claudeai-step">
+            <div class="cs-num">1</div>
+            <div class="cs-text">Tap the button below — the skill prompt is copied to your clipboard</div>
+          </div>
+          <div class="claudeai-step">
+            <div class="cs-num">2</div>
+            <div class="cs-text">Open <a href="https://claude.ai" target="_blank">claude.ai</a> or the Claude app</div>
+          </div>
+          <div class="claudeai-step">
+            <div class="cs-num">3</div>
+            <div class="cs-text">Create a <strong>Project</strong> → tap <strong>Instructions</strong> → <strong>Paste</strong></div>
+          </div>
+          <div class="claudeai-step">
+            <div class="cs-num">4</div>
+            <div class="cs-text">Every chat in that project now has <strong>${p.label}</strong> skills active</div>
+          </div>
+        </div>
+        <button class="copy-prompt-btn" id="copyBtn-${name}" onclick="copyPrompt('${name}',this)">
+          <span>📋</span> Copy Skill to Clipboard
+        </button>
+        <div style="margin-top:10px">
+          <div style="font-size:11px;color:#475569;text-align:center;line-height:1.5">
+            No account needed · Free forever · Works on mobile and desktop<br>
+            <a href="${baseUrl}" target="_blank" style="color:#5DCAA5">View full skill files on GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLAUDE CODE PANEL -->
+      <div class="ppanel" id="pp-claudecode-${name}">
+        <div class="install-note" style="margin-bottom:10px;color:#94A3B8">First time? Add the marketplace once:</div>
+        <div class="code-row" style="margin-bottom:12px">
+          <code>claude plugin marketplace add aimersion/aimersion-marketplace</code>
+          <button onclick="copyText('claude plugin marketplace add aimersion/aimersion-marketplace',this)">Copy</button>
+        </div>
+        <div class="install-note" style="margin-bottom:8px;color:#94A3B8">Then install this plugin:</div>
+        <div class="code-row">
+          <code>${installCmd}</code>
+          <button onclick="copyText('${installCmd}',this)">Copy</button>
+        </div>
+        <div class="install-note" style="margin-top:10px">Run inside Claude Code in your terminal. Skills activate immediately — use <code style="font-size:11px;color:#94A3B8">/${d.cmds[0]||name}</code> or just describe your task.</div>
+      </div>
+
+      <!-- API PANEL -->
+      <div class="ppanel" id="pp-api-${name}">
+        <div class="install-note" style="margin-bottom:10px;color:#94A3B8">Include the skill files in your system prompt:</div>
+        <div class="code-row" style="margin-bottom:10px">
+          <code>${baseUrl}/skills/</code>
+          <button onclick="copyText('${baseUrl}/skills/',this)">Copy</button>
+        </div>
+        <div class="install-note">Fetch the SKILL.md files from GitHub and include them in your system prompt. Each skill provides a complete instruction set for that capability. <a href="${baseUrl}" target="_blank">View on GitHub →</a></div>
+      </div>
+    </div>
+  `;
+
+  // Store prompt for copy button
+  window._currentPrompts = window._currentPrompts || {};
+  window._currentPrompts[name] = claudeAIPrompt;
+
+  document.getElementById('sheetOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
-async function copySkillForClaudeAI(name,btn){
-  const d=DETAILS[name]||{skills:[]};
-  const orig=btn.textContent;
-  if(!d.skills.length){ copyText('https://github.com/aimersion/aimersion-marketplace/tree/main/plugins/'+name,btn); return; }
-  btn.textContent='Fetching...';
-  try{
-    const texts=await Promise.all(d.skills.map(async skill=>{
-      const url=`https://raw.githubusercontent.com/aimersion/aimersion-marketplace/main/plugins/${name}/skills/${skill}/SKILL.md`;
-      const r=await fetch(url); return r.ok?await r.text():'';
-    }));
-    const combined=texts.filter(Boolean).join('\n\n---\n\n');
-    await navigator.clipboard.writeText(combined);
-    btn.textContent='OK Copied!';
-    const t=document.getElementById('toast'); t.textContent='OK All skill content copied -- paste into Claude.ai Project Instructions'; t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),3000);
-    setTimeout(()=>btn.textContent=orig,2000);
-  }catch(e){
-    copyText('https://github.com/aimersion/aimersion-marketplace/tree/main/plugins/'+name,btn);
+function copyPrompt(name, btn){
+  const prompt = window._currentPrompts?.[name] || '';
+  if(!prompt) return;
+  
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(prompt).then(()=>{
+      btn.innerHTML = '<span>✓</span> Copied! Now paste into Claude Project Instructions';
+      btn.classList.add('copied');
+      setTimeout(()=>{
+        btn.innerHTML = '<span>📋</span> Copy Skill to Clipboard';
+        btn.classList.remove('copied');
+      }, 4000);
+    });
+  } else {
+    // Fallback for older iOS
+    const ta = document.createElement('textarea');
+    ta.value = prompt;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.innerHTML = '<span>✓</span> Copied! Now paste into Claude Project Instructions';
+    btn.classList.add('copied');
+    setTimeout(()=>{
+      btn.innerHTML = '<span>📋</span> Copy Skill to Clipboard';
+      btn.classList.remove('copied');
+    }, 4000);
   }
 }
 
-// -- TAB SWITCHERS -------------------------------------
-function heroTab(id,btn){
-  document.querySelectorAll('.platform-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('hero-'+id).classList.add('active');
+function copyText(text, btn){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(()=>{
+      const orig = btn.textContent;
+      btn.textContent = '✓';
+      setTimeout(()=>btn.textContent=orig, 2000);
+    });
+  }
+}
+
+function switchPTab(panel, name, btn){
+  const tabs = btn.parentElement.querySelectorAll('.ptab');
+  tabs.forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
-}
-function gsTab(id){
-  ['claudeai','claudecode','api'].forEach(t=>{
-    document.getElementById('gs-'+t).classList.toggle('active',t===id);
-    document.getElementById('gs-tab-'+t).classList.toggle('active',t===id);
+  const panels = ['claudeai','claudecode','api'];
+  panels.forEach(p=>{
+    const el = document.getElementById(`pp-${p}-${name}`);
+    if(el) el.classList.toggle('active', p===panel);
   });
 }
 
-// -- COPY ---------------------------------------------
-function copyText(text,btn){
-  navigator.clipboard.writeText(text).catch(()=>{
-    const ta=document.createElement('textarea'); ta.value=text;
-    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-  });
-  const orig=btn?.textContent||'';
-  if(btn){ btn.textContent='OK Copied!'; setTimeout(()=>btn.textContent=orig,2000); }
-  const t=document.getElementById('toast'); t.textContent='OK Copied to clipboard';
-  t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500);
+function closeSheet(e){
+  if(e.target === document.getElementById('sheetOverlay') || e.target.classList.contains('sheet-overlay')){
+    document.getElementById('sheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
 }
 
-// -- INIT ---------------------------------------------
-document.addEventListener('DOMContentLoaded',function(){buildStats();buildChips();buildCatalog();filter();});
+// Swipe down to close
+let touchStartY = 0;
+document.getElementById('sheet').addEventListener('touchstart', e=>{ touchStartY = e.touches[0].clientY; }, {passive:true});
+document.getElementById('sheet').addEventListener('touchmove', e=>{
+  const delta = e.touches[0].clientY - touchStartY;
+  if(delta > 80 && document.getElementById('sheet').scrollTop <= 0){
+    document.getElementById('sheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}, {passive:true});
+
+// ── INIT ──────────────────────────────────────────────────────────
+buildCats();
+renderCards();
 </script>
 </body>
 </html>
