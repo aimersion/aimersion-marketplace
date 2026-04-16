@@ -51,36 +51,55 @@ button { font-family: 'Inter', -apple-system, sans-serif; cursor: pointer; borde
 /* ── HERO ─────────────────────────────────────── */
 .hero {
   background: var(--ink);
-  padding: 48px 20px 40px;
+  padding: 28px 20px 24px;
   text-align: center;
 }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 6px;
   background: rgba(13,148,136,0.2); color: #5DCAA5;
   font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 5px 12px; border-radius: 100px; border: 1px solid rgba(13,148,136,0.3);
-  margin-bottom: 20px;
+  padding: 4px 12px; border-radius: 100px; border: 1px solid rgba(13,148,136,0.3);
+  margin-bottom: 14px;
 }
+.hero-how {
+  display: flex; align-items: flex-start; gap: 4px; justify-content: center;
+  flex-wrap: wrap; row-gap: 6px; max-width: 500px; margin: 0 auto;
+  padding: 14px 0 2px;
+}
+.hero-how-step {
+  display: flex; align-items: flex-start; gap: 7px;
+  background: rgba(255,255,255,0.05); border-radius: 8px; padding: 8px 10px;
+  flex: 1; min-width: 120px; max-width: 200px;
+}
+.hhs-n {
+  width: 20px; height: 20px; border-radius: 50%; background: var(--teal);
+  color: white; font-size: 11px; font-weight: 700; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.hhs-t { font-size: 12px; color: #94A3B8; line-height: 1.4; }
+.hhs-t strong { color: white; font-weight: 500; }
+.hero-how-arrow { color: #334155; font-size: 16px; align-self: center; flex-shrink: 0; }
+@media(max-width:420px) { .hero-how-arrow { display: none; } .hero-how-step { min-width: 100%; max-width: 100%; } }
 .hero h1 {
-  font-size: clamp(26px, 6vw, 42px); font-weight: 600; color: white;
-  line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 14px;
+  font-size: clamp(22px, 5.5vw, 38px); font-weight: 600; color: white;
+  line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 10px;
 }
 .hero h1 em { color: #5DCAA5; font-style: normal; }
 .hero-sub {
-  font-size: 16px; color: #94A3B8; font-weight: 400;
-  max-width: 480px; margin: 0 auto 28px; line-height: 1.6;
+  font-size: 14px; color: #94A3B8; font-weight: 400;
+  max-width: 420px; margin: 0 auto 16px; line-height: 1.5;
 }
 .hero-stats {
   display: flex; justify-content: center; gap: 0;
   border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius);
-  overflow: hidden; max-width: 380px; margin: 0 auto 32px;
+  overflow: hidden; max-width: 340px; margin: 0 auto 16px;
 }
 .hero-stat {
-  flex: 1; padding: 14px 8px; text-align: center;
+  flex: 1; padding: 10px 6px; text-align: center;
   border-right: 1px solid rgba(255,255,255,0.1);
 }
 .hero-stat:last-child { border-right: none; }
-.hero-stat-num { display: block; font-size: 22px; font-weight: 600; color: white; line-height: 1; }
+.hero-stat-num { display: block; font-size: 18px; font-weight: 600; color: white; line-height: 1; }
 .hero-stat-lbl { display: block; font-size: 10px; color: #64748B; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 3px; }
 
 /* ── MOBILE INSTALL CTA ───────────────────────── */
@@ -201,7 +220,7 @@ button { font-family: 'Inter', -apple-system, sans-serif; cursor: pointer; borde
 .sheet {
   position: fixed; bottom: 0; left: 0; right: 0;
   background: white; border-radius: 20px 20px 0 0;
-  max-height: 92vh; overflow-y: auto; overscroll-behavior: contain;
+  max-height: 88vh; overflow-y: auto; overscroll-behavior: contain;
   transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.32,0.72,0,1);
   z-index: 201; padding-bottom: env(safe-area-inset-bottom, 20px);
 }
@@ -326,47 +345,21 @@ footer { background: var(--ink); padding: 40px 20px; text-align: center; }
 
 <!-- ── HERO ─────────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-badge">76 Free Plugins for Claude</div>
-  <h1>Give Claude <em>expert skills</em><br>in any industry</h1>
-  <p class="hero-sub">Add a plugin to Claude in 30 seconds. Works on the Claude app, Claude Code, and the API — no setup, no code.</p>
-
+  <div class="hero-badge">76 Free Plugins · Claude App &amp; API</div>
+  <h1>Give Claude <em>expert skills</em><br>for any job or industry</h1>
+  <p class="hero-sub">Tap any plugin → copy the skill → paste into a Claude Project. Done in 30 seconds.</p>
   <div class="hero-stats">
-    <div class="hero-stat">
-      <span class="hero-stat-num">76</span>
-      <span class="hero-stat-lbl">Plugins</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num">401</span>
-      <span class="hero-stat-lbl">Skills</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num">332</span>
-      <span class="hero-stat-lbl">Commands</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num">Free</span>
-      <span class="hero-stat-lbl">Always</span>
-    </div>
+    <div class="hero-stat"><span class="hero-stat-num">76</span><span class="hero-stat-lbl">Plugins</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">401</span><span class="hero-stat-lbl">Skills</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">Free</span><span class="hero-stat-lbl">Always</span></div>
+    <div class="hero-stat"><span class="hero-stat-num">30s</span><span class="hero-stat-lbl">Setup</span></div>
   </div>
-
-  <div class="hero-install">
-    <div class="hero-install-label">Using the Claude App? Here's how:</div>
-    <div class="hero-install-steps">
-      <div class="hero-install-step">
-        <div class="step-num">1</div>
-        <div class="step-text">Find a plugin below and tap <strong>Use in Claude App</strong></div>
-      </div>
-      <div class="hero-install-step">
-        <div class="step-num">2</div>
-        <div class="step-text">The skill prompt is copied to your clipboard automatically</div>
-      </div>
-      <div class="hero-install-step">
-        <div class="step-num">3</div>
-        <div class="step-text">In Claude: open a <strong>Project → Instructions → Paste</strong><br>That's it. Every chat in that project has the skill.</div>
-      </div>
-    </div>
-    <button class="browse-btn" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">Browse All 76 Plugins ↓</button>
-    <div class="hero-note">Free forever · No account required · Open source on GitHub</div>
+  <div class="hero-how">
+    <div class="hero-how-step"><span class="hhs-n">1</span><span class="hhs-t">Find a plugin → tap <strong>Add to Claude</strong></span></div>
+    <div class="hero-how-arrow">→</div>
+    <div class="hero-how-step"><span class="hhs-n">2</span><span class="hhs-t">Tap <strong>Copy skill</strong></span></div>
+    <div class="hero-how-arrow">→</div>
+    <div class="hero-how-step"><span class="hhs-n">3</span><span class="hhs-t">In Claude: <strong>Project → Instructions → Paste</strong></span></div>
   </div>
 </section>
 
@@ -604,16 +597,21 @@ function buildCats(){
   const allCats = ['All',...Object.keys(CATS)];
   catScroll.innerHTML = allCats.map(c=>`
     <button class="cat-pill${c==='All'?' active':''}" onclick="filterCat('${c}',this)">
-      ${c==='All'?'All (76)':`${CATS[c]?.icon||''} ${c}`}
+      ${c==='All'?`⚡ All 76`:`${CATS[c]?.icon||''} ${c} <span style="opacity:.55;font-size:10px">${counts[c]||''}</span>`}
     </button>
   `).join('');
+  // Auto-scroll active pill into view on filter
 }
 
 function filterCat(cat, btn){
   activeCat = cat;
   document.querySelectorAll('.cat-pill').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
+  // Scroll pill into view
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
   renderCards();
+  // Scroll catalog into view
+  document.getElementById('catalog').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function renderCards(){
@@ -668,7 +666,7 @@ function renderCards(){
           <div class="card-desc">${p.desc}</div>
           <div class="card-footer">
             <div class="card-skills">${d.skills.length} skills</div>
-            <div class="card-use-btn">Use this →</div>
+            <div class="card-use-btn">Add to Claude</div>
           </div>
         </div>`;
       });
@@ -692,7 +690,7 @@ function renderCards(){
         <div class="card-desc">${p.desc}</div>
         <div class="card-footer">
           <div class="card-skills">${d.skills.length} skills · ${d.cmds.length} commands</div>
-          <div class="card-use-btn">Use this →</div>
+          <div class="card-use-btn">Add to Claude</div>
         </div>
       </div>`;
     }).join('');
@@ -764,7 +762,7 @@ function openSheet(name){
           </div>
         </div>
         <button class="copy-prompt-btn" id="copyBtn-${name}" onclick="copyPrompt('${name}',this)">
-          <span>📋</span> Copy Skill to Clipboard
+          Copy Skill — then paste into Claude Project
         </button>
         <div style="margin-top:10px">
           <div style="font-size:11px;color:#475569;text-align:center;line-height:1.5">
