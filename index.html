@@ -114,7 +114,15 @@ button { font-family: 'Inter', -apple-system, sans-serif; cursor: pointer; borde
 .search-bar {
   position: sticky; top: 52px; z-index: 90;
   background: white; border-bottom: 1px solid var(--rule);
-  padding: 12px 20px;
+  padding: 12px 20px 0;
+}
+.cat-scroll-wrap {
+  position: relative; overflow: hidden; margin: 0 -20px; padding: 0 20px;
+}
+.cat-scroll-wrap::after {
+  content: ''; position: absolute; right: 0; top: 0; bottom: 0;
+  width: 40px; background: linear-gradient(to right, transparent, white);
+  pointer-events: none; z-index: 1;
 }
 .search-input-wrap { position: relative; }
 .search-icon {
@@ -135,45 +143,53 @@ button { font-family: 'Inter', -apple-system, sans-serif; cursor: pointer; borde
 }
 .cat-scroll::-webkit-scrollbar { display: none; }
 .cat-pill {
-  padding: 6px 14px; border-radius: 100px; border: 1.5px solid var(--rule);
+  padding: 7px 14px; border-radius: 100px; border: 1.5px solid var(--rule);
   font-size: 12px; font-weight: 500; white-space: nowrap; cursor: pointer;
   background: white; color: var(--ink3); transition: all 0.15s; flex-shrink: 0;
 }
+.cat-scroll { padding: 10px 0 12px; }
 .cat-pill.active { background: var(--teal); border-color: var(--teal); color: white; }
 
 /* ── CARDS GRID ───────────────────────────────── */
-.catalog { padding: 16px 20px 80px; max-width: 1200px; margin: 0 auto; }
+.catalog { padding: 12px 16px 100px; max-width: 1300px; margin: 0 auto; }
+@media(min-width:700px) { .catalog { padding: 16px 24px 80px; } }
 .results-count { font-size: 12px; color: var(--ink4); font-weight: 500; margin-bottom: 14px; padding: 0 2px; }
-.cards { display: grid; grid-template-columns: 1fr; gap: 12px; }
-@media(min-width:580px) { .cards { grid-template-columns: repeat(2, 1fr); } }
-@media(min-width:900px) { .cards { grid-template-columns: repeat(3, 1fr); } }
-@media(min-width:1200px) { .cards { grid-template-columns: repeat(4, 1fr); } }
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+@media(max-width:380px) { .cards { grid-template-columns: 1fr; } }
+@media(min-width:700px) { .cards { grid-template-columns: repeat(3, 1fr); gap: 12px; } }
+@media(min-width:1000px) { .cards { grid-template-columns: repeat(4, 1fr); } }
+@media(min-width:1300px) { .cards { grid-template-columns: repeat(5, 1fr); } }
 
 .card {
   background: white; border: 1.5px solid var(--rule); border-radius: var(--radius-lg);
-  padding: 16px; cursor: pointer; transition: all 0.15s; position: relative;
+  padding: 12px; cursor: pointer; transition: all 0.15s; position: relative;
   -webkit-tap-highlight-color: transparent;
 }
+@media(min-width:700px) { .card { padding: 16px; } }
 .card:active { transform: scale(0.98); border-color: var(--teal); }
 .card:hover { border-color: var(--teal); }
-.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
 .card-icon {
-  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  font-size: 18px; background: var(--bg2);
+  font-size: 16px; background: var(--bg2);
 }
+@media(min-width:700px) { .card-icon { width: 40px; height: 40px; font-size: 18px; } }
 .card-meta { flex: 1; min-width: 0; }
 .card-cat { font-size: 10px; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 0.06em; }
 .card-name { font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.3; margin-top: 2px; }
 .card-arrow { color: var(--ink4); font-size: 16px; flex-shrink: 0; margin-top: 2px; }
-.card-desc { font-size: 13px; color: var(--ink3); line-height: 1.55; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.card-desc { font-size: 12px; color: var(--ink3); line-height: 1.5; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+@media(min-width:700px) { .card-desc { font-size: 13px; -webkit-line-clamp: 3; margin-bottom: 12px; } }
 .card-footer { display: flex; align-items: center; justify-content: space-between; }
-.card-skills { font-size: 11px; color: var(--ink4); font-weight: 500; }
+.card-skills { font-size: 10px; color: var(--ink4); font-weight: 500; }
+@media(max-width:440px) { .card-skills { display: none; } }
 .card-use-btn {
-  padding: 7px 14px; background: var(--teal-lt); color: var(--teal);
-  border-radius: 8px; font-size: 12px; font-weight: 600; border: 1px solid var(--teal-bd);
-  transition: all 0.15s;
+  padding: 6px 10px; background: var(--teal-lt); color: var(--teal);
+  border-radius: 7px; font-size: 11px; font-weight: 600; border: 1px solid var(--teal-bd);
+  transition: all 0.15s; white-space: nowrap;
 }
+@media(min-width:700px) { .card-use-btn { padding: 7px 14px; font-size: 12px; } }
 .card:active .card-use-btn, .card:hover .card-use-btn { background: var(--teal); color: white; }
 
 /* ── BOTTOM SHEET (mobile modal) ──────────────── */
@@ -261,6 +277,32 @@ footer { background: var(--ink); padding: 40px 20px; text-align: center; }
 .footer-links a { font-size: 13px; color: #475569; transition: color 0.15s; }
 .footer-links a:hover { color: var(--teal); }
 
+/* ── CATEGORY GROUP HEADERS ──────────────────── */
+.cat-group-header {
+  font-size: 13px; font-weight: 600; color: var(--ink2);
+  padding: 20px 0 10px; display: flex; align-items: center; gap: 8px;
+  border-top: 1px solid var(--rule2); margin-top: 8px;
+  grid-column: 1 / -1;
+}
+.cat-group-header:first-child { border-top: none; margin-top: 0; padding-top: 8px; }
+.cat-group-count {
+  font-size: 11px; font-weight: 500; color: var(--ink4);
+  background: var(--bg3); padding: 2px 8px; border-radius: 100px;
+}
+.cat-group-cards {
+  display: contents;
+}
+/* ── BACK TO TOP ──────────────────────────────── */
+.back-top {
+  position: fixed; bottom: 24px; right: 20px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--teal); color: white; font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(13,148,136,0.4);
+  opacity: 0; pointer-events: none; transition: opacity 0.2s;
+  z-index: 50; border: none; cursor: pointer;
+}
+.back-top.visible { opacity: 1; pointer-events: all; }
 /* ── EMPTY STATE ──────────────────────────────── */
 .empty { text-align: center; padding: 60px 20px; }
 .empty-icon { font-size: 40px; margin-bottom: 12px; }
@@ -334,7 +376,9 @@ footer { background: var(--ink); padding: 40px 20px; text-align: center; }
     <span class="search-icon">⌕</span>
     <input type="search" id="searchInput" placeholder="Search plugins, industries, or roles..." autocomplete="off" autocorrect="off" spellcheck="false">
   </div>
-  <div class="cat-scroll" id="catScroll"></div>
+  <div class="cat-scroll-wrap">
+    <div class="cat-scroll" id="catScroll"></div>
+  </div>
 </div>
 
 <!-- ── CATALOG ─────────────────────────────────── -->
@@ -355,6 +399,8 @@ footer { background: var(--ink); padding: 40px 20px; text-align: center; }
     <div class="sheet-body" id="sheetBody"></div>
   </div>
 </div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <!-- ── FOOTER ───────────────────────────────────── -->
 <footer>
@@ -595,26 +641,62 @@ function renderCards(){
   }
   empty.style.display = 'none';
   
-  cards.innerHTML = filtered.map(p=>{
-    const cfg = CATS[p.cat] || {icon:'🔧'};
-    const d = DETAILS[p.name] || {skills:[],cmds:[]};
-    return `
-    <div class="card" onclick="openSheet('${p.name}')">
-      <div class="card-top">
-        <div class="card-icon">${cfg.icon}</div>
-        <div class="card-meta">
-          <div class="card-cat">${p.cat}</div>
-          <div class="card-name">${p.label}</div>
+  // Group by category when showing All
+  if(activeCat === 'All' && !q){
+    const grouped = {};
+    const catOrder = Object.keys(CATS);
+    filtered.forEach(p=>{
+      if(!grouped[p.cat]) grouped[p.cat]=[];
+      grouped[p.cat].push(p);
+    });
+    let html = '';
+    catOrder.forEach(cat=>{
+      if(!grouped[cat] || !grouped[cat].length) return;
+      html += `<div class="cat-group-header" id="cat-${cat.replace(/\s/g,'-')}">${CATS[cat].icon} ${cat} <span class="cat-group-count">${grouped[cat].length}</span></div>`;
+      html += `<div class="cat-group-cards">`;
+      grouped[cat].forEach(p=>{
+        const d = DETAILS[p.name]||{skills:[],cmds:[]};
+        html += `<div class="card" onclick="openSheet('${p.name}')">
+          <div class="card-top">
+            <div class="card-icon">${CATS[p.cat]?.icon||'🔧'}</div>
+            <div class="card-meta">
+              <div class="card-cat">${p.cat}</div>
+              <div class="card-name">${p.label}</div>
+            </div>
+            <div class="card-arrow">›</div>
+          </div>
+          <div class="card-desc">${p.desc}</div>
+          <div class="card-footer">
+            <div class="card-skills">${d.skills.length} skills</div>
+            <div class="card-use-btn">Use this →</div>
+          </div>
+        </div>`;
+      });
+      html += `</div>`;
+    });
+    cards.innerHTML = html;
+  } else {
+    cards.innerHTML = filtered.map(p=>{
+      const cfg = CATS[p.cat] || {icon:'🔧'};
+      const d = DETAILS[p.name] || {skills:[],cmds:[]};
+      return `
+      <div class="card" onclick="openSheet('${p.name}')">
+        <div class="card-top">
+          <div class="card-icon">${cfg.icon}</div>
+          <div class="card-meta">
+            <div class="card-cat">${p.cat}</div>
+            <div class="card-name">${p.label}</div>
+          </div>
+          <div class="card-arrow">›</div>
         </div>
-        <div class="card-arrow">›</div>
-      </div>
-      <div class="card-desc">${p.desc}</div>
-      <div class="card-footer">
-        <div class="card-skills">${d.skills.length} skills · ${d.cmds.length} commands</div>
-        <div class="card-use-btn">Use this →</div>
-      </div>
-    </div>`;
-  }).join('');
+        <div class="card-desc">${p.desc}</div>
+        <div class="card-footer">
+          <div class="card-skills">${d.skills.length} skills · ${d.cmds.length} commands</div>
+          <div class="card-use-btn">Use this →</div>
+        </div>
+      </div>`;
+    }).join('');
+  }
 }
 
 // ── SEARCH ────────────────────────────────────────────────────────
@@ -802,6 +884,12 @@ document.getElementById('sheet').addEventListener('touchmove', e=>{
 // ── INIT ──────────────────────────────────────────────────────────
 buildCats();
 renderCards();
+
+// Back to top
+window.addEventListener('scroll', ()=>{
+  const btn = document.getElementById('backTop');
+  if(btn) btn.classList.toggle('visible', window.scrollY > 400);
+}, {passive:true});
 </script>
 </body>
 </html>
